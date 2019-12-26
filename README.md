@@ -17,7 +17,7 @@
 #### 打包配置
 - 将源码clone到本地  
 	```text
-	git clone XXX git@code.qijiayoudao.net:liuchenhui/openapi-sdk-java.git
+	git clone git@github.com:techqjyd/openapi-sdk-java.git
 	```
 - 在项目根目录下执行打包命令   
 	```text
