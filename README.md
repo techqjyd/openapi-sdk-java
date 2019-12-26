@@ -23,6 +23,8 @@
 	```text
 	mvn package
 	```
+- 可以直接下载lib文件夹下的jar 
+
 - 将打包生成的jar发布到私服   
 	```text
 	mvn deploy:deploy-file -DgroupId=com.XXX.XXX -DartifactId=XXX -Dversion=1.0.0 -Dpackaging=jar -Dfile=openapi-sdk-java-1.0.0.jar -Durl=http://ip:host/nexus/content/repositories/releases  -DrepositoryId=releases
@@ -35,7 +37,7 @@
     <version>1.0.0</version>
 	</dependency>
 	```
-- 必须依赖的三方jar
+- 项目中必须依赖的三方jar
 	```xml
 	<dependency>
 	    <groupId>commons-codec</groupId>
@@ -104,4 +106,3 @@ class XXX {
 - 批量打卡 -- batchClock
 > 失败消息 XrxsPushMsgService
 - 订阅消息失败消息获取 -- getFailMsg
-

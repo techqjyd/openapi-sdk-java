@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.xinrenxinshi</groupId>
-    <artifactId>xrxs-openapi-sdk-java</artifactId>
-    <version>1.0.0</version>
+    <artifactId>openapi-sdk-java</artifactId>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <dependencies>
