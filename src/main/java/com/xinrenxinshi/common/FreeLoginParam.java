@@ -91,6 +91,7 @@ public class FreeLoginParam {
 
     public Map<String, Object> getParamMap() {
         Map<String, Object> map = new HashMap<>(10);
+
         map.put("access_token", access_token);
         map.put("token", freeLoginToken);
         map.put("employeeId", employeeId);

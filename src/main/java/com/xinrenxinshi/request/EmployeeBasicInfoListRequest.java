@@ -99,9 +99,6 @@ public class EmployeeBasicInfoListRequest extends AbstractOpenapiRequest<Employe
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(departmentId)) {
-            throw new ParamNotValidException("部门ID为空");
-        }
         if (offset == null) {
             throw new ParamNotValidException("起始页码为空");
         }
@@ -121,12 +118,14 @@ public class EmployeeBasicInfoListRequest extends AbstractOpenapiRequest<Employe
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(10);
-        map.put("departmentId", departmentId);
         map.put("offset", offset);
         map.put("size", size);
         map.put("fetchChild", fetchChild.getFetchChild());
         if (status != null) {
             map.put("status", status.getStatus());
+        }
+        if (!XRXSStrUtils.isEmpty(departmentId)) {
+            map.put("departmentId", departmentId);
         }
         return map;
     }
