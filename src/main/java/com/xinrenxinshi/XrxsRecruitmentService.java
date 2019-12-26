@@ -13,6 +13,7 @@ import com.xinrenxinshi.response.RecruitmentFullDataResponse;
  * @author: liuchenhui
  * @create: 2019-11-14 14:47
  **/
+
 public abstract class XrxsRecruitmentService {
     /**
      * 获取招聘全数据报表
