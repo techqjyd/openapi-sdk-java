@@ -39,6 +39,23 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
      */
     private List<String> departmentIds;
 
+    /**
+     * 以审批添加时间纬度查询的开始时间，时间戳精确到秒
+     */
+    private Integer addtimeStart;
+    /**
+     * 以审批添加时间纬度查询的结束时间，时间戳精确到秒
+     */
+    private Integer addtimeEnd;
+    /**
+     * 以审批修改时间纬度查询的开始时间，时间戳精确到秒
+     */
+    private Integer lastModtimeStart;
+    /**
+     * 以审批修改时间纬度查询的结束时间，时间戳精确到秒
+     */
+    private Integer lastModtimeEnd;
+
     public ApprovalListRequest(String accessToken) {
         super(accessToken);
     }
@@ -83,6 +100,38 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
         this.departmentIds = departmentIds;
     }
 
+    public Integer getAddtimeStart() {
+        return addtimeStart;
+    }
+
+    public void setAddtimeStart(Integer addtimeStart) {
+        this.addtimeStart = addtimeStart;
+    }
+
+    public Integer getAddtimeEnd() {
+        return addtimeEnd;
+    }
+
+    public void setAddtimeEnd(Integer addtimeEnd) {
+        this.addtimeEnd = addtimeEnd;
+    }
+
+    public Integer getLastModtimeStart() {
+        return lastModtimeStart;
+    }
+
+    public void setLastModtimeStart(Integer lastModtimeStart) {
+        this.lastModtimeStart = lastModtimeStart;
+    }
+
+    public Integer getLastModtimeEnd() {
+        return lastModtimeEnd;
+    }
+
+    public void setLastModtimeEnd(Integer lastModtimeEnd) {
+        this.lastModtimeEnd = lastModtimeEnd;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -116,6 +165,18 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
         }
         if (!XRXSListUtils.isEmpty(departmentIds)) {
             map.put("departmentIds", String.join(",", departmentIds));
+        }
+        if (null != addtimeStart) {
+            map.put("addtimeStart", addtimeStart);
+        }
+        if (null != addtimeEnd) {
+            map.put("addtimeEnd", addtimeEnd);
+        }
+        if (null != lastModtimeStart) {
+            map.put("lastModtimeStart", lastModtimeStart);
+        }
+        if (null != lastModtimeEnd) {
+            map.put("lastModtimeEnd", lastModtimeEnd);
         }
         return map;
     }
