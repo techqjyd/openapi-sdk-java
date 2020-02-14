@@ -34,6 +34,14 @@ public class Page<T> {
         this.pageNo = pageNo;
     }
 
+    public boolean isHasMore() {
+        return hasMore;
+    }
+
+    public void setHasMore(boolean hasMore) {
+        this.hasMore = hasMore;
+    }
+
     public Integer getPageSize() {
         return pageSize;
     }
