@@ -53,7 +53,12 @@ public enum RedirectUrlTypeEnum {
     /**
      * 审批人或抄送人的审批详情页面
      */
-    FOR_EXAMINATION_APPROVAL_APPROVER_DETAILS(10, "审批人或抄送人的审批详情页面");
+    FOR_EXAMINATION_APPROVAL_APPROVER_DETAILS(10, "审批人或抄送人的审批详情页面"),
+
+    /**
+     * 请假申请
+     */
+    LEAVE_APPLY(11, "请假申请");
 
 
     /**
