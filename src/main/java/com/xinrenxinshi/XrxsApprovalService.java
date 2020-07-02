@@ -3,6 +3,7 @@ package com.xinrenxinshi;
 import com.xinrenxinshi.domain.approval.FlowType;
 import com.xinrenxinshi.domain.approval.ProcessFlowInfo;
 import com.xinrenxinshi.domain.approval.ProcessStepAndCopyInfo;
+import com.xinrenxinshi.domain.approval.param.FlowListParam;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
 import com.xinrenxinshi.request.*;
@@ -27,31 +28,45 @@ public abstract class XrxsApprovalService {
      * @param flowStatus       审批状态list
      * @param flowTypes        审批类型list
      * @param departmentIds    部门ids
-     * @param addtimeStart     以审批添加时间纬度查询的开始时间，时间戳精确到秒
-     * @param addtimeEnd       以审批添加时间纬度查询的结束时间，时间戳精确到秒
-     * @param lastModtimeStart 以审批修改时间纬度查询的开始时间，时间戳精确到秒
-     * @param lastModtimeEnd   以审批修改时间纬度查询的结束时间，时间戳精确到秒
      */
     public static ApprovalListResponse getFlowList(String access_token,
                                                    Integer pageNo,
                                                    Integer pageSize,
                                                    List<String> flowStatus,
                                                    List<String> flowTypes,
-                                                   List<String> departmentIds,
-                                                   Integer addtimeStart,
-                                                   Integer addtimeEnd,
-                                                   Integer lastModtimeStart,
-                                                   Integer lastModtimeEnd) throws ApiException {
+                                                   List<String> departmentIds) throws ApiException {
         ApprovalListRequest request = new ApprovalListRequest(access_token);
         request.setPageNo(pageNo);
         request.setPageSize(pageSize);
         request.setFlowStatus(flowStatus);
         request.setFlowTypes(flowTypes);
         request.setDepartmentIds(departmentIds);
-        request.setAddtimeStart(addtimeStart);
-        request.setAddtimeEnd(addtimeEnd);
-        request.setLastModtimeStart(lastModtimeStart);
-        request.setLastModtimeEnd(lastModtimeEnd);
+        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
+        ApprovalListResponse response = openapiClient.execute(request);
+        if (response != null && response.getErrcode() == 0) {
+            return response;
+        }
+        throw new ApiException(response.getErrcode(), response.getErrmsg());
+    }
+
+
+    /**
+     * 获取审批列表
+     *
+     * @param param 审批列表查询参数
+     */
+    public static ApprovalListResponse getFlowList(String access_token, FlowListParam param) throws ApiException {
+        ApprovalListRequest request = new ApprovalListRequest(access_token);
+        request.setPageNo(param.getPageNo());
+        request.setPageSize(param.getPageSize());
+        request.setFlowStatus(param.getFlowStatus());
+        request.setFlowTypes(param.getFlowTypes());
+        request.setDepartmentIds(param.getDepartmentIds());
+        request.setAddtimeStart(param.getAddtimeStart());
+        request.setAddtimeEnd(param.getAddtimeEnd());
+        request.setLastModtimeStart(param.getLastModtimeStart());
+        request.setLastModtimeEnd(param.getLastModtimeEnd());
+
         XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
         ApprovalListResponse response = openapiClient.execute(request);
         if (response != null && response.getErrcode() == 0) {

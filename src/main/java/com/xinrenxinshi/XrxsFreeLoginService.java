@@ -1,18 +1,27 @@
 package com.xinrenxinshi;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.Constants;
+import com.xinrenxinshi.common.ERequestPath;
 import com.xinrenxinshi.common.FreeLoginParam;
 import com.xinrenxinshi.common.RedirectUrlTypeEnum;
+import com.xinrenxinshi.domain.login.LoginTokenInfo;
+import com.xinrenxinshi.domain.login.param.MobileLoginParam;
+import com.xinrenxinshi.domain.login.param.MobileTokenParam;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.ExecuteTemplate;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
 import com.xinrenxinshi.request.FreeLoginTokenGetRequest;
+import com.xinrenxinshi.request.OpenApiRequestAdapter;
 import com.xinrenxinshi.response.FreeLoginTokenGetResponse;
+import com.xinrenxinshi.response.OpenApiResponseAdapter;
 
 /**
  * 免登service
- *
+ * <p>
  * 1、免登token获取
- *
+ * <p>
  * 2、免登请求url组装
  *
  * @author: liuchenhui
@@ -84,5 +93,41 @@ public abstract class XrxsFreeLoginService {
         freeLoginParam.setRedirectUrlType(redirectUrlType);
         freeLoginParam.setRedirectParam(redirectParam);
         return instance.getFreeLoginUrl(freeLoginParam, Constants.MOBILE_FREE_LOGIN_BIZ_URL);
+    }
+
+    /**
+     * 获取手机号免登token
+     *
+     * @param accessToken      授权令牌
+     * @param mobileTokenParam 请求参数
+     * @return
+     */
+    public static LoginTokenInfo getMobileToken(String accessToken, MobileTokenParam mobileTokenParam) throws ApiException {
+        return ExecuteTemplate.execute(() -> new OpenApiRequestAdapter<>(accessToken, mobileTokenParam, ERequestPath.MOBILE_TOKEN, new TypeReference<OpenApiResponseAdapter<LoginTokenInfo>>() {
+        }));
+    }
+
+    /**
+     * 手机号免登PC端
+     *
+     * @param mobileLoginParam 请求参数
+     * @return 免登链接
+     */
+    public static String mobileLoginPc(MobileLoginParam mobileLoginParam) throws ApiException {
+        OpenApiRequestAdapter<MobileLoginParam, OpenapiResponse> requestAdapter = new OpenApiRequestAdapter<>(mobileLoginParam.getAccess_token(), mobileLoginParam, ERequestPath.MOBILE_LOGIN_PC);
+        XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
+        return instance.getFreeLoginUrl(requestAdapter, ERequestPath.MOBILE_LOGIN_PC.getPath());
+    }
+
+    /**
+     * 手机号免登PC端
+     *
+     * @param mobileLoginParam 请求参数
+     * @return 免登链接
+     */
+    public static String mobileLoginH5(MobileLoginParam mobileLoginParam) throws ApiException {
+        OpenApiRequestAdapter<MobileLoginParam, OpenapiResponse> requestAdapter = new OpenApiRequestAdapter<>(mobileLoginParam.getAccess_token(), mobileLoginParam, ERequestPath.MOBILE_LOGIN_PC);
+        XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
+        return instance.getFreeLoginUrl(requestAdapter, ERequestPath.MOBILE_LOGIN_H5.getPath());
     }
 }

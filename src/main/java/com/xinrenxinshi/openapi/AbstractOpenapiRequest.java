@@ -15,7 +15,7 @@ public abstract class AbstractOpenapiRequest<T extends OpenapiResponse> implemen
     /**
      * token
      */
-    private String accessToken;
+    protected String accessToken;
 
     protected AbstractOpenapiRequest() {
     }

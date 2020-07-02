@@ -112,4 +112,27 @@ public class XrxsOpenapiClient extends AbstractOpenapiClient {
         sb.append(HttpUtil.buildQuery(param.getParamMap(), Constants.CHARSET_UTF8));
         return sb.toString();
     }
+
+    /**
+     * 获取免登url
+     *
+     * @param param  参数
+     * @param bizUrl 业务url
+     */
+    public String getFreeLoginUrl(IOpenapiRequest param, String bizUrl) throws ApiException {
+        if (param == null || XRXSStrUtils.isEmpty(bizUrl)) {
+            return null;
+        }
+        param.check();
+
+        XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
+        String serverUrl = instance.getServerUrl();
+        serverUrl = serverUrl.concat(bizUrl);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(serverUrl);
+        sb.append("?");
+        sb.append(HttpUtil.buildQuery(param.getParamMap(), Constants.CHARSET_UTF8));
+        return sb.toString();
+    }
 }

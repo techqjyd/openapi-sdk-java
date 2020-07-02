@@ -1,8 +1,10 @@
 package com.xinrenxinshi.openapi;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
 
+import java.lang.reflect.Type;
 import java.util.Map;
 
 /**
@@ -22,6 +24,14 @@ public interface IOpenapiRequest<T extends OpenapiResponse> {
      * 获取返回参数的class
      */
     Class<T> getResponseClass();
+
+    /**
+     * 获取返回参数类型
+     * @return 这个必须重写，
+     */
+    default TypeReference<T> getResponseTypeRef() {
+        return null;
+    }
 
     /**
      * 参数前置检查
