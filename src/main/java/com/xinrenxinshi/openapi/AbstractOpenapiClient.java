@@ -72,7 +72,7 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
         return null;
     }
 
-    protected <T extends OpenapiResponse> T _execute(IOpenapiRequest request) throws ApiException {
+    protected <T extends OpenapiResponse> T _execute(IOpenapiRequest<T> request) throws ApiException {
         if (this.needCheckRequest) {
             request.check();
         }
@@ -113,9 +113,15 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
         return HttpUtil.doGetDownloadFile(this.serverUrl.concat(request.getBizUrl()), request.getParamMap(), connectTimeout, readTimeout, request.getHeaderMap());
     }
 
-    private <T extends OpenapiResponse> T parseBody(IOpenapiRequest request, String body) throws ApiException {
+    private <T extends OpenapiResponse> T parseBody(IOpenapiRequest<T> request, String body) throws ApiException {
         try {
-            T openapiResponse = (T) JsonUtils.formJson(request.getResponseClass(), body);
+            Class<T> responseClass = request.getResponseClass();
+            T openapiResponse;
+            if (null != responseClass) {
+                openapiResponse = JsonUtils.formJson(request.getResponseClass(), body);
+            } else {
+                openapiResponse = JsonUtils.formJson(body, request.getResponseTypeRef());
+            }
             if (openapiResponse != null && !XRXSStrUtils.isEmpty(openapiResponse.getCode())) {
                 openapiResponse.setErrcode(Integer.parseInt(openapiResponse.getCode()));
                 openapiResponse.setErrmsg(openapiResponse.getMessage());

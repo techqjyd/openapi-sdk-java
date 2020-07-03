@@ -14,6 +14,8 @@ import com.xinrenxinshi.util.HttpUtil;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.io.InputStream;
+import java.net.URLEncoder;
+import java.util.Map;
 
 /**
  * 请求openapi接口客户端
@@ -119,20 +121,40 @@ public class XrxsOpenapiClient extends AbstractOpenapiClient {
      * @param param  参数
      * @param bizUrl 业务url
      */
-    public String getFreeLoginUrl(IOpenapiRequest param, String bizUrl) throws ApiException {
+    public String getFreeLoginUrl(IOpenapiRequest<?> param, String bizUrl) throws ApiException {
         if (param == null || XRXSStrUtils.isEmpty(bizUrl)) {
             return null;
         }
         param.check();
+        try {
+            Map<String, Object> paramMap = param.getParamMap();
+            StringBuilder queryString = new StringBuilder();
+            if (null != paramMap) {
+                for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+                    String strValue = null == value ? XRXSStrUtils.EMPTY : value.toString();
+                    String encodingValue = URLEncoder.encode(strValue, Constants.CHARSET_UTF8);
+                    queryString.append(key).append("=").append(encodingValue).append("&");
+                }
+            }
+            if (queryString.length() > 0) {
+                queryString.deleteCharAt(queryString.length() - 1);
+            }
 
-        XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
-        String serverUrl = instance.getServerUrl();
-        serverUrl = serverUrl.concat(bizUrl);
+            XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
+            String serverUrl = instance.getServerUrl();
+            serverUrl = serverUrl.concat(bizUrl);
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(serverUrl);
-        sb.append("?");
-        sb.append(HttpUtil.buildQuery(param.getParamMap(), Constants.CHARSET_UTF8));
-        return sb.toString();
+            StringBuilder sb = new StringBuilder();
+            sb.append(serverUrl);
+            sb.append("?");
+            sb.append(queryString);
+            return sb.toString();
+        } catch (Throwable e) {
+           throw new ApiException("build free login url error", e);
+        }
     }
+
+
 }

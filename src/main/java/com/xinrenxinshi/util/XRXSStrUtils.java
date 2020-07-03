@@ -74,6 +74,45 @@ public abstract class XRXSStrUtils {
     }
 
     /**
+     * <p>Returns either the passed in String,
+     * or if the String is {@code null}, an empty String ("").</p>
+     *
+     * <pre>
+     * StringUtils.defaultString(null)  = ""
+     * StringUtils.defaultString("")    = ""
+     * StringUtils.defaultString("bat") = "bat"
+     * </pre>
+     *
+     * @see String#valueOf(Object)
+     * @param str  the String to check, may be null
+     * @return the passed in String, or the empty String if it
+     *  was {@code null}
+     */
+    public static String defaultString(String str) {
+        return defaultString(str, EMPTY);
+    }
+
+    /**
+     * <p>Returns either the passed in String, or if the String is
+     * {@code null}, the value of {@code defaultStr}.</p>
+     *
+     * <pre>
+     * StringUtils.defaultString(null, "NULL")  = "NULL"
+     * StringUtils.defaultString("", "NULL")    = ""
+     * StringUtils.defaultString("bat", "NULL") = "bat"
+     * </pre>
+     *
+     * @see String#valueOf(Object)
+     * @param str  the String to check, may be null
+     * @param defaultStr  the default String to return
+     *  if the input is {@code null}, may be null
+     * @return the passed in String, or the default if it was {@code null}
+     */
+    public static String defaultString(String str, String defaultStr) {
+        return null == str ? defaultStr : str;
+    }
+
+    /**
      * 检查对象是否为数字型字符串,包含负数开头的。
      */
     public static boolean isNumeric(Object obj) {

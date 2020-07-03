@@ -8,6 +8,8 @@ import com.xinrenxinshi.response.ApprovalBatchDetialResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * 审批表单详情request
@@ -52,13 +54,17 @@ public class ApprovalBatchDetialRequest extends AbstractOpenapiRequest<ApprovalB
 
     @Override
     protected Map<String, Object> getParamMap0() {
+        String strProcessIds = processIds.stream()
+                .filter(Objects::nonNull)
+                .map(String::valueOf)
+                .collect(Collectors.joining(","));
         Map<String, Object> map = new HashMap<>(4);
-        map.put("processIds", processIds);
+        map.put("processIds", strProcessIds);
         return map;
     }
 
     @Override
     public String getBizUrl() {
-        return "/v4/flow/detail";
+        return "/v4/flow/batchDetail";
     }
 }

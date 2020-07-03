@@ -22,12 +22,12 @@ public abstract class XrxsApprovalService {
     /**
      * 获取审批列表
      *
-     * @param access_token     授权token
-     * @param pageNo           列表起始页
-     * @param pageSize         每页条数
-     * @param flowStatus       审批状态list
-     * @param flowTypes        审批类型list
-     * @param departmentIds    部门ids
+     * @param access_token  授权token
+     * @param pageNo        列表起始页
+     * @param pageSize      每页条数
+     * @param flowStatus    审批状态list
+     * @param flowTypes     审批类型list
+     * @param departmentIds 部门ids
      */
     public static ApprovalListResponse getFlowList(String access_token,
                                                    Integer pageNo,
@@ -100,7 +100,7 @@ public abstract class XrxsApprovalService {
      * @param processIds   审批id列表
      */
     public static List<ProcessFlowInfo> batchGetFlowDetail(String access_token,
-                                                     List<Integer> processIds) throws ApiException {
+                                                           List<Integer> processIds) throws ApiException {
         ApprovalBatchDetialRequest request = new ApprovalBatchDetialRequest(access_token);
         request.setProcessIds(processIds);
         XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();

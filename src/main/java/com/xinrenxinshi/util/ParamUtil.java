@@ -39,18 +39,27 @@ public class ParamUtil {
     public static Map<String, Object> buildParam(Object obj) {
 
         Field[] declaredFields = obj.getClass().getDeclaredFields();
-        return Arrays.stream(declaredFields).collect(Collectors.toMap(
-                Field::getName,
-                field -> getValue(field, obj)
-        ));
+
+        Map<String, Object> map = new HashMap<>();
+        for (int i = 0; i < declaredFields.length; i++) {
+            Field field = declaredFields[i];
+            Object value = getValue(field, obj);
+            if (null == value) {
+                continue;
+            }
+            String name = field.getName();
+            map.put(name, value);
+        }
+        return map;
     }
 
     private static Object getValue(Field field, Object object) {
         try {
+            field.setAccessible(true);
             Class<?> type = field.getType();
             Object value = field.get(object);
             if (null == value) {
-                return "";
+                return null;
             }
             if (type == List.class) {
                 Type genericType = field.getGenericType();
@@ -74,12 +83,12 @@ public class ParamUtil {
         } catch (Throwable e) {
             log.warn("convert value error， field name:{}", field.getName(), e);
         }
-        return "";
+        return null;
     }
 
     private static String collectionToCommaDelimitedString(Collection<?> collection) {
         if (null == collection || collection.isEmpty()) {
-            return "";
+            return null;
         }
 
         return collection.stream()
@@ -87,7 +96,6 @@ public class ParamUtil {
                 .map(String::valueOf)
                 .collect(Collectors.joining(","));
     }
-
 
 
 }

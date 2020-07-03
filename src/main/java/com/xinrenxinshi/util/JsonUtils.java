@@ -1,6 +1,7 @@
 package com.xinrenxinshi.util;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 
 /**
@@ -17,5 +18,9 @@ public class JsonUtils {
 
     public static <T extends OpenapiResponse> T formJson(Class<T> clazz, String body) {
         return JSON.parseObject(body, clazz);
+    }
+
+    public static <T extends OpenapiResponse> T formJson(String body, TypeReference<T> reference) {
+        return JSON.parseObject(body, reference);
     }
 }
