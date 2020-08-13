@@ -56,7 +56,7 @@ public class SecUtil {
         }
         String keystr = prestr.toString();
         String encrypt = SecUtil.encrypt(keystr, appSecret);
-        return getURLEncoderString(encrypt);
+        return encrypt;
     }
 
     /**

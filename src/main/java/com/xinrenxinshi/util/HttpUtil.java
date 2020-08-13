@@ -19,6 +19,7 @@ import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
@@ -109,6 +110,15 @@ public abstract class HttpUtil {
      */
     public static String doPostWithJson(String url, Map<String, Object> params, int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
         String ctype = "application/json;charset=" + DEFAULT_CHARSET;
+        //公共参数 处理在URL后
+        Map<String, Object> commonsMap = new HashMap<>(2);
+        commonsMap.put("sign", String.valueOf(params.get("sign")));
+        commonsMap.put("timestamp", String.valueOf(params.get("timestamp")));
+        String queryParam = buildQuery(commonsMap, DEFAULT_CHARSET);
+
+        String postUrl = buildRequestUrl(url, queryParam);
+
+        log.warn("request url : " + postUrl + " | request param: " + JsonUtils.toJson(params));
         try {
             byte[] content = {};
 
@@ -116,7 +126,7 @@ public abstract class HttpUtil {
                 String body = JsonUtils.toJson(params);
                 content = body.getBytes(DEFAULT_CHARSET);
             }
-            return _doPost(url, ctype, content, connectTimeout, readTimeout, headerMap, null);
+            return _doPostJson(postUrl, ctype, content, connectTimeout, readTimeout, headerMap);
         } catch (UnsupportedEncodingException e) {
             log.error(e.getMessage(), e);
             throw new ApiException(e.getMessage());
@@ -129,6 +139,45 @@ public abstract class HttpUtil {
         String rsp;
         try {
             conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, proxy);// _doPost
+            conn.setConnectTimeout(connectTimeout);
+            conn.setReadTimeout(readTimeout);
+            out = conn.getOutputStream();
+            out.write(content);
+            rsp = getResponseAsString(conn);
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+            throw new ApiException(e.getMessage());
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    log.error(e.getMessage(), e);
+                }
+            }
+            if (conn != null) {
+                conn.disconnect();
+            }
+        }
+
+        return rsp;
+    }
+
+    /**
+     * 执行Body 为Json 的 POST请求。
+     *
+     * @param url        请求地址
+     * @return 响应字符串
+     */
+    public static String _doPostJson(String url, String ctype, byte[] content , int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
+
+        HttpURLConnection conn = null;
+        OutputStream out = null;
+
+
+        String rsp;
+        try {
+            conn = getConnection(new URL(url), Constants.METHOD_POST, null, headerMap, null);// _doPost
             conn.setConnectTimeout(connectTimeout);
             conn.setReadTimeout(readTimeout);
             out = conn.getOutputStream();

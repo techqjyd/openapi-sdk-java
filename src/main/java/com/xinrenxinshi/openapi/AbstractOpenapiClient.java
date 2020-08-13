@@ -102,6 +102,9 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
                 AbstractOpenapiUploadRequest uploadRequest = (AbstractOpenapiUploadRequest) request;
                 Map<String, FileItem> fileItemMap = uploadRequest.getFileItemMap();
                 data = HttpUtil.doPostWithFile(this.serverUrl.concat(request.getBizUrl()), paraMap, fileItemMap, connectTimeout, readTimeout, headerMap);
+            } if(request instanceof AbstractOpenapiAPIRequest) {
+                AbstractOpenapiAPIRequest apiRequest = (AbstractOpenapiAPIRequest) request;
+                data = HttpUtil.doPostWithJson(this.serverUrl.concat(request.getBizUrl()), paraMap, connectTimeout, readTimeout, headerMap);
             } else {
                 data = HttpUtil.doPost(this.serverUrl.concat(request.getBizUrl()), paraMap, connectTimeout, readTimeout, headerMap);
             }
