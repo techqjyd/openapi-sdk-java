@@ -177,7 +177,7 @@ public abstract class HttpUtil {
 
         String rsp;
         try {
-            conn = getConnection(new URL(url), Constants.METHOD_POST, null, headerMap, null);// _doPost
+            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, null);// _doPost
             conn.setConnectTimeout(connectTimeout);
             conn.setReadTimeout(readTimeout);
             out = conn.getOutputStream();
