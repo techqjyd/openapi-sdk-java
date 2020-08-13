@@ -3,8 +3,7 @@ package com.xinrenxinshi.request;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiAPIRequest;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
-import com.xinrenxinshi.openapi.OpenapiResponse;
+import com.xinrenxinshi.response.AttendanceScheduleInfoResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
@@ -16,7 +15,7 @@ import java.util.Map;
  * @author: jiazijie
  * @create: 2019-11-14 16:42
  **/
-public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<OpenapiResponse> {
+public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<AttendanceScheduleInfoResponse> {
     /**
      * 多个employeeId，逗号分隔
      */
@@ -62,8 +61,8 @@ public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<Open
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public Class<AttendanceScheduleInfoResponse> getResponseClass() {
+        return AttendanceScheduleInfoResponse.class;
     }
 
     @Override

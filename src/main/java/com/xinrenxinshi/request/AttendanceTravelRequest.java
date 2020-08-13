@@ -4,6 +4,7 @@ import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiAPIRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
+import com.xinrenxinshi.response.AttendanceTravelResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.Map;
  * @author: jiazijie
  * @create: 2019-11-14 16:42
  **/
-public class AttendanceTravelRequest extends AbstractOpenapiAPIRequest<OpenapiResponse> {
+public class AttendanceTravelRequest extends AbstractOpenapiAPIRequest<AttendanceTravelResponse> {
     /**
      * employeeId
      */
@@ -104,8 +105,8 @@ public class AttendanceTravelRequest extends AbstractOpenapiAPIRequest<OpenapiRe
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public Class<AttendanceTravelResponse> getResponseClass() {
+        return AttendanceTravelResponse.class;
     }
 
     @Override

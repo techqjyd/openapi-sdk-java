@@ -1,10 +1,13 @@
 package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.BatchClockModel;
+import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
 import com.xinrenxinshi.request.*;
+import com.xinrenxinshi.response.AttendanceScheduleInfoResponse;
+import com.xinrenxinshi.response.AttendanceTravelResponse;
 
 import java.util.List;
 
@@ -94,16 +97,16 @@ public abstract class XrxsAttendanceService {
      * @return
      * @throws ApiException
      */
-    public static boolean scheduling(String access_token,
-                                     String employeeIds,
-                                     String date) throws ApiException {
+    public static AttendanceScheduleInfo scheduling(String access_token,
+                                                    String employeeIds,
+                                                    String date) throws ApiException {
         AttendanceSchedulingRequest request = new AttendanceSchedulingRequest(access_token);
         request.setEmployeeIds(employeeIds);
         request.setDate(date);
         XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        OpenapiResponse response = openapiClient.execute(request);
+        AttendanceScheduleInfoResponse response = openapiClient.execute(request);
         if (response != null && response.getErrcode() == 0) {
-            return true;
+            return response.getData();
         }
         throw new ApiException(response.getErrcode(), response.getErrmsg());
     }
@@ -121,12 +124,12 @@ public abstract class XrxsAttendanceService {
      * @return
      * @throws ApiException
      */
-    public static boolean travel(String access_token,
-                                     String employeeId,
-                                     String startDate,
-                                     String startTime,
-                                     String endDate,
-                                     String endTime) throws ApiException {
+    public static String travel(String access_token,
+                                String employeeId,
+                                String startDate,
+                                String startTime,
+                                String endDate,
+                                String endTime) throws ApiException {
         AttendanceTravelRequest request = new AttendanceTravelRequest(access_token);
         request.setEmployeeId(employeeId);
         request.setStartDate(startDate);
@@ -134,9 +137,9 @@ public abstract class XrxsAttendanceService {
         request.setEndDate(endDate);
         request.setEndTime(endTime);
         XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        OpenapiResponse response = openapiClient.execute(request);
+        AttendanceTravelResponse response = openapiClient.execute(request);
         if (response != null && response.getErrcode() == 0) {
-            return true;
+            return response.getData();
         }
         throw new ApiException(response.getErrcode(), response.getErrmsg());
     }
