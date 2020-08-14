@@ -68,6 +68,11 @@ public class ProcessBasicInfo {
      */
     private Integer lastStepModtime;
 
+    /**
+     * 审批编号
+     */
+    private String flowNumber;
+
     public Integer getId() {
         return id;
     }
@@ -178,5 +183,13 @@ public class ProcessBasicInfo {
 
     public void setLastStepModtime(Integer lastStepModtime) {
         this.lastStepModtime = lastStepModtime;
+    }
+
+    public String getFlowNumber() {
+        return flowNumber;
+    }
+
+    public void setFlowNumber(String flowNumber) {
+        this.flowNumber = flowNumber;
     }
 }
