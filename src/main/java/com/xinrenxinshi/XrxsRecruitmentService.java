@@ -35,7 +35,6 @@ public abstract class XrxsRecruitmentService {
         request.setStartTime(startTime);
         request.setEndTime(endTime);
         XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        openapiClient.execute(request);
         RecruitmentFullDataResponse response = openapiClient.execute(request);
         if (response != null && response.getErrcode() == 0) {
             return response.getData();
