@@ -3,7 +3,7 @@ package com.xinrenxinshi.response;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 
 /**
- * 出差打卡列表response
+ * 出差打卡response
  *
  * @author: jiazijie
  * @create: 2019-11-12 11:45

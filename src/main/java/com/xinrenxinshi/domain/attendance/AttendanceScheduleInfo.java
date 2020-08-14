@@ -3,7 +3,7 @@ package com.xinrenxinshi.domain.attendance;
 import java.util.List;
 
 /**
- * 当前描述：
+ * 当前描述：考勤排班结果
  *
  * @author: jiazijie
  * @since: 2020/8/13 下午7:16
