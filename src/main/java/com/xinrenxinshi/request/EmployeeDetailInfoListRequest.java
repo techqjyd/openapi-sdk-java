@@ -99,18 +99,18 @@ public class EmployeeDetailInfoListRequest extends AbstractOpenapiRequest<Employ
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(departmentId)) {
-            throw new ParamNotValidException("部门ID为空");
-        }
+//        if (XRXSStrUtils.isEmpty(departmentId)) {
+//            throw new ParamNotValidException("部门ID为空");
+//        }
         if (offset == null) {
             throw new ParamNotValidException("起始页码为空");
         }
         if (size == null || size > LIMIT_NUMBER_PAGES) {
             throw new ParamNotValidException("查询员工数量为空或者数量超过100");
         }
-        if (fetchChild == null) {
-            throw new ParamNotValidException("是否包含子部门为空");
-        }
+//        if (fetchChild == null) {
+//            throw new ParamNotValidException("是否包含子部门为空");
+//        }
     }
 
     @Override

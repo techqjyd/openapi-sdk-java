@@ -68,9 +68,9 @@ public class PayrollReportArchiveDetailRequest extends AbstractOpenapiRequest<Pa
         if (XRXSStrUtils.isEmpty(reportId)) {
             throw new ParamNotValidException("查询的报表ID为空");
         }
-        if (XRXSStrUtils.isEmpty(subReportId)) {
-            throw new ParamNotValidException("查询的子报表ID为空");
-        }
+//        if (XRXSStrUtils.isEmpty(subReportId)) {
+//            throw new ParamNotValidException("查询的子报表ID为空");
+//        }
     }
 
     @Override

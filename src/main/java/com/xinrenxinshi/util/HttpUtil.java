@@ -166,10 +166,10 @@ public abstract class HttpUtil {
     /**
      * 执行Body 为Json 的 POST请求。
      *
-     * @param url        请求地址
+     * @param url 请求地址
      * @return 响应字符串
      */
-    public static String _doPostJson(String url, String ctype, byte[] content , int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
+    public static String _doPostJson(String url, String ctype, byte[] content, int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
 
         HttpURLConnection conn = null;
         OutputStream out = null;
@@ -488,7 +488,7 @@ public abstract class HttpUtil {
                 Object value = entry.getValue();
                 String valueStr = value == null ? null : value.toString();
                 // 忽略参数名或参数值为空的参数
-                if (XRXSStrUtils.areNotEmpty(name, valueStr)) {
+                if (XRXSStrUtils.areNotEmpty(name) && valueStr != null) {
                     if (hasParam) {
                         query.append("&");
                     } else {

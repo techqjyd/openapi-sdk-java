@@ -1,10 +1,13 @@
 package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.AreaInfo;
+import com.xinrenxinshi.domain.CountryModel;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
 import com.xinrenxinshi.request.CityListRequest;
+import com.xinrenxinshi.request.CountryListRequest;
 import com.xinrenxinshi.response.CityListResponse;
+import com.xinrenxinshi.response.CountryListResponse;
 import com.xinrenxinshi.response.OpenapiTokenResponse;
 
 import java.util.List;
@@ -42,6 +45,21 @@ public abstract class XrxsCommonService {
         CityListResponse response = instance.execute(cityListRequest);
         if (response != null && response.getErrcode() == 0) {
             return response.getAreaInfos();
+        }
+        throw new ApiException(response.getErrcode(), response.getErrmsg());
+    }
+
+    /**
+     * 获取国家列表
+     *
+     * @param access_token 授权token
+     */
+    public static List<CountryModel> getCountryList(String access_token) throws ApiException {
+        XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
+        CountryListRequest countryListRequest = new CountryListRequest(access_token);
+        CountryListResponse response = instance.execute(countryListRequest);
+        if (response != null && response.getErrcode() == 0) {
+            return response.getData();
         }
         throw new ApiException(response.getErrcode(), response.getErrmsg());
     }
