@@ -41,6 +41,15 @@ public enum DepartTypeEnum {
         this.description = description;
     }
 
+    public static DepartTypeEnum getNameByType(Integer type){
+        for (DepartTypeEnum value : DepartTypeEnum.values()) {
+            if (value.getType().equals(type)){
+                return value;
+            }
+        }
+        return null;
+    }
+
     public Integer getType() {
         return type;
     }
