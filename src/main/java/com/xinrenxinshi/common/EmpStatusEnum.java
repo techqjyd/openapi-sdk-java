@@ -14,7 +14,16 @@ public enum EmpStatusEnum {
     /**
      * 离职
      */
-    OFF_JOB(1);
+    OFF_JOB(1),
+    /**
+     * 待入职
+     */
+    TO_BE_HIRED(2),
+    /**
+     * 删除
+     */
+    DELETE(8);
+
     private Integer status;
 
     EmpStatusEnum(Integer status) {

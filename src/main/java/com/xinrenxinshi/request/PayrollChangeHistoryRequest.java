@@ -1,9 +1,13 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.Constants;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.payroll.PayrollChangeHistoryInfoModel;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
+import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.response.PayrollChangeHistoryResponse;
 import com.xinrenxinshi.util.XRXSDateUtils;
 import com.xinrenxinshi.util.XRXSStrUtils;
@@ -17,7 +21,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-28 10:22
  **/
-public class PayrollChangeHistoryRequest extends AbstractOpenapiRequest<PayrollChangeHistoryResponse> {
+public class PayrollChangeHistoryRequest extends AbstractOpenapiJsonRequest<PageResult<PayrollChangeHistoryInfoModel>> {
 
     /**
      * 页数
@@ -74,7 +78,7 @@ public class PayrollChangeHistoryRequest extends AbstractOpenapiRequest<PayrollC
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(8);
         map.put("pageNo", pageNo);
         map.put("pageSize", pageSize);
         map.put("beginTime", beginTime);
@@ -84,12 +88,12 @@ public class PayrollChangeHistoryRequest extends AbstractOpenapiRequest<PayrollC
 
     @Override
     public MethodEnum getMethod() {
-        return MethodEnum.METHOD_GET;
+        return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public Class<PayrollChangeHistoryResponse> getResponseClass() {
-        return PayrollChangeHistoryResponse.class;
+    public OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -103,7 +107,13 @@ public class PayrollChangeHistoryRequest extends AbstractOpenapiRequest<PayrollC
     }
 
     @Override
+    public TypeReference<OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v3/payroll/change/history";
+        return "/v5/payroll/change/history";
     }
 }

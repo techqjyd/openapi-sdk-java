@@ -6,7 +6,7 @@ import java.io.InputStream;
  * @author: liuchenhui
  * @create: 2019-11-13 18:07
  **/
-public abstract class AbstractOpenapiDownloadResponse extends OpenapiResponse {
+public abstract class AbstractOpenapiDownloadResponse {
     /**
      * 下载的文件流
      */

@@ -11,7 +11,7 @@ import java.util.List;
  * @author: liuchenhui
  * @create: 2019-11-14 15:02
  **/
-public class PayrollReportArchivesResponse extends OpenapiResponse {
+public class PayrollReportArchivesResponse {
     /**
      * 薪酬报表ID
      */

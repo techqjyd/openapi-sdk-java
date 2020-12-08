@@ -1,9 +1,11 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.Constants;
 import com.xinrenxinshi.common.HireTypeEnum;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.JsonUtils;
@@ -19,8 +21,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-13 16:02
  **/
-@SuppressWarnings("all")
-public class EmployeeUpdateRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
 
     /**
      * 员工ID
@@ -107,7 +108,7 @@ public class EmployeeUpdateRequest extends AbstractOpenapiRequest<OpenapiRespons
         map.put("name", name);
         map.put("mobile", mobile);
         map.put("entryDate", entryDate);
-        map.put("fields", JsonUtils.toJson(fields));
+        map.put("fields", fields);
         map.put("hireType", hireType.getHireType());
         return map;
     }
@@ -118,8 +119,8 @@ public class EmployeeUpdateRequest extends AbstractOpenapiRequest<OpenapiRespons
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -136,9 +137,9 @@ public class EmployeeUpdateRequest extends AbstractOpenapiRequest<OpenapiRespons
         if (XRXSStrUtils.isEmpty(entryDate)) {
             throw new ParamNotValidException("入职时间为空");
         }
-        if (fields ==null || fields.size() ==0) {
-            throw new ParamNotValidException("员工其他信息为空");
-        }
+//        if (fields == null || fields.size() == 0) {
+//            throw new ParamNotValidException("员工其他信息为空");
+//        }
         if (hireType == null) {
             throw new ParamNotValidException("聘用类型为空");
         }
@@ -148,7 +149,12 @@ public class EmployeeUpdateRequest extends AbstractOpenapiRequest<OpenapiRespons
     }
 
     @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>(){};
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v3/employee/update";
+        return "/v5/employee/update";
     }
 }

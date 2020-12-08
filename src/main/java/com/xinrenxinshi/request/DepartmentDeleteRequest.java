@@ -1,8 +1,9 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -15,7 +16,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 11:43
  **/
-public class DepartmentDeleteRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class DepartmentDeleteRequest extends AbstractOpenapiJsonRequest<Void> {
     /**
      * 部门id
      */
@@ -39,8 +40,8 @@ public class DepartmentDeleteRequest extends AbstractOpenapiRequest<OpenapiRespo
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -52,7 +53,13 @@ public class DepartmentDeleteRequest extends AbstractOpenapiRequest<OpenapiRespo
 
     @Override
     public String getBizUrl() {
-        return "/v3/department/delete";
+        return "/v5/department/delete";
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>() {
+        };
     }
 
     @Override

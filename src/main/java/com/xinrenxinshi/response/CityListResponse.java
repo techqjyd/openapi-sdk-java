@@ -11,7 +11,7 @@ import java.util.List;
  * @author: liuchenhui
  * @create: 2019-11-11 10:57
  **/
-public class CityListResponse extends OpenapiResponse {
+public class CityListResponse{
     /**
      * 城市数据
      */

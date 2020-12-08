@@ -1,8 +1,11 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.EmployeeFileDownloadResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -15,7 +18,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-13 16:18
  **/
-public class EmployeeFileDownloadRequest extends AbstractOpenapiRequest<EmployeeFileDownloadResponse> {
+public class EmployeeFileDownloadRequest extends AbstractOpenapiJsonRequest<EmployeeFileDownloadResponse> {
     /**
      * 员工ID
      */
@@ -54,13 +57,19 @@ public class EmployeeFileDownloadRequest extends AbstractOpenapiRequest<Employee
     }
 
     @Override
-    public MethodEnum getMethod() {
-        return MethodEnum.METHOD_GET;
+    public TypeReference<OpenapiResponse<EmployeeFileDownloadResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<EmployeeFileDownloadResponse>>() {
+        };
     }
 
     @Override
-    public Class<EmployeeFileDownloadResponse> getResponseClass() {
-        return EmployeeFileDownloadResponse.class;
+    public MethodEnum getMethod() {
+        return MethodEnum.METHOD_POST;
+    }
+
+    @Override
+    public OpenapiResponse<EmployeeFileDownloadResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -75,6 +84,6 @@ public class EmployeeFileDownloadRequest extends AbstractOpenapiRequest<Employee
 
     @Override
     public String getBizUrl() {
-        return "/v3/employee/downloadFile";
+        return "/v5/employee/file/download";
     }
 }

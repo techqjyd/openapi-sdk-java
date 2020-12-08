@@ -2,20 +2,12 @@ package com.xinrenxinshi.util;
 
 import com.xinrenxinshi.common.Constants;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.XrxsOpenapiClient;
+import lombok.extern.slf4j.Slf4j;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Proxy;
-import java.net.URL;
-import java.net.URLEncoder;
+import javax.net.ssl.*;
+import java.io.*;
+import java.net.*;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -23,13 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 网络工具类
@@ -41,8 +26,14 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class HttpUtil {
 
     private static final String DEFAULT_CHARSET = Constants.CHARSET_UTF8;
-    private static boolean ignoreSSLCheck = true; // 忽略SSL检查
-    private static boolean ignoreHostCheck = true; // 忽略HOST检查
+    /**
+     * 忽略SSL检查
+     */
+    private static boolean ignoreSSLCheck = true;
+    /**
+     * 忽略HOST检查
+     */
+    private static boolean ignoreHostCheck = true;
 
     public static class TrustAllTrustManager implements X509TrustManager {
         @Override
@@ -91,7 +82,6 @@ public abstract class HttpUtil {
 
     public static String doPost(String url, Map<String, Object> params, String charset, int connectTimeout, int readTimeout, Map<String, String> headerMap, Proxy proxy) throws ApiException {
         log.warn("request url : " + url + " | request param: " + JsonUtils.toJson(params));
-//        String ctype = "application/x-www-form-urlencoded;charset=" + charset;
         try {
             String query = buildQuery(params, charset);
             byte[] content = {};
@@ -105,40 +95,12 @@ public abstract class HttpUtil {
         }
     }
 
-    /**
-     * 执行请求 content_type: aplication/json
-     */
-    public static String doPostWithJson(String url, Map<String, Object> params, int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
-        String ctype = "application/json;charset=" + DEFAULT_CHARSET;
-        //公共参数 处理在URL后
-        Map<String, Object> commonsMap = new HashMap<>(2);
-        commonsMap.put("sign", String.valueOf(params.get("sign")));
-        commonsMap.put("timestamp", String.valueOf(params.get("timestamp")));
-        String queryParam = buildQuery(commonsMap, DEFAULT_CHARSET);
-
-        String postUrl = buildRequestUrl(url, queryParam);
-
-        log.warn("request url : " + postUrl + " | request param: " + JsonUtils.toJson(params));
-        try {
-            byte[] content = {};
-
-            if (params != null) {
-                String body = JsonUtils.toJson(params);
-                content = body.getBytes(DEFAULT_CHARSET);
-            }
-            return _doPostJson(postUrl, ctype, content, connectTimeout, readTimeout, headerMap);
-        } catch (UnsupportedEncodingException e) {
-            log.error(e.getMessage(), e);
-            throw new ApiException(e.getMessage());
-        }
-    }
-
     private static String _doPost(String url, String ctype, byte[] content, int connectTimeout, int readTimeout, Map<String, String> headerMap, Proxy proxy) throws ApiException {
         HttpURLConnection conn = null;
         OutputStream out = null;
         String rsp;
         try {
-            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, proxy);// _doPost
+            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, proxy);
             conn.setConnectTimeout(connectTimeout);
             conn.setReadTimeout(readTimeout);
             out = conn.getOutputStream();
@@ -163,6 +125,32 @@ public abstract class HttpUtil {
         return rsp;
     }
 
+
+    /**
+     * 执行请求 content_type: aplication/json
+     */
+    public static String doPostWithJson(String url, Map<String, Object> params, int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
+        String ctype = "application/json;charset=" + DEFAULT_CHARSET;
+        //公共参数 处理在URL后
+        Map<String, Object> commonsMap = new HashMap<>(2);
+        String json = JsonUtils.toJson(params);
+        String sign = SecUtil.sign(json, XrxsOpenapiClient.getInstance().getAppSecret());
+        commonsMap.put("sign", sign);
+        String queryParam = buildQuery(commonsMap, DEFAULT_CHARSET);
+
+        String postUrl = buildRequestUrl(url, queryParam);
+
+        log.warn("request url : " + postUrl + " | request param: " + json);
+        try {
+            byte[] content = json.getBytes(DEFAULT_CHARSET);
+            return _doPostJson(postUrl, ctype, content, connectTimeout, readTimeout, headerMap);
+        } catch (UnsupportedEncodingException e) {
+            log.error(e.getMessage(), e);
+            throw new ApiException(e.getMessage());
+        }
+    }
+
+
     /**
      * 执行Body 为Json 的 POST请求。
      *
@@ -177,7 +165,7 @@ public abstract class HttpUtil {
 
         String rsp;
         try {
-            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, null);// _doPost
+            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, null);
             conn.setConnectTimeout(connectTimeout);
             conn.setReadTimeout(readTimeout);
             out = conn.getOutputStream();
@@ -231,7 +219,7 @@ public abstract class HttpUtil {
         String rsp = null;
         try {
             String ctype = "multipart/form-data;charset=" + DEFAULT_CHARSET + ";boundary=" + boundary;
-            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, null);// _doPostWithFile
+            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, null);
             conn.setConnectTimeout(connectTimeout);
             conn.setReadTimeout(readTimeout);
             out = conn.getOutputStream();
@@ -285,11 +273,15 @@ public abstract class HttpUtil {
      */
 
     public static InputStream doGetDownloadFile(String strUrl, Map<String, Object> params, int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
+        Map<String, Object> commonsMap = new HashMap<>(2);
+        String json = JsonUtils.toJson(params);
+        String sign = SecUtil.sign(json, XrxsOpenapiClient.getInstance().getAppSecret());
+        commonsMap.put("sign", sign);
         log.warn("request url : " + strUrl + " | request param: " + JsonUtils.toJson(params));
         HttpURLConnection conn = null;
         try {
             String query = buildQuery(params, DEFAULT_CHARSET);
-            conn = getDownLoadConnection(buildGetUrl(strUrl, query), Constants.METHOD_GET, headerMap);// doGetDownloadFile
+            conn = getDownLoadConnection(buildGetUrl(strUrl, query), Constants.METHOD_GET, headerMap);
             conn.setConnectTimeout(connectTimeout);
             conn.setReadTimeout(readTimeout);
             final ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -318,6 +310,87 @@ public abstract class HttpUtil {
         }
         return null;
     }
+
+    /**
+     * 执行请求 content_type: aplication/json
+     */
+    public static InputStream doDownloadFileWithJson(String url, Map<String, Object> params, int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
+        String ctype = "application/json;charset=" + DEFAULT_CHARSET;
+        //公共参数 处理在URL后
+        Map<String, Object> commonsMap = new HashMap<>(2);
+        String json = JsonUtils.toJson(params);
+        String sign = SecUtil.sign(json, XrxsOpenapiClient.getInstance().getAppSecret());
+        commonsMap.put("sign", sign);
+        String queryParam = buildQuery(commonsMap, DEFAULT_CHARSET);
+
+        String postUrl = buildRequestUrl(url, queryParam);
+
+        log.warn("request url : " + postUrl + " | request param: " + json);
+        try {
+            byte[] content = json.getBytes(DEFAULT_CHARSET);
+            return _doDownloadPostJson(postUrl, ctype, content, connectTimeout, readTimeout, headerMap);
+        } catch (UnsupportedEncodingException e) {
+            log.error(e.getMessage(), e);
+            throw new ApiException(e.getMessage());
+        }
+    }
+
+
+    /**
+     * 执行Body 为Json 的 POST请求。
+     *
+     * @param url 请求地址
+     * @return 响应字符串
+     */
+    public static InputStream _doDownloadPostJson(String url, String ctype, byte[] content, int connectTimeout, int readTimeout, Map<String, String> headerMap) throws ApiException {
+
+        HttpURLConnection conn = null;
+        OutputStream out = null;
+        try {
+            conn = getConnection(new URL(url), Constants.METHOD_POST, ctype, headerMap, null);
+            conn.setConnectTimeout(connectTimeout);
+            conn.setReadTimeout(readTimeout);
+            out = conn.getOutputStream();
+            out.write(content);
+            final ByteArrayOutputStream output = new ByteArrayOutputStream();
+            int n;
+            String contentType = conn.getContentType();
+            if (ctype.equalsIgnoreCase(contentType)) {
+                String rsp = getResponseAsString(conn);
+                throw new ApiException(rsp);
+            }
+            InputStream input = conn.getInputStream();
+            if (input == null) {
+                String rsp = getResponseAsString(conn);
+                throw new ApiException(rsp);
+            }
+            byte[] buffer = new byte[1024 * 4];
+            while (-1 != (n = input.read(buffer))) {
+                output.write(buffer, 0, n);
+            }
+            return new ByteArrayInputStream(output.toByteArray());
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.error(e.getMessage(), e);
+        } finally {
+            try {
+                if (out != null) {
+                    try {
+                        out.close();
+                    } catch (IOException e) {
+                        log.error(e.getMessage(), e);
+                    }
+                }
+                if (conn != null) {
+                    conn.disconnect();
+                }
+            } catch (Exception e) {
+                log.error(e + "");
+            }
+        }
+        return null;
+    }
+
 
     /**
      *======================================doGet请求=============================
@@ -401,13 +474,23 @@ public abstract class HttpUtil {
                         SSLContext ctx = SSLContext.getInstance("TLS");
                         ctx.init(null, new TrustManager[]{new TrustAllTrustManager()}, new SecureRandom());
                         connHttps.setSSLSocketFactory(ctx.getSocketFactory());
-                        connHttps.setHostnameVerifier((hostname, session) -> true);
+                        connHttps.setHostnameVerifier(new HostnameVerifier() {
+                            @Override
+                            public boolean verify(String hostname, SSLSession session) {
+                                return true;
+                            }
+                        });
                     } catch (Exception e) {
                         throw new ApiException(e.toString());
                     }
                 } else {
                     if (ignoreHostCheck) {
-                        connHttps.setHostnameVerifier((hostname, session) -> true);
+                        connHttps.setHostnameVerifier(new HostnameVerifier() {
+                            @Override
+                            public boolean verify(String hostname, SSLSession session) {
+                                return true;
+                            }
+                        });
                     }
                 }
                 conn = connHttps;
@@ -508,7 +591,17 @@ public abstract class HttpUtil {
     protected static String getResponseAsString(HttpURLConnection conn) throws ApiException {
         try {
             String charset = getResponseCharset(conn.getContentType());
-            if (conn.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST) {
+            int responseCode = conn.getResponseCode();
+            if (responseCode < HttpURLConnection.HTTP_BAD_REQUEST) {
+//                if (HttpURLConnection.HTTP_MOVED_TEMP == responseCode) {
+//                    //如果是重定向的地址
+//                    String location = conn.getHeaderField("Location");
+//                    OpenapiResponse<String> response = new OpenapiResponse<>();
+//                    response.setErrcode(0);
+//                    response.setErrmsg("success");
+//                    response.setData(location);
+//                    return JsonUtils.toJson(response);
+//                }
                 String contentEncoding = conn.getContentEncoding();
                 if (Constants.CONTENT_ENCODING_GZIP.equalsIgnoreCase(contentEncoding)) {
                     String streamAsString = getStreamAsString(new GZIPInputStream(conn.getInputStream()), charset);
@@ -521,15 +614,15 @@ public abstract class HttpUtil {
                 }
             } else {
                 // OAuth bad request always return 400 status
-                if (conn.getResponseCode() == HttpURLConnection.HTTP_BAD_REQUEST) {
+                if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
                     InputStream error = conn.getErrorStream();
                     if (error != null) {
                         return getStreamAsString(error, charset);
                     }
                 }
                 // Client Error 4xx and Server Error 5xx
-                log.error("excute url: " + conn.getURL() + "  ;method:" + conn.getRequestMethod() + " ; errorCode:" + conn.getResponseCode() + " ;errorMessge:" + conn.getResponseMessage());
-                throw new ApiException(conn.getResponseCode(), conn.getResponseMessage());
+                log.error("excute url: " + conn.getURL() + "  ;method:" + conn.getRequestMethod() + " ; errorCode:" + responseCode + " ;errorMessge:" + conn.getResponseMessage());
+                throw new ApiException(responseCode, conn.getResponseMessage());
             }
         } catch (IOException e) {
             log.error(e.getMessage(), e);

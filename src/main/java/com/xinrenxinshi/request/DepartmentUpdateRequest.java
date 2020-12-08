@@ -1,9 +1,10 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.DepartTypeEnum;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -16,7 +17,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 14:41
  **/
-public class DepartmentUpdateRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
 
     /**
      * 部门ID
@@ -49,7 +50,7 @@ public class DepartmentUpdateRequest extends AbstractOpenapiRequest<OpenapiRespo
     /**
      * 备注
      */
-    private String reamrk;
+    private String remark;
 
     public DepartmentUpdateRequest(String accessToken) {
         super(accessToken);
@@ -111,12 +112,12 @@ public class DepartmentUpdateRequest extends AbstractOpenapiRequest<OpenapiRespo
         this.city = city;
     }
 
-    public String getReamrk() {
-        return reamrk;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setReamrk(String reamrk) {
-        this.reamrk = reamrk;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     @Override
@@ -125,8 +126,8 @@ public class DepartmentUpdateRequest extends AbstractOpenapiRequest<OpenapiRespo
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -138,7 +139,13 @@ public class DepartmentUpdateRequest extends AbstractOpenapiRequest<OpenapiRespo
 
     @Override
     public String getBizUrl() {
-        return "/v3/department/update";
+        return "/v5/department/update";
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>() {
+        };
     }
 
     @Override
@@ -157,8 +164,8 @@ public class DepartmentUpdateRequest extends AbstractOpenapiRequest<OpenapiRespo
         if (!XRXSStrUtils.isEmpty(adminId)) {
             map.put("adminId", adminId);
         }
-        if (!XRXSStrUtils.isEmpty(reamrk)) {
-            map.put("remark", reamrk);
+        if (!XRXSStrUtils.isEmpty(remark)) {
+            map.put("remark", remark);
         }
         if (!XRXSStrUtils.isEmpty(city)) {
             map.put("city", city);

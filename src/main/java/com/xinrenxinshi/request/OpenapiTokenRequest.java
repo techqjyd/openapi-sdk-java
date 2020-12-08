@@ -1,8 +1,10 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.OpenapiTokenResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -62,8 +64,13 @@ public class OpenapiTokenRequest extends AbstractOpenapiRequest<OpenapiTokenResp
     }
 
     @Override
-    public Class<OpenapiTokenResponse> getResponseClass() {
-        return OpenapiTokenResponse.class;
+    public OpenapiResponse<OpenapiTokenResponse> getResponseClass() {
+        return null;
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<OpenapiTokenResponse>> getResponseTypeRef() {
+        return null;
     }
 
     @Override

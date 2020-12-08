@@ -1,9 +1,14 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.approval.ProcessBasicInfo;
 import com.xinrenxinshi.exception.ParamNotValidException;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.ApprovalListResponse;
+import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.XRXSListUtils;
 
 import java.util.HashMap;
@@ -16,7 +21,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 14:49
  **/
-public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResponse> {
+public class ApprovalListRequest extends AbstractOpenapiJsonRequest<PageResult<ProcessBasicInfo>> {
 
     /**
      * 列表第几页,从0开始
@@ -29,11 +34,11 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
     /**
      * 审批状态，多个逗号分隔
      */
-    private List<String> flowStatus;
+    private List<Integer> flowStatus;
     /**
      * 审批类型，多个逗号分隔
      */
-    private List<String> flowTypes;
+    private List<Integer> flowTypes;
     /**
      * 部门id，多个逗号分隔
      */
@@ -76,19 +81,19 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
         this.pageSize = pageSize;
     }
 
-    public List<String> getFlowStatus() {
+    public List<Integer> getFlowStatus() {
         return flowStatus;
     }
 
-    public void setFlowStatus(List<String> flowStatus) {
+    public void setFlowStatus(List<Integer> flowStatus) {
         this.flowStatus = flowStatus;
     }
 
-    public List<String> getFlowTypes() {
+    public List<Integer> getFlowTypes() {
         return flowTypes;
     }
 
-    public void setFlowTypes(List<String> flowTypes) {
+    public void setFlowTypes(List<Integer> flowTypes) {
         this.flowTypes = flowTypes;
     }
 
@@ -138,8 +143,8 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
     }
 
     @Override
-    public Class<ApprovalListResponse> getResponseClass() {
-        return ApprovalListResponse.class;
+    public OpenapiResponse<PageResult<ProcessBasicInfo>> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -158,13 +163,13 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
         map.put("pageNo", pageNo);
         map.put("pageSize", pageSize);
         if (!XRXSListUtils.isEmpty(flowStatus)) {
-            map.put("flowStatus", String.join(",", flowStatus));
+            map.put("flowStatus", flowStatus);
         }
         if (!XRXSListUtils.isEmpty(flowTypes)) {
-            map.put("flowTypes", String.join(",", flowTypes));
+            map.put("flowTypes", flowTypes);
         }
         if (!XRXSListUtils.isEmpty(departmentIds)) {
-            map.put("departmentIds", String.join(",", departmentIds));
+            map.put("departmentIds", departmentIds);
         }
         if (null != addtimeStart) {
             map.put("addtimeStart", addtimeStart);
@@ -182,7 +187,13 @@ public class ApprovalListRequest extends AbstractOpenapiRequest<ApprovalListResp
     }
 
     @Override
+    public TypeReference<OpenapiResponse<PageResult<ProcessBasicInfo>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<PageResult<ProcessBasicInfo>>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v4/flow/list";
+        return "/v5/workflow/list";
     }
 }

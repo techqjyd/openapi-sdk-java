@@ -1,14 +1,12 @@
 package com.xinrenxinshi.response;
 
-import com.xinrenxinshi.openapi.OpenapiResponse;
-
 /**
  * OpenapiTokenResponse
  *
  * @author: liuchenhui
  * @create: 2019-10-30 17:42
  **/
-public class OpenapiTokenResponse extends OpenapiResponse {
+public class OpenapiTokenResponse {
     /**
      * 令牌
      */

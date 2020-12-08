@@ -16,6 +16,10 @@ public enum HireTypeEnum {
      */
     PRACTICE(10, "实习"),
     /**
+     * 劳务
+     */
+    LABOUR(11, "劳务"),
+    /**
      * 顾问
      */
     COUNSELOR(12, "顾问"),
@@ -24,9 +28,9 @@ public enum HireTypeEnum {
      */
     REEMPLOY(13, "返聘"),
     /**
-     * 劳务
+     * 外包
      */
-    LABOUR(11, "劳务");
+    OUTSOURCING(14, "外包");
 
     /**
      * 聘用类型

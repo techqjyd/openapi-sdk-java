@@ -1,12 +1,15 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.EmpStatusEnum;
 import com.xinrenxinshi.common.FetchChildEnum;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.EmployeeDetail;
+import com.xinrenxinshi.domain.EmployeeSimple;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
-import com.xinrenxinshi.response.EmployeeDetailInfoListResponse;
-import com.xinrenxinshi.util.XRXSStrUtils;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
+import com.xinrenxinshi.response.PageResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +22,7 @@ import static com.xinrenxinshi.common.Constants.LIMIT_NUMBER_PAGES;
  * @author: liuchenhui
  * @create: 2019-11-12 14:11
  **/
-@SuppressWarnings("all")
-public class EmployeeDetailInfoListRequest extends AbstractOpenapiRequest<EmployeeDetailInfoListResponse> {
+public class EmployeeDetailInfoListRequest extends AbstractOpenapiJsonRequest<PageResult<EmployeeDetail>> {
 
     /**
      * 部门ID
@@ -29,11 +31,11 @@ public class EmployeeDetailInfoListRequest extends AbstractOpenapiRequest<Employ
     /**
      * 起始页码，默认从0开始，翻页+1
      */
-    private Integer offset;
+    private Integer pageNo;
     /**
      * 查询员工数量，单次数量限制100
      */
-    private Integer size;
+    private Integer pageSize;
     /**
      * 是否包含子部门员工,0不包含,1包含
      */
@@ -55,20 +57,20 @@ public class EmployeeDetailInfoListRequest extends AbstractOpenapiRequest<Employ
         this.departmentId = departmentId;
     }
 
-    public Integer getOffset() {
-        return offset;
+    public Integer getPageNo() {
+        return pageNo;
     }
 
-    public void setOffset(Integer offset) {
-        this.offset = offset;
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
     }
 
-    public Integer getSize() {
-        return size;
+    public Integer getPageSize() {
+        return pageSize;
     }
 
-    public void setSize(Integer size) {
-        this.size = size;
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 
     public FetchChildEnum getFetchChild() {
@@ -89,41 +91,42 @@ public class EmployeeDetailInfoListRequest extends AbstractOpenapiRequest<Employ
 
     @Override
     public MethodEnum getMethod() {
-        return MethodEnum.METHOD_GET;
+        return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public Class<EmployeeDetailInfoListResponse> getResponseClass() {
-        return EmployeeDetailInfoListResponse.class;
+    public OpenapiResponse<PageResult<EmployeeDetail>> getResponseClass() {
+        return new OpenapiResponse<>();
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<PageResult<EmployeeDetail>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<PageResult<EmployeeDetail>>>() {
+        };
     }
 
     @Override
     public void check() throws ParamNotValidException {
-//        if (XRXSStrUtils.isEmpty(departmentId)) {
-//            throw new ParamNotValidException("部门ID为空");
-//        }
-        if (offset == null) {
+        if (pageNo == null) {
             throw new ParamNotValidException("起始页码为空");
         }
-        if (size == null || size > LIMIT_NUMBER_PAGES) {
+        if (pageSize == null || pageSize > LIMIT_NUMBER_PAGES) {
             throw new ParamNotValidException("查询员工数量为空或者数量超过100");
         }
-//        if (fetchChild == null) {
-//            throw new ParamNotValidException("是否包含子部门为空");
-//        }
+
     }
 
     @Override
     public String getBizUrl() {
-        return "/v3/employee/employeeList";
+        return "/v5/employee/list";
     }
 
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(10);
         map.put("departmentId", departmentId);
-        map.put("offset", offset);
-        map.put("size", size);
+        map.put("pageNo", pageNo);
+        map.put("pageSize", pageSize);
         map.put("fetchChild", fetchChild.getFetchChild());
         if (status != null) {
             map.put("status", status.getStatus());

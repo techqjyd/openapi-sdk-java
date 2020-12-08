@@ -2,19 +2,13 @@ package com.xinrenxinshi;
 
 import com.xinrenxinshi.common.DepartTypeEnum;
 import com.xinrenxinshi.common.FetchChildEnum;
+import com.xinrenxinshi.domain.CostCenterModel;
 import com.xinrenxinshi.domain.DepartmentModel;
 import com.xinrenxinshi.domain.JobHeaderModel;
 import com.xinrenxinshi.exception.ApiException;
-import com.xinrenxinshi.openapi.OpenapiResponse;
-import com.xinrenxinshi.openapi.XrxsOpenapiClient;
-import com.xinrenxinshi.request.DepartmentCreateRequest;
-import com.xinrenxinshi.request.DepartmentDeleteRequest;
-import com.xinrenxinshi.request.DepartmentJobGetRequest;
-import com.xinrenxinshi.request.DepartmentListRequest;
-import com.xinrenxinshi.request.DepartmentUpdateRequest;
+import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.DepartmentCreateResponse;
-import com.xinrenxinshi.response.DepartmentJobGetResponse;
-import com.xinrenxinshi.response.DepartmentListResponse;
+import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
 
@@ -38,14 +32,14 @@ public abstract class XrxsDepartmentService {
      * @param city           所属城市
      * @param remark         备注
      */
-    public static String createDepartment(String access_token,
-                                          String name,
-                                          String code,
-                                          String parentId,
-                                          DepartTypeEnum departTypeEnum,
-                                          String adminId,
-                                          String city,
-                                          String remark) throws ApiException {
+    public static DepartmentCreateResponse createDepartment(String access_token,
+                                                            String name,
+                                                            String code,
+                                                            String parentId,
+                                                            DepartTypeEnum departTypeEnum,
+                                                            String adminId,
+                                                            String city,
+                                                            String remark) throws ApiException {
         DepartmentCreateRequest request = new DepartmentCreateRequest(access_token);
         request.setName(name);
         request.setCode(code);
@@ -53,13 +47,15 @@ public abstract class XrxsDepartmentService {
         request.setType(departTypeEnum);
         request.setAdminId(adminId);
         request.setCity(city);
-        request.setReamrk(remark);
-        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        DepartmentCreateResponse response = openapiClient.execute(request);
-        if (response != null && response.getErrcode() == 0) {
-            return response.getId();
-        }
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        request.setRemark(remark);
+        return createDepartment(request);
+    }
+
+    /**
+     * 部门创建
+     */
+    public static DepartmentCreateResponse createDepartment(DepartmentCreateRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 
     /**
@@ -75,12 +71,14 @@ public abstract class XrxsDepartmentService {
         DepartmentListRequest request = new DepartmentListRequest(access_token);
         request.setDepartmentId(departmentId);
         request.setFetchChild(fetchChildEnum);
-        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        DepartmentListResponse response = openapiClient.execute(request);
-        if (response != null && response.getErrcode() == 0) {
-            return response.getDepartment();
-        }
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        return getDepartmentList(request);
+    }
+
+    /**
+     * 部门列表获取
+     */
+    public static List<DepartmentModel> getDepartmentList(DepartmentListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 
     /**
@@ -113,13 +111,15 @@ public abstract class XrxsDepartmentService {
         request.setType(type);
         request.setAdminId(adminId);
         request.setCity(city);
-        request.setReamrk(remark);
-        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        OpenapiResponse response = openapiClient.execute(request);
-        if (response != null && response.getErrcode() == 0) {
-            return true;
-        }
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        request.setRemark(remark);
+        return updateDepartment(request);
+    }
+
+    /**
+     * 部门更新
+     */
+    public static boolean updateDepartment(DepartmentUpdateRequest request) throws ApiException {
+        return RequestTemplate.executeIgnoreData(request);
     }
 
     /**
@@ -132,12 +132,14 @@ public abstract class XrxsDepartmentService {
                                            String departmentId) throws ApiException {
         DepartmentDeleteRequest request = new DepartmentDeleteRequest(access_token);
         request.setDepartmentId(departmentId);
-        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        OpenapiResponse response = openapiClient.execute(request);
-        if (response != null && response.getErrcode() == 0) {
-            return true;
-        }
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        return deleteDepartment(request);
+    }
+
+    /**
+     * 部门删除
+     */
+    public static boolean deleteDepartment(DepartmentDeleteRequest request) throws ApiException {
+        return RequestTemplate.executeIgnoreData(request);
     }
 
     /**
@@ -147,11 +149,34 @@ public abstract class XrxsDepartmentService {
      */
     public static List<JobHeaderModel> getJobList(String access_token) throws ApiException {
         DepartmentJobGetRequest request = new DepartmentJobGetRequest(access_token);
-        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        DepartmentJobGetResponse response = openapiClient.execute(request);
-        if (response != null && response.getErrcode() == 0) {
-            return response.getJobHeaders();
-        }
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        return getJobList(request);
     }
+
+    /**
+     * 获取岗位信息
+     */
+    public static List<JobHeaderModel> getJobList(DepartmentJobGetRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取成本中心信息
+     *
+     * @param costId 成本中心id，不传时，默认返回公司所有成本中心信息
+     */
+    public static List<CostCenterModel> costCenterList(String access_token,
+                                                       String costId) throws ApiException {
+        CostCenterModelRequest request = new CostCenterModelRequest(access_token);
+        request.setCostId(costId);
+        return costCenterList(request);
+    }
+
+    /**
+     * 获取成本中心信息
+     */
+    public static List<CostCenterModel> costCenterList(CostCenterModelRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+
 }

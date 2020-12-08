@@ -1,12 +1,15 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiAPIRequest;
-import com.xinrenxinshi.response.AttendanceScheduleInfoResponse;
-import com.xinrenxinshi.util.XRXSStrUtils;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
+import com.xinrenxinshi.util.XRXSListUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,11 +18,11 @@ import java.util.Map;
  * @author: jiazijie
  * @create: 2019-11-14 16:42
  **/
-public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<AttendanceScheduleInfoResponse> {
+public class AttendanceSchedulingRequest extends AbstractOpenapiJsonRequest<AttendanceScheduleInfo> {
     /**
      * 多个employeeId，逗号分隔
      */
-    private String employeeIds;
+    private List<String> employeeIds;
 
     /**
      * 排班日期，日期格式：yyyy-MM-dd
@@ -30,12 +33,11 @@ public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<Atte
         super(accessToken);
     }
 
-
-    public String getEmployeeIds() {
+    public List<String> getEmployeeIds() {
         return employeeIds;
     }
 
-    public void setEmployeeIds(String employeeIds) {
+    public void setEmployeeIds(List<String> employeeIds) {
         this.employeeIds = employeeIds;
     }
 
@@ -49,7 +51,7 @@ public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<Atte
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(4);
         map.put("employeeIds", employeeIds);
         map.put("date", date);
         return map;
@@ -61,13 +63,13 @@ public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<Atte
     }
 
     @Override
-    public Class<AttendanceScheduleInfoResponse> getResponseClass() {
-        return AttendanceScheduleInfoResponse.class;
+    public OpenapiResponse<AttendanceScheduleInfo> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
     public void check() throws ParamNotValidException {
-        if(XRXSStrUtils.isEmpty(employeeIds)) {
+        if (XRXSListUtils.isEmpty(employeeIds)) {
             throw new ParamNotValidException("员工employeeIds为空");
         }
         if (date == null) {
@@ -76,7 +78,13 @@ public class AttendanceSchedulingRequest  extends AbstractOpenapiAPIRequest<Atte
     }
 
     @Override
+    public TypeReference<OpenapiResponse<AttendanceScheduleInfo>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<AttendanceScheduleInfo>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v4/attendance/scheduling";
+        return "/v5/attendance/scheduling";
     }
 }

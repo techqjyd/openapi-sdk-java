@@ -3,6 +3,9 @@ package com.xinrenxinshi.openapi;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.request.OpenapiTokenRequest;
+import com.xinrenxinshi.response.EmployeeFileDownloadResponse;
+import com.xinrenxinshi.response.OpenapiTokenResponse;
 import com.xinrenxinshi.util.FileItem;
 import com.xinrenxinshi.util.JsonUtils;
 import com.xinrenxinshi.util.HttpUtil;
@@ -29,7 +32,7 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
     private String serverUrl;
     private String appKey;
     private String appSecret;
-    protected boolean needCheckRequest = true; // 是否在客户端校验请求
+    protected boolean needCheckRequest = false; // 是否在客户端校验请求
     private int connectTimeout = 15000; // 默认连接超时时间为15秒
     private int readTimeout = 30000; // 默认响应超时时间为30秒
 
@@ -37,42 +40,11 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
     }
 
     @Override
-    public <T extends OpenapiResponse> T execute(IOpenapiRequest<T> request) throws ApiException {
-        return _execute(request);
+    public OpenapiTokenResponse token(OpenapiTokenRequest request) throws ApiException {
+        return _token(request);
     }
 
-    @Override
-    public <T extends OpenapiResponse> T upload(AbstractOpenapiUploadRequest<T> request) throws ApiException {
-        return _execute(request);
-    }
-
-    @Override
-    public <T extends AbstractOpenapiDownloadResponse> T download(IOpenapiRequest<T> request) throws ApiException {
-        if (this.needCheckRequest) {
-            request.check();
-        }
-        try {
-            T localResponse = null;
-            localResponse = (T) request.getResponseClass().newInstance();
-            InputStream inputStream = downloadFile(request);
-            localResponse.setInputStream(inputStream);
-            return localResponse;
-        } catch (InstantiationException e) {
-            log.error(e.getMessage(), e);
-        } catch (IllegalAccessException e) {
-            log.error(e.getMessage(), e);
-        } catch (ApiException e) {
-            String msg = e.getMsg();
-            Map<String, String> map = JSON.parseObject(msg, new TypeReference<Map<String, String>>() {
-            });
-            String errcode = map.get("errcode");
-            String errmsg = map.get("errmsg");
-            throw new ApiException(Integer.parseInt(errcode), errmsg);
-        }
-        return null;
-    }
-
-    protected <T extends OpenapiResponse> T _execute(IOpenapiRequest<T> request) throws ApiException {
+    protected OpenapiTokenResponse _token(OpenapiTokenRequest request) throws ApiException {
         if (this.needCheckRequest) {
             request.check();
         }
@@ -82,13 +54,63 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
         if (XRXSStrUtils.isEmpty(body)) {
             throw new ApiException("返回结果为空");
         }
-        T tRsp = parseBody(request, body);
-        if (tRsp == null) {
+        OpenapiTokenResponse response = JSON.parseObject(body, OpenapiTokenResponse.class);
+        if (response == null) {
             throw new ApiException("返回结果为空");
         }
 
-        return tRsp;
+        return response;
     }
+
+    @Override
+    public <T> OpenapiResponse<T> execute(IOpenapiRequest<T> request) throws ApiException {
+        return _execute(request);
+    }
+
+    protected <T> OpenapiResponse<T> _execute(IOpenapiRequest<T> request) throws ApiException {
+        if (this.needCheckRequest) {
+            request.check();
+        }
+
+        String body = invokeApi(request);
+
+        if (XRXSStrUtils.isEmpty(body)) {
+            throw new ApiException("返回结果为空");
+        }
+        OpenapiResponse<T> tOpenapiResponse = parseBody(request, body);
+        if (tOpenapiResponse == null) {
+            throw new ApiException("返回结果为空");
+        }
+
+        return tOpenapiResponse;
+    }
+
+    @Override
+    public <T> OpenapiResponse<T> upload(AbstractOpenapiUploadRequest<T> request) throws ApiException {
+        return _execute(request);
+    }
+
+    @Override
+    public EmployeeFileDownloadResponse download(IOpenapiRequest request) throws ApiException {
+        if (this.needCheckRequest) {
+            request.check();
+        }
+        try {
+            EmployeeFileDownloadResponse localResponse = new EmployeeFileDownloadResponse();
+            InputStream inputStream = HttpUtil.doDownloadFileWithJson(this.serverUrl.concat(request.getBizUrl()), request.getParamMap(), connectTimeout,readTimeout, request.getHeaderMap());
+
+            localResponse.setInputStream(inputStream);
+            return localResponse;
+        } catch (ApiException e) {
+            String msg = e.getMessage();
+            Map<String, String> map = JSON.parseObject(msg, new TypeReference<Map<String, String>>() {
+            });
+            String errcode = map.get("errcode");
+            String errmsg = map.get("errmsg");
+            throw new ApiException(Integer.parseInt(errcode), errmsg);
+        }
+    }
+
 
     private String invokeApi(IOpenapiRequest request) throws ApiException {
         Map<String, String> headerMap = request.getHeaderMap();
@@ -102,8 +124,8 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
                 AbstractOpenapiUploadRequest uploadRequest = (AbstractOpenapiUploadRequest) request;
                 Map<String, FileItem> fileItemMap = uploadRequest.getFileItemMap();
                 data = HttpUtil.doPostWithFile(this.serverUrl.concat(request.getBizUrl()), paraMap, fileItemMap, connectTimeout, readTimeout, headerMap);
-            } if(request instanceof AbstractOpenapiAPIRequest) {
-                AbstractOpenapiAPIRequest apiRequest = (AbstractOpenapiAPIRequest) request;
+            } else if (request instanceof AbstractOpenapiJsonRequest) {
+                AbstractOpenapiJsonRequest apiRequest = (AbstractOpenapiJsonRequest) request;
                 data = HttpUtil.doPostWithJson(this.serverUrl.concat(request.getBizUrl()), paraMap, connectTimeout, readTimeout, headerMap);
             } else {
                 data = HttpUtil.doPost(this.serverUrl.concat(request.getBizUrl()), paraMap, connectTimeout, readTimeout, headerMap);
@@ -112,26 +134,23 @@ public abstract class AbstractOpenapiClient implements IOpenapiClient {
         return data;
     }
 
-    private InputStream downloadFile(IOpenapiRequest request) throws ApiException {
-        return HttpUtil.doGetDownloadFile(this.serverUrl.concat(request.getBizUrl()), request.getParamMap(), connectTimeout, readTimeout, request.getHeaderMap());
-    }
 
-    private <T extends OpenapiResponse> T parseBody(IOpenapiRequest<T> request, String body) throws ApiException {
+    private <T> OpenapiResponse<T> parseBody(IOpenapiRequest<T> request, String body) throws ApiException {
         try {
-            Class<T> responseClass = request.getResponseClass();
-            T openapiResponse;
-            if (null != responseClass) {
-                openapiResponse = JsonUtils.formJson(request.getResponseClass(), body);
-            } else {
+            TypeReference<OpenapiResponse<T>> typeRef = request.getResponseTypeRef();
+            OpenapiResponse<T> openapiResponse;
+            if (null != typeRef) {
                 openapiResponse = JsonUtils.formJson(body, request.getResponseTypeRef());
+            } else {
+                openapiResponse = JsonUtils.formJson(request.getResponseClass().getClass(), body);
             }
-            if (openapiResponse != null && !XRXSStrUtils.isEmpty(openapiResponse.getCode())) {
-                openapiResponse.setErrcode(Integer.parseInt(openapiResponse.getCode()));
-                openapiResponse.setErrmsg(openapiResponse.getMessage());
+            if (openapiResponse != null && null != openapiResponse.getErrcode()) {
+                openapiResponse.setErrcode(openapiResponse.getErrcode());
+                openapiResponse.setErrmsg(openapiResponse.getErrmsg());
             }
-            return (T) openapiResponse;
+            return openapiResponse;
         } catch (Exception e) {
-            log.error("deserialization fail responseClass:{}, responseBody:{}", request.getResponseClass().getSimpleName().toString(), body, e);
+            log.error("deserialization fail responseClass:{}, responseBody:{}", request.getResponseClass().toString(), body, e);
             throw new ApiException("deserialization fail responseClass:" + request.getResponseClass() + ", responseBody:" + body);
         }
     }

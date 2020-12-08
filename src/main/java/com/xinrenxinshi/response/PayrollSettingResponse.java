@@ -14,7 +14,7 @@ import java.util.List;
  * @author: liuchenhui
  * @create: 2019-11-14 15:40
  **/
-public class PayrollSettingResponse extends OpenapiResponse {
+public class PayrollSettingResponse {
     /**
      * 调整项列表
      */

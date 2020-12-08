@@ -1,8 +1,10 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiUploadRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.EmployeeFileUploadResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -35,13 +37,19 @@ public class EmployeeFileUploadRequest extends AbstractOpenapiUploadRequest<Empl
     }
 
     @Override
+    public TypeReference<OpenapiResponse<EmployeeFileUploadResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<EmployeeFileUploadResponse>>() {
+        };
+    }
+
+    @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public Class<EmployeeFileUploadResponse> getResponseClass() {
-        return EmployeeFileUploadResponse.class;
+    public OpenapiResponse<EmployeeFileUploadResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -49,16 +57,19 @@ public class EmployeeFileUploadRequest extends AbstractOpenapiUploadRequest<Empl
         if (XRXSStrUtils.isEmpty(employeeId)) {
             throw new ParamNotValidException("员工id为空");
         }
+        if (XRXSStrUtils.isEmpty(this.getFileName())) {
+            throw new ParamNotValidException("文件名称为空");
+        }
     }
 
     @Override
     public String getBizUrl() {
-        return "/v3/employee/uploadFile";
+        return "/v5/employee/file/upload";
     }
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>(10);
+        Map<String, Object> map = new HashMap<>(8);
         map.put("employeeId", employeeId);
         return map;
     }

@@ -1,7 +1,9 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
@@ -15,11 +17,15 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 16:42
  **/
-public class AttendanceSaveClockRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class AttendanceClockRequest extends AbstractOpenapiJsonRequest<Void> {
     /**
      * 员工ID
      */
     private String employeeId;
+    /**
+     * 员工手机号
+     */
+    private String mobile;
     /**
      * 打卡时间戳（精确到秒）
      */
@@ -36,8 +42,12 @@ public class AttendanceSaveClockRequest extends AbstractOpenapiRequest<OpenapiRe
      * 打卡类型，固定值：2、考勤机打卡
      */
     private Integer source = 2;
+    /**
+     * 备注
+     */
+    private String remark;
 
-    public AttendanceSaveClockRequest(String accessToken) {
+    public AttendanceClockRequest(String accessToken) {
         super(accessToken);
     }
 
@@ -81,14 +91,32 @@ public class AttendanceSaveClockRequest extends AbstractOpenapiRequest<OpenapiRe
         this.source = source;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(16);
         map.put("employeeId", employeeId);
+        map.put("mobile", mobile);
         map.put("clockTime", clockTime);
         map.put("longitude", longitude);
         map.put("latitude", latitude);
-        map.put("source", source);
+//        map.put("source", source);
+        map.put("remark", remark);
         return map;
     }
 
@@ -98,28 +126,28 @@ public class AttendanceSaveClockRequest extends AbstractOpenapiRequest<OpenapiRe
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>() {
+        };
     }
 
     @Override
     public void check() throws ParamNotValidException {
-        if(XRXSStrUtils.isEmpty(employeeId)) {
-            throw new ParamNotValidException("员工ID为空");
+        if (XRXSStrUtils.isEmpty(employeeId) && XRXSStrUtils.isEmpty(mobile)) {
+            throw new ParamNotValidException("员工ID, 和员工手机号不能同时为空");
         }
         if (clockTime == null) {
-            throw new ParamNotValidException("打卡时间戳（精确到秒）");
-        }
-        if (longitude == null) {
-            throw new ParamNotValidException("打卡经度位置为空");
-        }
-        if (latitude == null){
-            throw new ParamNotValidException("打卡维度位置为空");
+            throw new ParamNotValidException("打卡时间戳（精确到秒）不能为空");
         }
     }
 
     @Override
     public String getBizUrl() {
-        return "/v2/attendance/saveClock";
+        return "/v5/attendance/clock";
     }
 }

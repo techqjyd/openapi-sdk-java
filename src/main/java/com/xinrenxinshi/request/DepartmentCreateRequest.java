@@ -1,9 +1,11 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.DepartTypeEnum;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.DepartmentCreateResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -16,7 +18,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-08 16:34
  **/
-public class DepartmentCreateRequest extends AbstractOpenapiRequest<DepartmentCreateResponse> {
+public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<DepartmentCreateResponse> {
 
     /**
      * 部门名称
@@ -99,12 +101,12 @@ public class DepartmentCreateRequest extends AbstractOpenapiRequest<DepartmentCr
         this.city = city;
     }
 
-    public String getReamrk() {
+    public String getRemark() {
         return remark;
     }
 
-    public void setReamrk(String reamrk) {
-        this.remark = reamrk;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     @Override
@@ -113,8 +115,8 @@ public class DepartmentCreateRequest extends AbstractOpenapiRequest<DepartmentCr
     }
 
     @Override
-    public Class<DepartmentCreateResponse> getResponseClass() {
-        return DepartmentCreateResponse.class;
+    public OpenapiResponse<DepartmentCreateResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -129,7 +131,13 @@ public class DepartmentCreateRequest extends AbstractOpenapiRequest<DepartmentCr
 
     @Override
     public String getBizUrl() {
-        return "/v3/department/create";
+        return "/v5/department/create";
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<DepartmentCreateResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<DepartmentCreateResponse>>() {
+        };
     }
 
     @Override

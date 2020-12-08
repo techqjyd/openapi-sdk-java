@@ -22,8 +22,11 @@ public enum LaborTypeEnum {
     /**
      * 返聘
      */
-    REEMPLOY(13, "返聘");
-
+    REEMPLOY(13, "返聘"),
+    /**
+     * 外包
+     */
+    OUTSOURCING(14, "外包");
     /**
      * 聘用类型
      */

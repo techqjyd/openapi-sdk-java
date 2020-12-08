@@ -10,7 +10,7 @@ import java.util.List;
  * @author: liuchenhui
  * @create: 2019-11-14 15:16
  **/
-public class PayrollReportArchiveDetailResponse extends OpenapiResponse {
+public class PayrollReportArchiveDetailResponse {
     /**
      * 当前报表包含的记录数
      */

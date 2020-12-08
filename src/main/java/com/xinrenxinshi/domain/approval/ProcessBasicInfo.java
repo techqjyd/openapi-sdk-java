@@ -10,7 +10,7 @@ public class ProcessBasicInfo {
     /**
      * 审批ID
      */
-    private Integer id;
+    private Long sid;
     /**
      * 审批所属人的员工Id
      */
@@ -73,12 +73,12 @@ public class ProcessBasicInfo {
      */
     private String flowNumber;
 
-    public Integer getId() {
-        return id;
+    public Long getSid() {
+        return sid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSid(Long sid) {
+        this.sid = sid;
     }
 
     public String getOwnerId() {

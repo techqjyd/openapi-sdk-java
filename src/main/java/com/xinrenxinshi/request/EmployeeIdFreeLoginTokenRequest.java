@@ -1,9 +1,11 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.FreeLoginToken;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
-import com.xinrenxinshi.response.FreeLoginTokenGetResponse;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
@@ -15,14 +17,14 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-06 18:17
  **/
-public class FreeLoginTokenGetRequest extends AbstractOpenapiRequest<FreeLoginTokenGetResponse> {
+public class EmployeeIdFreeLoginTokenRequest extends AbstractOpenapiJsonRequest<FreeLoginToken> {
 
     /**
      * xrxs员工ID，与第三方员工id，两者必传其一，需要单独加密，然后参与签名
      */
     private String employeeId;
 
-    public FreeLoginTokenGetRequest(String accessToken) {
+    public EmployeeIdFreeLoginTokenRequest(String accessToken) {
         super(accessToken);
     }
 
@@ -36,12 +38,18 @@ public class FreeLoginTokenGetRequest extends AbstractOpenapiRequest<FreeLoginTo
 
     @Override
     public MethodEnum getMethod() {
-        return MethodEnum.METHOD_GET;
+        return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public Class<FreeLoginTokenGetResponse> getResponseClass() {
-        return FreeLoginTokenGetResponse.class;
+    public OpenapiResponse<FreeLoginToken> getResponseClass() {
+        return new OpenapiResponse<>();
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<FreeLoginToken>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<FreeLoginToken>>() {
+        };
     }
 
     @Override
@@ -53,7 +61,7 @@ public class FreeLoginTokenGetRequest extends AbstractOpenapiRequest<FreeLoginTo
 
     @Override
     public String getBizUrl() {
-        return "/v4/login/token";
+        return "/v5/login/token";
     }
 
     @Override

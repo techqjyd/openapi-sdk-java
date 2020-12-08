@@ -1,13 +1,17 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.report.PayrollReportArchiveBase;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.PayrollReportArchivesResponse;
 import com.xinrenxinshi.util.XRXSDateUtils;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +20,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 15:01
  **/
-public class PayrollReportArchivesRequest extends AbstractOpenapiRequest<PayrollReportArchivesResponse> {
+public class PayrollReportArchivesRequest extends AbstractOpenapiJsonRequest<PayrollReportArchivesResponse> {
     /**
      * 报表月份 yyyyMM
      */
@@ -36,7 +40,7 @@ public class PayrollReportArchivesRequest extends AbstractOpenapiRequest<Payroll
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(4);
         map.put("yearmo", yearmo);
         return map;
     }
@@ -47,8 +51,8 @@ public class PayrollReportArchivesRequest extends AbstractOpenapiRequest<Payroll
     }
 
     @Override
-    public Class<PayrollReportArchivesResponse> getResponseClass() {
-        return PayrollReportArchivesResponse.class;
+    public OpenapiResponse<PayrollReportArchivesResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -62,8 +66,14 @@ public class PayrollReportArchivesRequest extends AbstractOpenapiRequest<Payroll
     }
 
     @Override
+    public TypeReference<OpenapiResponse<PayrollReportArchivesResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<PayrollReportArchivesResponse>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v3/payroll/report/archives";
+        return "/v5/payroll/report/list";
     }
 
 }
