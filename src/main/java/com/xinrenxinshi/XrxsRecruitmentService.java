@@ -3,9 +3,8 @@ package com.xinrenxinshi;
 import com.xinrenxinshi.domain.Page;
 import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
 import com.xinrenxinshi.exception.ApiException;
-import com.xinrenxinshi.openapi.XrxsOpenapiClient;
 import com.xinrenxinshi.request.RecruitmentFullDataRequest;
-import com.xinrenxinshi.response.RecruitmentFullDataResponse;
+import com.xinrenxinshi.util.RequestTemplate;
 
 /**
  * 招聘相关service
@@ -34,11 +33,15 @@ public abstract class XrxsRecruitmentService {
         request.setPageSize(pageSize);
         request.setStartTime(startTime);
         request.setEndTime(endTime);
-        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        RecruitmentFullDataResponse response = openapiClient.execute(request);
-        if (response != null && response.getErrcode() == 0) {
-            return response.getData();
-        }
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        return getFullReport(request);
     }
+
+    /**
+     * 获取招聘全数据报表
+     */
+    public static Page<RecruitReportInfo> getFullReport(RecruitmentFullDataRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+
 }

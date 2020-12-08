@@ -1,9 +1,10 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.domain.BatchClockModel;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.JsonUtils;
 import com.xinrenxinshi.util.XRXSStrUtils;
@@ -18,7 +19,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 16:58
  **/
-public class AttendanceBatchClockRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class AttendanceBatchClockRequest extends AbstractOpenapiJsonRequest<Void> {
 
     /**
      * 批量打卡数据
@@ -39,8 +40,8 @@ public class AttendanceBatchClockRequest extends AbstractOpenapiRequest<OpenapiR
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("clockData", JsonUtils.toJson(clockData));
+        Map<String, Object> map = new HashMap<>(4);
+        map.put("clockData", clockData);
         return map;
     }
 
@@ -50,8 +51,8 @@ public class AttendanceBatchClockRequest extends AbstractOpenapiRequest<OpenapiR
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -69,7 +70,13 @@ public class AttendanceBatchClockRequest extends AbstractOpenapiRequest<OpenapiR
     }
 
     @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v2/attendance/batchClock";
+        return "/v5/attendance/batchclock";
     }
 }

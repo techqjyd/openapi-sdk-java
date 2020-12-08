@@ -1,7 +1,9 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
@@ -15,7 +17,7 @@ import java.util.Map;
  * @author: jiazijie
  * @create: 2019-11-14 16:42
  **/
-public class AttendanceClockByMobileRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class AttendanceClockByMobileRequest extends AbstractOpenapiJsonRequest<Void> {
     /**
      * 员工手机号
      */
@@ -50,7 +52,7 @@ public class AttendanceClockByMobileRequest extends AbstractOpenapiRequest<Opena
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(4);
         map.put("mobile", mobile);
         map.put("clockTime", clockTime);
         return map;
@@ -62,13 +64,13 @@ public class AttendanceClockByMobileRequest extends AbstractOpenapiRequest<Opena
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
     public void check() throws ParamNotValidException {
-        if(XRXSStrUtils.isEmpty(mobile)) {
+        if (XRXSStrUtils.isEmpty(mobile)) {
             throw new ParamNotValidException("员工mobile为空");
         }
         if (clockTime == null) {
@@ -77,7 +79,13 @@ public class AttendanceClockByMobileRequest extends AbstractOpenapiRequest<Opena
     }
 
     @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v2/attendance/clockByMobile";
+        return "/v5/attendance/clockByMobile";
     }
 }

@@ -1,8 +1,9 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiAPIRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.AttendanceTravelResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
@@ -16,7 +17,7 @@ import java.util.Map;
  * @author: jiazijie
  * @create: 2019-11-14 16:42
  **/
-public class AttendanceTravelRequest extends AbstractOpenapiAPIRequest<AttendanceTravelResponse> {
+public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> {
     /**
      * employeeId
      */
@@ -90,7 +91,7 @@ public class AttendanceTravelRequest extends AbstractOpenapiAPIRequest<Attendanc
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(8);
         map.put("employeeId", employeeId);
         map.put("startDate", startDate);
         map.put("startTime", startTime);
@@ -105,13 +106,19 @@ public class AttendanceTravelRequest extends AbstractOpenapiAPIRequest<Attendanc
     }
 
     @Override
-    public Class<AttendanceTravelResponse> getResponseClass() {
-        return AttendanceTravelResponse.class;
+    public OpenapiResponse<String> getResponseClass() {
+        return new OpenapiResponse<>();
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<String>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<String>>() {
+        };
     }
 
     @Override
     public void check() throws ParamNotValidException {
-        if(XRXSStrUtils.isEmpty(employeeId)) {
+        if (XRXSStrUtils.isEmpty(employeeId)) {
             throw new ParamNotValidException("员工employeeId为空");
         }
         if (startDate == null) {
@@ -130,6 +137,6 @@ public class AttendanceTravelRequest extends AbstractOpenapiAPIRequest<Attendanc
 
     @Override
     public String getBizUrl() {
-        return "/v4/attendance/travel";
+        return "/v5/attendance/travel";
     }
 }

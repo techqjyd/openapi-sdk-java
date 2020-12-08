@@ -11,7 +11,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-12 19:21
  **/
-public abstract class AbstractOpenapiRequest<T extends OpenapiResponse> implements IOpenapiRequest<T> {
+public abstract class AbstractOpenapiRequest<T> implements IOpenapiRequest<T> {
     /**
      * token
      */
@@ -26,7 +26,7 @@ public abstract class AbstractOpenapiRequest<T extends OpenapiResponse> implemen
 
     @Override
     public Map<String, String> getHeaderMap() {
-        Map<String, String> headerMap = new HashMap<>(10);
+        Map<String, String> headerMap = new HashMap<>(1);
         headerMap.put("access_token", accessToken);
         return headerMap;
     }
@@ -35,7 +35,7 @@ public abstract class AbstractOpenapiRequest<T extends OpenapiResponse> implemen
     public Map<String, Object> getParamMap() {
         Map<String, Object> paraMap = getParamMap0();
         if (paraMap == null) {
-            paraMap = new HashMap<>();
+            paraMap = new HashMap<>(2);
         }
         Long timestamp = System.currentTimeMillis();
         paraMap.put("timestamp", timestamp);

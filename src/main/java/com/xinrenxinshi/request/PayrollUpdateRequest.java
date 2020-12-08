@@ -1,8 +1,10 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.domain.payroll.EmployeePayroll;
 import com.xinrenxinshi.exception.ParamNotValidException;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.JsonUtils;
@@ -18,7 +20,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 15:52
  **/
-public class PayrollUpdateRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class PayrollUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
     /**
      * 需要更新的员工及工资数据
      */
@@ -38,8 +40,8 @@ public class PayrollUpdateRequest extends AbstractOpenapiRequest<OpenapiResponse
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("employeePayrolls", JsonUtils.toJson(employeePayrolls));
+        Map<String, Object> map = new HashMap<>(4);
+        map.put("employeePayrolls", employeePayrolls);
         return map;
     }
 
@@ -49,8 +51,8 @@ public class PayrollUpdateRequest extends AbstractOpenapiRequest<OpenapiResponse
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -64,10 +66,19 @@ public class PayrollUpdateRequest extends AbstractOpenapiRequest<OpenapiResponse
                 throw new ParamNotValidException("需要更新工资项的员工ID为空");
             }
         }
+        if (employeePayrolls.size() >= 100) {
+            throw new ParamNotValidException("每批次更新员工数量不超过100条");
+        }
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>() {
+        };
     }
 
     @Override
     public String getBizUrl() {
-        return "/v3/payroll/update";
+        return "/v5/payroll/update";
     }
 }

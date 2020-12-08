@@ -1,10 +1,13 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.CountryModel;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
-import com.xinrenxinshi.response.CountryListResponse;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,7 +16,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 10:57
  **/
-public class CountryListRequest extends AbstractOpenapiRequest<CountryListResponse> {
+public class CountryListRequest extends AbstractOpenapiJsonRequest<List<CountryModel>> {
 
     public CountryListRequest(String accessToken) {
         super(accessToken);
@@ -21,12 +24,12 @@ public class CountryListRequest extends AbstractOpenapiRequest<CountryListRespon
 
     @Override
     public MethodEnum getMethod() {
-        return MethodEnum.METHOD_GET;
+        return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public Class<CountryListResponse> getResponseClass() {
-        return CountryListResponse.class;
+    public OpenapiResponse<List<CountryModel>> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -36,10 +39,15 @@ public class CountryListRequest extends AbstractOpenapiRequest<CountryListRespon
          */
     }
 
-
     @Override
     public String getBizUrl() {
-        return "/v4/common/country";
+        return "/v5/common/country";
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<List<CountryModel>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<List<CountryModel>>>() {
+        };
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.xinrenxinshi;
 import com.xinrenxinshi.domain.AreaInfo;
 import com.xinrenxinshi.domain.CountryModel;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
 import com.xinrenxinshi.request.CityListRequest;
 import com.xinrenxinshi.request.CountryListRequest;
@@ -42,10 +43,11 @@ public abstract class XrxsCommonService {
     public static List<AreaInfo> getCityList(String access_token) throws ApiException {
         XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
         CityListRequest cityListRequest = new CityListRequest(access_token);
-        CityListResponse response = instance.execute(cityListRequest);
+        OpenapiResponse<List<AreaInfo>> response = instance.execute(cityListRequest);
         if (response != null && response.getErrcode() == 0) {
-            return response.getAreaInfos();
+            return response.getData();
         }
+        assert response != null;
         throw new ApiException(response.getErrcode(), response.getErrmsg());
     }
 
@@ -57,10 +59,11 @@ public abstract class XrxsCommonService {
     public static List<CountryModel> getCountryList(String access_token) throws ApiException {
         XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
         CountryListRequest countryListRequest = new CountryListRequest(access_token);
-        CountryListResponse response = instance.execute(countryListRequest);
+        OpenapiResponse<List<CountryModel>> response = instance.execute(countryListRequest);
         if (response != null && response.getErrcode() == 0) {
             return response.getData();
         }
+        assert response != null;
         throw new ApiException(response.getErrcode(), response.getErrmsg());
     }
 }

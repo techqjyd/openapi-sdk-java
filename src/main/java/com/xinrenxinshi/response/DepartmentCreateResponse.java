@@ -8,7 +8,7 @@ import com.xinrenxinshi.openapi.OpenapiResponse;
  * @author: liuchenhui
  * @create: 2019-11-08 16:32
  **/
-public class DepartmentCreateResponse extends OpenapiResponse {
+public class DepartmentCreateResponse {
     /**
      * 部门id
      */

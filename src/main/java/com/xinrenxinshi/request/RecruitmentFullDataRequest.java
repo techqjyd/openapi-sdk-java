@@ -1,8 +1,12 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.Page;
+import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.RecruitmentFullDataResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -15,7 +19,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 17:51
  **/
-public class RecruitmentFullDataRequest extends AbstractOpenapiRequest<RecruitmentFullDataResponse> {
+public class RecruitmentFullDataRequest extends AbstractOpenapiJsonRequest<Page<RecruitReportInfo>> {
     /**
      * 页数,默认从0开始，翻页+1
      */
@@ -75,8 +79,14 @@ public class RecruitmentFullDataRequest extends AbstractOpenapiRequest<Recruitme
     }
 
     @Override
-    public Class<RecruitmentFullDataResponse> getResponseClass() {
-        return RecruitmentFullDataResponse.class;
+    public OpenapiResponse<Page<RecruitReportInfo>> getResponseClass() {
+        return new OpenapiResponse<>();
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<Page<RecruitReportInfo>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Page<RecruitReportInfo>>>() {
+        };
     }
 
     @Override
@@ -94,7 +104,7 @@ public class RecruitmentFullDataRequest extends AbstractOpenapiRequest<Recruitme
 
     @Override
     public String getBizUrl() {
-        return "/v4/recruitment/report";
+        return "/v5/recruitment/report";
     }
 
     @Override

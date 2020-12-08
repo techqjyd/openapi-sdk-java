@@ -60,6 +60,13 @@ public class SecUtil {
     }
 
     /**
+     * 生成签名
+     */
+    public static String sign(String content, String appSecret) {
+        return SecUtil.encrypt(content, appSecret);
+    }
+
+    /**
      * 加密
      */
     private static String encrypt(String content, String appSecret) {

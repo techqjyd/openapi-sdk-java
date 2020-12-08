@@ -2,6 +2,7 @@ package com.xinrenxinshi.openapi;
 
 import com.xinrenxinshi.common.Constants;
 import com.xinrenxinshi.common.FreeLoginParam;
+import com.xinrenxinshi.domain.FreeLoginToken;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.exception.OpenapiClientUninitializedException;
 import com.xinrenxinshi.request.EmployeeFileDownloadRequest;
@@ -60,7 +61,7 @@ public class XrxsOpenapiClient extends AbstractOpenapiClient {
         OpenapiTokenRequest openqpiRequest = new OpenapiTokenRequest();
         openqpiRequest.setClientId(super.getAppKey());
         openqpiRequest.setClientSecret(super.getAppSecret());
-        return this.execute(openqpiRequest);
+        return this.token(openqpiRequest);
     }
 
     /**
@@ -68,18 +69,18 @@ public class XrxsOpenapiClient extends AbstractOpenapiClient {
      *
      * @param request 请求参数request
      */
-    public FreeLoginTokenGetResponse getFreeLoginToken(IOpenapiRequest<FreeLoginTokenGetResponse> request) throws ApiException {
+    public <T> OpenapiResponse<T> getFreeLoginToken(IOpenapiRequest<T> request) throws ApiException {
         return this.execute(request);
     }
 
-    /**
-     * 执行HTTP请求上传文件
-     *
-     * @param request 文件上传请求
-     */
-    public EmployeeFileUploadResponse uploadFile(AbstractOpenapiUploadRequest<EmployeeFileUploadResponse> request) throws ApiException {
-        return this.upload(request);
-    }
+//    /**
+//     * 执行HTTP请求上传文件
+//     *
+//     * @param request 文件上传请求
+//     */
+//    public EmployeeFileUploadResponse uploadFile(AbstractOpenapiUploadRequest<EmployeeFileUploadResponse> request) throws ApiException {
+//        return this.upload(request);
+//    }
 
     /**
      * 文件下载

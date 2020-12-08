@@ -1,8 +1,10 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.PayrollReportArchiveDetailResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
@@ -15,7 +17,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 15:16
  **/
-public class PayrollReportArchiveDetailRequest extends AbstractOpenapiRequest<PayrollReportArchiveDetailResponse> {
+public class PayrollReportArchiveDetailRequest extends AbstractOpenapiJsonRequest<PayrollReportArchiveDetailResponse> {
     /**
      * 查询的报表ID
      */
@@ -47,7 +49,7 @@ public class PayrollReportArchiveDetailRequest extends AbstractOpenapiRequest<Pa
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(4);
         map.put("reportId", reportId);
         map.put("subReportId", subReportId);
         return map;
@@ -59,8 +61,8 @@ public class PayrollReportArchiveDetailRequest extends AbstractOpenapiRequest<Pa
     }
 
     @Override
-    public Class<PayrollReportArchiveDetailResponse> getResponseClass() {
-        return PayrollReportArchiveDetailResponse.class;
+    public OpenapiResponse<PayrollReportArchiveDetailResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -74,7 +76,13 @@ public class PayrollReportArchiveDetailRequest extends AbstractOpenapiRequest<Pa
     }
 
     @Override
+    public TypeReference<OpenapiResponse<PayrollReportArchiveDetailResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<PayrollReportArchiveDetailResponse>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v3/payroll/report/archive/detail";
+        return "/v5/payroll/report/detail";
     }
 }

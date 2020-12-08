@@ -1,8 +1,10 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.PayrollSettingResponse;
 
 import java.util.Map;
@@ -13,7 +15,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 15:49
  **/
-public class PayrollSettingRequest extends AbstractOpenapiRequest<PayrollSettingResponse> {
+public class PayrollSettingRequest extends AbstractOpenapiJsonRequest<PayrollSettingResponse> {
 
     public PayrollSettingRequest(String accessToken) {
         super(accessToken);
@@ -26,12 +28,12 @@ public class PayrollSettingRequest extends AbstractOpenapiRequest<PayrollSetting
 
     @Override
     public MethodEnum getMethod() {
-        return MethodEnum.METHOD_GET;
+        return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public Class<PayrollSettingResponse> getResponseClass() {
-        return PayrollSettingResponse.class;
+    public OpenapiResponse<PayrollSettingResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -40,7 +42,13 @@ public class PayrollSettingRequest extends AbstractOpenapiRequest<PayrollSetting
     }
 
     @Override
+    public TypeReference<OpenapiResponse<PayrollSettingResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<PayrollSettingResponse>>() {
+        };
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v3/payroll/setting";
+        return "/v5/payroll/setting";
     }
 }

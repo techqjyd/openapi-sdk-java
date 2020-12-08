@@ -13,7 +13,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-10-25 18:33
  **/
-public abstract class AbstractOpenapiUploadRequest<T extends OpenapiResponse> extends AbstractOpenapiRequest<T> implements IOpenapiRequest<T> {
+public abstract class AbstractOpenapiUploadRequest<T> extends AbstractOpenapiRequest<T> implements IOpenapiRequest<T> {
 
     /**
      * 文件流参数

@@ -1,10 +1,13 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.Constants;
 import com.xinrenxinshi.common.LaborTypeEnum;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.common.SimpleHireTypeEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.EmpToBeHiredCreateResponse;
 import com.xinrenxinshi.util.XRXSDateUtils;
 import com.xinrenxinshi.util.XRXSStrUtils;
@@ -18,7 +21,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-12 15:04
  **/
-public class EmpToBeHiredCreateRequest extends AbstractOpenapiRequest<EmpToBeHiredCreateResponse> {
+public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToBeHiredCreateResponse> {
 
     /**
      * 员工名字
@@ -39,7 +42,7 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiRequest<EmpToBeHir
     /**
      * 雇佣类型 0：正式，1：非正式
      */
-    private Integer hireType;
+    private SimpleHireTypeEnum hireType;
     /**
      * 10-实习,11-劳务,12-顾问,13-返聘,当hireType=1的时候必填，当hireType=0的时候，一般默认laborType默认设置为10
      */
@@ -81,11 +84,11 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiRequest<EmpToBeHir
         this.entryDate = entryDate;
     }
 
-    public Integer getHireType() {
+    public SimpleHireTypeEnum getHireType() {
         return hireType;
     }
 
-    public void setHireType(Integer hireType) {
+    public void setHireType(SimpleHireTypeEnum hireType) {
         this.hireType = hireType;
     }
 
@@ -103,8 +106,8 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiRequest<EmpToBeHir
     }
 
     @Override
-    public Class<EmpToBeHiredCreateResponse> getResponseClass() {
-        return EmpToBeHiredCreateResponse.class;
+    public OpenapiResponse<EmpToBeHiredCreateResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -124,17 +127,22 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiRequest<EmpToBeHir
         if (hireType == null) {
             throw new ParamNotValidException("雇佣类型为空");
         }
-        if (0 != hireType && 1 != hireType) {
-            throw new ParamNotValidException("雇佣类型必须填入0或者1");
-        }
-        if (1 == hireType && laborType == null) {
+//        if (0 != hireType && 1 != hireType) {
+//            throw new ParamNotValidException("雇佣类型必须填入0或者1");
+//        }
+        if (1 == hireType.getHireType() && laborType == null) {
             throw new ParamNotValidException("当hireType=1的时,聘用类型必填");
         }
     }
 
     @Override
+    public TypeReference<OpenapiResponse<EmpToBeHiredCreateResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<EmpToBeHiredCreateResponse>>(){};
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v3/employee/entryPending";
+        return "/v5/employee/createpending";
     }
 
     @Override
@@ -144,7 +152,7 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiRequest<EmpToBeHir
         map.put("mobile", mobile);
         map.put("email", email);
         map.put("entryDate", entryDate);
-        map.put("hireType", hireType);
+        map.put("hireType", hireType.getHireType());
         if (laborType != null) {
             map.put("laborType", laborType.getLaborType());
         }

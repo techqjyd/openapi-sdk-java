@@ -9,7 +9,7 @@ import com.xinrenxinshi.domain.EmployeeDetail;
  * @author: liuchenhui
  * @create: 2019-10-30 17:26
  **/
-public class EmployeeInfoResponse extends OpenapiResponse {
+public class EmployeeInfoResponse {
 
     private EmployeeDetail data;
 

@@ -2,9 +2,8 @@ package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.ExternalFailMsgModel;
 import com.xinrenxinshi.exception.ApiException;
-import com.xinrenxinshi.openapi.XrxsOpenapiClient;
-import com.xinrenxinshi.request.PushMsgFailGetRequest;
-import com.xinrenxinshi.response.PushMsgFailGetResponse;
+import com.xinrenxinshi.request.PushMsgFailRequest;
+import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
 
@@ -21,12 +20,14 @@ public abstract class XrxsPushMsgService {
      * @param access_token 授权token
      */
     public static List<ExternalFailMsgModel> getFailMsg(String access_token) throws ApiException {
-        PushMsgFailGetRequest request = new PushMsgFailGetRequest(access_token);
-        XrxsOpenapiClient openapiClient = XrxsOpenapiClient.getInstance();
-        PushMsgFailGetResponse response = openapiClient.execute(request);
-        if (response != null && response.getErrcode() == 0) {
-            return response.getData();
-        }
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        PushMsgFailRequest request = new PushMsgFailRequest(access_token);
+        return getFailMsg(request);
+    }
+
+    /**
+     * 获取失败消息
+     */
+    public static List<ExternalFailMsgModel> getFailMsg(PushMsgFailRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 }

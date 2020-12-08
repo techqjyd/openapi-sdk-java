@@ -11,16 +11,16 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-12 19:21
  **/
-public abstract class AbstractOpenapiAPIRequest<T extends OpenapiResponse> implements IOpenapiRequest<T> {
+public abstract class AbstractOpenapiJsonRequest<T> implements IOpenapiRequest<T> {
     /**
      * token
      */
     protected String accessToken;
 
-    protected AbstractOpenapiAPIRequest() {
+    protected AbstractOpenapiJsonRequest() {
     }
 
-    public AbstractOpenapiAPIRequest(String accessToken) {
+    public AbstractOpenapiJsonRequest(String accessToken) {
         this.accessToken = accessToken;
     }
 
@@ -39,7 +39,6 @@ public abstract class AbstractOpenapiAPIRequest<T extends OpenapiResponse> imple
         }
         Long timestamp = System.currentTimeMillis();
         paraMap.put("timestamp", timestamp);
-        paraMap.put("sign", SecUtil.sign(paraMap, XrxsOpenapiClient.getInstance().getAppSecret()));
         return paraMap;
     }
 

@@ -13,7 +13,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-04 20:23
  **/
-public interface IOpenapiRequest<T extends OpenapiResponse> {
+public interface IOpenapiRequest<T> {
 
     /**
      * 获取请求方法
@@ -23,15 +23,13 @@ public interface IOpenapiRequest<T extends OpenapiResponse> {
     /**
      * 获取返回参数的class
      */
-    Class<T> getResponseClass();
+    OpenapiResponse<T> getResponseClass();
 
     /**
      * 获取返回参数类型
      * @return 这个必须重写，
      */
-    default TypeReference<T> getResponseTypeRef() {
-        return null;
-    }
+    TypeReference<OpenapiResponse<T>> getResponseTypeRef();
 
     /**
      * 参数前置检查

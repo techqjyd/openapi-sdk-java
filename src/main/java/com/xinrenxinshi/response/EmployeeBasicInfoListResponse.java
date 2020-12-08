@@ -11,7 +11,7 @@ import java.util.List;
  * @author: liuchenhui
  * @create: 2019-11-12 14:43
  **/
-public class EmployeeBasicInfoListResponse extends OpenapiResponse {
+public class EmployeeBasicInfoListResponse {
     /**
      * true表示还有分页列表可以查询，false表示分页已到最后一页
      */

@@ -1,10 +1,13 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.AreaInfo;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
-import com.xinrenxinshi.response.CityListResponse;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,7 +16,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 10:57
  **/
-public class CityListRequest extends AbstractOpenapiRequest<CityListResponse> {
+public class CityListRequest extends AbstractOpenapiJsonRequest<List<AreaInfo>> {
 
     public CityListRequest(String accessToken) {
         super(accessToken);
@@ -21,12 +24,12 @@ public class CityListRequest extends AbstractOpenapiRequest<CityListResponse> {
 
     @Override
     public MethodEnum getMethod() {
-        return MethodEnum.METHOD_GET;
+        return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public Class<CityListResponse> getResponseClass() {
-        return CityListResponse.class;
+    public OpenapiResponse<List<AreaInfo>> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -36,10 +39,15 @@ public class CityListRequest extends AbstractOpenapiRequest<CityListResponse> {
          */
     }
 
+    @Override
+    public TypeReference<OpenapiResponse<List<AreaInfo>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<List<AreaInfo>>>() {
+        };
+    }
 
     @Override
     public String getBizUrl() {
-        return "/v3/common/citys";
+        return "/v5/common/citys";
     }
 
     @Override

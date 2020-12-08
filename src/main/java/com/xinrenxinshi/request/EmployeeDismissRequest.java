@@ -1,10 +1,12 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.DismissionTypeEnum;
 import com.xinrenxinshi.common.HouseFundSubEnum;
 import com.xinrenxinshi.common.InsuranceSubEnum;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSDateUtils;
@@ -22,7 +24,7 @@ import static com.xinrenxinshi.util.XRXSDateUtils.DATE_FORMAT_YEARMO;
  * @author: liuchenhui
  * @create: 2019-11-12 10:18
  **/
-public class EmployeeDismissRequest extends AbstractOpenapiRequest<OpenapiResponse> {
+public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
 
     /**
      * 员工ID
@@ -107,8 +109,14 @@ public class EmployeeDismissRequest extends AbstractOpenapiRequest<OpenapiRespon
     }
 
     @Override
-    public Class<OpenapiResponse> getResponseClass() {
-        return OpenapiResponse.class;
+    public OpenapiResponse<Void> getResponseClass() {
+        return new OpenapiResponse<>();
+    }
+
+    @Override
+    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Void>>() {
+        };
     }
 
     @Override
@@ -128,14 +136,14 @@ public class EmployeeDismissRequest extends AbstractOpenapiRequest<OpenapiRespon
         if (houseFundSub == null) {
             throw new ParamNotValidException("公积金减员月为空");
         }
-        if (!XRXSStrUtils.isEmpty(payrollSub) || !XRXSDateUtils.isDateStr(payrollSub, DATE_FORMAT_YEARMO)) {
+        if (!XRXSStrUtils.isEmpty(payrollSub) && !XRXSDateUtils.isDateStr(payrollSub, DATE_FORMAT_YEARMO)) {
             throw new ParamNotValidException("离职减员月时间格式不符合yyyyMM校验");
         }
     }
 
     @Override
     public String getBizUrl() {
-        return "/v3/employee/dismiss";
+        return "/v5/employee/dismiss";
     }
 
     @Override

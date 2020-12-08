@@ -1,10 +1,12 @@
 package com.xinrenxinshi.request;
 
+import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.Constants;
 import com.xinrenxinshi.common.HireTypeEnum;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
-import com.xinrenxinshi.openapi.AbstractOpenapiRequest;
+import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.EmployeeCreateResponse;
 import com.xinrenxinshi.util.JsonUtils;
 import com.xinrenxinshi.util.XRXSDateUtils;
@@ -19,8 +21,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-06 17:14n
  **/
-@SuppressWarnings("all")
-public class EmployeeCreateRequest extends AbstractOpenapiRequest<EmployeeCreateResponse> {
+public class EmployeeCreateRequest extends AbstractOpenapiJsonRequest<EmployeeCreateResponse> {
     /**
      * 员工名字
      */
@@ -92,8 +93,8 @@ public class EmployeeCreateRequest extends AbstractOpenapiRequest<EmployeeCreate
     }
 
     @Override
-    public Class<EmployeeCreateResponse> getResponseClass() {
-        return EmployeeCreateResponse.class;
+    public OpenapiResponse<EmployeeCreateResponse> getResponseClass() {
+        return new OpenapiResponse<>();
     }
 
     @Override
@@ -107,9 +108,9 @@ public class EmployeeCreateRequest extends AbstractOpenapiRequest<EmployeeCreate
         if (XRXSStrUtils.isEmpty(entryDate)) {
             throw new ParamNotValidException("入职时间为空");
         }
-        if (fields == null || fields.size() == 0) {
-            throw new ParamNotValidException("员工其他信息为空");
-        }
+//        if (fields == null || fields.size() == 0) {
+//            throw new ParamNotValidException("员工其他信息为空");
+//        }
         if (hireType == null) {
             throw new ParamNotValidException("聘用类型为空");
         }
@@ -119,17 +120,22 @@ public class EmployeeCreateRequest extends AbstractOpenapiRequest<EmployeeCreate
     }
 
     @Override
+    public TypeReference<OpenapiResponse<EmployeeCreateResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<EmployeeCreateResponse>>(){};
+    }
+
+    @Override
     public String getBizUrl() {
-        return "/v3/employee/entry";
+        return "/v5/employee/create";
     }
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>(10);
+        Map<String, Object> map = new HashMap<>(8);
         map.put("name", name);
         map.put("mobile", mobile);
         map.put("entryDate", entryDate);
-        map.put("fields", JsonUtils.toJson(fields));
+        map.put("fields", fields);
         map.put("hireType", hireType.getHireType());
         return map;
     }

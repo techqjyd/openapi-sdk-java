@@ -19,11 +19,11 @@ public class FlowListParam {
     /**
      * 审批状态，多个逗号分隔
      */
-    private List<String> flowStatus;
+    private List<Integer> flowStatus;
     /**
      * 审批类型，多个逗号分隔
      */
-    private List<String> flowTypes;
+    private List<Integer> flowTypes;
     /**
      * 部门id，多个逗号分隔
      */
@@ -62,19 +62,19 @@ public class FlowListParam {
         this.pageSize = pageSize;
     }
 
-    public List<String> getFlowStatus() {
+    public List<Integer> getFlowStatus() {
         return flowStatus;
     }
 
-    public void setFlowStatus(List<String> flowStatus) {
+    public void setFlowStatus(List<Integer> flowStatus) {
         this.flowStatus = flowStatus;
     }
 
-    public List<String> getFlowTypes() {
+    public List<Integer> getFlowTypes() {
         return flowTypes;
     }
 
-    public void setFlowTypes(List<String> flowTypes) {
+    public void setFlowTypes(List<Integer> flowTypes) {
         this.flowTypes = flowTypes;
     }
 
