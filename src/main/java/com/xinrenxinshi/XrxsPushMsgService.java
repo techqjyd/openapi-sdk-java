@@ -2,6 +2,7 @@ package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.ExternalFailMsgModel;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.PushMsgFailRequest;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -19,7 +20,7 @@ public abstract class XrxsPushMsgService {
      *
      * @param access_token 授权token
      */
-    public static List<ExternalFailMsgModel> getFailMsg(String access_token) throws ApiException {
+    public static OpenapiResponse<List<ExternalFailMsgModel>> getFailMsg(String access_token) throws ApiException {
         PushMsgFailRequest request = new PushMsgFailRequest(access_token);
         return getFailMsg(request);
     }
@@ -27,7 +28,8 @@ public abstract class XrxsPushMsgService {
     /**
      * 获取失败消息
      */
-    public static List<ExternalFailMsgModel> getFailMsg(PushMsgFailRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<List<ExternalFailMsgModel>> getFailMsg(PushMsgFailRequest request) throws ApiException {
+        OpenapiResponse<List<ExternalFailMsgModel>> execute = RequestTemplate.execute(request);
+        return execute;
     }
 }

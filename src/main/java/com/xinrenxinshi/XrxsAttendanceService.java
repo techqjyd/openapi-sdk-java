@@ -4,6 +4,7 @@ import com.xinrenxinshi.domain.AttendanceRecord;
 import com.xinrenxinshi.domain.BatchClockModel;
 import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
@@ -29,7 +30,7 @@ public abstract class XrxsAttendanceService {
      * @param latitude     维度
      * @param remark       备注
      */
-    public static boolean clock(String access_token,
+    public static OpenapiResponse<Void> clock(String access_token,
                                 String employeeId,
                                 String mobile,
                                 Integer clockTime,
@@ -49,8 +50,9 @@ public abstract class XrxsAttendanceService {
     /**
      * 上传员工打卡记录
      */
-    public static boolean clock(AttendanceClockRequest request) throws ApiException {
-        return RequestTemplate.executeIgnoreData(request);
+    public static OpenapiResponse<Void> clock(AttendanceClockRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -59,7 +61,7 @@ public abstract class XrxsAttendanceService {
      * @param access_token 授权token
      * @param clockData    批量打卡数据
      */
-    public static boolean batchClock(String access_token,
+    public static OpenapiResponse<Void> batchClock(String access_token,
                                      List<BatchClockModel> clockData) throws ApiException {
         AttendanceBatchClockRequest request = new AttendanceBatchClockRequest(access_token);
         request.setClockData(clockData);
@@ -69,8 +71,9 @@ public abstract class XrxsAttendanceService {
     /**
      * 批量打卡
      */
-    public static boolean batchClock(AttendanceBatchClockRequest request) throws ApiException {
-        return RequestTemplate.executeIgnoreData(request);
+    public static OpenapiResponse<Void> batchClock(AttendanceBatchClockRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -82,7 +85,7 @@ public abstract class XrxsAttendanceService {
      * @param PageNo      查询页码，默认从0开始，翻页+1
      * @param pageSize    每页数据条数，每页数量不超过100条，默认100条
      */
-    public static PageResult<AttendanceRecord> clockRecords(String access_token,
+    public static OpenapiResponse<PageResult<AttendanceRecord>> clockRecords(String access_token,
                                                             List<String> employeeIds,
                                                             Long startTime,
                                                             Long endTime,
@@ -100,8 +103,9 @@ public abstract class XrxsAttendanceService {
     /**
      * 考勤打卡原始记录
      */
-    public static PageResult<AttendanceRecord> clockRecords(AttendanceClockRecordsRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<PageResult<AttendanceRecord>> clockRecords(AttendanceClockRecordsRequest request) throws ApiException {
+        OpenapiResponse<PageResult<AttendanceRecord>> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
 
@@ -112,7 +116,7 @@ public abstract class XrxsAttendanceService {
      * @param employeeIds  多个员工ID
      * @param date         排班日期，格式：yyyy-MM-dd
      */
-    public static AttendanceScheduleInfo scheduling(String access_token,
+    public static OpenapiResponse<AttendanceScheduleInfo> scheduling(String access_token,
                                                     List<String> employeeIds,
                                                     String date) throws ApiException {
         AttendanceSchedulingRequest request = new AttendanceSchedulingRequest(access_token);
@@ -124,8 +128,9 @@ public abstract class XrxsAttendanceService {
     /**
      * 考勤排班信息
      */
-    public static AttendanceScheduleInfo scheduling(AttendanceSchedulingRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<AttendanceScheduleInfo> scheduling(AttendanceSchedulingRequest request) throws ApiException {
+        OpenapiResponse<AttendanceScheduleInfo> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -138,7 +143,7 @@ public abstract class XrxsAttendanceService {
      * @param endDate      出差结束日期，日期格式：yyyy-MM-dd
      * @param endTime      出差结束时间，AM：上半天、PM：下半天
      */
-    public static String travel(String access_token,
+    public static OpenapiResponse<String> travel(String access_token,
                                 String employeeId,
                                 String startDate,
                                 String startTime,
@@ -156,8 +161,9 @@ public abstract class XrxsAttendanceService {
     /**
      * 出差打卡信息
      */
-    public static String travel(AttendanceTravelRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<String> travel(AttendanceTravelRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -169,7 +175,7 @@ public abstract class XrxsAttendanceService {
      * @param endDate    销出差结束日期，日期格式：yyyy-MM-dd
      * @param endTime    销出差结束时间，AM：上半天、PM：下半天
      */
-    public static boolean cancelTravel(String access_token,
+    public static OpenapiResponse<Void> cancelTravel(String access_token,
                                        String employeeId,
                                        String startDate,
                                        String startTime,
@@ -187,7 +193,8 @@ public abstract class XrxsAttendanceService {
     /**
      * 销出差接口
      */
-    public static boolean cancelTravel(AttendanceCancelTravelRequest request) throws ApiException {
-        return RequestTemplate.executeIgnoreData(request);
+    public static OpenapiResponse<Void> cancelTravel(AttendanceCancelTravelRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
     }
 }

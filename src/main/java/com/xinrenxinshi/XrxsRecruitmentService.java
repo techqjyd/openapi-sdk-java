@@ -3,6 +3,7 @@ package com.xinrenxinshi;
 import com.xinrenxinshi.domain.Page;
 import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.RecruitmentFullDataRequest;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -23,7 +24,7 @@ public abstract class XrxsRecruitmentService {
      * @param startTime    简历投递开始时间
      * @param endTime      简历投递结束时间
      */
-    public static Page<RecruitReportInfo> getFullReport(String access_token,
+    public static OpenapiResponse<Page<RecruitReportInfo>> getFullReport(String access_token,
                                                         Integer pageNo,
                                                         Integer pageSize,
                                                         String startTime,
@@ -39,7 +40,7 @@ public abstract class XrxsRecruitmentService {
     /**
      * 获取招聘全数据报表
      */
-    public static Page<RecruitReportInfo> getFullReport(RecruitmentFullDataRequest request) throws ApiException {
+    public static OpenapiResponse<Page<RecruitReportInfo>> getFullReport(RecruitmentFullDataRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 
