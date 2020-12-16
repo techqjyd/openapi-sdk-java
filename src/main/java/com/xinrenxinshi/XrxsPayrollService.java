@@ -3,6 +3,7 @@ package com.xinrenxinshi;
 import com.xinrenxinshi.domain.payroll.EmployeePayroll;
 import com.xinrenxinshi.domain.payroll.PayrollChangeHistoryInfoModel;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.response.PayrollReportArchivesResponse;
@@ -26,7 +27,7 @@ public abstract class XrxsPayrollService {
      * @param access_token 授权token
      * @param yearmo       工资报表月份
      */
-    public static PayrollReportArchivesResponse getReportArchives(String access_token,
+    public static OpenapiResponse<PayrollReportArchivesResponse> getReportArchives(String access_token,
                                                                    String yearmo) throws ApiException {
         PayrollReportArchivesRequest request = new PayrollReportArchivesRequest(access_token);
         request.setYearmo(yearmo);
@@ -36,8 +37,9 @@ public abstract class XrxsPayrollService {
     /**
      * 获取工资报表
      */
-    public static PayrollReportArchivesResponse getReportArchives(PayrollReportArchivesRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<PayrollReportArchivesResponse> getReportArchives(PayrollReportArchivesRequest request) throws ApiException {
+        OpenapiResponse<PayrollReportArchivesResponse> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
 
@@ -48,7 +50,7 @@ public abstract class XrxsPayrollService {
      * @param reportId     查询的报表id
      * @param subReportId  查询的子报表id
      */
-    public static PayrollReportArchiveDetailResponse getReportArchiveDetail(String access_token,
+    public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetail(String access_token,
                                                                             String reportId,
                                                                             String subReportId) throws ApiException {
         PayrollReportArchiveDetailRequest request = new PayrollReportArchiveDetailRequest(access_token);
@@ -60,8 +62,9 @@ public abstract class XrxsPayrollService {
     /**
      * 获取工资报表详情
      */
-    public static PayrollReportArchiveDetailResponse getReportArchiveDetail(PayrollReportArchiveDetailRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetail(PayrollReportArchiveDetailRequest request) throws ApiException {
+        OpenapiResponse<PayrollReportArchiveDetailResponse> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -69,7 +72,7 @@ public abstract class XrxsPayrollService {
      *
      * @param access_token 授权token
      */
-    public static PayrollSettingResponse getSetting(String access_token) throws ApiException {
+    public static OpenapiResponse<PayrollSettingResponse> getSetting(String access_token) throws ApiException {
         PayrollSettingRequest request = new PayrollSettingRequest(access_token);
         return getSetting(request);
     }
@@ -77,8 +80,9 @@ public abstract class XrxsPayrollService {
     /**
      * 获取公司工资配置项
      */
-    public static PayrollSettingResponse getSetting(PayrollSettingRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<PayrollSettingResponse> getSetting(PayrollSettingRequest request) throws ApiException {
+        OpenapiResponse<PayrollSettingResponse> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -87,7 +91,7 @@ public abstract class XrxsPayrollService {
      * @param access_token     授权token
      * @param employeePayrolls 批量更新员工的工资设置的参数
      */
-    public static boolean updateEmpPayrollSetting(String access_token,
+    public static OpenapiResponse<Void> updateEmpPayrollSetting(String access_token,
                                                   List<EmployeePayroll> employeePayrolls) throws ApiException {
         PayrollUpdateRequest request = new PayrollUpdateRequest(access_token);
         request.setEmployeePayrolls(employeePayrolls);
@@ -97,8 +101,9 @@ public abstract class XrxsPayrollService {
     /**
      * 更新员工工资项
      */
-    public static boolean updateEmpPayrollSetting(PayrollUpdateRequest request) throws ApiException {
-        return RequestTemplate.executeIgnoreData(request);
+    public static OpenapiResponse<Void> updateEmpPayrollSetting(PayrollUpdateRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
 
@@ -111,7 +116,7 @@ public abstract class XrxsPayrollService {
      * @param beginTime    开始时间
      * @param endTime      结束时间
      */
-    public static PageResult<PayrollChangeHistoryInfoModel> getChangeHistory(String access_token,
+    public static OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> getChangeHistory(String access_token,
                                                                              Integer pageNo,
                                                                              Integer pageSize,
                                                                              String beginTime,
@@ -127,7 +132,8 @@ public abstract class XrxsPayrollService {
     /**
      * 获取公司的调薪记录
      */
-    public static PageResult<PayrollChangeHistoryInfoModel> getChangeHistory(PayrollChangeHistoryRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> getChangeHistory(PayrollChangeHistoryRequest request) throws ApiException {
+        OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> execute = RequestTemplate.execute(request);
+        return execute;
     }
 }
