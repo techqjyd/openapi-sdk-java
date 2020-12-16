@@ -7,9 +7,8 @@ import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
 import com.xinrenxinshi.request.CityListRequest;
 import com.xinrenxinshi.request.CountryListRequest;
-import com.xinrenxinshi.response.CityListResponse;
-import com.xinrenxinshi.response.CountryListResponse;
 import com.xinrenxinshi.response.OpenapiTokenResponse;
+import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
 
@@ -40,15 +39,9 @@ public abstract class XrxsCommonService {
      *
      * @param access_token 授权token
      */
-    public static List<AreaInfo> getCityList(String access_token) throws ApiException {
-        XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
+    public static OpenapiResponse<List<AreaInfo>> getCityList(String access_token) throws ApiException {
         CityListRequest cityListRequest = new CityListRequest(access_token);
-        OpenapiResponse<List<AreaInfo>> response = instance.execute(cityListRequest);
-        if (response != null && response.getErrcode() == 0) {
-            return response.getData();
-        }
-        assert response != null;
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        return RequestTemplate.execute(cityListRequest);
     }
 
     /**
@@ -56,14 +49,8 @@ public abstract class XrxsCommonService {
      *
      * @param access_token 授权token
      */
-    public static List<CountryModel> getCountryList(String access_token) throws ApiException {
-        XrxsOpenapiClient instance = XrxsOpenapiClient.getInstance();
+    public static OpenapiResponse<List<CountryModel>> getCountryList(String access_token) throws ApiException {
         CountryListRequest countryListRequest = new CountryListRequest(access_token);
-        OpenapiResponse<List<CountryModel>> response = instance.execute(countryListRequest);
-        if (response != null && response.getErrcode() == 0) {
-            return response.getData();
-        }
-        assert response != null;
-        throw new ApiException(response.getErrcode(), response.getErrmsg());
+        return RequestTemplate.execute(countryListRequest);
     }
 }

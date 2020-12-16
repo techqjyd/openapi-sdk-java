@@ -7,6 +7,7 @@ import com.xinrenxinshi.domain.DepartmentModel;
 import com.xinrenxinshi.domain.JobHeaderModel;
 import com.xinrenxinshi.domain.RankModel;
 import com.xinrenxinshi.exception.ApiException;
+import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.DepartmentCreateResponse;
 import com.xinrenxinshi.util.RequestTemplate;
@@ -33,7 +34,7 @@ public abstract class XrxsDepartmentService {
      * @param city           所属城市
      * @param remark         备注
      */
-    public static DepartmentCreateResponse createDepartment(String access_token,
+    public static OpenapiResponse<DepartmentCreateResponse> createDepartment(String access_token,
                                                             String name,
                                                             String code,
                                                             String parentId,
@@ -55,8 +56,9 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门创建
      */
-    public static DepartmentCreateResponse createDepartment(DepartmentCreateRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<DepartmentCreateResponse> createDepartment(DepartmentCreateRequest request) throws ApiException {
+        OpenapiResponse<DepartmentCreateResponse> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -66,7 +68,7 @@ public abstract class XrxsDepartmentService {
      * @param departmentId   部门ID
      * @param fetchChildEnum 是否获取子部门
      */
-    public static List<DepartmentModel> getDepartmentList(String access_token,
+    public static OpenapiResponse<List<DepartmentModel>> getDepartmentList(String access_token,
                                                           String departmentId,
                                                           FetchChildEnum fetchChildEnum) throws ApiException {
         DepartmentListRequest request = new DepartmentListRequest(access_token);
@@ -78,8 +80,9 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门列表获取
      */
-    public static List<DepartmentModel> getDepartmentList(DepartmentListRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<List<DepartmentModel>> getDepartmentList(DepartmentListRequest request) throws ApiException {
+        OpenapiResponse<List<DepartmentModel>> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -95,7 +98,7 @@ public abstract class XrxsDepartmentService {
      * @param city         所属城市
      * @param remark       备注
      */
-    public static boolean updateDepartment(String access_token,
+    public static OpenapiResponse<Void> updateDepartment(String access_token,
                                            String departmentId,
                                            String name,
                                            String parentId,
@@ -119,8 +122,9 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门更新
      */
-    public static boolean updateDepartment(DepartmentUpdateRequest request) throws ApiException {
-        return RequestTemplate.executeIgnoreData(request);
+    public static OpenapiResponse<Void> updateDepartment(DepartmentUpdateRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -129,7 +133,7 @@ public abstract class XrxsDepartmentService {
      * @param access_token 授权token
      * @param departmentId 部门ID
      */
-    public static boolean deleteDepartment(String access_token,
+    public static OpenapiResponse<Void> deleteDepartment(String access_token,
                                            String departmentId) throws ApiException {
         DepartmentDeleteRequest request = new DepartmentDeleteRequest(access_token);
         request.setDepartmentId(departmentId);
@@ -139,8 +143,9 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门删除
      */
-    public static boolean deleteDepartment(DepartmentDeleteRequest request) throws ApiException {
-        return RequestTemplate.executeIgnoreData(request);
+    public static OpenapiResponse<Void> deleteDepartment(DepartmentDeleteRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -148,7 +153,7 @@ public abstract class XrxsDepartmentService {
      *
      * @param access_token 授权token
      */
-    public static List<JobHeaderModel> getJobList(String access_token) throws ApiException {
+    public static OpenapiResponse<List<JobHeaderModel>> getJobList(String access_token) throws ApiException {
         DepartmentJobGetRequest request = new DepartmentJobGetRequest(access_token);
         return getJobList(request);
     }
@@ -156,8 +161,9 @@ public abstract class XrxsDepartmentService {
     /**
      * 获取岗位信息
      */
-    public static List<JobHeaderModel> getJobList(DepartmentJobGetRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<List<JobHeaderModel>> getJobList(DepartmentJobGetRequest request) throws ApiException {
+        OpenapiResponse<List<JobHeaderModel>> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
@@ -165,7 +171,7 @@ public abstract class XrxsDepartmentService {
      *
      * @param costId 成本中心id，不传时，默认返回公司所有成本中心信息
      */
-    public static List<CostCenterModel> costCenterList(String access_token,
+    public static OpenapiResponse<List<CostCenterModel>> costCenterList(String access_token,
                                                        String costId) throws ApiException {
         CostCenterModelRequest request = new CostCenterModelRequest(access_token);
         request.setCostId(costId);
@@ -175,8 +181,9 @@ public abstract class XrxsDepartmentService {
     /**
      * 获取成本中心信息
      */
-    public static List<CostCenterModel> costCenterList(CostCenterModelRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<List<CostCenterModel>> costCenterList(CostCenterModelRequest request) throws ApiException {
+        OpenapiResponse<List<CostCenterModel>> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
     /**
