@@ -193,7 +193,7 @@ public abstract class XrxsDepartmentService {
      * @return
      * @throws ApiException
      */
-    public static List<RankModel> rankList(String access_token) throws ApiException {
+    public static OpenapiResponse<List<RankModel>> rankList(String access_token) throws ApiException {
         RankListRequest request = new RankListRequest(access_token);
         return rankList(request);
     }
@@ -205,8 +205,9 @@ public abstract class XrxsDepartmentService {
      * @return
      * @throws ApiException
      */
-    public static List<RankModel> rankList(RankListRequest request) throws ApiException {
-        return RequestTemplate.execute(request);
+    public static OpenapiResponse<List<RankModel>> rankList(RankListRequest request) throws ApiException {
+        OpenapiResponse<List<RankModel>> execute = RequestTemplate.execute(request);
+        return execute;
     }
 
 
