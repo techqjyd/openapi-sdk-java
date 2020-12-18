@@ -39,31 +39,6 @@ public class RankModel {
      */
     private String title;
 
-    /**
-     * 通用能力
-     */
-    private String generalAbility;
-
-    /**
-     * 专业能力
-     */
-    private String professionalAbility;
-
-    /**
-     * 核心价值
-     */
-    private String coreValue;
-
-    /**
-     * 该职级的人数
-     */
-    private Integer num;
-
-    /**
-     * 该职级在该职类下，所占百分比
-     */
-    private String rate;
-
     public RankModel(){
     }
 
@@ -115,46 +90,6 @@ public class RankModel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getGeneralAbility() {
-        return generalAbility;
-    }
-
-    public void setGeneralAbility(String generalAbility) {
-        this.generalAbility = generalAbility;
-    }
-
-    public String getProfessionalAbility() {
-        return professionalAbility;
-    }
-
-    public void setProfessionalAbility(String professionalAbility) {
-        this.professionalAbility = professionalAbility;
-    }
-
-    public String getCoreValue() {
-        return coreValue;
-    }
-
-    public void setCoreValue(String coreValue) {
-        this.coreValue = coreValue;
-    }
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-
-    public String getRate() {
-        return rate;
-    }
-
-    public void setRate(String rate) {
-        this.rate = rate;
     }
 
     public String getLevelCode() {
