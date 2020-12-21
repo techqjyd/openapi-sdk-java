@@ -68,13 +68,14 @@ class XXX {
 > 通用接口 XrxsCommonService
 - 获取token -- getAccessToken
 - 城市列表 -- getCityList
+- 获取国籍 -- getCountryList
 > 免登接口 XrxsFreeLoginService
-- 获取免登token -- getFreeLoginToken
-- 员工手机端免登URL -- getMobileFreeLoginUrl
-- 员工PC端免登URL -- getPCFreeLoginUrl
+- 获取免登url -- getFreeLoginUrl
 > 员工管理 XrxsEmployeeService
 - 创建员工 -- createEmployee
 - 待入职员工创建 -- createEntryPendingEmployee
+- 待入职员工入职 -- employed
+- 员工转正 -- regular
 - 获取员工基础列表 -- getSimpleEmployeeList
 - 获取员工详细列表 -- getDetailEmployeeList
 - 员工详情信息查询 -- getDetailEmployee
@@ -82,12 +83,19 @@ class XXX {
 - 员工离职 -- dismissEmployee
 - 上传员工文件 -- uploadEmpFile
 - 下载员工文件 -- downloadEmpFile
+- 获取员工分组字段 -- employeeGroupFieldList
+- 员工分组字段信息添加 -- employeeGroupAdd
+- 获取员工分组字段信息列表 -- employeeGroupList
+- 员工分组字段信息更新 -- employeeGroupUpdate
+- 员工分组字段信息删除 -- employeeGroupRemove
 > 部门管理 XrxsDepartmentService
 - 部门创建 -- createDepartment
 - 部门列表 -- getDepartmentList
 - 部门更新 -- updateDepartment
 - 部门删除 -- deleteDepartment
 - 获取岗位信息 -- getJobList
+- 获取成本中心列表 -- costCenterList
+- 获取职级列表 -- rankList
 > 工资 XrxsPayrollService
 - 工资报表 -- getReportArchives
 - 工资报表详情 -- getReportArchiveDetail
@@ -99,10 +107,15 @@ class XXX {
 - 审批表单详情 -- getFlowDetail
 - 审批类型 -- getFLowTypes
 - 审批节点信息 -- getNodeInfo
+- 审批节点操作 -- workflowNodeOperate
 > 招聘 XrxsRecruitmentService
 - 招聘全数据报表 -- getFullReport
 > 考勤 XrxsAttendanceService
-- 员工打卡 -- saveClock
+- 员工打卡 -- clock
 - 批量打卡 -- batchClock
+- 原始打卡记录 -- clockRecords
+- 考勤排班信息 -- scheduling
+- 出差状态同步 -- travel
+- 销出差状态 -- cancelTravel
 > 失败消息 XrxsPushMsgService
 - 订阅消息失败消息获取 -- getFailMsg

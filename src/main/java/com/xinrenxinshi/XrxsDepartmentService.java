@@ -5,6 +5,7 @@ import com.xinrenxinshi.common.FetchChildEnum;
 import com.xinrenxinshi.domain.CostCenterModel;
 import com.xinrenxinshi.domain.DepartmentModel;
 import com.xinrenxinshi.domain.JobHeaderModel;
+import com.xinrenxinshi.domain.RankModel;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
@@ -182,6 +183,30 @@ public abstract class XrxsDepartmentService {
      */
     public static OpenapiResponse<List<CostCenterModel>> costCenterList(CostCenterModelRequest request) throws ApiException {
         OpenapiResponse<List<CostCenterModel>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取公司的职级列表
+     *
+     * @param access_token
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<RankModel>> rankList(String access_token) throws ApiException {
+        RankListRequest request = new RankListRequest(access_token);
+        return rankList(request);
+    }
+
+    /**
+     * 获取公司的职级列表
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<RankModel>> rankList(RankListRequest request) throws ApiException {
+        OpenapiResponse<List<RankModel>> execute = RequestTemplate.execute(request);
         return execute;
     }
 
