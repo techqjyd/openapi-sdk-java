@@ -2,10 +2,7 @@ package com.xinrenxinshi;
 
 import com.xinrenxinshi.common.DepartTypeEnum;
 import com.xinrenxinshi.common.FetchChildEnum;
-import com.xinrenxinshi.domain.CostCenterModel;
-import com.xinrenxinshi.domain.DepartmentModel;
-import com.xinrenxinshi.domain.JobHeaderModel;
-import com.xinrenxinshi.domain.RankModel;
+import com.xinrenxinshi.domain.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
@@ -35,13 +32,13 @@ public abstract class XrxsDepartmentService {
      * @param remark         备注
      */
     public static OpenapiResponse<DepartmentCreateResponse> createDepartment(String access_token,
-                                                            String name,
-                                                            String code,
-                                                            String parentId,
-                                                            DepartTypeEnum departTypeEnum,
-                                                            String adminId,
-                                                            String city,
-                                                            String remark) throws ApiException {
+                                                                             String name,
+                                                                             String code,
+                                                                             String parentId,
+                                                                             DepartTypeEnum departTypeEnum,
+                                                                             String adminId,
+                                                                             String city,
+                                                                             String remark) throws ApiException {
         DepartmentCreateRequest request = new DepartmentCreateRequest(access_token);
         request.setName(name);
         request.setCode(code);
@@ -69,8 +66,8 @@ public abstract class XrxsDepartmentService {
      * @param fetchChildEnum 是否获取子部门
      */
     public static OpenapiResponse<List<DepartmentModel>> getDepartmentList(String access_token,
-                                                          String departmentId,
-                                                          FetchChildEnum fetchChildEnum) throws ApiException {
+                                                                           String departmentId,
+                                                                           FetchChildEnum fetchChildEnum) throws ApiException {
         DepartmentListRequest request = new DepartmentListRequest(access_token);
         request.setDepartmentId(departmentId);
         request.setFetchChild(fetchChildEnum);
@@ -99,14 +96,14 @@ public abstract class XrxsDepartmentService {
      * @param remark       备注
      */
     public static OpenapiResponse<Void> updateDepartment(String access_token,
-                                           String departmentId,
-                                           String name,
-                                           String parentId,
-                                           String code,
-                                           DepartTypeEnum type,
-                                           String adminId,
-                                           String city,
-                                           String remark) throws ApiException {
+                                                         String departmentId,
+                                                         String name,
+                                                         String parentId,
+                                                         String code,
+                                                         DepartTypeEnum type,
+                                                         String adminId,
+                                                         String city,
+                                                         String remark) throws ApiException {
         DepartmentUpdateRequest request = new DepartmentUpdateRequest(access_token);
         request.setDepartmentId(departmentId);
         request.setName(name);
@@ -134,7 +131,7 @@ public abstract class XrxsDepartmentService {
      * @param departmentId 部门ID
      */
     public static OpenapiResponse<Void> deleteDepartment(String access_token,
-                                           String departmentId) throws ApiException {
+                                                         String departmentId) throws ApiException {
         DepartmentDeleteRequest request = new DepartmentDeleteRequest(access_token);
         request.setDepartmentId(departmentId);
         return deleteDepartment(request);
@@ -172,7 +169,7 @@ public abstract class XrxsDepartmentService {
      * @param costId 成本中心id，不传时，默认返回公司所有成本中心信息
      */
     public static OpenapiResponse<List<CostCenterModel>> costCenterList(String access_token,
-                                                       String costId) throws ApiException {
+                                                                        String costId) throws ApiException {
         CostCenterModelRequest request = new CostCenterModelRequest(access_token);
         request.setCostId(costId);
         return costCenterList(request);
@@ -210,5 +207,28 @@ public abstract class XrxsDepartmentService {
         return execute;
     }
 
+    /**
+     * 获取公司岗位词典的详细信息
+     *
+     * @param access_token token
+     * @param jobId        岗位id，不传或者传空时，默认返回公司所有的岗位信息
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<JobDictionaryModel>> getJobDictionary(String access_token, String jobId) throws ApiException {
+        JobDictionaryDetailRquest request = new JobDictionaryDetailRquest(access_token);
+        request.setJobId(jobId);
+        return getJobDictionary(request);
+    }
 
+    /**
+     * 获取公司岗位词典的详细信息
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<JobDictionaryModel>> getJobDictionary(JobDictionaryDetailRquest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }

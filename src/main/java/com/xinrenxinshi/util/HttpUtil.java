@@ -471,7 +471,7 @@ public abstract class HttpUtil {
                 HttpsURLConnection connHttps = (HttpsURLConnection) conn;
                 if (ignoreSSLCheck) {
                     try {
-                        SSLContext ctx = SSLContext.getInstance("TLS");
+                        SSLContext ctx = SSLContext.getInstance("TLSv1.2");
                         ctx.init(null, new TrustManager[]{new TrustAllTrustManager()}, new SecureRandom());
                         connHttps.setSSLSocketFactory(ctx.getSocketFactory());
                         connHttps.setHostnameVerifier(new HostnameVerifier() {
