@@ -32,6 +32,32 @@ public class EmployeeSimple {
      */
     public Integer status;
 
+    /**
+     * 添加时间
+     */
+    private Integer addtime;
+
+    /**
+     * 更新时间
+     */
+    private Integer modtime;
+
+    public Integer getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(Integer addtime) {
+        this.addtime = addtime;
+    }
+
+    public Integer getModtime() {
+        return modtime;
+    }
+
+    public void setModtime(Integer modtime) {
+        this.modtime = modtime;
+    }
+
     public String getEmployeeId() {
         return employeeId;
     }

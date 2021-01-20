@@ -30,6 +30,19 @@ public class DepartmentListRequest extends AbstractOpenapiJsonRequest<List<Depar
      */
     private FetchChildEnum fetchChild;
 
+    /**
+     * 更新时间 用来增量更新的
+     */
+    private Integer modtime;
+
+    public Integer getModtime() {
+        return modtime;
+    }
+
+    public void setModtime(Integer modtime) {
+        this.modtime = modtime;
+    }
+
     public DepartmentListRequest(String accessToken) {
         super(accessToken);
     }
@@ -86,6 +99,9 @@ public class DepartmentListRequest extends AbstractOpenapiJsonRequest<List<Depar
         }
         if (fetchChild != null) {
             map.put("fetchChild", fetchChild.getFetchChild());
+        }
+        if (modtime != null){
+            map.put("modtime",modtime);
         }
         return map;
     }
