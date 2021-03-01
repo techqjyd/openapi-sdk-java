@@ -48,8 +48,33 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
      */
     private LaborTypeEnum laborType;
 
+    /**
+     * 部门
+     */
+    private String departmentId;
+    /**
+     * 岗位
+     */
+    private String jobId;
+
     public EmpToBeHiredCreateRequest(String accessToken) {
         super(accessToken);
+    }
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 
     public String getName() {
@@ -156,6 +181,8 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         if (laborType != null) {
             map.put("laborType", laborType.getLaborType());
         }
+        map.put("departmentId", departmentId);
+        map.put("jobId", jobId);
         return map;
     }
 }
