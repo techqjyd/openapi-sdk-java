@@ -66,6 +66,8 @@ public abstract class XrxsEmployeeService {
      * @param mobile        手机号
      * @param entryDate     入职时间 yyyy-MM-dd
      * @param type          雇佣类型 0：正式，1：非正式
+     * @param jobId         岗位id
+     * @param departmentId  部门id
      * @param laborTypeEnum 当type=1时必填，聘用类型
      */
     public static OpenapiResponse<EmpToBeHiredCreateResponse> createEntryPendingEmployee(String access_token,
@@ -73,6 +75,8 @@ public abstract class XrxsEmployeeService {
                                                                         String mobile,
                                                                         String email,
                                                                         String entryDate,
+                                                                        String jobId,
+                                                                        String departmentId,
                                                                         SimpleHireTypeEnum type,
                                                                         LaborTypeEnum laborTypeEnum) throws ApiException {
         EmpToBeHiredCreateRequest createRequest = new EmpToBeHiredCreateRequest(access_token);
@@ -82,6 +86,8 @@ public abstract class XrxsEmployeeService {
         createRequest.setEntryDate(entryDate);
         createRequest.setHireType(type);
         createRequest.setLaborType(laborTypeEnum);
+        createRequest.setDepartmentId(departmentId);
+        createRequest.setJobId(jobId);
         return createEntryPendingEmployee(createRequest);
     }
 
