@@ -45,6 +45,20 @@ public class EmployeeDetailInfoListRequest extends AbstractOpenapiJsonRequest<Pa
      */
     private EmpStatusEnum status;
 
+    /**
+     * 更新时间 用来增量更新的
+     */
+    private Integer modtime;
+
+
+    public Integer getModtime() {
+        return modtime;
+    }
+
+    public void setModtime(Integer modtime) {
+        this.modtime = modtime;
+    }
+
     public EmployeeDetailInfoListRequest(String accessToken) {
         super(accessToken);
     }
@@ -130,6 +144,9 @@ public class EmployeeDetailInfoListRequest extends AbstractOpenapiJsonRequest<Pa
         map.put("fetchChild", fetchChild.getFetchChild());
         if (status != null) {
             map.put("status", status.getStatus());
+        }
+        if (modtime != null){
+            map.put("modtime",modtime);
         }
         return map;
     }

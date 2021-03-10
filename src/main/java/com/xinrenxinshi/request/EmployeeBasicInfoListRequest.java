@@ -44,6 +44,18 @@ public class EmployeeBasicInfoListRequest extends AbstractOpenapiJsonRequest<Pag
      * 员工状态，默认为0。0:在职员工、1:离职员工
      */
     private EmpStatusEnum status;
+    /**
+     * 更新时间 用来增量更新的
+     */
+    private Integer modtime;
+
+    public Integer getModtime() {
+        return modtime;
+    }
+
+    public void setModtime(Integer modtime) {
+        this.modtime = modtime;
+    }
 
     public EmployeeBasicInfoListRequest(String accessToken) {
         super(accessToken);
@@ -134,6 +146,9 @@ public class EmployeeBasicInfoListRequest extends AbstractOpenapiJsonRequest<Pag
         }
         if (!XRXSStrUtils.isEmpty(departmentId)) {
             map.put("departmentId", departmentId);
+        }
+        if (modtime != null){
+            map.put("modtime",modtime);
         }
         return map;
     }
