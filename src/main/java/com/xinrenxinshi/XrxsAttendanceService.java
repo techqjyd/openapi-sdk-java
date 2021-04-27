@@ -1,12 +1,14 @@
 package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.AttendanceRecord;
+import com.xinrenxinshi.domain.AttendanceReportData;
 import com.xinrenxinshi.domain.BatchClockModel;
 import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.PageResult;
+import com.xinrenxinshi.response.ReportPageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
@@ -195,6 +197,43 @@ public abstract class XrxsAttendanceService {
      */
     public static OpenapiResponse<Void> cancelTravel(AttendanceCancelTravelRequest request) throws ApiException {
         OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+
+
+    /**
+     * @description 考勤已归档报表
+      * @param access_token
+     * @param yearmo 归档时间
+     * @param reportType 报表类型
+     * @param pageNo 当前页码
+     * @param pageSize 每页项目数
+     * @return OpenapiResponse<ReportPageResult<AttendanceReportData>> 分页结果
+     * @author  peilizhi
+     */
+    public static OpenapiResponse<ReportPageResult<AttendanceReportData>> getReportDetail(String access_token,
+                                                                                          String yearmo,
+                                                                                          Integer reportType,
+                                                                                          Integer pageNo,
+                                                                                          Integer pageSize)throws ApiException{
+
+        AttendanceReportSearchRequest request = new AttendanceReportSearchRequest(access_token);
+        request.setYearmo(yearmo);
+        request.setReportType(reportType);
+        request.setPageNo(pageNo);
+        request.setPageSize(pageSize);
+        return getReportDetail(request);
+    }
+
+    /**
+     * 获取考勤已归档报表
+     * @param request 封装的请求
+     * @return 分页展示已归档报表结果
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ReportPageResult<AttendanceReportData>> getReportDetail(AttendanceReportSearchRequest request) throws ApiException{
+        OpenapiResponse<ReportPageResult<AttendanceReportData>> execute=RequestTemplate.execute(request);
         return execute;
     }
 }
