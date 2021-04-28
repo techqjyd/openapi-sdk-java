@@ -205,25 +205,25 @@ public abstract class XrxsAttendanceService {
     /**
      * @description 考勤已归档报表
       * @param access_token
-     * @param yearmo 归档时间
+     * @param yearMonth 归档时间
      * @param reportType 报表类型
      * @param pageNo 当前页码
      * @param pageSize 每页项目数
      * @return OpenapiResponse<ReportPageResult<AttendanceReportData>> 分页结果
      * @author  peilizhi
      */
-    public static OpenapiResponse<ReportPageResult<AttendanceReportData>> getReportDetail(String access_token,
-                                                                                          String yearmo,
-                                                                                          Integer reportType,
-                                                                                          Integer pageNo,
-                                                                                          Integer pageSize)throws ApiException{
+    public static OpenapiResponse<ReportPageResult<AttendanceReportData>> queryReportDetail(String access_token,
+                                                                                            String yearMonth,
+                                                                                            Integer reportType,
+                                                                                            Integer pageNo,
+                                                                                            Integer pageSize)throws ApiException{
 
         AttendanceReportSearchRequest request = new AttendanceReportSearchRequest(access_token);
-        request.setYearmo(yearmo);
+        request.setYearMonth(yearMonth);
         request.setReportType(reportType);
         request.setPageNo(pageNo);
         request.setPageSize(pageSize);
-        return getReportDetail(request);
+        return queryReportDetail(request);
     }
 
     /**
@@ -232,7 +232,7 @@ public abstract class XrxsAttendanceService {
      * @return 分页展示已归档报表结果
      * @throws ApiException
      */
-    public static OpenapiResponse<ReportPageResult<AttendanceReportData>> getReportDetail(AttendanceReportSearchRequest request) throws ApiException{
+    public static OpenapiResponse<ReportPageResult<AttendanceReportData>> queryReportDetail(AttendanceReportSearchRequest request) throws ApiException{
         OpenapiResponse<ReportPageResult<AttendanceReportData>> execute=RequestTemplate.execute(request);
         return execute;
     }

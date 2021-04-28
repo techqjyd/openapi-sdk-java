@@ -14,6 +14,11 @@ public class AttendanceReportData implements Serializable {
      * 归档编号，用于保证查询表报数据的一致性
      */
     private  String archiveId;
+
+    /**
+     * 归档时间
+     */
+    private Integer archiveTime;
     /**
      * 归档表报表头
      */
