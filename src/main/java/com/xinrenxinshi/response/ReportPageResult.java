@@ -33,7 +33,7 @@ public class ReportPageResult<T> {
     /**
      * 是否有下一页 true-有，false-没有
      */
-    private boolean hasMore;
+    private Boolean hasMore;
 
     public Long getTotalPageSize() {
         return totalPageSize;
