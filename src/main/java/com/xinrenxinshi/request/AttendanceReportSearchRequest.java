@@ -123,6 +123,6 @@ public class AttendanceReportSearchRequest extends AbstractOpenapiJsonRequest<Re
      */
     @Override
     public String getBizUrl() {
-        return "/v5/attendance/reportDetail";
+        return "/v5/attendance/report/detail";
     }
 }
