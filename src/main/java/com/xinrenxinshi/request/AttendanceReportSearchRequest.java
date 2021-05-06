@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class AttendanceReportSearchRequest extends AbstractOpenapiJsonRequest<ReportPageResult<AttendanceReportData>> {
 
-    private String yearMonth;
+    private String archiveDate;
 
     private Integer reportType;
 
@@ -35,12 +35,12 @@ public class AttendanceReportSearchRequest extends AbstractOpenapiJsonRequest<Re
         super(accessToken);
     }
 
-    public String getYearMonth() {
-        return yearMonth;
+    public String getArchiveDate() {
+        return archiveDate;
     }
 
-    public void setYearMonth(String yearMonth) {
-        this.yearMonth = yearMonth;
+    public void setArchiveDate(String archiveDate) {
+        this.archiveDate = archiveDate;
     }
 
     public Integer getReportType() {
@@ -74,7 +74,7 @@ public class AttendanceReportSearchRequest extends AbstractOpenapiJsonRequest<Re
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(8);
-        map.put("yearMonth", yearMonth);
+        map.put("archiveDate", archiveDate);
         map.put("reportType", reportType);
         map.put("pageNo", pageNo);
         map.put("pageSize", pageSize);
@@ -123,6 +123,6 @@ public class AttendanceReportSearchRequest extends AbstractOpenapiJsonRequest<Re
      */
     @Override
     public String getBizUrl() {
-        return "/v5/attendance/reportDetail";
+        return "/v5/attendance/report/detail";
     }
 }

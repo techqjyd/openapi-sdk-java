@@ -205,7 +205,7 @@ public abstract class XrxsAttendanceService {
     /**
      * @description 考勤已归档报表
       * @param access_token
-     * @param yearMonth 归档时间
+     * @param archiveDate 归档时间
      * @param reportType 报表类型
      * @param pageNo 当前页码
      * @param pageSize 每页项目数
@@ -213,13 +213,13 @@ public abstract class XrxsAttendanceService {
      * @author  peilizhi
      */
     public static OpenapiResponse<ReportPageResult<AttendanceReportData>> queryReportDetail(String access_token,
-                                                                                            String yearMonth,
+                                                                                            String archiveDate,
                                                                                             Integer reportType,
                                                                                             Integer pageNo,
                                                                                             Integer pageSize)throws ApiException{
 
         AttendanceReportSearchRequest request = new AttendanceReportSearchRequest(access_token);
-        request.setYearMonth(yearMonth);
+        request.setArchiveDate(archiveDate);
         request.setReportType(reportType);
         request.setPageNo(pageNo);
         request.setPageSize(pageSize);

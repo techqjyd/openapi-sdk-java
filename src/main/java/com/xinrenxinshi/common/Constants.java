@@ -24,12 +24,6 @@ public class Constants {
     public static final String CHARSET_UTF8 = "UTF-8";
 
     /**
-     * 分页的范围
-     */
-    public static final Integer ONE_HUNDRED = 100;
-    public static final Integer ZERO = 0;
-
-    /**
      * HTTP请求相关
      **/
     public static final String METHOD_POST = "POST";

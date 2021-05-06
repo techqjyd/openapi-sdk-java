@@ -51,4 +51,12 @@ public class AttendanceReportData implements Serializable {
     public void setReportData(List<HashMap<String, String>> reportData) {
         this.reportData = reportData;
     }
+
+    public Integer getArchiveTime() {
+        return archiveTime;
+    }
+
+    public void setArchiveTime(Integer archiveTime) {
+        this.archiveTime = archiveTime;
+    }
 }
