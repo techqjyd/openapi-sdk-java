@@ -4,6 +4,7 @@ import com.xinrenxinshi.common.*;
 import com.xinrenxinshi.domain.EmployeeDetail;
 import com.xinrenxinshi.domain.EmployeeGroupField;
 import com.xinrenxinshi.domain.EmployeeGroupFieldData;
+import com.xinrenxinshi.domain.PreDismissEmployee;
 import com.xinrenxinshi.domain.EmployeeSimple;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
@@ -602,5 +603,16 @@ public abstract class XrxsEmployeeService {
         return execute;
     }
 
+
+    /**
+     * 查询公司内所有预离职员工
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<PreDismissEmployee>> listPreDismissEmployee(EmployeePreDismissRequest request) throws ApiException {
+        final OpenapiResponse<List<PreDismissEmployee>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 
 }
