@@ -2,7 +2,7 @@ package com.xinrenxinshi.request;
 
 import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
-import com.xinrenxinshi.domain.EmployeePreDismissResult;
+import com.xinrenxinshi.domain.PreDismissEmployee;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
@@ -14,7 +14,7 @@ import java.util.Map;
  * @author by peilizhi
  * @date 2021/5/19 14:36
  */
-public class EmployeePreDismissRequest extends AbstractOpenapiJsonRequest<List<EmployeePreDismissResult>> {
+public class EmployeePreDismissRequest extends AbstractOpenapiJsonRequest<List<PreDismissEmployee>> {
 
 
     public EmployeePreDismissRequest(String accessToken) {
@@ -41,7 +41,7 @@ public class EmployeePreDismissRequest extends AbstractOpenapiJsonRequest<List<E
      * 获取返回参数的class
      */
     @Override
-    public OpenapiResponse<List<EmployeePreDismissResult>> getResponseClass() {
+    public OpenapiResponse<List<PreDismissEmployee>> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
@@ -51,8 +51,8 @@ public class EmployeePreDismissRequest extends AbstractOpenapiJsonRequest<List<E
      * @return 这个必须重写，
      */
     @Override
-    public TypeReference<OpenapiResponse<List<EmployeePreDismissResult>>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<List<EmployeePreDismissResult>>>() {
+    public TypeReference<OpenapiResponse<List<PreDismissEmployee>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<List<PreDismissEmployee>>>() {
         };
     }
 

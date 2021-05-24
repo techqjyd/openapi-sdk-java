@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author by peilizhi
  * @date 2021/5/19 14:45
  */
-public class EmployeePreDismissResult implements Serializable {
+public class PreDismissEmployee implements Serializable {
     /**
      * 员工编号
      */

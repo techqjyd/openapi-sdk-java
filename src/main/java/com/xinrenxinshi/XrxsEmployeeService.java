@@ -4,7 +4,7 @@ import com.xinrenxinshi.common.*;
 import com.xinrenxinshi.domain.EmployeeDetail;
 import com.xinrenxinshi.domain.EmployeeGroupField;
 import com.xinrenxinshi.domain.EmployeeGroupFieldData;
-import com.xinrenxinshi.domain.EmployeePreDismissResult;
+import com.xinrenxinshi.domain.PreDismissEmployee;
 import com.xinrenxinshi.domain.EmployeeSimple;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
@@ -610,8 +610,8 @@ public abstract class XrxsEmployeeService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<List<EmployeePreDismissResult>> listPreDismissEmployee(EmployeePreDismissRequest request) throws ApiException {
-        final OpenapiResponse<List<EmployeePreDismissResult>> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<List<PreDismissEmployee>> listPreDismissEmployee(EmployeePreDismissRequest request) throws ApiException {
+        final OpenapiResponse<List<PreDismissEmployee>> execute = RequestTemplate.execute(request);
         return execute;
     }
 
