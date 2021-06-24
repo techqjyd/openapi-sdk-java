@@ -2,9 +2,11 @@ package com.xinrenxinshi;
 
 import com.xinrenxinshi.common.ERedirectTypeEnum;
 import com.xinrenxinshi.common.EUserTypeEnum;
+import com.xinrenxinshi.domain.LoginInfoResult;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.FreeLoginRequest;
+import com.xinrenxinshi.request.GetUserInfoRequest;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
@@ -113,4 +115,14 @@ public abstract class XrxsFreeLoginService {
         response.sendRedirect(execute.getData());
     }
 
+    /**
+     * 根据授权认证code 获取登录用户信息
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<LoginInfoResult> getUserInfo(GetUserInfoRequest request) throws ApiException {
+        final OpenapiResponse<LoginInfoResult> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }
