@@ -34,6 +34,10 @@ public class GetUserInfoRequest extends AbstractOpenapiJsonRequest<LoginInfoResu
         this.code = code;
     }
 
+    public GetUserInfoRequest(String accessToken) {
+        super(accessToken);
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(8);

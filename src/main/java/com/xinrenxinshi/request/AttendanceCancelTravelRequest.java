@@ -11,7 +11,6 @@ import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.PrimitiveIterator;
 
 /**
  * 销出差接口请求
@@ -23,6 +22,10 @@ public class AttendanceCancelTravelRequest extends AbstractOpenapiJsonRequest<Vo
      * 员工id
      */
     private String employeeId;
+    /**
+     * 手机号
+     */
+    private String mobile;
     /**
      * 销出差开始日期，日期格式：yyyy-MM-dd
      */
@@ -84,9 +87,18 @@ public class AttendanceCancelTravelRequest extends AbstractOpenapiJsonRequest<Vo
         this.endTime = endTime;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(8);
+        map.put("mobile", mobile);
         map.put("employeeId", employeeId);
         map.put("startDate", startDate);
         map.put("startTime", startTime);
@@ -107,8 +119,8 @@ public class AttendanceCancelTravelRequest extends AbstractOpenapiJsonRequest<Vo
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(employeeId)) {
-            throw new ParamNotValidException("员工id为空");
+        if (XRXSStrUtils.isEmpty(employeeId) && XRXSStrUtils.isEmpty(mobile)) {
+            throw new ParamNotValidException("员工employeeId和mobile不能同时为空");
         }
         if (!XRXSDateUtils.isDateStr(startDate, Constants.DATE_STRING_FORMAT)) {
             throw new ParamNotValidException("销出差开始日期, 不符合yyyy-MM-dd格式校验");

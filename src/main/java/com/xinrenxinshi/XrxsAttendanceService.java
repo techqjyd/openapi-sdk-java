@@ -7,6 +7,7 @@ import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
+import com.xinrenxinshi.response.AttendanceStatisticsResponse;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.response.ReportPageResult;
 import com.xinrenxinshi.util.RequestTemplate;
@@ -234,6 +235,16 @@ public abstract class XrxsAttendanceService {
      */
     public static OpenapiResponse<ReportPageResult<AttendanceReportData>> queryReportDetail(AttendanceReportSearchRequest request) throws ApiException{
         OpenapiResponse<ReportPageResult<AttendanceReportData>> execute=RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取员工的考勤统计数据
+     * @param request 封装的请求
+     * @throws ApiException
+     */
+    public static OpenapiResponse<AttendanceStatisticsResponse> getAttendanceStatic(AttendanceStatisticsRequest request) throws ApiException{
+        OpenapiResponse<AttendanceStatisticsResponse> execute = RequestTemplate.execute(request);
         return execute;
     }
 }

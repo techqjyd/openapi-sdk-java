@@ -615,4 +615,15 @@ public abstract class XrxsEmployeeService {
         return execute;
     }
 
+    /**
+     * 查询员工成长记录
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Map<String,List<EmployeeCareersResponse>>> getEmployeeCareers(EmployeeCareersRequest request) throws ApiException {
+        OpenapiResponse<Map<String, List<EmployeeCareersResponse>>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
 }
