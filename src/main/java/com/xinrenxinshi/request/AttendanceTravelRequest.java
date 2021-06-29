@@ -24,6 +24,11 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
     private String employeeId;
 
     /**
+     * 手机号
+     */
+    private String mobile;
+
+    /**
      * 出差开始日期，日期格式：yyyy-MM-dd
      */
     private String startDate;
@@ -89,10 +94,19 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
         this.endTime = endTime;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(8);
         map.put("employeeId", employeeId);
+        map.put("mobile", mobile);
         map.put("startDate", startDate);
         map.put("startTime", startTime);
         map.put("endDate", endDate);
@@ -118,8 +132,8 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(employeeId)) {
-            throw new ParamNotValidException("员工employeeId为空");
+        if (XRXSStrUtils.isEmpty(employeeId) && XRXSStrUtils.isEmpty(mobile)) {
+            throw new ParamNotValidException("员工employeeId和mobile不能同时为空");
         }
         if (startDate == null) {
             throw new ParamNotValidException("出差开始日期为空");
