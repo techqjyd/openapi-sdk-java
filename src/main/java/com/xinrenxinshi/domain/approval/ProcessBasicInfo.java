@@ -23,6 +23,13 @@ public class ProcessBasicInfo {
      * 发起人姓名
      */
     private String sponsorName;
+
+    /** 发起人ID */
+    private String sponsorId;
+
+
+    /** 发起人类型：0.员工、1.管理员 */
+    private Integer sponsorType;
     /**
      * 部门ID
      */
@@ -72,6 +79,22 @@ public class ProcessBasicInfo {
      * 审批编号
      */
     private String flowNumber;
+
+    public String getSponsorId() {
+        return sponsorId;
+    }
+
+    public void setSponsorId(String sponsorId) {
+        this.sponsorId = sponsorId;
+    }
+
+    public Integer getSponsorType() {
+        return sponsorType;
+    }
+
+    public void setSponsorType(Integer sponsorType) {
+        this.sponsorType = sponsorType;
+    }
 
     public Long getSid() {
         return sid;

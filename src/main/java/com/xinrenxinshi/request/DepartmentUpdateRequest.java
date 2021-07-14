@@ -52,6 +52,19 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
      */
     private String remark;
 
+    /**
+     * 部门自定义字段
+     */
+    private Map<String,String> fields;
+
+    public Map<String, String> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, String> fields) {
+        this.fields = fields;
+    }
+
     public DepartmentUpdateRequest(String accessToken) {
         super(accessToken);
     }
@@ -172,6 +185,9 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         }
         if (type != null) {
             map.put("type", type.getType());
+        }
+        if (fields != null) {
+            map.put("fields", fields);
         }
         return map;
     }

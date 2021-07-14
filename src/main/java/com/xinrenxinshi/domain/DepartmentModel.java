@@ -1,5 +1,7 @@
 package com.xinrenxinshi.domain;
 
+import java.util.Map;
+
 /**
  * 部门信息
  *
@@ -49,6 +51,16 @@ public class DepartmentModel {
      * 更新时间
      */
     private Integer modtime;
+
+    private Map<String,String> fields;
+
+    public Map<String, String> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, String> fields) {
+        this.fields = fields;
+    }
 
     public Integer getAddtime() {
         return addtime;

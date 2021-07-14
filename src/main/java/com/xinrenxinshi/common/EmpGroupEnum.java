@@ -11,6 +11,10 @@ public enum EmpGroupEnum {
      */
     CONTRACT_RECORD(1, "合同记录"),
     /**
+     * 兼职信息
+     */
+    PART_TIME_INFO(5, "兼职信息"),
+    /**
      * 教育经历
      */
     EDU_EXPERIENCE(7, "教育经历"),
