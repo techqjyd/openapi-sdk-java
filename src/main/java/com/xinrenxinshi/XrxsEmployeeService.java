@@ -626,4 +626,14 @@ public abstract class XrxsEmployeeService {
         return execute;
     }
 
+
+    /**
+     * 获取员工文件下载地址
+     */
+    public static OpenapiResponse<String> getDownloadUrl(GetEmployeeFileDownloadUrlRequest request) throws ApiException {
+        final OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+
+    }
+
 }
