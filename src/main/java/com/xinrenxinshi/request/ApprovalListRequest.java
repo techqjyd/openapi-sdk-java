@@ -39,6 +39,9 @@ public class ApprovalListRequest extends AbstractOpenapiJsonRequest<PageResult<P
      * 审批类型，多个逗号分隔
      */
     private List<Integer> flowTypes;
+
+    /** 所属人ID 数组 */
+    private List<String> ownerIds;
     /**
      * 部门id，多个逗号分隔
      */
@@ -137,6 +140,14 @@ public class ApprovalListRequest extends AbstractOpenapiJsonRequest<PageResult<P
         this.lastModtimeEnd = lastModtimeEnd;
     }
 
+    public List<String> getOwnerIds() {
+        return ownerIds;
+    }
+
+    public void setOwnerIds(List<String> ownerIds) {
+        this.ownerIds = ownerIds;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -170,6 +181,9 @@ public class ApprovalListRequest extends AbstractOpenapiJsonRequest<PageResult<P
         }
         if (!XRXSListUtils.isEmpty(departmentIds)) {
             map.put("departmentIds", departmentIds);
+        }
+        if (!XRXSListUtils.isEmpty(ownerIds)) {
+            map.put("ownerIds", ownerIds);
         }
         if (null != addtimeStart) {
             map.put("addtimeStart", addtimeStart);

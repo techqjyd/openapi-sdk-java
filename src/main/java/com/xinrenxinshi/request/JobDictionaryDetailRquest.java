@@ -25,6 +25,19 @@ public class JobDictionaryDetailRquest extends AbstractOpenapiJsonRequest<List<J
      */
     private String jobId;
 
+    /**
+     * 部门id，不传或者传空时，默认返回公司所有的岗位信息
+     */
+    private String departmentId;
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
+
     public String getJobId() {
         return jobId;
     }
@@ -41,6 +54,7 @@ public class JobDictionaryDetailRquest extends AbstractOpenapiJsonRequest<List<J
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(2);
         map.put("jobId", jobId);
+        map.put("departmentId", departmentId);
         return map;
     }
 

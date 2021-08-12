@@ -8,6 +8,7 @@ import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.DepartmentJobGetResponse;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,20 @@ import java.util.Map;
  * @create: 2019-11-11 11:48
  **/
 public class DepartmentJobGetRequest extends AbstractOpenapiJsonRequest<List<JobHeaderModel>> {
+
+
+    /**
+     * 部门id，不传或者传空时，默认返回公司所有的岗位信息
+     */
+    private String departmentId;
+
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
+    }
 
     public DepartmentJobGetRequest(String accessToken) {
         super(accessToken);
@@ -53,6 +68,8 @@ public class DepartmentJobGetRequest extends AbstractOpenapiJsonRequest<List<Job
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        return null;
+        Map<String, Object> map = new HashMap<>(2);
+        map.put("departmentId", departmentId);
+        return map;
     }
 }
