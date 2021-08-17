@@ -27,6 +27,9 @@ public class ProcessBasicInfo {
     /** 发起人ID */
     private String sponsorId;
 
+    /** 发起人的手机号 */
+    private String sponsorMobile;
+
 
     /** 发起人类型：0.员工、1.管理员 */
     private Integer sponsorType;
@@ -214,5 +217,13 @@ public class ProcessBasicInfo {
 
     public void setFlowNumber(String flowNumber) {
         this.flowNumber = flowNumber;
+    }
+
+    public String getSponsorMobile() {
+        return sponsorMobile;
+    }
+
+    public void setSponsorMobile(String sponsorMobile) {
+        this.sponsorMobile = sponsorMobile;
     }
 }
