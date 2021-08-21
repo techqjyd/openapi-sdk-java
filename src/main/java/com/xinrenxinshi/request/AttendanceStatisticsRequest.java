@@ -24,6 +24,17 @@ public class AttendanceStatisticsRequest extends AbstractOpenapiJsonRequest<Atte
 
     private String mobile;
 
+
+    /**
+     * 起始时间 时间格式 yyyy-MM-dd
+     */
+    private String startDate;
+
+    /**
+     * 结束时间 时间格式 yyyy-MM-dd
+     */
+    private String endDate;
+
     public AttendanceStatisticsRequest(String accessToken) {
         super(accessToken);
     }
@@ -33,6 +44,8 @@ public class AttendanceStatisticsRequest extends AbstractOpenapiJsonRequest<Atte
         Map<String, Object> map = new HashMap<>(4);
         map.put("employeeId",employeeId);
         map.put("mobile",mobile);
+        map.put("startDate",startDate);
+        map.put("endDate",endDate);
         return map;
     }
 
@@ -77,5 +90,21 @@ public class AttendanceStatisticsRequest extends AbstractOpenapiJsonRequest<Atte
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }
