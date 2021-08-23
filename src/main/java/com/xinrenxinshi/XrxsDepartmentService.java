@@ -43,7 +43,7 @@ public abstract class XrxsDepartmentService {
         request.setName(name);
         request.setCode(code);
         request.setParentId(parentId);
-        request.setType(departTypeEnum);
+        request.setType(departTypeEnum.getType());
         request.setAdminId(adminId);
         request.setCity(city);
         request.setRemark(remark);
@@ -109,7 +109,7 @@ public abstract class XrxsDepartmentService {
         request.setName(name);
         request.setParentId(parentId);
         request.setCode(code);
-        request.setType(type);
+        request.setType(type.getType());
         request.setAdminId(adminId);
         request.setCity(city);
         request.setRemark(remark);
@@ -229,6 +229,17 @@ public abstract class XrxsDepartmentService {
      * @throws ApiException
      */
     public static OpenapiResponse<List<JobDictionaryModel>> getJobDictionary(JobDictionaryDetailRquest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取公司部门类型列表
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<DepartmentTypeModel>> getDepartmentTypeList(DepartmentTypeRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 }

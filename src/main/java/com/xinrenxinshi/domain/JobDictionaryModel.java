@@ -1,5 +1,7 @@
 package com.xinrenxinshi.domain;
 
+import java.util.List;
+
 /**
  * <岗位词典详细信息>.
  *
@@ -43,6 +45,19 @@ public class JobDictionaryModel {
      * 岗位说明
      */
     private String introduction;
+
+    /**
+     * 适用部门
+     */
+    private List<String> departmentIds;
+
+    public List<String> getDepartmentIds() {
+        return departmentIds;
+    }
+
+    public void setDepartmentIds(List<String> departmentIds) {
+        this.departmentIds = departmentIds;
+    }
 
     public String getJobId() {
         return jobId;

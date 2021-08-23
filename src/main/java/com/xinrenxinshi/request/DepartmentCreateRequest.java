@@ -35,7 +35,7 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
     /**
      * 部门类型,0-部门,1-事业部,2-事业群,3-组,4-中心,5-子公司
      */
-    private DepartTypeEnum type;
+    private Integer type;
     /**
      * 管理员ID
      */
@@ -90,11 +90,11 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
         this.code = code;
     }
 
-    public DepartTypeEnum getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(DepartTypeEnum type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
@@ -171,7 +171,7 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
             map.put("remark", remark);
         }
         if (type != null) {
-            map.put("type", type.getType());
+            map.put("type", type);
         }
         if (fields != null) {
             map.put("fields", fields);
