@@ -45,6 +45,8 @@ public class JobDictionaryModel {
      * 岗位说明
      */
     private String introduction;
+    private Integer addtime;
+    private Integer modtime;
 
     /**
      * 适用部门
@@ -113,5 +115,21 @@ public class JobDictionaryModel {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public Integer getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(Integer addtime) {
+        this.addtime = addtime;
+    }
+
+    public Integer getModtime() {
+        return modtime;
+    }
+
+    public void setModtime(Integer modtime) {
+        this.modtime = modtime;
     }
 }

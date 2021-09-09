@@ -23,6 +23,9 @@ public class JobHeaderModel {
      */
     private String jobCode;
 
+    private Integer addtime;
+    private Integer modtime;
+
     /**
      * 适用部门
      */
@@ -58,5 +61,21 @@ public class JobHeaderModel {
 
     public void setJobName(String jobName) {
         this.jobName = jobName;
+    }
+
+    public Integer getAddtime() {
+        return addtime;
+    }
+
+    public void setAddtime(Integer addtime) {
+        this.addtime = addtime;
+    }
+
+    public Integer getModtime() {
+        return modtime;
+    }
+
+    public void setModtime(Integer modtime) {
+        this.modtime = modtime;
     }
 }
