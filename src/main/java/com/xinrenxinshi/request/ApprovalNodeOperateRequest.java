@@ -24,8 +24,14 @@ public class ApprovalNodeOperateRequest extends AbstractOpenapiJsonRequest<Void>
      * 操作人id (员工id)
      */
     private String operatorId;
+
     /**
-     * 操作类型 1:通过 2:驳回
+     * 审批id
+     */
+    private Long sid;
+
+    /**
+     * 操作类型 1:通过 2:驳回 3:撤销
      */
     private Integer status;
     /**
@@ -33,6 +39,13 @@ public class ApprovalNodeOperateRequest extends AbstractOpenapiJsonRequest<Void>
      */
     private String remark;
 
+    public Long getSid() {
+        return sid;
+    }
+
+    public void setSid(Long sid) {
+        this.sid = sid;
+    }
     public ApprovalNodeOperateRequest(String accessToken) {
         super(accessToken);
     }
@@ -75,6 +88,7 @@ public class ApprovalNodeOperateRequest extends AbstractOpenapiJsonRequest<Void>
         map.put("stepNodeId", stepNodeId);
         map.put("operatorId", operatorId);
         map.put("status", status);
+        map.put("sid", sid);
         map.put("remark", remark);
         return map;
     }
@@ -97,9 +111,6 @@ public class ApprovalNodeOperateRequest extends AbstractOpenapiJsonRequest<Void>
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(stepNodeId)) {
-            throw new ParamNotValidException("审批节点id为空");
-        }
         if (XRXSStrUtils.isEmpty(operatorId)) {
             throw new ParamNotValidException("操作人id(员工id)为空");
         }

@@ -7,6 +7,7 @@ import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
+import com.xinrenxinshi.response.AttendanceLeaveOutResponse;
 import com.xinrenxinshi.response.AttendanceStatisticsResponse;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.response.ReportPageResult;
@@ -245,6 +246,23 @@ public abstract class XrxsAttendanceService {
      */
     public static OpenapiResponse<AttendanceStatisticsResponse> getAttendanceStatic(AttendanceStatisticsRequest request) throws ApiException{
         OpenapiResponse<AttendanceStatisticsResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+
+    /**
+     * 外出申请状态同步
+     */
+    public static OpenapiResponse<AttendanceLeaveOutResponse> leaveOut(AttendanceLeaveOutRequest request) throws ApiException {
+        OpenapiResponse<AttendanceLeaveOutResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 外出申请状态同步
+     */
+    public static OpenapiResponse<Void> cancelLeaveout(AttendanceCancelLeaveOutRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
         return execute;
     }
 }

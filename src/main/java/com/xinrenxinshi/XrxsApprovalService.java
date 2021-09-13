@@ -7,6 +7,7 @@ import com.xinrenxinshi.domain.approval.ProcessStepAndCopyInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
+import com.xinrenxinshi.response.ApprovalApplyResponse;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -142,6 +143,24 @@ public abstract class XrxsApprovalService {
         OpenapiResponse<Void> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 审批节点操作
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  leaveOutApprovalApply(LeaveOutApprovalApplyRequest request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+
+    /**
+     * 审批节点操作
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  travelApprovalApply(TravelApprovalApplyRequest request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
 
 
 }
