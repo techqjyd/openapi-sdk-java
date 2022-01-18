@@ -34,6 +34,8 @@ public class RecruitmentResumeStatusModel {
      */
     private String applyJobId;
 
+    private String job;
+
     /**
      * 渠道名
      */
@@ -98,5 +100,13 @@ public class RecruitmentResumeStatusModel {
 
     public void setChannelTypeDesc(String channelTypeDesc) {
         this.channelTypeDesc = channelTypeDesc;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
     }
 }
