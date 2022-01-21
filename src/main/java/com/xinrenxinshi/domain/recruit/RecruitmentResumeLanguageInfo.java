@@ -1,6 +1,6 @@
 package com.xinrenxinshi.domain.recruit;
 
-public class RecruitmentResumeLanguageModel {
+public class RecruitmentResumeLanguageInfo {
     // 语种
     private String languageType;
     // 掌握程度

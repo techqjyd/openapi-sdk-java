@@ -1,6 +1,6 @@
 package com.xinrenxinshi.domain.recruit;
 
-public class RecruitmentResumeSocialModel {
+public class RecruitmentResumeSocialInfo {
     /**
      * 平台
      */

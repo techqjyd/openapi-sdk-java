@@ -1,6 +1,6 @@
 package com.xinrenxinshi.domain.recruit;
 
-public class RecruitmentResumeJobIntentionModel {
+public class RecruitmentResumeJobIntentionInfo {
     private Integer jobNature;
     private String workPosition;
     private String expectedJob;

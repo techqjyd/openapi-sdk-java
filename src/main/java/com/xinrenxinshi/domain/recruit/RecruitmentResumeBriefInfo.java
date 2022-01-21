@@ -3,7 +3,7 @@ package com.xinrenxinshi.domain.recruit;
 /**简历简要信息对象
  * @author hzz on 2022/01/14
  */
-public class RecruitmentResumeBriefModel {
+public class RecruitmentResumeBriefInfo {
 
     private String namePinyin;
     private String surName;

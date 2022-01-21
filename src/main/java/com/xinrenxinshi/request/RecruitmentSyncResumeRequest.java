@@ -40,25 +40,25 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
     private Integer marriage;
     private String resume;
     private String resumePreview;
-    private List<RecruitmentResumeAttachmentModel> attachmentModels;
+    private List<RecruitmentResumeAttachmentInfo> attachmentModels;
     private String industry;
     private String skill;
     private String interesting;
     private String remark;
     private Integer videoResumeMark;
-    private List<RecruitmentResumeStatusModel> statusModelList;
-    private RecruitmentResumeBriefModel resumeBriefModel;
-    private RecruitmentResumeTagModel resumeTagModel;
-    private List<RecruitmentResumeJobIntentionModel> jobIntentionModelList;
-    private List<RecruitmentResumeEducationExprienceModel> educationExperienceModelList;
-    private List<RecruitmentResumeLanguageModel> languageModelList;
-    private List<RecruitmentResumeProjectExperienceModel> projectExperienceModelList;
-    private List<RecruitmentResumeSelfEvaluationModel> selfEvaluationModelList;
-    private List<RecruitmentResumeSocialModel> socialModelList;
-    private List<RecruitmentResumeTrainingExperienceModel> trainingExperienceModelList;
-    private List<RecruitmentResumeWorkExperienceModel> workExperienceModelList;
-    private List<RecruitmentResumeAwardExperienceModel> awardExperienceModelList;
-    private List<RecruitmentResumeUnderstandingModel> understandingModelList;
+    private List<RecruitmentResumeStatusInfo> statusModelList;
+    private RecruitmentResumeBriefInfo resumeBriefModel;
+    private RecruitmentResumeTagInfo resumeTagModel;
+    private List<RecruitmentResumeJobIntentionInfo> jobIntentionModelList;
+    private List<RecruitmentResumeEducationExprienceInfo> educationExperienceModelList;
+    private List<RecruitmentResumeLanguageInfo> languageModelList;
+    private List<RecruitmentResumeProjectExperienceInfo> projectExperienceModelList;
+    private List<RecruitmentResumeSelfEvaluationInfo> selfEvaluationModelList;
+    private List<RecruitmentResumeSocialInfo> socialModelList;
+    private List<RecruitmentResumeTrainingExperienceInfo> trainingExperienceModelList;
+    private List<RecruitmentResumeWorkExperienceInfo> workExperienceModelList;
+    private List<RecruitmentResumeAwardExperienceInfo> awardExperienceModelList;
+    private List<RecruitmentResumeUnderstandingInfo> understandingModelList;
 
     public RecruitmentSyncResumeRequest(String accessToken){
         super(accessToken);
@@ -303,11 +303,11 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
         this.resumePreview = resumePreview;
     }
 
-    public List<RecruitmentResumeAttachmentModel> getAttachmentModels() {
+    public List<RecruitmentResumeAttachmentInfo> getAttachmentModels() {
         return attachmentModels;
     }
 
-    public void setAttachmentModels(List<RecruitmentResumeAttachmentModel> attachmentModels) {
+    public void setAttachmentModels(List<RecruitmentResumeAttachmentInfo> attachmentModels) {
         this.attachmentModels = attachmentModels;
     }
 
@@ -351,107 +351,107 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
         this.videoResumeMark = videoResumeMark;
     }
 
-    public List<RecruitmentResumeStatusModel> getStatusModelList() {
+    public List<RecruitmentResumeStatusInfo> getStatusModelList() {
         return statusModelList;
     }
 
-    public void setStatusModelList(List<RecruitmentResumeStatusModel> statusModelList) {
+    public void setStatusModelList(List<RecruitmentResumeStatusInfo> statusModelList) {
         this.statusModelList = statusModelList;
     }
 
-    public RecruitmentResumeBriefModel getResumeBriefModel() {
+    public RecruitmentResumeBriefInfo getResumeBriefModel() {
         return resumeBriefModel;
     }
 
-    public void setResumeBriefModel(RecruitmentResumeBriefModel resumeBriefModel) {
+    public void setResumeBriefModel(RecruitmentResumeBriefInfo resumeBriefModel) {
         this.resumeBriefModel = resumeBriefModel;
     }
 
-    public RecruitmentResumeTagModel getResumeTagModel() {
+    public RecruitmentResumeTagInfo getResumeTagModel() {
         return resumeTagModel;
     }
 
-    public void setResumeTagModel(RecruitmentResumeTagModel resumeTagModel) {
+    public void setResumeTagModel(RecruitmentResumeTagInfo resumeTagModel) {
         this.resumeTagModel = resumeTagModel;
     }
 
-    public List<RecruitmentResumeJobIntentionModel> getJobIntentionModelList() {
+    public List<RecruitmentResumeJobIntentionInfo> getJobIntentionModelList() {
         return jobIntentionModelList;
     }
 
-    public void setJobIntentionModelList(List<RecruitmentResumeJobIntentionModel> jobIntentionModelList) {
+    public void setJobIntentionModelList(List<RecruitmentResumeJobIntentionInfo> jobIntentionModelList) {
         this.jobIntentionModelList = jobIntentionModelList;
     }
 
-    public List<RecruitmentResumeEducationExprienceModel> getEducationExperienceModelList() {
+    public List<RecruitmentResumeEducationExprienceInfo> getEducationExperienceModelList() {
         return educationExperienceModelList;
     }
 
-    public void setEducationExperienceModelList(List<RecruitmentResumeEducationExprienceModel> educationExperienceModelList) {
+    public void setEducationExperienceModelList(List<RecruitmentResumeEducationExprienceInfo> educationExperienceModelList) {
         this.educationExperienceModelList = educationExperienceModelList;
     }
 
-    public List<RecruitmentResumeLanguageModel> getLanguageModelList() {
+    public List<RecruitmentResumeLanguageInfo> getLanguageModelList() {
         return languageModelList;
     }
 
-    public void setLanguageModelList(List<RecruitmentResumeLanguageModel> languageModelList) {
+    public void setLanguageModelList(List<RecruitmentResumeLanguageInfo> languageModelList) {
         this.languageModelList = languageModelList;
     }
 
-    public List<RecruitmentResumeProjectExperienceModel> getProjectExperienceModelList() {
+    public List<RecruitmentResumeProjectExperienceInfo> getProjectExperienceModelList() {
         return projectExperienceModelList;
     }
 
-    public void setProjectExperienceModelList(List<RecruitmentResumeProjectExperienceModel> projectExperienceModelList) {
+    public void setProjectExperienceModelList(List<RecruitmentResumeProjectExperienceInfo> projectExperienceModelList) {
         this.projectExperienceModelList = projectExperienceModelList;
     }
 
-    public List<RecruitmentResumeSelfEvaluationModel> getSelfEvaluationModelList() {
+    public List<RecruitmentResumeSelfEvaluationInfo> getSelfEvaluationModelList() {
         return selfEvaluationModelList;
     }
 
-    public void setSelfEvaluationModelList(List<RecruitmentResumeSelfEvaluationModel> selfEvaluationModelList) {
+    public void setSelfEvaluationModelList(List<RecruitmentResumeSelfEvaluationInfo> selfEvaluationModelList) {
         this.selfEvaluationModelList = selfEvaluationModelList;
     }
 
-    public List<RecruitmentResumeSocialModel> getSocialModelList() {
+    public List<RecruitmentResumeSocialInfo> getSocialModelList() {
         return socialModelList;
     }
 
-    public void setSocialModelList(List<RecruitmentResumeSocialModel> socialModelList) {
+    public void setSocialModelList(List<RecruitmentResumeSocialInfo> socialModelList) {
         this.socialModelList = socialModelList;
     }
 
-    public List<RecruitmentResumeTrainingExperienceModel> getTrainingExperienceModelList() {
+    public List<RecruitmentResumeTrainingExperienceInfo> getTrainingExperienceModelList() {
         return trainingExperienceModelList;
     }
 
-    public void setTrainingExperienceModelList(List<RecruitmentResumeTrainingExperienceModel> trainingExperienceModelList) {
+    public void setTrainingExperienceModelList(List<RecruitmentResumeTrainingExperienceInfo> trainingExperienceModelList) {
         this.trainingExperienceModelList = trainingExperienceModelList;
     }
 
-    public List<RecruitmentResumeWorkExperienceModel> getWorkExperienceModelList() {
+    public List<RecruitmentResumeWorkExperienceInfo> getWorkExperienceModelList() {
         return workExperienceModelList;
     }
 
-    public void setWorkExperienceModelList(List<RecruitmentResumeWorkExperienceModel> workExperienceModelList) {
+    public void setWorkExperienceModelList(List<RecruitmentResumeWorkExperienceInfo> workExperienceModelList) {
         this.workExperienceModelList = workExperienceModelList;
     }
 
-    public List<RecruitmentResumeAwardExperienceModel> getAwardExperienceModelList() {
+    public List<RecruitmentResumeAwardExperienceInfo> getAwardExperienceModelList() {
         return awardExperienceModelList;
     }
 
-    public void setAwardExperienceModelList(List<RecruitmentResumeAwardExperienceModel> awardExperienceModelList) {
+    public void setAwardExperienceModelList(List<RecruitmentResumeAwardExperienceInfo> awardExperienceModelList) {
         this.awardExperienceModelList = awardExperienceModelList;
     }
 
-    public List<RecruitmentResumeUnderstandingModel> getUnderstandingModelList() {
+    public List<RecruitmentResumeUnderstandingInfo> getUnderstandingModelList() {
         return understandingModelList;
     }
 
-    public void setUnderstandingModelList(List<RecruitmentResumeUnderstandingModel> understandingModelList) {
+    public void setUnderstandingModelList(List<RecruitmentResumeUnderstandingInfo> understandingModelList) {
         this.understandingModelList = understandingModelList;
     }
 }

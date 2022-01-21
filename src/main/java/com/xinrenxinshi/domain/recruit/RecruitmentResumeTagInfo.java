@@ -3,7 +3,7 @@ package com.xinrenxinshi.domain.recruit;
 /**简历标签对象
  * @author hzz on 2022/01/14
  */
-public class RecruitmentResumeTagModel {
+public class RecruitmentResumeTagInfo {
     private String aptTags;
     private String basicTags;
     private String compTags;

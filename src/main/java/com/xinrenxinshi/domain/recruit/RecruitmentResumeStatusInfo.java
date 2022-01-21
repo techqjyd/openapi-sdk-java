@@ -3,7 +3,7 @@ package com.xinrenxinshi.domain.recruit;
 /**简历状态对象
  * @author hzz on 2022/01/14
  */
-public class RecruitmentResumeStatusModel {
+public class RecruitmentResumeStatusInfo {
 
     /**
      * 投递时间

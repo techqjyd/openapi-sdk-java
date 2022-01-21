@@ -1,6 +1,6 @@
 package com.xinrenxinshi.domain.recruit;
 
-public class RecruitmentResumeAwardExperienceModel {
+public class RecruitmentResumeAwardExperienceInfo {
     /**
      * 获奖时间
      */

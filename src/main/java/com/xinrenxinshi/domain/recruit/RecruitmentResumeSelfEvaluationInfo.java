@@ -1,6 +1,6 @@
 package com.xinrenxinshi.domain.recruit;
 
-public class RecruitmentResumeSelfEvaluationModel {
+public class RecruitmentResumeSelfEvaluationInfo {
     private String selfEvaluation;
 
     public String getSelfEvaluation() {

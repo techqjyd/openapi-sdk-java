@@ -3,7 +3,7 @@ package com.xinrenxinshi.domain.recruit;
 /**简历附件对象
  * @author hzz on 2022/01/14
  */
-public class RecruitmentResumeAttachmentModel {
+public class RecruitmentResumeAttachmentInfo {
     /**
      * 文件名
      */

@@ -28,16 +28,16 @@ public class RecruitmentResumeParamModel {
     private Integer marriage;
     private String resume;
     private String resumePreview;
-    private List<RecruitmentResumeAttachmentModel> attachmentModels;
+    private List<RecruitmentResumeAttachmentInfo> attachmentModels;
     private String industry;
     private String skill;
     private String interesting;
     private String remark;
     private Integer videoResumeMark;
-    private List<RecruitmentResumeStatusModel> statusModelList;
-    private RecruitmentResumeBriefModel resumeBriefModel;
-    private RecruitmentResumeTagModel resumeTagModel;
-    private List<RecruitmentResumeJobIntentionModel> jobIntentionModelList;
+    private List<RecruitmentResumeStatusInfo> statusModelList;
+    private RecruitmentResumeBriefInfo resumeBriefModel;
+    private RecruitmentResumeTagInfo resumeTagModel;
+    private List<RecruitmentResumeJobIntentionInfo> jobIntentionModelList;
 
     public String getName() {
         return name;
@@ -247,43 +247,43 @@ public class RecruitmentResumeParamModel {
         this.videoResumeMark = videoResumeMark;
     }
 
-    public List<RecruitmentResumeAttachmentModel> getAttachmentModels() {
+    public List<RecruitmentResumeAttachmentInfo> getAttachmentModels() {
         return attachmentModels;
     }
 
-    public void setAttachmentModels(List<RecruitmentResumeAttachmentModel> attachmentModels) {
+    public void setAttachmentModels(List<RecruitmentResumeAttachmentInfo> attachmentModels) {
         this.attachmentModels = attachmentModels;
     }
 
-    public List<RecruitmentResumeStatusModel> getStatusModelList() {
+    public List<RecruitmentResumeStatusInfo> getStatusModelList() {
         return statusModelList;
     }
 
-    public void setStatusModelList(List<RecruitmentResumeStatusModel> statusModelList) {
+    public void setStatusModelList(List<RecruitmentResumeStatusInfo> statusModelList) {
         this.statusModelList = statusModelList;
     }
 
-    public RecruitmentResumeBriefModel getResumeBriefModel() {
+    public RecruitmentResumeBriefInfo getResumeBriefModel() {
         return resumeBriefModel;
     }
 
-    public void setResumeBriefModel(RecruitmentResumeBriefModel resumeBriefModel) {
+    public void setResumeBriefModel(RecruitmentResumeBriefInfo resumeBriefModel) {
         this.resumeBriefModel = resumeBriefModel;
     }
 
-    public RecruitmentResumeTagModel getResumeTagModel() {
+    public RecruitmentResumeTagInfo getResumeTagModel() {
         return resumeTagModel;
     }
 
-    public void setResumeTagModel(RecruitmentResumeTagModel resumeTagModel) {
+    public void setResumeTagModel(RecruitmentResumeTagInfo resumeTagModel) {
         this.resumeTagModel = resumeTagModel;
     }
 
-    public List<RecruitmentResumeJobIntentionModel> getJobIntentionModelList() {
+    public List<RecruitmentResumeJobIntentionInfo> getJobIntentionModelList() {
         return jobIntentionModelList;
     }
 
-    public void setJobIntentionModelList(List<RecruitmentResumeJobIntentionModel> jobIntentionModelList) {
+    public void setJobIntentionModelList(List<RecruitmentResumeJobIntentionInfo> jobIntentionModelList) {
         this.jobIntentionModelList = jobIntentionModelList;
     }
 }

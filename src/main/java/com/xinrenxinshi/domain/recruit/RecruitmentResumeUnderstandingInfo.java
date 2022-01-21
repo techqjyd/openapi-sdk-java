@@ -1,6 +1,6 @@
 package com.xinrenxinshi.domain.recruit;
 
-public class RecruitmentResumeUnderstandingModel {
+public class RecruitmentResumeUnderstandingInfo {
     /**
      * todo name 可以不传, 目前仅用了message
      * [{"name":"技术达标","message":"对教育培训有深入的理解, 熟练掌握课程研发、教务管理"},

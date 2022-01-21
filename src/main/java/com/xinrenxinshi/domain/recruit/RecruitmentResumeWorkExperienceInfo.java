@@ -1,6 +1,6 @@
 package com.xinrenxinshi.domain.recruit;
 
-public class RecruitmentResumeWorkExperienceModel {
+public class RecruitmentResumeWorkExperienceInfo {
     /**
      * 开始时间
      */
