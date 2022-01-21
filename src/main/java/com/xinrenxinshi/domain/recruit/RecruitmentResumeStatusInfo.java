@@ -10,11 +10,6 @@ public class RecruitmentResumeStatusInfo {
      */
     private Integer applyTime;
 
-    /**
-     * 应聘职位
-     */
-    private String applyJobId;
-
     private String job;
 
     /**
@@ -28,14 +23,6 @@ public class RecruitmentResumeStatusInfo {
 
     public void setApplyTime(Integer applyTime) {
         this.applyTime = applyTime;
-    }
-
-    public String getApplyJobId() {
-        return applyJobId;
-    }
-
-    public void setApplyJobId(String applyJobId) {
-        this.applyJobId = applyJobId;
     }
 
     public String getChannelTypeDesc() {
