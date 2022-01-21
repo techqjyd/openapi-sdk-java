@@ -17,24 +17,10 @@ public class RecruitmentResumeEducationExprienceInfo {
     private String classRank;
     // 院系
     private String collegeName;
-    // 课程名称
-    private String course;
-    // 学位等级
-    private Integer degreeRank;
-    // 描述
-    private String description;
     // 教育机构地点
     private String eduLocation;
     // 教育性质,如在职,统招,自考,成人,专升本,全日制,交换生,自学等
     private String eduNature;
-    // 证明人
-    private String eduReferee;
-    // 证明人电话
-    private String eduRefereePhone;
-    // 证明人职位
-    private String eduRefereePosition;
-    // 证明人关系
-    private String eduRefereeRelationship;
     // 成绩绩点
     private String gpa;
     // 是否统招
@@ -49,10 +35,6 @@ public class RecruitmentResumeEducationExprienceInfo {
     private String schoolType;
     // 毕业设计/论文
     private String thesis;
-    // 导师
-    private String tutor;
-    // 教育性质 EResumeEduNature
-    private Integer eduNatureId;
     // 是否是最高学历 1是 0否
     private Integer isHighestDegree;
 
@@ -120,30 +102,6 @@ public class RecruitmentResumeEducationExprienceInfo {
         this.collegeName = collegeName;
     }
 
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public Integer getDegreeRank() {
-        return degreeRank;
-    }
-
-    public void setDegreeRank(Integer degreeRank) {
-        this.degreeRank = degreeRank;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getEduLocation() {
         return eduLocation;
     }
@@ -158,38 +116,6 @@ public class RecruitmentResumeEducationExprienceInfo {
 
     public void setEduNature(String eduNature) {
         this.eduNature = eduNature;
-    }
-
-    public String getEduReferee() {
-        return eduReferee;
-    }
-
-    public void setEduReferee(String eduReferee) {
-        this.eduReferee = eduReferee;
-    }
-
-    public String getEduRefereePhone() {
-        return eduRefereePhone;
-    }
-
-    public void setEduRefereePhone(String eduRefereePhone) {
-        this.eduRefereePhone = eduRefereePhone;
-    }
-
-    public String getEduRefereePosition() {
-        return eduRefereePosition;
-    }
-
-    public void setEduRefereePosition(String eduRefereePosition) {
-        this.eduRefereePosition = eduRefereePosition;
-    }
-
-    public String getEduRefereeRelationship() {
-        return eduRefereeRelationship;
-    }
-
-    public void setEduRefereeRelationship(String eduRefereeRelationship) {
-        this.eduRefereeRelationship = eduRefereeRelationship;
     }
 
     public String getGpa() {
@@ -248,21 +174,6 @@ public class RecruitmentResumeEducationExprienceInfo {
         this.thesis = thesis;
     }
 
-    public String getTutor() {
-        return tutor;
-    }
-
-    public void setTutor(String tutor) {
-        this.tutor = tutor;
-    }
-
-    public Integer getEduNatureId() {
-        return eduNatureId;
-    }
-
-    public void setEduNatureId(Integer eduNatureId) {
-        this.eduNatureId = eduNatureId;
-    }
 
     public Integer getIsHighestDegree() {
         return isHighestDegree;

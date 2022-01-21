@@ -2,7 +2,6 @@ package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.Page;
 import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
-import com.xinrenxinshi.domain.recruit.RecruitmentResumeParamModel;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.RecruitmentFullDataRequest;

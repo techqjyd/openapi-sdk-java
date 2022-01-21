@@ -6,24 +6,14 @@ package com.xinrenxinshi.domain.recruit;
 public class RecruitmentResumeStatusInfo {
 
     /**
-     * 投递时间
+     * 职位
      */
-    private Integer applyTime;
-
     private String job;
 
     /**
      * 渠道名
      */
     private String channelTypeDesc;
-
-    public Integer getApplyTime() {
-        return applyTime;
-    }
-
-    public void setApplyTime(Integer applyTime) {
-        this.applyTime = applyTime;
-    }
 
     public String getChannelTypeDesc() {
         return channelTypeDesc;

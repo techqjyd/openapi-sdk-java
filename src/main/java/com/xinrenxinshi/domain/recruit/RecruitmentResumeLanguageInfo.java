@@ -5,8 +5,6 @@ public class RecruitmentResumeLanguageInfo {
     private String languageType;
     // 掌握程度
     private Integer depth;
-    // 份数
-    private String certScore;
     // 听说能力
     private String listenAndSpeak;
     // 读写能力
@@ -28,14 +26,6 @@ public class RecruitmentResumeLanguageInfo {
 
     public void setDepth(Integer depth) {
         this.depth = depth;
-    }
-
-    public String getCertScore() {
-        return certScore;
-    }
-
-    public void setCertScore(String certScore) {
-        this.certScore = certScore;
     }
 
     public String getListenAndSpeak() {

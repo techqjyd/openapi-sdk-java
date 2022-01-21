@@ -48,7 +48,6 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
     private Integer videoResumeMark;
     private List<RecruitmentResumeStatusInfo> statusModelList;
     private RecruitmentResumeBriefInfo resumeBriefModel;
-    private RecruitmentResumeTagInfo resumeTagModel;
     private List<RecruitmentResumeJobIntentionInfo> jobIntentionModelList;
     private List<RecruitmentResumeEducationExprienceInfo> educationExperienceModelList;
     private List<RecruitmentResumeLanguageInfo> languageModelList;
@@ -58,7 +57,6 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
     private List<RecruitmentResumeTrainingExperienceInfo> trainingExperienceModelList;
     private List<RecruitmentResumeWorkExperienceInfo> workExperienceModelList;
     private List<RecruitmentResumeAwardExperienceInfo> awardExperienceModelList;
-    private List<RecruitmentResumeUnderstandingInfo> understandingModelList;
 
     public RecruitmentSyncResumeRequest(String accessToken){
         super(accessToken);
@@ -95,7 +93,6 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
         map.put("videoResumeMark",videoResumeMark);
         map.put("statusModelList",statusModelList);
         map.put("resumeBriefModel",resumeBriefModel);
-        map.put("resumeTagModel",resumeTagModel);
         map.put("jobIntentionModelList",jobIntentionModelList);
         map.put("educationExperienceModelList",educationExperienceModelList);
         map.put("languageModelList",languageModelList);
@@ -105,7 +102,6 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
         map.put("trainingExperienceModelList",trainingExperienceModelList);
         map.put("workExperienceModelList",workExperienceModelList);
         map.put("awardExperienceModelList",awardExperienceModelList);
-        map.put("understandingModelList",understandingModelList);
         return map;
     }
 
@@ -367,14 +363,6 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
         this.resumeBriefModel = resumeBriefModel;
     }
 
-    public RecruitmentResumeTagInfo getResumeTagModel() {
-        return resumeTagModel;
-    }
-
-    public void setResumeTagModel(RecruitmentResumeTagInfo resumeTagModel) {
-        this.resumeTagModel = resumeTagModel;
-    }
-
     public List<RecruitmentResumeJobIntentionInfo> getJobIntentionModelList() {
         return jobIntentionModelList;
     }
@@ -447,11 +435,4 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
         this.awardExperienceModelList = awardExperienceModelList;
     }
 
-    public List<RecruitmentResumeUnderstandingInfo> getUnderstandingModelList() {
-        return understandingModelList;
-    }
-
-    public void setUnderstandingModelList(List<RecruitmentResumeUnderstandingInfo> understandingModelList) {
-        this.understandingModelList = understandingModelList;
-    }
 }

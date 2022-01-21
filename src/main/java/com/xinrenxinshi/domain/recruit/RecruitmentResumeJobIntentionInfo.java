@@ -2,7 +2,6 @@ package com.xinrenxinshi.domain.recruit;
 
 public class RecruitmentResumeJobIntentionInfo {
     private Integer jobNature;
-    private String workPosition;
     private String expectedJob;
     private String onboardTime;
     private String expectSalary;
@@ -17,13 +16,6 @@ public class RecruitmentResumeJobIntentionInfo {
         this.jobNature = jobNature;
     }
 
-    public String getWorkPosition() {
-        return workPosition;
-    }
-
-    public void setWorkPosition(String workPosition) {
-        this.workPosition = workPosition;
-    }
 
     public String getExpectedJob() {
         return expectedJob;

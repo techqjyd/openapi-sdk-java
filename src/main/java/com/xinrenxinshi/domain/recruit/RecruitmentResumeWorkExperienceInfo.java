@@ -90,22 +90,6 @@ public class RecruitmentResumeWorkExperienceInfo {
      */
     private String jobNature;
     /**
-     * 证明人
-     */
-    private String jobReferee;
-    /**
-     * 证明人职位
-     */
-    private String jobRefereePosition;
-    /**
-     * 证明人关系
-     */
-    private String jobRefereeRelationship;
-    /**
-     * 证明人联系方式
-     */
-    private String jobRefereePhone;
-    /**
      * 是否是最近受雇 1是0否
      */
     private Integer isLastJob;
@@ -284,38 +268,6 @@ public class RecruitmentResumeWorkExperienceInfo {
 
     public void setJobNature(String jobNature) {
         this.jobNature = jobNature;
-    }
-
-    public String getJobReferee() {
-        return jobReferee;
-    }
-
-    public void setJobReferee(String jobReferee) {
-        this.jobReferee = jobReferee;
-    }
-
-    public String getJobRefereePosition() {
-        return jobRefereePosition;
-    }
-
-    public void setJobRefereePosition(String jobRefereePosition) {
-        this.jobRefereePosition = jobRefereePosition;
-    }
-
-    public String getJobRefereeRelationship() {
-        return jobRefereeRelationship;
-    }
-
-    public void setJobRefereeRelationship(String jobRefereeRelationship) {
-        this.jobRefereeRelationship = jobRefereeRelationship;
-    }
-
-    public String getJobRefereePhone() {
-        return jobRefereePhone;
-    }
-
-    public void setJobRefereePhone(String jobRefereePhone) {
-        this.jobRefereePhone = jobRefereePhone;
     }
 
     public Integer getIsLastJob() {
