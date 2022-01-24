@@ -128,7 +128,7 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
 
     @Override
     public String getBizUrl() {
-        return "/v5/recruitment/addRecruitmentResume";
+        return "/v5/recruitment/resume/upload";
     }
 
     public String getName() {
