@@ -78,10 +78,6 @@ public class RecruitmentResumeWorkExperienceInfo {
      */
     private String jobCapacity;
     /**
-     * 开发环境
-     */
-    private String jobDevelopEnv;
-    /**
      * 工作地点
      */
     private String jobLocation;
@@ -244,14 +240,6 @@ public class RecruitmentResumeWorkExperienceInfo {
 
     public void setJobCapacity(String jobCapacity) {
         this.jobCapacity = jobCapacity;
-    }
-
-    public String getJobDevelopEnv() {
-        return jobDevelopEnv;
-    }
-
-    public void setJobDevelopEnv(String jobDevelopEnv) {
-        this.jobDevelopEnv = jobDevelopEnv;
     }
 
     public String getJobLocation() {

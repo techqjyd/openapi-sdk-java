@@ -21,14 +21,8 @@ public class RecruitmentResumeEducationExprienceInfo {
     private String eduLocation;
     // 教育性质,如在职,统招,自考,成人,专升本,全日制,交换生,自学等
     private String eduNature;
-    // 成绩绩点
-    private String gpa;
     // 是否统招
     private Integer isTongzhao;
-    // 专业排名
-    private String majorRank;
-    // 课题研究
-    private String research;
     // 学校参考排名（国内）
     private Integer schoolRank;
     // 学校类型. 0 普通院校 1 985院校 2 211院校 3 港澳台院校 4 国外院校 5 中学 6 职业教育 7 培训机构 8 985_211_双一流院校 9 985_211院校 10 985_双一流院校 11 211_双一流院校
@@ -118,36 +112,12 @@ public class RecruitmentResumeEducationExprienceInfo {
         this.eduNature = eduNature;
     }
 
-    public String getGpa() {
-        return gpa;
-    }
-
-    public void setGpa(String gpa) {
-        this.gpa = gpa;
-    }
-
     public Integer getIsTongzhao() {
         return isTongzhao;
     }
 
     public void setIsTongzhao(Integer isTongzhao) {
         this.isTongzhao = isTongzhao;
-    }
-
-    public String getMajorRank() {
-        return majorRank;
-    }
-
-    public void setMajorRank(String majorRank) {
-        this.majorRank = majorRank;
-    }
-
-    public String getResearch() {
-        return research;
-    }
-
-    public void setResearch(String research) {
-        this.research = research;
     }
 
     public Integer getSchoolRank() {
