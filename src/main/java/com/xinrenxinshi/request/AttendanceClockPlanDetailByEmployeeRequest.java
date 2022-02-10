@@ -57,6 +57,6 @@ public class AttendanceClockPlanDetailByEmployeeRequest extends AbstractOpenapiJ
 
     @Override
     public String getBizUrl() {
-        return "/v5/attendance/clockPlan/detail/employeeId";
+        return "/v5/attendance/clockplan/detail/employee";
     }
 }

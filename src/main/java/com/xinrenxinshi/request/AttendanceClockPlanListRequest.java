@@ -47,6 +47,6 @@ public class AttendanceClockPlanListRequest  extends AbstractOpenapiJsonRequest<
 
     @Override
     public String getBizUrl() {
-        return "/v5/attendance/clockPlans";
+        return "/v5/attendance/clockplans";
     }
 }
