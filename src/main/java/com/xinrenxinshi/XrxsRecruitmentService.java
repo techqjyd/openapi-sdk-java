@@ -5,6 +5,7 @@ import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.RecruitmentFullDataRequest;
+import com.xinrenxinshi.request.RecruitmentSyncResumeRequest;
 import com.xinrenxinshi.util.RequestTemplate;
 
 /**
@@ -44,5 +45,11 @@ public abstract class XrxsRecruitmentService {
         return RequestTemplate.execute(request);
     }
 
+    /**
+     * 简历上传
+     */
+    public static OpenapiResponse<String> syncRecruitmentResume(RecruitmentSyncResumeRequest request) throws ApiException{
+        return RequestTemplate.execute(request);
+    }
 
 }

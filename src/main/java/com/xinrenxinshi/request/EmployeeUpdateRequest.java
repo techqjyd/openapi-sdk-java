@@ -136,23 +136,10 @@ public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         if (XRXSStrUtils.isEmpty(employeeId)) {
             throw new ParamNotValidException("员工ID为空");
         }
-//        if (XRXSStrUtils.isEmpty(name)) {
-//            throw new ParamNotValidException("员工名字为空");
-//        }
-//        if (XRXSStrUtils.isEmpty(mobile)) {
-//            throw new ParamNotValidException("手机号为空");
-//        }
-//        if (XRXSStrUtils.isEmpty(entryDate)) {
-//            throw new ParamNotValidException("入职时间为空");
-//        }
-//        if (fields == null || fields.size() == 0) {
-//            throw new ParamNotValidException("员工其他信息为空");
-//        }
-//        if (hireType == null) {
-//            throw new ParamNotValidException("聘用类型为空");
-//        }
-        if (!XRXSDateUtils.isDateStr(entryDate, Constants.DATE_STRING_FORMAT)) {
-            throw new ParamNotValidException("入职时间不符合yyyy-MM-dd格式校验");
+        if(!XRXSStrUtils.isEmpty(entryDate)){
+            if (!XRXSDateUtils.isDateStr(entryDate, Constants.DATE_STRING_FORMAT)) {
+                throw new ParamNotValidException("入职时间不符合yyyy-MM-dd格式校验");
+            }
         }
     }
 
