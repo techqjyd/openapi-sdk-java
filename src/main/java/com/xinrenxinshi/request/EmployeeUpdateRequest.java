@@ -105,11 +105,19 @@ public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>();
         map.put("employeeId", employeeId);
-        map.put("name", name);
-        map.put("mobile", mobile);
-        map.put("entryDate", entryDate);
+        if (!XRXSStrUtils.isEmpty(name)) {
+            map.put("name", name);
+        }
+        if (!XRXSStrUtils.isEmpty(mobile)) {
+            map.put("mobile", mobile);
+        }
+        if (!XRXSStrUtils.isEmpty(entryDate)) {
+            map.put("entryDate", entryDate);
+        }
         map.put("fields", fields);
-        map.put("hireType", hireType.getHireType());
+        if (hireType != null) {
+            map.put("hireType", hireType.getHireType());
+        }
         return map;
     }
 
@@ -128,21 +136,21 @@ public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         if (XRXSStrUtils.isEmpty(employeeId)) {
             throw new ParamNotValidException("员工ID为空");
         }
-        if (XRXSStrUtils.isEmpty(name)) {
-            throw new ParamNotValidException("员工名字为空");
-        }
-        if (XRXSStrUtils.isEmpty(mobile)) {
-            throw new ParamNotValidException("手机号为空");
-        }
-        if (XRXSStrUtils.isEmpty(entryDate)) {
-            throw new ParamNotValidException("入职时间为空");
-        }
+//        if (XRXSStrUtils.isEmpty(name)) {
+//            throw new ParamNotValidException("员工名字为空");
+//        }
+//        if (XRXSStrUtils.isEmpty(mobile)) {
+//            throw new ParamNotValidException("手机号为空");
+//        }
+//        if (XRXSStrUtils.isEmpty(entryDate)) {
+//            throw new ParamNotValidException("入职时间为空");
+//        }
 //        if (fields == null || fields.size() == 0) {
 //            throw new ParamNotValidException("员工其他信息为空");
 //        }
-        if (hireType == null) {
-            throw new ParamNotValidException("聘用类型为空");
-        }
+//        if (hireType == null) {
+//            throw new ParamNotValidException("聘用类型为空");
+//        }
         if (!XRXSDateUtils.isDateStr(entryDate, Constants.DATE_STRING_FORMAT)) {
             throw new ParamNotValidException("入职时间不符合yyyy-MM-dd格式校验");
         }

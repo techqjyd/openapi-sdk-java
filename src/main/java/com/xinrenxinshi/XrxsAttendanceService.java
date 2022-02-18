@@ -265,4 +265,15 @@ public abstract class XrxsAttendanceService {
         OpenapiResponse<Void> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 获取打卡位置信息
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<AttendancePlaceResponse>> getAttendancePlaceData(AttendancePlaceRequest request) throws ApiException {
+        OpenapiResponse<List<AttendancePlaceResponse>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }
