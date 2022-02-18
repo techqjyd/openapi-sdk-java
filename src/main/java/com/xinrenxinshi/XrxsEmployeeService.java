@@ -532,11 +532,13 @@ public abstract class XrxsEmployeeService {
      * @param groupType   分组类型，1-合同记录,7-教育经历,8-工作经历,9-培训经历,10-证书记录,11-联系人记录
      */
     public static OpenapiResponse<List<EmployeeGroupFieldData>> employeeGroupList(String access_token,
-                                                                 List<String> employeeIds,
-                                                                 EmpGroupEnum groupType) throws ApiException {
+                                                                                  List<String> employeeIds,
+                                                                                  EmpGroupEnum groupType,
+                                                                                  EmployeeStatusEnum employeeStatus) throws ApiException {
         EmployeeGroupListRequest request = new EmployeeGroupListRequest(access_token);
         request.setEmployeeIds(employeeIds);
         request.setGroupType(groupType);
+        request.setEmployeeStatus(employeeStatus);
         return employeeGroupList(request);
     }
 
