@@ -2,6 +2,7 @@ package com.xinrenxinshi.request;
 
 import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.EmpGroupEnum;
+import com.xinrenxinshi.common.EmployeeStatusEnum;
 import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.domain.EmployeeGroupFieldData;
 import com.xinrenxinshi.exception.ParamNotValidException;
@@ -30,6 +31,7 @@ public class EmployeeGroupListRequest extends AbstractOpenapiJsonRequest<List<Em
      * 分组类型，1-合同记录,7-教育经历,8-工作经历,9-培训经历,10-证书记录,11-联系人记录
      */
     private EmpGroupEnum groupType;
+    private EmployeeStatusEnum employeeStatus;
 
     public EmployeeGroupListRequest(String accessToken) {
         super(accessToken);
@@ -52,11 +54,24 @@ public class EmployeeGroupListRequest extends AbstractOpenapiJsonRequest<List<Em
         this.employeeIds = employeeIds;
     }
 
+    public EmployeeStatusEnum getEmployeeStatus() {
+        return employeeStatus;
+    }
+
+    public void setEmployeeStatus(EmployeeStatusEnum employeeStatus) {
+        this.employeeStatus = employeeStatus;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>(4);
+        Map<String, Object> map = new HashMap<>(3);
         map.put("employeeIds", employeeIds);
         map.put("groupType", groupType.getCode());
+        if (employeeStatus == null) {
+            map.put("status", 0);
+        } else {
+            map.put("employeeStatus", employeeStatus.getValue());
+        }
         return map;
     }
 

@@ -3,7 +3,9 @@ package com.xinrenxinshi;
 import com.xinrenxinshi.domain.AttendanceRecord;
 import com.xinrenxinshi.domain.AttendanceReportData;
 import com.xinrenxinshi.domain.BatchClockModel;
+import com.xinrenxinshi.domain.attendance.AttendanceClockPlanDeteilInfo;
 import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
+import com.xinrenxinshi.domain.attendance.AttendanceSimplePlanInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
@@ -263,6 +265,30 @@ public abstract class XrxsAttendanceService {
      */
     public static OpenapiResponse<Void> cancelLeaveout(AttendanceCancelLeaveOutRequest request) throws ApiException {
         OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取公司所有打卡方案
+     */
+    public static OpenapiResponse<List<AttendanceSimplePlanInfo>> getAttendanceClockPlanList(AttendanceClockPlanListRequest request) throws ApiException {
+        OpenapiResponse<List<AttendanceSimplePlanInfo>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 根据方案id获取打卡方案
+     */
+    public static OpenapiResponse<AttendanceClockPlanDeteilInfo> getAttendanceClockPlanDetailByPlan(AttendanceClockPlanDetailByPlanRequest request) throws ApiException {
+        OpenapiResponse<AttendanceClockPlanDeteilInfo> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 根据员工id获取打卡方案
+     */
+    public static OpenapiResponse<AttendanceClockPlanDeteilInfo> getAttendanceClockPlanDetailByEmployee(AttendanceClockPlanDetailByEmployeeRequest request) throws ApiException {
+        OpenapiResponse<AttendanceClockPlanDeteilInfo> execute = RequestTemplate.execute(request);
         return execute;
     }
 }

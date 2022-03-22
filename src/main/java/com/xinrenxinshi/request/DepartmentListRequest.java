@@ -34,6 +34,7 @@ public class DepartmentListRequest extends AbstractOpenapiJsonRequest<List<Depar
      * 更新时间 用来增量更新的
      */
     private Integer modtime;
+    private Integer status;
 
     public Integer getModtime() {
         return modtime;
@@ -41,6 +42,14 @@ public class DepartmentListRequest extends AbstractOpenapiJsonRequest<List<Depar
 
     public void setModtime(Integer modtime) {
         this.modtime = modtime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public DepartmentListRequest(String accessToken) {
@@ -102,6 +111,9 @@ public class DepartmentListRequest extends AbstractOpenapiJsonRequest<List<Depar
         }
         if (modtime != null){
             map.put("modtime",modtime);
+        }
+        if (status != null){
+            map.put("status",status);
         }
         return map;
     }
