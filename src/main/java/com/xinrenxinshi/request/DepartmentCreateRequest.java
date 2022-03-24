@@ -40,6 +40,8 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
      * 管理员ID
      */
     private String adminId;
+
+    private String hrbpId;
     /**
      * 所属城市
      */
@@ -122,6 +124,14 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
         this.remark = remark;
     }
 
+    public String getHrbpId() {
+        return hrbpId;
+    }
+
+    public void setHrbpId(String hrbpId) {
+        this.hrbpId = hrbpId;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -169,6 +179,9 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
         }
         if (!XRXSStrUtils.isEmpty(remark)) {
             map.put("remark", remark);
+        }
+        if (!XRXSStrUtils.isEmpty(hrbpId)) {
+            map.put("hrbpId", hrbpId);
         }
         if (type != null) {
             map.put("type", type);
