@@ -33,11 +33,6 @@ public class EmployeeEmployedRequest extends AbstractOpenapiJsonRequest<Void> {
      * 员工手机号
      */
     private String mobile;
-
-    /**
-     * 工作邮箱
-     */
-    private String email;
     /**
      * 入职日期，格式：yyyy-MM-dd
      */
@@ -187,21 +182,12 @@ public class EmployeeEmployedRequest extends AbstractOpenapiJsonRequest<Void> {
         this.highestDegree = highestDegree;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(10);
         map.put("employeeId", employeeId);
         map.put("name", name);
         map.put("mobile", mobile);
-        map.put("email",email);
         map.put("entryDate", entryDate);
         map.put("hireType", hireType.getHireType());
         if (laborType != null) {
@@ -234,6 +220,9 @@ public class EmployeeEmployedRequest extends AbstractOpenapiJsonRequest<Void> {
         }
         if (XRXSStrUtils.isEmpty(name)) {
             throw new ParamNotValidException("员工姓名为空");
+        }
+        if (XRXSStrUtils.isEmpty(mobile)) {
+            throw new ParamNotValidException("员工手机号为空");
         }
         if (!XRXSDateUtils.isDateStr(entryDate, Constants.DATE_STRING_FORMAT)) {
             throw new ParamNotValidException("入职时间不符合yyyy-MM-dd格式校验");

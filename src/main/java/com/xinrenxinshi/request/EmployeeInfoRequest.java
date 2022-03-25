@@ -74,8 +74,8 @@ public class EmployeeInfoRequest extends AbstractOpenapiJsonRequest<EmployeeDeta
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(employeeId)) {
-            throw new ParamNotValidException("员工id为空");
+        if (XRXSStrUtils.isEmpty(employeeId) && XRXSStrUtils.isEmpty(mobile)) {
+            throw new ParamNotValidException("员工id 和 手机号同时为空");
         }
     }
 

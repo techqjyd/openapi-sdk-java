@@ -638,15 +638,4 @@ public abstract class XrxsEmployeeService {
 
     }
 
-    /**
-     * 通过唯一键获取员工id
-     * @param request
-     * @return
-     * @throws ApiException
-     */
-    public static OpenapiResponse<Map<String,String>> getEmployeeIdByUnionKey(EmployeeIdQueryRequest request) throws ApiException{
-        OpenapiResponse<Map<String,String>> execute = RequestTemplate.execute(request);
-        return execute;
-    }
-
 }
