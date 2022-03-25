@@ -38,6 +38,7 @@ public abstract class XrxsDepartmentService {
                                                                              DepartTypeEnum departTypeEnum,
                                                                              String adminId,
                                                                              String city,
+                                                                             String hrbpId,
                                                                              String remark) throws ApiException {
         DepartmentCreateRequest request = new DepartmentCreateRequest(access_token);
         request.setName(name);
@@ -46,6 +47,7 @@ public abstract class XrxsDepartmentService {
         request.setType(departTypeEnum.getType());
         request.setAdminId(adminId);
         request.setCity(city);
+        request.setHrbpId(hrbpId);
         request.setRemark(remark);
         return createDepartment(request);
     }
@@ -103,6 +105,7 @@ public abstract class XrxsDepartmentService {
                                                          DepartTypeEnum type,
                                                          String adminId,
                                                          String city,
+                                                         String hrbpId,
                                                          String remark) throws ApiException {
         DepartmentUpdateRequest request = new DepartmentUpdateRequest(access_token);
         request.setDepartmentId(departmentId);
@@ -113,6 +116,7 @@ public abstract class XrxsDepartmentService {
         request.setAdminId(adminId);
         request.setCity(city);
         request.setRemark(remark);
+        request.setHrbpId(hrbpId);
         return updateDepartment(request);
     }
 
