@@ -23,12 +23,11 @@ public abstract class XrxsCalculationService {
 
     /**
      * 获取公司所有的 字段组 （包含字段）
-     * @param access_token
+     * @param request
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<List<CalculationCompanyGroupResponse>> getAllCompanyGroup(String access_token) throws ApiException {
-        CalculationCompanyGroupRequest request = new CalculationCompanyGroupRequest(access_token);
+    public static OpenapiResponse<List<CalculationCompanyGroupResponse>> getAllCompanyGroup(CalculationCompanyGroupRequest request) throws ApiException {
         OpenapiResponse<List<CalculationCompanyGroupResponse>> execute = RequestTemplate.execute(request);
         return execute;
     }
@@ -36,18 +35,11 @@ public abstract class XrxsCalculationService {
 
     /**
      * 同步字段数据
-     * @param access_token
-     * @param groupId
-     * @param yearmo
-     * @param data
+     * @param request
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<CalculationSyncGroupDataResponse> syncGroupData(String access_token, Integer groupId, Integer yearmo, LinkedList<LinkedHashMap<String, String>> data) throws ApiException {
-        CalculationSyncGroupRequest request = new CalculationSyncGroupRequest(access_token);
-        request.setGroupId(groupId);
-        request.setYearmo(yearmo);
-        request.setData(data);
+    public static OpenapiResponse<CalculationSyncGroupDataResponse> syncGroupData(CalculationSyncGroupRequest request) throws ApiException {
         OpenapiResponse<CalculationSyncGroupDataResponse> execute = RequestTemplate.execute(request);
         return execute;
     }
