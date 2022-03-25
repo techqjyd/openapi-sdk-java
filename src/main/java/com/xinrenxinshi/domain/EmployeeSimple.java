@@ -19,7 +19,6 @@ public class EmployeeSimple {
      * 手机号
      */
     public String mobile;
-
     /**
      * 入职时间
      */
