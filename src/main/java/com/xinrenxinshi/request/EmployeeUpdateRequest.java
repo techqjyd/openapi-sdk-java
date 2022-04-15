@@ -121,16 +121,12 @@ public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         if (!XRXSStrUtils.isEmpty(name)) {
             map.put("name", name);
         }
-        if (!XRXSStrUtils.isEmpty(mobile)) {
-            map.put("mobile", mobile);
-        }
-        if (!XRXSStrUtils.isEmpty(email)) {
-            map.put("email", email);
-        }
         if (!XRXSStrUtils.isEmpty(entryDate)) {
             map.put("entryDate", entryDate);
         }
         map.put("fields", fields);
+        map.put("email",email);
+        map.put("mobile",mobile);
         if (hireType != null) {
             map.put("hireType", hireType.getHireType());
         }

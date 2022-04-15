@@ -9,6 +9,7 @@ package com.xinrenxinshi.domain;
  */
 public class BatchClockModel {
     private String mobile;
+    private String employeeId;
     private Integer clockTime;
 
     public String getMobile() {
@@ -25,5 +26,14 @@ public class BatchClockModel {
 
     public void setClockTime(Integer clockTime) {
         this.clockTime = clockTime;
+    }
+
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
     }
 }

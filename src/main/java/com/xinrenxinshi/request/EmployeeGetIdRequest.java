@@ -16,35 +16,28 @@ public class EmployeeGetIdRequest extends AbstractOpenapiJsonRequest<Map<String,
         super(accessToken);
     }
 
-    /**
-     * 参数列表
-     */
-    private List<String> paramList;
+    private List<String> emails;
+
+    private List<String> mobiles;
+
+    private List<String> jobNumbers;
 
     /**
      * 参数类型
      */
-    private String paramType;
+    private String type;
 
     /**
      * 员工状态
      */
     private Integer status;
 
-    public List<String> getParamList() {
-        return paramList;
+    public String getType() {
+        return type;
     }
 
-    public void setParamList(List<String> paramList) {
-        this.paramList = paramList;
-    }
-
-    public String getParamType() {
-        return paramType;
-    }
-
-    public void setParamType(String paramType) {
-        this.paramType = paramType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Integer getStatus() {
@@ -55,11 +48,37 @@ public class EmployeeGetIdRequest extends AbstractOpenapiJsonRequest<Map<String,
         this.status = status;
     }
 
+    public List<String> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<String> emails) {
+        this.emails = emails;
+    }
+
+    public List<String> getMobiles() {
+        return mobiles;
+    }
+
+    public void setMobiles(List<String> mobiles) {
+        this.mobiles = mobiles;
+    }
+
+    public List<String> getJobNumbers() {
+        return jobNumbers;
+    }
+
+    public void setJobNumbers(List<String> jobNumbers) {
+        this.jobNumbers = jobNumbers;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(3);
-        map.put("paramList",paramList);
-        map.put("paramType",paramType);
+        map.put("emails",emails);
+        map.put("mobiles",mobiles);
+        map.put("jobNumbers",jobNumbers);
+        map.put("type",type);
         map.put("status",status);
         return map;
     }
