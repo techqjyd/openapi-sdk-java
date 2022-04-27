@@ -1,7 +1,6 @@
 package com.xinrenxinshi.response;
 
 import com.xinrenxinshi.domain.calculation.PlatformFieldDockingResult;
-import com.xinrenxinshi.openapi.OpenapiResponse;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
  * @date 2021/12/7 3:23 下午
  * @desc
  */
-public class CalculationCompanyGroupResponse extends OpenapiResponse {
+public class CalculationCompanyGroupResponse{
 
     /**
      * 组id
