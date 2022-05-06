@@ -1,11 +1,7 @@
 package com.xinrenxinshi;
 
 import com.xinrenxinshi.common.*;
-import com.xinrenxinshi.domain.EmployeeDetail;
-import com.xinrenxinshi.domain.EmployeeGroupField;
-import com.xinrenxinshi.domain.EmployeeGroupFieldData;
-import com.xinrenxinshi.domain.PreDismissEmployee;
-import com.xinrenxinshi.domain.EmployeeSimple;
+import com.xinrenxinshi.domain.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
@@ -644,6 +640,17 @@ public abstract class XrxsEmployeeService {
     public static OpenapiResponse<Map<String,String>> getEmployeeId(EmployeeGetIdRequest request) throws ApiException {
         OpenapiResponse<Map<String,String>> execute = RequestTemplate.execute(request);
         return execute;
+    }
+
+    /**
+     * 查询虚拟部门下的员工
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<String>> getEmployeeIdsByVirtualDeptId(EmployeeVirtualListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 
 }

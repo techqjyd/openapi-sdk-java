@@ -27,6 +27,9 @@ public class DepartmentModel {
     private String departmentId;
 
     private String hrbpId;
+
+    private Integer regularHeaderCount;
+    private Integer nonRegularHeaderCount;
     /**
      * 部门名称
      */
@@ -53,6 +56,8 @@ public class DepartmentModel {
      * 更新时间
      */
     private Integer modtime;
+
+    private Integer isVirtual;
 
     private Map<String,String> fields;
 
@@ -150,5 +155,29 @@ public class DepartmentModel {
 
     public void setHrbpId(String hrbpId) {
         this.hrbpId = hrbpId;
+    }
+
+    public Integer getRegularHeaderCount() {
+        return regularHeaderCount;
+    }
+
+    public void setRegularHeaderCount(Integer regularHeaderCount) {
+        this.regularHeaderCount = regularHeaderCount;
+    }
+
+    public Integer getNonRegularHeaderCount() {
+        return nonRegularHeaderCount;
+    }
+
+    public void setNonRegularHeaderCount(Integer nonRegularHeaderCount) {
+        this.nonRegularHeaderCount = nonRegularHeaderCount;
+    }
+
+    public Integer getIsVirtual() {
+        return isVirtual;
+    }
+
+    public void setIsVirtual(Integer isVirtual) {
+        this.isVirtual = isVirtual;
     }
 }
