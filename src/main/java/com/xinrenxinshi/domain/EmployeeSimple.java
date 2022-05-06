@@ -19,6 +19,11 @@ public class EmployeeSimple {
      * 手机号
      */
     public String mobile;
+
+    /**
+     * 工作邮箱
+     */
+    public String email;
     /**
      * 入职时间
      */
@@ -104,5 +109,13 @@ public class EmployeeSimple {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

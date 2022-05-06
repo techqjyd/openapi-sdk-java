@@ -1,6 +1,8 @@
 package com.xinrenxinshi.response;
 
 
+import com.xinrenxinshi.openapi.OpenapiResponse;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * @date 2021/12/7 3:28 下午
  * @desc
  */
-public class CalculationSyncGroupDataResponse extends OpenapiTokenResponse{
+public class CalculationSyncGroupDataResponse extends OpenapiResponse {
 
     /**
      * 操作是否成功

@@ -30,6 +30,11 @@ public class EmployeeCreateRequest extends AbstractOpenapiJsonRequest<EmployeeCr
      * 手机号
      */
     private String mobile;
+
+    /**
+     * 工作邮箱
+     */
+    private String email;
     /**
      * 聘用类型，0-正式,10-实习,11-劳务,12-顾问,13-返聘
      */
@@ -87,6 +92,14 @@ public class EmployeeCreateRequest extends AbstractOpenapiJsonRequest<EmployeeCr
         this.entryDate = entryDate;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -101,9 +114,6 @@ public class EmployeeCreateRequest extends AbstractOpenapiJsonRequest<EmployeeCr
     public void check() throws ParamNotValidException {
         if (XRXSStrUtils.isEmpty(name)) {
             throw new ParamNotValidException("员工名字为空");
-        }
-        if (XRXSStrUtils.isEmpty(mobile)) {
-            throw new ParamNotValidException("手机号为空");
         }
         if (XRXSStrUtils.isEmpty(entryDate)) {
             throw new ParamNotValidException("入职时间为空");
@@ -134,6 +144,7 @@ public class EmployeeCreateRequest extends AbstractOpenapiJsonRequest<EmployeeCr
         Map<String, Object> map = new HashMap<>(8);
         map.put("name", name);
         map.put("mobile", mobile);
+        map.put("email",email);
         map.put("entryDate", entryDate);
         map.put("fields", fields);
         map.put("hireType", hireType.getHireType());

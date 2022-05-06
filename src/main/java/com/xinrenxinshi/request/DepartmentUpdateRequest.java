@@ -31,6 +31,8 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
      * 上级部门ID
      */
     private String parentId;
+
+    private String hrbpId;
     /**
      * 部门编码
      */
@@ -133,6 +135,14 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         this.remark = remark;
     }
 
+    public String getHrbpId() {
+        return hrbpId;
+    }
+
+    public void setHrbpId(String hrbpId) {
+        this.hrbpId = hrbpId;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -182,6 +192,9 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         }
         if (!XRXSStrUtils.isEmpty(city)) {
             map.put("city", city);
+        }
+        if (!XRXSStrUtils.isEmpty(hrbpId)) {
+            map.put("hrbpId", hrbpId);
         }
         if (type != null) {
             map.put("type", type);

@@ -25,6 +25,8 @@ public class DepartmentModel {
      * 部门ID
      */
     private String departmentId;
+
+    private String hrbpId;
     /**
      * 部门名称
      */
@@ -140,5 +142,13 @@ public class DepartmentModel {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getHrbpId() {
+        return hrbpId;
+    }
+
+    public void setHrbpId(String hrbpId) {
+        this.hrbpId = hrbpId;
     }
 }

@@ -33,6 +33,11 @@ public class EmployeeEmployedRequest extends AbstractOpenapiJsonRequest<Void> {
      * 员工手机号
      */
     private String mobile;
+
+    /**
+     * 工作邮箱
+     */
+    private String email;
     /**
      * 入职日期，格式：yyyy-MM-dd
      */
@@ -182,12 +187,21 @@ public class EmployeeEmployedRequest extends AbstractOpenapiJsonRequest<Void> {
         this.highestDegree = highestDegree;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(10);
         map.put("employeeId", employeeId);
         map.put("name", name);
         map.put("mobile", mobile);
+        map.put("email",email);
         map.put("entryDate", entryDate);
         map.put("hireType", hireType.getHireType());
         if (laborType != null) {

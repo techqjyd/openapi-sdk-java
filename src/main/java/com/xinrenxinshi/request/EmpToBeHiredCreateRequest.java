@@ -140,12 +140,6 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         if (XRXSStrUtils.isEmpty(name)) {
             throw new ParamNotValidException("员工名字为空");
         }
-        if (XRXSStrUtils.isEmpty(mobile)) {
-            throw new ParamNotValidException("手机号为空");
-        }
-        if (XRXSStrUtils.isDigits(email)) {
-            throw new ParamNotValidException("邮箱为空");
-        }
         if (XRXSStrUtils.isEmpty(entryDate) || !XRXSDateUtils.isDateStr(entryDate, Constants.DATE_STRING_FORMAT)) {
             throw new ParamNotValidException("入职时间为空或者入职时间格式不满足yyyy-MM-dd校验");
         }
