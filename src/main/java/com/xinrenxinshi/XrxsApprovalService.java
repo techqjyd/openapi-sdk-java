@@ -1,7 +1,5 @@
 package com.xinrenxinshi;
 
-import com.xinrenxinshi.domain.FlowHolidayOffResult;
-import com.xinrenxinshi.domain.FlowHolidayTypeResult;
 import com.xinrenxinshi.domain.approval.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
