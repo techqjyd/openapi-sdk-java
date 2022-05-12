@@ -521,6 +521,11 @@ public abstract class XrxsEmployeeService {
         return execute;
     }
 
+    public static OpenapiResponse<EmployeeGroupAddResponse> employeeGroupV2Add(EmployeeGroupAddV2Request request) throws ApiException {
+        OpenapiResponse<EmployeeGroupAddResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
     /**
      * 员工分组信息批量查询
      *
@@ -571,6 +576,11 @@ public abstract class XrxsEmployeeService {
      * 员工分组信息更新
      */
     public static OpenapiResponse<Void> employeeGroupUpdate(EmployeeGroupUpdateRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    public static OpenapiResponse<Void> employeeGroupUpdateV2(EmployeeGroupUpdateV2Request request) throws ApiException {
         OpenapiResponse<Void> execute = RequestTemplate.execute(request);
         return execute;
     }
@@ -650,6 +660,40 @@ public abstract class XrxsEmployeeService {
      * @throws ApiException
      */
     public static OpenapiResponse<List<String>> getEmployeeIdsByVirtualDeptId(EmployeeVirtualListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+
+    /**
+     * 查询公司所有员工分组
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<EmployeeGroupInfoResult>> getEmployeeGroupInfo(EmployeeGroupInfoRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 查询指定分组的字段信息
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<EmployeeGroupFieldInfoResult>> getEmployeeGroupFieldInfo(EmployeeGroupFieldInfoRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 查询员工指定分组的字段数据
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<EmployeeGroupFieldData>> getEmployeeFieldInfo(EmployeeFieldInfoRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 
