@@ -16,6 +16,10 @@ public class FlowType {
      */
     private String name;
 
+    private Integer settingId;
+
+    private Integer status;
+
     public Integer getFlowTypeId() {
         return flowTypeId;
     }
@@ -30,5 +34,21 @@ public class FlowType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getSettingId() {
+        return settingId;
+    }
+
+    public void setSettingId(Integer settingId) {
+        this.settingId = settingId;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

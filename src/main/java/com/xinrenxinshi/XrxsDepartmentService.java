@@ -246,4 +246,15 @@ public abstract class XrxsDepartmentService {
     public static OpenapiResponse<List<DepartmentTypeModel>> getDepartmentTypeList(DepartmentTypeRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+    /**
+     * 获取公司虚拟部门列表
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<DepartmentModel>> getAllVirtualDeptList(DepartmentVirtualListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }

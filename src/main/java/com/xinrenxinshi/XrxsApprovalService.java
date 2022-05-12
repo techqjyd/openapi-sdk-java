@@ -1,9 +1,6 @@
 package com.xinrenxinshi;
 
-import com.xinrenxinshi.domain.approval.FlowType;
-import com.xinrenxinshi.domain.approval.ProcessBasicInfo;
-import com.xinrenxinshi.domain.approval.ProcessFlowInfo;
-import com.xinrenxinshi.domain.approval.ProcessStepAndCopyInfo;
+import com.xinrenxinshi.domain.approval.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
@@ -162,5 +159,11 @@ public abstract class XrxsApprovalService {
     }
 
 
-
+    /**
+     * 查询审批步骤记录
+     */
+    public static OpenapiResponse<List<FlowRecordResult>>  getFlowRecord(FlowRecordListRequest request) throws ApiException {
+        OpenapiResponse<List<FlowRecordResult>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }
