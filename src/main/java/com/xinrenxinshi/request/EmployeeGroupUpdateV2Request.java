@@ -11,6 +11,11 @@ import com.xinrenxinshi.util.XRXSStrUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 更新员工分组信息
+ *
+ * @author hzz on 2022/05/12
+ */
 public class EmployeeGroupUpdateV2Request extends AbstractOpenapiJsonRequest<Void> {
     /**
      * 员工ID
