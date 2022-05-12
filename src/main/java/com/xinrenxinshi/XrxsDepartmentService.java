@@ -248,7 +248,7 @@ public abstract class XrxsDepartmentService {
     }
 
     /**
-     * 获取公司部门类型列表
+     * 获取公司虚拟部门列表
      *
      * @param request
      * @return
