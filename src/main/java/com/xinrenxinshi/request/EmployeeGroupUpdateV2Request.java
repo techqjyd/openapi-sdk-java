@@ -21,7 +21,7 @@ public class EmployeeGroupUpdateV2Request extends AbstractOpenapiJsonRequest<Voi
      */
     private String recordId;
     /**
-     * 分组类型，1-合同记录,7-教育经历,8-工作经历,9-培训经历,10-证书记录,11-联系人记录
+     * 分组id
      */
     private String groupId;
     /**
