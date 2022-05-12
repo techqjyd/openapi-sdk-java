@@ -32,6 +32,11 @@ public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
      * 员工名字
      */
     private String name;
+
+    /**
+     * 工作邮箱
+     */
+    private String email;
     /**
      * 手机号
      */
@@ -101,6 +106,14 @@ public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         this.entryDate = entryDate;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>();
@@ -108,13 +121,12 @@ public class EmployeeUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         if (!XRXSStrUtils.isEmpty(name)) {
             map.put("name", name);
         }
-        if (!XRXSStrUtils.isEmpty(mobile)) {
-            map.put("mobile", mobile);
-        }
         if (!XRXSStrUtils.isEmpty(entryDate)) {
             map.put("entryDate", entryDate);
         }
         map.put("fields", fields);
+        map.put("email",email);
+        map.put("mobile",mobile);
         if (hireType != null) {
             map.put("hireType", hireType.getHireType());
         }

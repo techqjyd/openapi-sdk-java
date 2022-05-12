@@ -638,4 +638,12 @@ public abstract class XrxsEmployeeService {
 
     }
 
+    /**
+     * 获取员工id
+     */
+    public static OpenapiResponse<Map<String,String>> getEmployeeId(EmployeeGetIdRequest request) throws ApiException {
+        OpenapiResponse<Map<String,String>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
 }
