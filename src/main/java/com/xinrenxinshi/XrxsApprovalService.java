@@ -168,29 +168,4 @@ public abstract class XrxsApprovalService {
         OpenapiResponse<List<FlowRecordResult>> execute = RequestTemplate.execute(request);
         return execute;
     }
-
-
-    /**
-     * 获取请假类型和申请单位
-     */
-    public static OpenapiResponse<List<FlowHolidayTypeResult>>  getFlowHolidayTypes(FlowHolidayTypesRequest request) throws ApiException {
-        OpenapiResponse<List<FlowHolidayTypeResult>> execute = RequestTemplate.execute(request);
-        return execute;
-    }
-
-    /**
-     * 获取假期余额
-     */
-    public static OpenapiResponse<List<FlowHolidayOffResult>>  getHolidayOffDays(FlowHolidayOffDDayRequest request) throws ApiException {
-        OpenapiResponse<List<FlowHolidayOffResult>> execute = RequestTemplate.execute(request);
-        return execute;
-    }
-
-    /**
-     * 获取审批表单详情
-     */
-    public static OpenapiResponse<FlowSettingDetailResult>  getFlowSettingDetail(FlowSettingDetailRequest request) throws ApiException {
-        OpenapiResponse<FlowSettingDetailResult> execute = RequestTemplate.execute(request);
-        return execute;
-    }
 }
