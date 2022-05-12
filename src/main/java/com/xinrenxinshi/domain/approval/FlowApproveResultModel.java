@@ -31,7 +31,7 @@ public class FlowApproveResultModel {
 
 
     /**
-     * 产品耍赖加的时间
+     * 时间
      */
     private String time;
 
