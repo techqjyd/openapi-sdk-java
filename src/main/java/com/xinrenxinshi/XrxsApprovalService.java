@@ -7,6 +7,7 @@ import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.ApprovalApplyResponse;
+import com.xinrenxinshi.response.AttendanceLeaveOffResponse;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -191,6 +192,17 @@ public abstract class XrxsApprovalService {
      */
     public static OpenapiResponse<FlowSettingDetailResult>  getFlowSettingDetail(FlowSettingDetailRequest request) throws ApiException {
         OpenapiResponse<FlowSettingDetailResult> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 请假审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String>  startLeaveOffApply(AttendanceLeaveApplyRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
 }

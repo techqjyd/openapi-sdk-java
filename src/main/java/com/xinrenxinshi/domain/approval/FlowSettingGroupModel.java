@@ -33,6 +33,10 @@ public class FlowSettingGroupModel {
      */
     private Integer isFixed;
 
+    private Integer isStart = 0;
+    private Integer isEnd = 0;
+    private Integer index = 0;
+
     private List<FlowSettingFieldModel> fields;
 
     public String getGroupId() {
@@ -97,5 +101,29 @@ public class FlowSettingGroupModel {
 
     public void setFields(List<FlowSettingFieldModel> fields) {
         this.fields = fields;
+    }
+
+    public Integer getIsStart() {
+        return isStart;
+    }
+
+    public void setIsStart(Integer isStart) {
+        this.isStart = isStart;
+    }
+
+    public Integer getIsEnd() {
+        return isEnd;
+    }
+
+    public void setIsEnd(Integer isEnd) {
+        this.isEnd = isEnd;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 }

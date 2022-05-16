@@ -8,6 +8,7 @@ public class FlowSettingFieldModel {
     private String groupId;//字段分组id
     private Integer type;//字段类型
     private String fieldValue;//字段值
+    private String fieldValueId;//字段值
     private String labelName;//字段名
     private String labelNameEng;//字段名英文
     private Integer require;//是否必填，0-否，1是
@@ -43,7 +44,6 @@ public class FlowSettingFieldModel {
     private Integer isJson;//fieldlist里的是否是json对象，0否1是
     private Integer componentType;//自选组件类型
     private Integer ruleLevel;//读写级别，1-隐藏，2-只读，3-可编辑
-    private Integer maxLength;
 
 
     public String getFieldId() {
@@ -358,11 +358,11 @@ public class FlowSettingFieldModel {
         this.ruleLevel = ruleLevel;
     }
 
-    public Integer getMaxLength() {
-        return maxLength;
+    public String getFieldValueId() {
+        return fieldValueId;
     }
 
-    public void setMaxLength(Integer maxLength) {
-        this.maxLength = maxLength;
+    public void setFieldValueId(String fieldValueId) {
+        this.fieldValueId = fieldValueId;
     }
 }

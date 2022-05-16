@@ -4,7 +4,7 @@ public class AmountWordResult {
     private Integer isUpperCaseNumber;//是否展示大写数字 0：不展示 1：展示
     private Integer isThousandsSeparator;//是否展示千位分隔位 0：不展示 1：展示
     private Integer isDecimalPlaces;//是否展示小数位 0：不展示 1：展示
-    private String digits;//位数
+    private Integer digits;//位数
 
     public Integer getIsUpperCaseNumber() {
         return isUpperCaseNumber;
@@ -30,11 +30,11 @@ public class AmountWordResult {
         this.isDecimalPlaces = isDecimalPlaces;
     }
 
-    public String getDigits() {
+    public Integer getDigits() {
         return digits;
     }
 
-    public void setDigits(String digits) {
+    public void setDigits(Integer digits) {
         this.digits = digits;
     }
 }
