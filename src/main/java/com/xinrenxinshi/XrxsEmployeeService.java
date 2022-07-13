@@ -697,4 +697,14 @@ public abstract class XrxsEmployeeService {
         return RequestTemplate.execute(request);
     }
 
+    /**
+     * 预离职
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> dismissPendingEmployee(EmployeeDismissPendingRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }

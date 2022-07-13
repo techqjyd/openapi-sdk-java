@@ -26,7 +26,11 @@ public enum LaborTypeEnum {
     /**
      * 外包
      */
-    OUTSOURCING(14, "外包");
+    OUTSOURCING(14, "外包"),
+    /**
+     * 兼职
+     */
+    PARTTIME(15,"兼职");
     /**
      * 聘用类型
      */

@@ -59,6 +59,8 @@ public class DepartmentModel {
 
     private Integer isVirtual;
 
+    private Integer status;
+
     private Map<String,String> fields;
 
     public Map<String, String> getFields() {
@@ -179,5 +181,13 @@ public class DepartmentModel {
 
     public void setIsVirtual(Integer isVirtual) {
         this.isVirtual = isVirtual;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

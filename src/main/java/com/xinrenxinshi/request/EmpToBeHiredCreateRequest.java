@@ -57,6 +57,10 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
      */
     private String jobId;
 
+    private String regularDate;
+
+    private Integer workCity;
+
     public EmpToBeHiredCreateRequest(String accessToken) {
         super(accessToken);
     }
@@ -125,6 +129,22 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         this.laborType = laborType;
     }
 
+    public String getRegularDate() {
+        return regularDate;
+    }
+
+    public void setRegularDate(String regularDate) {
+        this.regularDate = regularDate;
+    }
+
+    public Integer getWorkCity() {
+        return workCity;
+    }
+
+    public void setWorkCity(Integer workCity) {
+        this.workCity = workCity;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -176,6 +196,8 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
             map.put("laborType", laborType.getLaborType());
         }
         map.put("departmentId", departmentId);
+        map.put("regularDate",regularDate);
+        map.put("workCity",workCity);
         map.put("jobId", jobId);
         return map;
     }

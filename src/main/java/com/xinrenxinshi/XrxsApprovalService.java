@@ -1,10 +1,13 @@
 package com.xinrenxinshi;
 
+import com.xinrenxinshi.domain.FlowHolidayOffResult;
+import com.xinrenxinshi.domain.FlowHolidayTypeResult;
 import com.xinrenxinshi.domain.approval.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.ApprovalApplyResponse;
+import com.xinrenxinshi.response.AttendanceLeaveOffResponse;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -164,6 +167,53 @@ public abstract class XrxsApprovalService {
      */
     public static OpenapiResponse<List<FlowRecordResult>>  getFlowRecord(FlowRecordListRequest request) throws ApiException {
         OpenapiResponse<List<FlowRecordResult>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+
+    /**
+     * 获取请假类型和申请单位
+     */
+    public static OpenapiResponse<List<FlowHolidayTypeResult>>  getFlowHolidayTypes(FlowHolidayTypesRequest request) throws ApiException {
+        OpenapiResponse<List<FlowHolidayTypeResult>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取假期余额
+     */
+    public static OpenapiResponse<List<FlowHolidayOffResult>>  getHolidayOffDays(FlowHolidayOffDDayRequest request) throws ApiException {
+        OpenapiResponse<List<FlowHolidayOffResult>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取审批表单详情
+     */
+    public static OpenapiResponse<FlowSettingDetailResult>  getFlowSettingDetail(FlowSettingDetailRequest request) throws ApiException {
+        OpenapiResponse<FlowSettingDetailResult> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 请假审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String>  startLeaveOffApply(AttendanceLeaveApplyRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 根据销假审批获取原审批id
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String>  getOriginSidByDestorySid(ApprovalOriginSidRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
 }
