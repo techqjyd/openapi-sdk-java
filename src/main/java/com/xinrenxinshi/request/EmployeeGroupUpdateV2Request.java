@@ -11,6 +11,11 @@ import com.xinrenxinshi.util.XRXSStrUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 更新员工分组信息
+ *
+ * @author hzz on 2022/05/12
+ */
 public class EmployeeGroupUpdateV2Request extends AbstractOpenapiJsonRequest<Void> {
     /**
      * 员工ID
@@ -21,7 +26,7 @@ public class EmployeeGroupUpdateV2Request extends AbstractOpenapiJsonRequest<Voi
      */
     private String recordId;
     /**
-     * 分组类型，1-合同记录,7-教育经历,8-工作经历,9-培训经历,10-证书记录,11-联系人记录
+     * 分组id
      */
     private String groupId;
     /**

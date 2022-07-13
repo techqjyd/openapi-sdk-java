@@ -11,6 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 查询员工分组字段信息
+ *
+ * @author hzz on 2022/05/12
+ */
 public class EmployeeGroupFieldInfoRequest extends AbstractOpenapiJsonRequest<List<EmployeeGroupFieldInfoResult>> {
 
     private String groupId;

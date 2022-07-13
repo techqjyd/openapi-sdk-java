@@ -10,6 +10,11 @@ import com.xinrenxinshi.openapi.OpenapiResponse;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 查询所有分组信息
+ *
+ * @author hzz on 2022/05/12
+ */
 public class EmployeeGroupInfoRequest extends AbstractOpenapiJsonRequest<List<EmployeeGroupInfoResult>> {
 
     public EmployeeGroupInfoRequest(String accessToken) {
