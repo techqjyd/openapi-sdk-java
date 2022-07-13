@@ -207,7 +207,7 @@ public abstract class XrxsApprovalService {
     }
 
     /**
-     * 请假审批发起
+     * 根据销假审批获取原审批id
      * @param request
      * @return
      * @throws ApiException
