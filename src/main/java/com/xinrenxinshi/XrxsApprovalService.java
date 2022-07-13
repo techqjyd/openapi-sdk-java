@@ -205,4 +205,15 @@ public abstract class XrxsApprovalService {
         OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 请假审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String>  getOriginSidByDestorySid(ApprovalOriginSidRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }
