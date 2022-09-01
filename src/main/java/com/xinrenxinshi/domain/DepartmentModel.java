@@ -61,6 +61,8 @@ public class DepartmentModel {
 
     private Integer status;
 
+    private Integer order;
+
     private Map<String,String> fields;
 
     public Map<String, String> getFields() {
@@ -189,5 +191,13 @@ public class DepartmentModel {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 }

@@ -257,4 +257,88 @@ public abstract class XrxsDepartmentService {
     public static OpenapiResponse<List<DepartmentModel>> getAllVirtualDeptList(DepartmentVirtualListRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+    /**
+     * 新增岗位
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String> addJob(DepartmentJobAddRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 更新岗位
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> updateJob(DepartmentJobUpdateRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 删除岗位
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> deleteJob(DepartmentJobDeleteRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 新增成本中心
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String> addCostCenter(CostCenterAddRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 更新成本中心
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> updateCostCenter(CostCenterUpdateRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 删除成本中心
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> deleteCostCenter(CostCenterDeleteRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 删除成本中心
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> deleteCostCenterBudget(CostCenterBudgetDeleteRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取成本中心信息(带预算信息)
+     */
+    public static OpenapiResponse<List<CostCenterDetailModel>> costCenterList(CostCenterDetailListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }

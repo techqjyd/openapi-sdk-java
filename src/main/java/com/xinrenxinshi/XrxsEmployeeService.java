@@ -707,4 +707,26 @@ public abstract class XrxsEmployeeService {
         OpenapiResponse<Void> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 试用期员工转正
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> employeeToRegular(EmployeeToRegularRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 删除待入职员工
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void> deletePendingStaff(EmployeePendingDeleteRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }

@@ -39,6 +39,10 @@ public class RankModel {
      */
     private String title;
 
+    private String categoryName;
+
+    private String levelName;
+
     public RankModel(){
     }
 
@@ -98,5 +102,21 @@ public class RankModel {
 
     public void setLevelCode(String levelCode) {
         this.levelCode = levelCode;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
     }
 }

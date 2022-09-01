@@ -11,6 +11,8 @@ public class BatchClockModel {
     private String mobile;
     private String employeeId;
     private Integer clockTime;
+    private Integer source;
+    private String remark;
 
     public String getMobile() {
         return mobile;
@@ -35,5 +37,21 @@ public class BatchClockModel {
 
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
+    }
+
+    public Integer getSource() {
+        return source;
+    }
+
+    public void setSource(Integer source) {
+        this.source = source;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }
