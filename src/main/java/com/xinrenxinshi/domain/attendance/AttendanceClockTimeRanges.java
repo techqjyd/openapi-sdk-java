@@ -1,5 +1,7 @@
 package com.xinrenxinshi.domain.attendance;
 
+import java.util.List;
+
 /**
  * 当前描述：排班打卡信息列表
  *
@@ -30,6 +32,8 @@ public class AttendanceClockTimeRanges {
      * 打卡最晚时间，格式：HH:mm
      */
     private String clockEndTime;
+
+    private List<AttendanceRestTimeRange>  restTimeRangs;
 
     public Integer getSeqId() {
         return seqId;
@@ -69,5 +73,13 @@ public class AttendanceClockTimeRanges {
 
     public void setClockEndTime(String clockEndTime) {
         this.clockEndTime = clockEndTime;
+    }
+
+    public List<AttendanceRestTimeRange> getRestTimeRangs() {
+        return restTimeRangs;
+    }
+
+    public void setRestTimeRangs(List<AttendanceRestTimeRange> restTimeRangs) {
+        this.restTimeRangs = restTimeRangs;
     }
 }
