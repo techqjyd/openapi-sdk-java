@@ -41,7 +41,7 @@ public class AttendanceClockRequest extends AbstractOpenapiJsonRequest<Void> {
     /**
      * 打卡类型，固定值：2、考勤机打卡
      */
-    private Integer source = 2;
+    private Integer source;
     /**
      * 备注
      */
@@ -115,6 +115,7 @@ public class AttendanceClockRequest extends AbstractOpenapiJsonRequest<Void> {
         map.put("clockTime", clockTime);
         map.put("longitude", longitude);
         map.put("latitude", latitude);
+        map.put("source",source);
 //        map.put("source", source);
         map.put("remark", remark);
         return map;

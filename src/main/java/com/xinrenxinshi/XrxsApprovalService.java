@@ -207,6 +207,17 @@ public abstract class XrxsApprovalService {
     }
 
     /**
+     * 销假审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Void>  cancelLeaveOffApply(FlowCancelApplyRequest request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
      * 根据销假审批获取原审批id
      * @param request
      * @return
