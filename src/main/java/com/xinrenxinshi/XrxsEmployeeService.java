@@ -729,4 +729,15 @@ public abstract class XrxsEmployeeService {
         OpenapiResponse<Void> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 获取员工在部门的排序信息
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Map<String,List<EmployeeDepartmentOrder>>> getEmployeeDepartmentOrder(EmployeeDepartmentOrderRequest request) throws ApiException {
+        OpenapiResponse<Map<String,List<EmployeeDepartmentOrder>>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }

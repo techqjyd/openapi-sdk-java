@@ -19,6 +19,11 @@ public class ProcessFormDetailInfo {
      * 标签值
      */
     private String value;
+
+    /**
+     * 标签id
+     */
+    private String valueId;
     /**
      * 数值类型标签调整前的值
      */
@@ -214,5 +219,13 @@ public class ProcessFormDetailInfo {
 
     public void setTextListValue(List<String> textListValue) {
         this.textListValue = textListValue;
+    }
+
+    public String getValueId() {
+        return valueId;
+    }
+
+    public void setValueId(String valueId) {
+        this.valueId = valueId;
     }
 }
