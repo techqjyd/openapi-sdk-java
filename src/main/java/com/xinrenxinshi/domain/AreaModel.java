@@ -28,7 +28,7 @@ public class AreaModel {
 
     public String adcode;
     /**
-     * 区域类型，1-中国，2-国际化
+     * 区域类型，0-全部,1-中国，2-国际化
      */
     public Integer areaType;
 
