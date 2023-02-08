@@ -1,10 +1,12 @@
 package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.AreaInfo;
+import com.xinrenxinshi.domain.AreaModel;
 import com.xinrenxinshi.domain.CountryModel;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.openapi.XrxsOpenapiClient;
+import com.xinrenxinshi.request.CityAllListRequest;
 import com.xinrenxinshi.request.CityListRequest;
 import com.xinrenxinshi.request.CountryListRequest;
 import com.xinrenxinshi.response.OpenapiTokenResponse;
@@ -42,6 +44,14 @@ public abstract class XrxsCommonService {
     public static OpenapiResponse<List<AreaInfo>> getCityList(String access_token) throws ApiException {
         CityListRequest cityListRequest = new CityListRequest(access_token);
         return RequestTemplate.execute(cityListRequest);
+    }
+
+    /**
+     * 获取根据类型判断的城市列表
+     *
+     */
+    public static OpenapiResponse<List<AreaModel>> getCityAllList(CityAllListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 
     /**
