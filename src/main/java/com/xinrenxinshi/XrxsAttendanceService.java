@@ -6,6 +6,7 @@ import com.xinrenxinshi.domain.BatchClockModel;
 import com.xinrenxinshi.domain.attendance.AttendanceClockPlanDeteilInfo;
 import com.xinrenxinshi.domain.attendance.AttendanceScheduleInfo;
 import com.xinrenxinshi.domain.attendance.AttendanceSimplePlanInfo;
+import com.xinrenxinshi.domain.attendance.AttendanceStatusRangeResult;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
@@ -289,6 +290,14 @@ public abstract class XrxsAttendanceService {
      */
     public static OpenapiResponse<AttendanceClockPlanDeteilInfo> getAttendanceClockPlanDetailByEmployee(AttendanceClockPlanDetailByEmployeeRequest request) throws ApiException {
         OpenapiResponse<AttendanceClockPlanDeteilInfo> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取员工考勤状态
+     */
+    public static OpenapiResponse<List<AttendanceStatusRangeResult>> getEmployeeStatus(AttendanceStatusRequest request) throws ApiException {
+        OpenapiResponse<List<AttendanceStatusRangeResult>> execute = RequestTemplate.execute(request);
         return execute;
     }
 }
