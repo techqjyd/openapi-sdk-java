@@ -54,6 +54,8 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
      */
     private String remark;
 
+    private Integer isVirtual;
+
     /**
      * 部门自定义字段
      */
@@ -143,6 +145,14 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         this.hrbpId = hrbpId;
     }
 
+    public Integer getIsVirtual() {
+        return isVirtual;
+    }
+
+    public void setIsVirtual(Integer isVirtual) {
+        this.isVirtual = isVirtual;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -201,6 +211,9 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         }
         if (fields != null) {
             map.put("fields", fields);
+        }
+        if(isVirtual!=null){
+            map.put("isVirtual", isVirtual);
         }
         return map;
     }

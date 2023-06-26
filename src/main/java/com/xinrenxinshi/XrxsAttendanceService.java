@@ -205,6 +205,14 @@ public abstract class XrxsAttendanceService {
         return execute;
     }
 
+    /**
+     * 销出差接口
+     */
+    public static OpenapiResponse<Void> cancelTravelV2(AttendanceCancelTravelV2Request request) throws ApiException {
+        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
 
 
     /**

@@ -350,6 +350,15 @@ public abstract class XrxsEmployeeService {
     }
 
     /**
+     * 员工详情信息查询
+     */
+    public static OpenapiResponse<EmployeeFixedDetailModel> getDetailEmployeeByHead(EmployeeDetailByHeadRequest request) throws ApiException {
+        OpenapiResponse<EmployeeFixedDetailModel> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+
+    /**
      * 更新员工信息
      *
      * @param access_token 授权token

@@ -8,6 +8,7 @@ import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.ApprovalApplyResponse;
 import com.xinrenxinshi.response.AttendanceLeaveOffResponse;
+import com.xinrenxinshi.response.AttendanceLeaveOutResponse;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -225,6 +226,28 @@ public abstract class XrxsApprovalService {
      */
     public static OpenapiResponse<String>  getOriginSidByDestorySid(ApprovalOriginSidRequest request) throws ApiException {
         OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 销出差审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  cancelTravelApply(FlowCancelTravelRequest request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 销外出审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  cancelLeaveOutApply(FlowCancelLeaveOutRequest request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
         return execute;
     }
 }
