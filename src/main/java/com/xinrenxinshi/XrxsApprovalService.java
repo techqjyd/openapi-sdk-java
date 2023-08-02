@@ -162,6 +162,14 @@ public abstract class XrxsApprovalService {
         return execute;
     }
 
+    /**
+     * 审批节点操作
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  travelApprovalApplyV2(TravelApprovalApplyV2Request request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
 
     /**
      * 查询审批步骤记录
@@ -241,6 +249,17 @@ public abstract class XrxsApprovalService {
     }
 
     /**
+     * 销出差审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  cancelTravelApplyV2(FlowCancelTravelV2Request request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
      * 销外出审批发起
      * @param request
      * @return
@@ -248,6 +267,14 @@ public abstract class XrxsApprovalService {
      */
     public static OpenapiResponse<ApprovalApplyResponse>  cancelLeaveOutApply(FlowCancelLeaveOutRequest request) throws ApiException {
         OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 补卡审批发起
+     */
+    public static OpenapiResponse<String> repairEmpCheckApply(FlowRepairCheckRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
 }
