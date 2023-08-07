@@ -1,7 +1,5 @@
 package com.xinrenxinshi.response;
 
-import com.xinrenxinshi.openapi.OpenapiResponse;
-
 import java.util.List;
 
 /**
@@ -30,7 +28,7 @@ public class PayrollReportArchiveDetailResponse {
     /**
      * 当前报表的所有数据信息列表
      */
-    private List<String> reportDetailList;
+    private List<List<String>> reportDetailList;
 
     public Integer getTotalRow() {
         return totalRow;
@@ -64,11 +62,11 @@ public class PayrollReportArchiveDetailResponse {
         this.reportHeadList = reportHeadList;
     }
 
-    public List<String> getReportDetailList() {
+    public List<List<String>> getReportDetailList() {
         return reportDetailList;
     }
 
-    public void setReportDetailList(List<String> reportDetailList) {
+    public void setReportDetailList(List<List<String>> reportDetailList) {
         this.reportDetailList = reportDetailList;
     }
 }
