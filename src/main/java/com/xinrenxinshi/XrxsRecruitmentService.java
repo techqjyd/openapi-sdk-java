@@ -2,11 +2,18 @@ package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.Page;
 import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
+import com.xinrenxinshi.domain.recruit.RecruitmentResumeStandardFieldInfo;
+import com.xinrenxinshi.domain.recruit.RecruitmentResumeUploadParam;
+import com.xinrenxinshi.domain.recruit.TalentBankInfo;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.RecruitmentFullDataRequest;
+import com.xinrenxinshi.request.RecruitmentResumeSyncToTalentRequest;
 import com.xinrenxinshi.request.RecruitmentSyncResumeRequest;
+import com.xinrenxinshi.request.RecruitmentTalentBankListRequest;
 import com.xinrenxinshi.util.RequestTemplate;
+
+import java.util.List;
 
 /**
  * 招聘相关service
@@ -50,6 +57,52 @@ public abstract class XrxsRecruitmentService {
      */
     public static OpenapiResponse<String> syncRecruitmentResume(RecruitmentSyncResumeRequest request) throws ApiException{
         return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取人才库列表
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<TalentBankInfo>> getTalentBankList(RecruitmentTalentBankListRequest request) throws ApiException{
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取人才库列表
+     * @param access_token
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<TalentBankInfo>> getTalentBankList(String access_token) throws ApiException{
+        RecruitmentTalentBankListRequest request = new RecruitmentTalentBankListRequest(access_token);
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 同步简历到人才库
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String> resumeSyncToTalent(RecruitmentResumeSyncToTalentRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 同步简历到人才库
+     * @param access_token
+     * @param uploadParam
+     * @param standardResume
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String> resumeSyncToTalent(String access_token, RecruitmentResumeUploadParam uploadParam, RecruitmentResumeStandardFieldInfo standardResume) throws ApiException {
+        RecruitmentResumeSyncToTalentRequest request = new RecruitmentResumeSyncToTalentRequest(access_token);
+        request.setUploadParam(uploadParam);
+        request.setStandardResume(standardResume);
+        return resumeSyncToTalent(request);
     }
 
 }
