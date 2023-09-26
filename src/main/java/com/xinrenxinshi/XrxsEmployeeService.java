@@ -707,6 +707,17 @@ public abstract class XrxsEmployeeService {
     }
 
     /**
+     * 查询员工指定分组的字段数据v2
+     *
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<EmployeeGroupFieldData>> getEmployeeFieldInfo2(EmployeeFieldInfoRequestV2 request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
      * 预离职
      * @param request
      * @return
