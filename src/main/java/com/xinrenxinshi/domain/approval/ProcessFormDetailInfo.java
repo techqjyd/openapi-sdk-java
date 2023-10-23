@@ -85,6 +85,11 @@ public class ProcessFormDetailInfo {
      */
     private List<String> textListValue;
 
+    /**
+     * 多分组字段
+     */
+    private List<ProcessFormGroupInfo> processFormGroupInfos;
+
     public String getLabName() {
         return labName;
     }
@@ -227,5 +232,13 @@ public class ProcessFormDetailInfo {
 
     public void setValueId(String valueId) {
         this.valueId = valueId;
+    }
+
+    public List<ProcessFormGroupInfo> getProcessFormGroupInfos() {
+        return processFormGroupInfos;
+    }
+
+    public void setProcessFormGroupInfos(List<ProcessFormGroupInfo> processFormGroupInfos) {
+        this.processFormGroupInfos = processFormGroupInfos;
     }
 }
