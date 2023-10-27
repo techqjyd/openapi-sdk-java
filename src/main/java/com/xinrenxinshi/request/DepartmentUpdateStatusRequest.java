@@ -74,7 +74,7 @@ public class DepartmentUpdateStatusRequest extends AbstractOpenapiJsonRequest<Vo
         if (XRXSStrUtils.isEmpty(departmentId)) {
             throw new ParamNotValidException("部门id为空");
         }
-        if (!XRXSStrUtils.isNumeric(status)) {
+        if (!XRXSStrUtils.isNumeric(status) || status == null) {
             throw new ParamNotValidException("状态不是数字");
         }
     }
@@ -94,9 +94,7 @@ public class DepartmentUpdateStatusRequest extends AbstractOpenapiJsonRequest<Vo
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(3);
         map.put("departmentId", departmentId);
-        if (!XRXSStrUtils.isNumeric(status)) {
-            map.put("status", status);
-        }
+        map.put("status", status);
         if (!XRXSStrUtils.isEmpty(disableRemark)) {
             map.put("disableRemark", disableRemark);
         }
