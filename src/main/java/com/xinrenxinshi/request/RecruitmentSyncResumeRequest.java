@@ -19,6 +19,8 @@ import java.util.Map;
  **/
 public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<String> {
 
+    private Integer type;
+    private List<String> empInfoIds;
     private String name;
     private String mobile;
     private String email;
@@ -64,7 +66,9 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String,Object> map = new HashMap<>(10);
+        Map<String,Object> map = new HashMap<>(12);
+        map.put("type", type);
+        map.put("empInfoIds", empInfoIds);
         map.put("name",name);
         map.put("mobile",mobile);
         map.put("email",email);
@@ -129,6 +133,22 @@ public class RecruitmentSyncResumeRequest extends AbstractOpenapiJsonRequest<Str
     @Override
     public String getBizUrl() {
         return "/v5/recruitment/resume/add";
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public List<String> getEmpInfoIds() {
+        return empInfoIds;
+    }
+
+    public void setEmpInfoIds(List<String> empInfoIds) {
+        this.empInfoIds = empInfoIds;
     }
 
     public String getName() {
