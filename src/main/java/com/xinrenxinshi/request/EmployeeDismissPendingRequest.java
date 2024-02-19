@@ -52,6 +52,15 @@ public class EmployeeDismissPendingRequest extends AbstractOpenapiJsonRequest<Vo
      */
     private Integer adminLoginSwitch;
 
+    /**
+     * 离职原因
+     */
+    private String dismissionReason;
+    /**
+     * 离职备注
+     */
+    private String dismissRemark;
+
     public EmployeeDismissPendingRequest(String accessToken) {
         super(accessToken);
     }
@@ -120,6 +129,22 @@ public class EmployeeDismissPendingRequest extends AbstractOpenapiJsonRequest<Vo
         this.adminLoginSwitch = adminLoginSwitch;
     }
 
+    public String getDismissionReason() {
+        return dismissionReason;
+    }
+
+    public void setDismissionReason(String dismissionReason) {
+        this.dismissionReason = dismissionReason;
+    }
+
+    public String getDismissRemark() {
+        return dismissRemark;
+    }
+
+    public void setDismissRemark(String dismissRemark) {
+        this.dismissRemark = dismissRemark;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -175,6 +200,12 @@ public class EmployeeDismissPendingRequest extends AbstractOpenapiJsonRequest<Vo
         map.put("adminLoginSwitch",adminLoginSwitch);
         if (!XRXSStrUtils.isEmpty(payrollSub)) {
             map.put("payrollSub", payrollSub);
+        }
+        if (!XRXSStrUtils.isEmpty(dismissionReason)) {
+            map.put("dismissionReason", dismissionReason);
+        }
+        if (!XRXSStrUtils.isEmpty(dismissRemark)) {
+            map.put("dismissRemark", dismissRemark);
         }
         return map;
     }
