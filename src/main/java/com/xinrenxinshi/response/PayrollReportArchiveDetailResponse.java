@@ -1,5 +1,7 @@
 package com.xinrenxinshi.response;
 
+import com.xinrenxinshi.openapi.OpenapiResponse;
+
 import java.util.List;
 
 /**
