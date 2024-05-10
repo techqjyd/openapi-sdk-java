@@ -2,21 +2,16 @@ package com.xinrenxinshi.request;
 
 import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.apprisal.ApprisalKpiRoleModel;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
-import com.xinrenxinshi.response.CalculationCompanyGroupV2Response;
+
+import java.util.List;
 import java.util.Map;
 
-/**
- * @author fj
- * @version 1.0
- * @date 2021/12/7 3:34 下午
- * @desc
- */
-public class CalculationCompanyGroupV2Request extends AbstractOpenapiJsonRequest<CalculationCompanyGroupV2Response> {
-
-    public CalculationCompanyGroupV2Request(String accessToken) {
+public class ApprisalKpiRoleListRequest extends AbstractOpenapiJsonRequest<List<ApprisalKpiRoleModel>> {
+    public ApprisalKpiRoleListRequest(String accessToken) {
         super(accessToken);
     }
 
@@ -28,17 +23,18 @@ public class CalculationCompanyGroupV2Request extends AbstractOpenapiJsonRequest
 
     @Override
     public MethodEnum getMethod() {
-        return  MethodEnum.METHOD_POST;
+        return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public OpenapiResponse<CalculationCompanyGroupV2Response> getResponseClass() {
+    public OpenapiResponse<List<ApprisalKpiRoleModel>> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<CalculationCompanyGroupV2Response>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<CalculationCompanyGroupV2Response>>(){};
+    public TypeReference<OpenapiResponse<List<ApprisalKpiRoleModel>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<List<ApprisalKpiRoleModel>>>() {
+        };
     }
 
     @Override
@@ -48,6 +44,6 @@ public class CalculationCompanyGroupV2Request extends AbstractOpenapiJsonRequest
 
     @Override
     public String getBizUrl() {
-        return "/v5/calculation/group/list";
+        return "/v5/apprisal/kpi/roleList";
     }
 }

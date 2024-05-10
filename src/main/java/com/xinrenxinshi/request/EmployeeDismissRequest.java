@@ -51,6 +51,15 @@ public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
      */
     private String payrollSub;
 
+    /**
+     * 离职原因
+     */
+    private String dismissionReason;
+    /**
+     * 离职备注
+     */
+    private String dismissRemark;
+
     public EmployeeDismissRequest(String accessToken) {
         super(accessToken);
     }
@@ -101,6 +110,22 @@ public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
 
     public void setPayrollSub(String payrollSub) {
         this.payrollSub = payrollSub;
+    }
+
+    public String getDismissionReason() {
+        return dismissionReason;
+    }
+
+    public void setDismissionReason(String dismissionReason) {
+        this.dismissionReason = dismissionReason;
+    }
+
+    public String getDismissRemark() {
+        return dismissRemark;
+    }
+
+    public void setDismissRemark(String dismissRemark) {
+        this.dismissRemark = dismissRemark;
     }
 
     @Override
@@ -156,6 +181,12 @@ public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
         map.put("houseFundSub", houseFundSub.getHouseFundSub());
         if (!XRXSStrUtils.isEmpty(payrollSub)) {
             map.put("payrollSub", payrollSub);
+        }
+        if (!XRXSStrUtils.isEmpty(dismissionReason)) {
+            map.put("dismissionReason", dismissionReason);
+        }
+        if (!XRXSStrUtils.isEmpty(dismissRemark)) {
+            map.put("dismissRemark", dismissRemark);
         }
         return map;
     }

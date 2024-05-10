@@ -5,56 +5,52 @@ import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
-import com.xinrenxinshi.response.AttendanceTravelResponse;
+import com.xinrenxinshi.response.ApprovalApplyResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 员工出差打卡request
- *
- * @author: jiazijie
- * @create: 2019-11-14 16:42
- **/
-public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> {
+public class FlowCancelTravelV2Request extends AbstractOpenapiJsonRequest<ApprovalApplyResponse> {
     /**
-     * employeeId
+     * 员工id
      */
     private String employeeId;
 
     /**
-     * 手机号
+     * 原审批id
      */
-    private String mobile;
+    private String srcApproveId;
 
     /**
-     * 出差开始日期，日期格式：yyyy-MM-dd
+     * 开始时间 yyyy-MM-dd
      */
     private String startDate;
 
     /**
-     * 出差开始时间，AM：上半天、PM：下半天
+     * 时间类型 0 上半天 1 下半天
      */
-    private String startTime;
+    private Integer startTime;
 
     /**
-     * 出差结束日期，日期格式：yyyy-MM-dd
+     * 结束时间
      */
     private String endDate;
 
     /**
-     * 出差结束时间，AM：上半天、PM：下半天
+     * 时间类型 0 上半天 1 下半天
      */
-    private String endTime;
+    private Integer endTime;
 
+    /**
+     * 时间单位 0-按天 1-按小时
+     */
     private Integer timeUnit;
 
 
-    public AttendanceTravelRequest(String accessToken) {
+    public FlowCancelTravelV2Request(String accessToken) {
         super(accessToken);
     }
-
 
     public String getEmployeeId() {
         return employeeId;
@@ -72,11 +68,11 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
         this.startDate = startDate;
     }
 
-    public String getStartTime() {
+    public Integer getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Integer startTime) {
         this.startTime = startTime;
     }
 
@@ -88,20 +84,20 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
         this.endDate = endDate;
     }
 
-    public String getEndTime() {
+    public Integer getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Integer endTime) {
         this.endTime = endTime;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getSrcApproveId() {
+        return srcApproveId;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setSrcApproveId(String srcApproveId) {
+        this.srcApproveId = srcApproveId;
     }
 
     public Integer getTimeUnit() {
@@ -116,11 +112,11 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(8);
         map.put("employeeId", employeeId);
-        map.put("mobile", mobile);
         map.put("startDate", startDate);
         map.put("startTime", startTime);
         map.put("endDate", endDate);
         map.put("endTime", endTime);
+        map.put("srcApproveId",srcApproveId);
         map.put("timeUnit",timeUnit);
         return map;
     }
@@ -131,40 +127,40 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
     }
 
     @Override
-    public OpenapiResponse<String> getResponseClass() {
+    public OpenapiResponse<ApprovalApplyResponse> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<String>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<String>>() {
+    public TypeReference<OpenapiResponse<ApprovalApplyResponse>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<ApprovalApplyResponse>>() {
         };
     }
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(employeeId) && XRXSStrUtils.isEmpty(mobile)) {
-            throw new ParamNotValidException("员工employeeId和mobile不能同时为空");
+        if (XRXSStrUtils.isEmpty(employeeId)) {
+            throw new ParamNotValidException("员工employeeId不能为空");
         }
         if (startDate == null) {
             throw new ParamNotValidException("出差开始日期为空");
         }
-        if (startTime == null) {
-            throw new ParamNotValidException("出差开始时间为空");
-        }
         if (endDate == null) {
             throw new ParamNotValidException("出差结束日期为空");
+        }
+        if (startTime == null) {
+            throw new ParamNotValidException("出差开始时间为空");
         }
         if (endTime == null) {
             throw new ParamNotValidException("出差结束时间为空");
         }
-        if (timeUnit == null) {
-            throw new ParamNotValidException("时间单位为空");
+        if(XRXSStrUtils.isEmpty(srcApproveId)){
+            throw new ParamNotValidException("srcApproveId不能为空");
         }
     }
 
     @Override
     public String getBizUrl() {
-        return "/v5/attendance/travel";
+        return "/v5/workflow/apply/travel/cancel/v2";
     }
 }

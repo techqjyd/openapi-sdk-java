@@ -22,14 +22,14 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门创建request
      *
-     * @param access_token   授权token
-     * @param name           部门名称
-     * @param code           部门编码
-     * @param parentId       上级部门ID
+     * @param access_token 授权token
+     * @param name 部门名称
+     * @param code 部门编码
+     * @param parentId 上级部门ID
      * @param departTypeEnum 部门类型
-     * @param adminId        管理员ID
-     * @param city           所属城市
-     * @param remark         备注
+     * @param adminId 管理员ID
+     * @param city 所属城市
+     * @param remark 备注
      */
     public static OpenapiResponse<DepartmentCreateResponse> createDepartment(String access_token,
                                                                              String name,
@@ -63,8 +63,8 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门列表获取
      *
-     * @param access_token   授权token
-     * @param departmentId   部门ID
+     * @param access_token 授权token
+     * @param departmentId 部门ID
      * @param fetchChildEnum 是否获取子部门
      */
     public static OpenapiResponse<List<DepartmentModel>> getDepartmentList(String access_token,
@@ -89,13 +89,13 @@ public abstract class XrxsDepartmentService {
      *
      * @param access_token 授权token
      * @param departmentId 部门id
-     * @param name         部门名字
-     * @param parentId     上级部门Id
-     * @param code         部门编码
-     * @param type         部门类型
-     * @param adminId      管理员id
-     * @param city         所属城市
-     * @param remark       备注
+     * @param name 部门名字
+     * @param parentId 上级部门Id
+     * @param code 部门编码
+     * @param type 部门类型
+     * @param adminId 管理员id
+     * @param city 所属城市
+     * @param remark 备注
      */
     public static OpenapiResponse<Void> updateDepartment(String access_token,
                                                          String departmentId,
@@ -118,6 +118,25 @@ public abstract class XrxsDepartmentService {
         request.setRemark(remark);
         request.setHrbpId(hrbpId);
         return updateDepartment(request);
+    }
+
+    /**
+     * 部门启用获取停用
+     *
+     * @param access_token 授权token
+     * @param departmentId 部门id
+     * @param disableRemark 部门名字
+     * @param status 上级部门Id
+     */
+    public static OpenapiResponse<Void> updateDepartmentStatus(String access_token,
+                                                               String departmentId,
+                                                               Integer status,
+                                                               String disableRemark) throws ApiException {
+        DepartmentUpdateStatusRequest request = new DepartmentUpdateStatusRequest(access_token);
+        request.setDepartmentId(departmentId);
+        request.setStatus(status);
+        request.setDisableRemark(disableRemark);
+        return RequestTemplate.execute(request);
     }
 
     /**
@@ -189,10 +208,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 获取公司的职级列表
-     *
-     * @param access_token
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<List<RankModel>> rankList(String access_token) throws ApiException {
         RankListRequest request = new RankListRequest(access_token);
@@ -201,10 +216,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 获取公司的职级列表
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<List<RankModel>> rankList(RankListRequest request) throws ApiException {
         OpenapiResponse<List<RankModel>> execute = RequestTemplate.execute(request);
@@ -215,9 +226,7 @@ public abstract class XrxsDepartmentService {
      * 获取公司岗位词典的详细信息
      *
      * @param access_token token
-     * @param jobId        岗位id，不传或者传空时，默认返回公司所有的岗位信息
-     * @return
-     * @throws ApiException
+     * @param jobId 岗位id，不传或者传空时，默认返回公司所有的岗位信息
      */
     public static OpenapiResponse<List<JobDictionaryModel>> getJobDictionary(String access_token, String jobId) throws ApiException {
         JobDictionaryDetailRquest request = new JobDictionaryDetailRquest(access_token);
@@ -227,10 +236,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 获取公司岗位词典的详细信息
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<List<JobDictionaryModel>> getJobDictionary(JobDictionaryDetailRquest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -238,10 +243,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 获取公司部门类型列表
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<List<DepartmentTypeModel>> getDepartmentTypeList(DepartmentTypeRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -249,10 +250,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 获取公司虚拟部门列表
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<List<DepartmentModel>> getAllVirtualDeptList(DepartmentVirtualListRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -260,10 +257,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 新增岗位
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<String> addJob(DepartmentJobAddRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -271,10 +264,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 更新岗位
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<Void> updateJob(DepartmentJobUpdateRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -282,10 +271,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 删除岗位
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<Void> deleteJob(DepartmentJobDeleteRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -293,10 +278,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 新增成本中心
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<String> addCostCenter(CostCenterAddRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -304,10 +285,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 更新成本中心
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<Void> updateCostCenter(CostCenterUpdateRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -315,10 +292,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 删除成本中心
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<Void> deleteCostCenter(CostCenterDeleteRequest request) throws ApiException {
         return RequestTemplate.execute(request);
@@ -326,10 +299,6 @@ public abstract class XrxsDepartmentService {
 
     /**
      * 删除成本中心
-     *
-     * @param request
-     * @return
-     * @throws ApiException
      */
     public static OpenapiResponse<Void> deleteCostCenterBudget(CostCenterBudgetDeleteRequest request) throws ApiException {
         return RequestTemplate.execute(request);
