@@ -41,6 +41,10 @@ public class ProcessFormDetailInfo {
      */
     private List<FlowFileInfo> files;
     /**
+     * 关联的审批表单
+     */
+    private List<FlowRelatedApproveInfo> relatedApproves;
+    /**
      * 时间区间开始时间标签名
      */
     private String startLabName;
@@ -240,5 +244,13 @@ public class ProcessFormDetailInfo {
 
     public void setProcessFormGroupInfos(List<ProcessFormGroupInfo> processFormGroupInfos) {
         this.processFormGroupInfos = processFormGroupInfos;
+    }
+
+    public List<FlowRelatedApproveInfo> getRelatedApproves() {
+        return relatedApproves;
+    }
+
+    public void setRelatedApproves(List<FlowRelatedApproveInfo> relatedApproves) {
+        this.relatedApproves = relatedApproves;
     }
 }
