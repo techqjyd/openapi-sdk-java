@@ -60,9 +60,33 @@ public abstract class XrxsPayrollService {
     }
 
     /**
+     * 获取工资报表详情v2
+     *
+     * @param access_token 授权token
+     * @param reportId     查询的报表id
+     * @param subReportId  查询的子报表id
+     */
+    public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetailV2(String access_token,
+                                                                                             String reportId,
+                                                                                             String subReportId) throws ApiException {
+        PayrollReportArchiveDetailV2Request request = new PayrollReportArchiveDetailV2Request(access_token);
+        request.setReportId(reportId);
+        request.setSubReportId(subReportId);
+        return getReportArchiveDetailV2(request);
+    }
+
+    /**
      * 获取工资报表详情
      */
     public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetail(PayrollReportArchiveDetailRequest request) throws ApiException {
+        OpenapiResponse<PayrollReportArchiveDetailResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取工资报表详情v2
+     */
+    public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetailV2(PayrollReportArchiveDetailV2Request request) throws ApiException {
         OpenapiResponse<PayrollReportArchiveDetailResponse> execute = RequestTemplate.execute(request);
         return execute;
     }
