@@ -1,13 +1,10 @@
 package com.xinrenxinshi;
 
-import com.xinrenxinshi.domain.statistic.StatChartDetailInfo;
-import com.xinrenxinshi.domain.statistic.StatChartInfo;
-import com.xinrenxinshi.domain.statistic.StatDashboardInfo;
+import com.xinrenxinshi.domain.statistic.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
-import com.xinrenxinshi.request.StatisticsChartDetailRequest;
-import com.xinrenxinshi.request.StatisticsChartRequest;
-import com.xinrenxinshi.request.StatisticsDashboardRequest;
+import com.xinrenxinshi.request.*;
+import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
@@ -32,5 +29,73 @@ public abstract class XrxsStatisticService {
         OpenapiResponse<StatChartDetailInfo> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 获取线索列表
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<PageResult<ClueInfoDO>> getClueInfoList(StatisticsClubInfoQueryRequest request) throws ApiException {
+        OpenapiResponse<PageResult<ClueInfoDO>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 添加线索列表
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<Integer> addClueInfoList(StatisticsClubInfoAddRequest request) throws ApiException {
+        OpenapiResponse<Integer> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 删除线索列表
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<Integer> deleteClueInfoList(StatisticsClubInfoDeleteRequest request) throws ApiException {
+        OpenapiResponse<Integer> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取订单列表
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<PageResult<SaleOrderDO>> getSaleOrderList(StatisticsSaleOrderQueryRequest request) throws ApiException {
+        OpenapiResponse<PageResult<SaleOrderDO>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 添加订单列表
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<Integer> addSaleOrderList(StatisticsSaleOrderAddRequest request) throws ApiException {
+        OpenapiResponse<Integer> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 删除订单列表
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<Integer> deleteSaleOrderList(StatisticsSaleOrderDeleteRequest request) throws ApiException {
+        OpenapiResponse<Integer> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+
 
 }

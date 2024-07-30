@@ -339,4 +339,11 @@ public abstract class XrxsAttendanceService {
         OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 获取考勤日报表
+     */
+    public static OpenapiResponse<PageResult<AttendanceDailyReportResult>> getDailyReport(AttendanceDailyReportRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }
