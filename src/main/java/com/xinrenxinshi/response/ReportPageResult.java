@@ -75,6 +75,9 @@ public class ReportPageResult<T> {
         this.hasMore = hasMore;
     }
 
+    public ReportPageResult() {
+    }
+
     public ReportPageResult(Long totalPageSize, int pageNo, int pageSize, T result, boolean hasMore) {
         this.totalPageSize = totalPageSize;
         this.pageNo = pageNo;
