@@ -96,6 +96,27 @@ public abstract class XrxsStatisticService {
         return execute;
     }
 
+    /**
+     * 获取导入报表字段
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<List<StatisticsFieldDO>> getStatisticsFieldList(StatisticsFieldRequest request) throws ApiException {
+        OpenapiResponse<List<StatisticsFieldDO>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 导入报表数据
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static  OpenapiResponse<StatReportUploadResultDO> importStatisticsReport(StatisticsReportImportRequest request) throws ApiException {
+        OpenapiResponse<StatReportUploadResultDO> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 
 
 }
