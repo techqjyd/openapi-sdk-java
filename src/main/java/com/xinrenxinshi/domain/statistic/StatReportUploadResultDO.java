@@ -19,4 +19,16 @@ public class StatReportUploadResultDO {
      * 上传数量
      */
     private Integer uploadCount;
+
+    /**
+     * 导入失败的信息
+     */
+    private String errorMessage;
+
+    /**
+     * 1 - 全部导入成功
+     * 2 - 部分导入成功
+     * 3 - 全部导入失败
+     */
+    private Integer successType = 3;
 }
