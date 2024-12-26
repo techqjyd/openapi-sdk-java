@@ -19,7 +19,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 16:58
  **/
-public class AttendanceBatchClockRequest extends AbstractOpenapiJsonRequest<Void> {
+public class AttendanceBatchClockRequest extends AbstractOpenapiJsonRequest<Object> {
 
     /**
      * 批量打卡数据
@@ -51,7 +51,7 @@ public class AttendanceBatchClockRequest extends AbstractOpenapiJsonRequest<Void
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
@@ -70,8 +70,8 @@ public class AttendanceBatchClockRequest extends AbstractOpenapiJsonRequest<Void
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

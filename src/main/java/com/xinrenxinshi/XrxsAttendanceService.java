@@ -34,7 +34,7 @@ public abstract class XrxsAttendanceService {
      * @param latitude     维度
      * @param remark       备注
      */
-    public static OpenapiResponse<Void> clock(String access_token,
+    public static OpenapiResponse<Object> clock(String access_token,
                                 String employeeId,
                                 String mobile,
                                 Integer clockTime,
@@ -54,8 +54,8 @@ public abstract class XrxsAttendanceService {
     /**
      * 上传员工打卡记录
      */
-    public static OpenapiResponse<Void> clock(AttendanceClockRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> clock(AttendanceClockRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -65,7 +65,7 @@ public abstract class XrxsAttendanceService {
      * @param access_token 授权token
      * @param clockData    批量打卡数据
      */
-    public static OpenapiResponse<Void> batchClock(String access_token,
+    public static OpenapiResponse<Object> batchClock(String access_token,
                                      List<BatchClockModel> clockData) throws ApiException {
         AttendanceBatchClockRequest request = new AttendanceBatchClockRequest(access_token);
         request.setClockData(clockData);
@@ -75,8 +75,8 @@ public abstract class XrxsAttendanceService {
     /**
      * 批量打卡
      */
-    public static OpenapiResponse<Void> batchClock(AttendanceBatchClockRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> batchClock(AttendanceBatchClockRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
