@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CostCenterUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
+public class CostCenterUpdateRequest extends AbstractOpenapiJsonRequest<Object> {
     public CostCenterUpdateRequest(String accessToken) {
         super(accessToken);
     }
@@ -110,13 +110,13 @@ public class CostCenterUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

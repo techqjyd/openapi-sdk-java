@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ApprisalKpiAccessCompleteValueRequest extends AbstractOpenapiJsonRequest<Void> {
+public class ApprisalKpiAccessCompleteValueRequest extends AbstractOpenapiJsonRequest<Object> {
     /**
      * 方案id
      */
@@ -69,13 +69,13 @@ public class ApprisalKpiAccessCompleteValueRequest extends AbstractOpenapiJsonRe
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

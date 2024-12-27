@@ -39,8 +39,8 @@ public abstract class XrxsApprisalService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void> saveKpiRoleEmpList(ApprisalkpiSaveRoleEmpRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> saveKpiRoleEmpList(ApprisalkpiSaveRoleEmpRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -50,8 +50,8 @@ public abstract class XrxsApprisalService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void> deleteKpiRoleEmpList(ApprisalKpidelRoleEmpRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> deleteKpiRoleEmpList(ApprisalKpidelRoleEmpRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -61,8 +61,8 @@ public abstract class XrxsApprisalService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void> handAccessCompleteValue(ApprisalKpiAccessCompleteValueRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> handAccessCompleteValue(ApprisalKpiAccessCompleteValueRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 }

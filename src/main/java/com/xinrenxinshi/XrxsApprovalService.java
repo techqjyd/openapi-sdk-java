@@ -124,7 +124,7 @@ public abstract class XrxsApprovalService {
      * @param status     操作类型 1:通过 2:驳回
      * @param remark     备注信息(最长300个字符)
      */
-    public static OpenapiResponse<Void> workflowNodeOperate(String access_token,
+    public static OpenapiResponse<Object> workflowNodeOperate(String access_token,
                                               String stepNodeId,
                                               String operatorId,
                                               Integer status,
@@ -140,8 +140,8 @@ public abstract class XrxsApprovalService {
     /**
      * 审批节点操作
      */
-    public static OpenapiResponse<Void>  workflowNodeOperate(ApprovalNodeOperateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object>  workflowNodeOperate(ApprovalNodeOperateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -221,8 +221,8 @@ public abstract class XrxsApprovalService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void>  cancelLeaveOffApply(FlowCancelApplyRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object>  cancelLeaveOffApply(FlowCancelApplyRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 

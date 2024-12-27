@@ -24,7 +24,7 @@ import static com.xinrenxinshi.util.XRXSDateUtils.DATE_FORMAT_YEARMO;
  * @author: liuchenhui
  * @create: 2019-11-12 10:18
  **/
-public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
+public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Object> {
 
     /**
      * 员工ID
@@ -134,13 +134,13 @@ public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

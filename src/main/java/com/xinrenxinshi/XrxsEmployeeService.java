@@ -114,7 +114,7 @@ public abstract class XrxsEmployeeService {
      * @param subjection    管理形式，0:总部，1:分城市
      * @param highestDegree 最高学历，1:初中，2:高中，3:中专，4:大专，5:本科，6:硕士，7:博士，8:其他，9:小学，10:中职，11:中技
      */
-    public static OpenapiResponse<Void> employed(String access_token,
+    public static OpenapiResponse<Object> employed(String access_token,
                                    String employeeId,
                                    String name,
                                    String mobile,
@@ -148,8 +148,8 @@ public abstract class XrxsEmployeeService {
     /**
      * 待入职员工入职操作
      */
-    public static OpenapiResponse<Void> employed(EmployeeEmployedRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> employed(EmployeeEmployedRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -161,7 +161,7 @@ public abstract class XrxsEmployeeService {
      * @param regularDate         试用期转正日期，格式：yyyy-MM-dd
      * @param jobNumber           工号
      */
-    public static OpenapiResponse<Void> regular(String access_token,
+    public static OpenapiResponse<Object> regular(String access_token,
                                   String employeeId,
                                   String regularHireTypeDate,
                                   String regularDate,
@@ -177,8 +177,8 @@ public abstract class XrxsEmployeeService {
     /**
      * 转正操作
      */
-    public static OpenapiResponse<Void> regular(EmployeeRegularRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> regular(EmployeeRegularRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -369,7 +369,7 @@ public abstract class XrxsEmployeeService {
      * @param fields       员工字段信息
      * @param entryDate    入职时间 yyyy-MM-dd
      */
-    public static OpenapiResponse<Void> updateEmployee(String access_token,
+    public static OpenapiResponse<Object> updateEmployee(String access_token,
                                          String employeeId,
                                          String name,
                                          String mobile,
@@ -389,8 +389,8 @@ public abstract class XrxsEmployeeService {
     /**
      * 更新员工信息
      */
-    public static OpenapiResponse<Void> updateEmployee(EmployeeUpdateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> updateEmployee(EmployeeUpdateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -405,7 +405,7 @@ public abstract class XrxsEmployeeService {
      * @param houseFundSubEnum   公积金减员月
      * @param payrollSub         离职减员月
      */
-    public static OpenapiResponse<Void> dismissEmployee(String access_token,
+    public static OpenapiResponse<Object> dismissEmployee(String access_token,
                                           String employeeId,
                                           String dismissDate,
                                           DismissionTypeEnum dismissionTypeEnum,
@@ -425,8 +425,8 @@ public abstract class XrxsEmployeeService {
     /**
      * 员工离职
      */
-    public static OpenapiResponse<Void> dismissEmployee(EmployeeDismissRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> dismissEmployee(EmployeeDismissRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -568,7 +568,7 @@ public abstract class XrxsEmployeeService {
      * @param groupType      分组类型，1-合同记录,7-教育经历,8-工作经历,9-培训经历,10-证书记录,11-联系人记录
      * @param employeeFields 更新分组信息记录 Map<String, String>, Json格式数据，Map的key需要更新字段页面展示文案（分组字段中的labelName），Map的Value更新字段设置的新值(选项类型值为dataSource的Key)
      */
-    public static OpenapiResponse<Void> employeeGroupUpdate(String access_token,
+    public static OpenapiResponse<Object> employeeGroupUpdate(String access_token,
                                               String employeeId,
                                               String recordId,
                                               EmpGroupEnum groupType,
@@ -584,13 +584,13 @@ public abstract class XrxsEmployeeService {
     /**
      * 员工分组信息更新
      */
-    public static OpenapiResponse<Void> employeeGroupUpdate(EmployeeGroupUpdateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> employeeGroupUpdate(EmployeeGroupUpdateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
-    public static OpenapiResponse<Void> employeeGroupUpdateV2(EmployeeGroupUpdateV2Request request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> employeeGroupUpdateV2(EmployeeGroupUpdateV2Request request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -601,7 +601,7 @@ public abstract class XrxsEmployeeService {
      * @param recordId   更新分组信息记录ID
      * @param groupType  分组类型，1-合同记录,7-教育经历,8-工作经历,9-培训经历,10-证书记录,11-联系人记录
      */
-    public static OpenapiResponse<Void> employeeGroupRemove(String access_token,
+    public static OpenapiResponse<Object> employeeGroupRemove(String access_token,
                                               String employeeId,
                                               String recordId,
                                               EmpGroupEnum groupType) throws ApiException {
@@ -615,8 +615,8 @@ public abstract class XrxsEmployeeService {
     /**
      * 员工分组信息删除
      */
-    public static OpenapiResponse<Void> employeeGroupRemove(EmployeeGroupRemoveRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> employeeGroupRemove(EmployeeGroupRemoveRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -723,8 +723,8 @@ public abstract class XrxsEmployeeService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void> dismissPendingEmployee(EmployeeDismissPendingRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> dismissPendingEmployee(EmployeeDismissPendingRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -734,8 +734,8 @@ public abstract class XrxsEmployeeService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void> employeeToRegular(EmployeeToRegularRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> employeeToRegular(EmployeeToRegularRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -745,8 +745,8 @@ public abstract class XrxsEmployeeService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void> deletePendingStaff(EmployeePendingDeleteRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> deletePendingStaff(EmployeePendingDeleteRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -768,8 +768,8 @@ public abstract class XrxsEmployeeService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void> updateFieldDictionary(EmployeeFieldOptionUpdateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> updateFieldDictionary(EmployeeFieldOptionUpdateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 }

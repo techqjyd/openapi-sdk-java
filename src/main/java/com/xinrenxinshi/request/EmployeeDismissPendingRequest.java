@@ -17,7 +17,7 @@ import java.util.Map;
 import static com.xinrenxinshi.util.XRXSDateUtils.DATE_FORMAT_NORMAL;
 import static com.xinrenxinshi.util.XRXSDateUtils.DATE_FORMAT_YEARMO;
 
-public class EmployeeDismissPendingRequest extends AbstractOpenapiJsonRequest<Void> {
+public class EmployeeDismissPendingRequest extends AbstractOpenapiJsonRequest<Object> {
 
     /**
      * 员工ID
@@ -151,13 +151,13 @@ public class EmployeeDismissPendingRequest extends AbstractOpenapiJsonRequest<Vo
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

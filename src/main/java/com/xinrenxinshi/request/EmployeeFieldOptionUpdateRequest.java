@@ -18,7 +18,7 @@ import java.util.Map;
  * @jdk 1.8
  * @description 更新选项openAPI入参
  **/
-public class EmployeeFieldOptionUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
+public class EmployeeFieldOptionUpdateRequest extends AbstractOpenapiJsonRequest<Object> {
 
     /**
      * 字段id
@@ -54,7 +54,7 @@ public class EmployeeFieldOptionUpdateRequest extends AbstractOpenapiJsonRequest
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
@@ -63,8 +63,8 @@ public class EmployeeFieldOptionUpdateRequest extends AbstractOpenapiJsonRequest
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

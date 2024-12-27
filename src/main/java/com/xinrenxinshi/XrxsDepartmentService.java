@@ -97,7 +97,7 @@ public abstract class XrxsDepartmentService {
      * @param city 所属城市
      * @param remark 备注
      */
-    public static OpenapiResponse<Void> updateDepartment(String access_token,
+    public static OpenapiResponse<Object> updateDepartment(String access_token,
                                                          String departmentId,
                                                          String name,
                                                          String parentId,
@@ -128,7 +128,7 @@ public abstract class XrxsDepartmentService {
      * @param disableRemark 部门名字
      * @param status 上级部门Id
      */
-    public static OpenapiResponse<Void> updateDepartmentStatus(String access_token,
+    public static OpenapiResponse<Object> updateDepartmentStatus(String access_token,
                                                                String departmentId,
                                                                Integer status,
                                                                String disableRemark) throws ApiException {
@@ -142,8 +142,8 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门更新
      */
-    public static OpenapiResponse<Void> updateDepartment(DepartmentUpdateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> updateDepartment(DepartmentUpdateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -153,7 +153,7 @@ public abstract class XrxsDepartmentService {
      * @param access_token 授权token
      * @param departmentId 部门ID
      */
-    public static OpenapiResponse<Void> deleteDepartment(String access_token,
+    public static OpenapiResponse<Object> deleteDepartment(String access_token,
                                                          String departmentId) throws ApiException {
         DepartmentDeleteRequest request = new DepartmentDeleteRequest(access_token);
         request.setDepartmentId(departmentId);
@@ -163,8 +163,8 @@ public abstract class XrxsDepartmentService {
     /**
      * 部门删除
      */
-    public static OpenapiResponse<Void> deleteDepartment(DepartmentDeleteRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> deleteDepartment(DepartmentDeleteRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -265,14 +265,14 @@ public abstract class XrxsDepartmentService {
     /**
      * 更新岗位
      */
-    public static OpenapiResponse<Void> updateJob(DepartmentJobUpdateRequest request) throws ApiException {
+    public static OpenapiResponse<Object> updateJob(DepartmentJobUpdateRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 
     /**
      * 删除岗位
      */
-    public static OpenapiResponse<Void> deleteJob(DepartmentJobDeleteRequest request) throws ApiException {
+    public static OpenapiResponse<Object> deleteJob(DepartmentJobDeleteRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 
@@ -286,21 +286,21 @@ public abstract class XrxsDepartmentService {
     /**
      * 更新成本中心
      */
-    public static OpenapiResponse<Void> updateCostCenter(CostCenterUpdateRequest request) throws ApiException {
+    public static OpenapiResponse<Object> updateCostCenter(CostCenterUpdateRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 
     /**
      * 删除成本中心
      */
-    public static OpenapiResponse<Void> deleteCostCenter(CostCenterDeleteRequest request) throws ApiException {
+    public static OpenapiResponse<Object> deleteCostCenter(CostCenterDeleteRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 
     /**
      * 删除成本中心
      */
-    public static OpenapiResponse<Void> deleteCostCenterBudget(CostCenterBudgetDeleteRequest request) throws ApiException {
+    public static OpenapiResponse<Object> deleteCostCenterBudget(CostCenterBudgetDeleteRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 

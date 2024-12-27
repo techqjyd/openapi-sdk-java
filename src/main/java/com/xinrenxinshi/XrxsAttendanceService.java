@@ -189,7 +189,7 @@ public abstract class XrxsAttendanceService {
      * @param endDate    销出差结束日期，日期格式：yyyy-MM-dd
      * @param endTime    销出差结束时间，AM：上半天、PM：下半天
      */
-    public static OpenapiResponse<Void> cancelTravel(String access_token,
+    public static OpenapiResponse<Object> cancelTravel(String access_token,
                                        String employeeId,
                                        String startDate,
                                        String startTime,
@@ -207,24 +207,24 @@ public abstract class XrxsAttendanceService {
     /**
      * 销出差接口
      */
-    public static OpenapiResponse<Void> cancelTravel(AttendanceCancelTravelRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> cancelTravel(AttendanceCancelTravelRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
     /**
      * 销出差接口
      */
-    public static OpenapiResponse<Void> cancelTravelV2(AttendanceCancelTravelV2Request request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> cancelTravelV2(AttendanceCancelTravelV2Request request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
     /**
      * 销出差接口
      */
-    public static OpenapiResponse<Void> cancelTravelV3(AttendanceCancelTravelV3Request request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> cancelTravelV3(AttendanceCancelTravelV3Request request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -286,8 +286,8 @@ public abstract class XrxsAttendanceService {
     /**
      * 外出申请状态同步
      */
-    public static OpenapiResponse<Void> cancelLeaveout(AttendanceCancelLeaveOutRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> cancelLeaveout(AttendanceCancelLeaveOutRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 

@@ -115,7 +115,7 @@ public abstract class XrxsPayrollService {
      * @param access_token     授权token
      * @param employeePayrolls 批量更新员工的工资设置的参数
      */
-    public static OpenapiResponse<Void> updateEmpPayrollSetting(String access_token,
+    public static OpenapiResponse<Object> updateEmpPayrollSetting(String access_token,
                                                   List<EmployeePayroll> employeePayrolls) throws ApiException {
         PayrollUpdateRequest request = new PayrollUpdateRequest(access_token);
         request.setEmployeePayrolls(employeePayrolls);
@@ -125,8 +125,8 @@ public abstract class XrxsPayrollService {
     /**
      * 更新员工工资项
      */
-    public static OpenapiResponse<Void> updateEmpPayrollSetting(PayrollUpdateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> updateEmpPayrollSetting(PayrollUpdateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
