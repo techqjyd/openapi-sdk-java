@@ -24,6 +24,22 @@ public class EmployeeDetail extends EmployeeSimple {
      * 离职日期
      */
     private String dismissionDate;
+    /**
+     * 是否调出 0 否 1是 默认为0
+     */
+    private Integer transferOutFlag;
+    /**
+     *是否调入 0 否 1是 默认为0
+     */
+    private Integer transferInFlag;
+    /**
+     * 是否派入 0 否 1是 默认为0
+     */
+    private Integer secondment;
+    /**
+     * 是否派出 0 否 1是 默认为0
+     */
+    private Integer seconded;
 
     private Map<String, String> fields = new HashMap<>(10);
 
@@ -57,5 +73,37 @@ public class EmployeeDetail extends EmployeeSimple {
 
     public void setFields(Map<String, String> fields) {
         this.fields = fields;
+    }
+
+    public Integer getTransferOutFlag() {
+        return transferOutFlag;
+    }
+
+    public void setTransferOutFlag(Integer transferOutFlag) {
+        this.transferOutFlag = transferOutFlag;
+    }
+
+    public Integer getTransferInFlag() {
+        return transferInFlag;
+    }
+
+    public void setTransferInFlag(Integer transferInFlag) {
+        this.transferInFlag = transferInFlag;
+    }
+
+    public Integer getSecondment() {
+        return secondment;
+    }
+
+    public void setSecondment(Integer secondment) {
+        this.secondment = secondment;
+    }
+
+    public Integer getSeconded() {
+        return seconded;
+    }
+
+    public void setSeconded(Integer seconded) {
+        this.seconded = seconded;
     }
 }
