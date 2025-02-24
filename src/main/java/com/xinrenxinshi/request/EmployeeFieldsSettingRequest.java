@@ -22,7 +22,7 @@ public class EmployeeFieldsSettingRequest extends AbstractOpenapiJsonRequest<Lis
         return MethodEnum.METHOD_POST;
     }
     public String getBizUrl() {
-        return "/v5/employee/field/setting";
+        return "/v5/employee/fields/setting";
     }
 
     @Override
