@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class FieldConfig {
+public class EmployeeFieldConfig {
     /**
      * 字段 Id
      */
@@ -22,19 +22,7 @@ public class FieldConfig {
      */
     private String fieldType;
     /**
-     * 字段所属类别
-     */
-    private String fieldCategory;
-    /**
      * 当字段类型为单选，多选时有哪些选项
      */
     private List<FieldOption> options;
-    /**
-     * 是否支持多选，0：不支持，1：支持
-     */
-    private Integer multiple;
-    /**
-     * 是否是必填字段，0：非必填，1：必填
-     */
-    private Integer required;
 }

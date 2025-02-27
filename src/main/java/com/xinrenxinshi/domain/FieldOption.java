@@ -9,20 +9,16 @@ import java.util.List;
 @Setter
 public class FieldOption {
     /**
-     * 选项值
+     * 选项key
+     */
+    private String optionKey;
+    /**
+     * 选项的值
      */
     private String optionValue;
-    /**
-     * 选项内容
-     */
-    private String optionContent;
     /**
      * 多级选项，可不填
      */
     private List<FieldOption> children;
-    /**
-     * 是否支持多选，0：不支持，1：支持
-     */
-    private Integer multiple;
 
 }

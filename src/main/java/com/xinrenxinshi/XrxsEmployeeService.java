@@ -775,8 +775,8 @@ public abstract class XrxsEmployeeService {
     /**
      * 获取公司字段设置
      */
-    public static OpenapiResponse<List<FieldConfig>> getEmployeeFieldsSetting(EmployeeFieldsSettingRequest request) throws ApiException {
-        OpenapiResponse<List<FieldConfig>> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<List<EmployeeFieldConfig>> getEmployeeFieldsSetting(EmployeeFieldsSettingRequest request) throws ApiException {
+        OpenapiResponse<List<EmployeeFieldConfig>> execute = RequestTemplate.execute(request);
         return execute;
     }
 }
