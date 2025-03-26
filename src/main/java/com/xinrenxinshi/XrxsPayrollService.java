@@ -130,6 +130,14 @@ public abstract class XrxsPayrollService {
         return execute;
     }
 
+    /**
+     * 更新员工工资项(异常不阻塞)
+     */
+    public static OpenapiResponse<Object> updateEmpPayrollSettingIgnoreAbnormal(PayrollUpdateIgnoreAbnormalRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
 
     /**
      * 获取公司的调薪记录
