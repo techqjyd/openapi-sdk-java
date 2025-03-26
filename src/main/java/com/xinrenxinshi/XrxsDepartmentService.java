@@ -310,4 +310,36 @@ public abstract class XrxsDepartmentService {
     public static OpenapiResponse<List<CostCenterDetailModel>> costCenterList(CostCenterDetailListRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+
+    /**
+     * 获取公司信息
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<List<CompanyModel>> getCompanyList(CompanyListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 创建公司
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String> createCompany(CompanyCreateRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 更新公司
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Object> updateCompany(CompanyUpdateRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
 }
