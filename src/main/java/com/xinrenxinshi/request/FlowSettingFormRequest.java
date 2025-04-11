@@ -61,6 +61,6 @@ public class FlowSettingFormRequest extends AbstractOpenapiJsonRequest<FlowSetti
 
     @Override
     public String getBizUrl() {
-        return "/v5/workflow/setting/list";
+        return "/v5/workflow/setting/form";
     }
 }
