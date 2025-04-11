@@ -2,15 +2,16 @@ package com.xinrenxinshi.request;
 
 import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.approval.FlowGroupForOpenapiModel;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
-import com.xinrenxinshi.response.FlowSettingFormResult;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class FlowSettingFormRequest extends AbstractOpenapiJsonRequest<FlowSettingFormResult> {
+public class FlowSettingFormRequest extends AbstractOpenapiJsonRequest<List<FlowGroupForOpenapiModel>> {
 
     /**
      * 审批设置id
@@ -42,13 +43,13 @@ public class FlowSettingFormRequest extends AbstractOpenapiJsonRequest<FlowSetti
     }
 
     @Override
-    public OpenapiResponse<FlowSettingFormResult> getResponseClass() {
+    public OpenapiResponse<List<FlowGroupForOpenapiModel>> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<FlowSettingFormResult>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<FlowSettingFormResult>>() {
+    public TypeReference<OpenapiResponse<List<FlowGroupForOpenapiModel>>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<List<FlowGroupForOpenapiModel>>>() {
         };
     }
 

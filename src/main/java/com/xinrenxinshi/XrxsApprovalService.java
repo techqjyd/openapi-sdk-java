@@ -287,8 +287,8 @@ public abstract class XrxsApprovalService {
     /**
      * 获取设置表单
      */
-    public static OpenapiResponse<FlowSettingFormResult> getSettingForm(FlowSettingFormRequest request) throws ApiException {
-        OpenapiResponse<FlowSettingFormResult> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<List<FlowGroupForOpenapiModel>> getSettingForm(FlowSettingFormRequest request) throws ApiException {
+        OpenapiResponse<List<FlowGroupForOpenapiModel>> execute = RequestTemplate.execute(request);
         return execute;
     }
 
