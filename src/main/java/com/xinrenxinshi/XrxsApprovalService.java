@@ -295,8 +295,8 @@ public abstract class XrxsApprovalService {
     /**
      * 发起自定义审批
      */
-    public static OpenapiResponse<FlowCustomApplyResult> flowCustomApply(FlowCustomApplyRequest request) throws ApiException {
-        OpenapiResponse<FlowCustomApplyResult> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<String> flowCustomApply(FlowCustomApplyRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
 }

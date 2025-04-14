@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FlowCustomApplyRequest extends AbstractOpenapiJsonRequest<FlowCustomApplyResult> {
+public class FlowCustomApplyRequest extends AbstractOpenapiJsonRequest<String> {
 
     private String companyId;
     private String employeeId;
@@ -82,13 +82,13 @@ public class FlowCustomApplyRequest extends AbstractOpenapiJsonRequest<FlowCusto
     }
 
     @Override
-    public OpenapiResponse<FlowCustomApplyResult> getResponseClass() {
+    public OpenapiResponse<String> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<FlowCustomApplyResult>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<FlowCustomApplyResult>>() {
+    public TypeReference<OpenapiResponse<String>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<String>>() {
         };
     }
 
