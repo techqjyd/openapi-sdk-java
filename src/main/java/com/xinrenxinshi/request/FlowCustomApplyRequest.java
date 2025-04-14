@@ -68,7 +68,6 @@ public class FlowCustomApplyRequest extends AbstractOpenapiJsonRequest<String> {
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(10);
-        map.put("companyId", companyId);
         map.put("employeeId", employeeId);
         map.put("departmentId", departmentId);
         map.put("settingId", settingId);
