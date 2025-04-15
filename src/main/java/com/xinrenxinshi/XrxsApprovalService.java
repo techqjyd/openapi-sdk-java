@@ -6,9 +6,7 @@ import com.xinrenxinshi.domain.approval.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
-import com.xinrenxinshi.response.ApprovalApplyResponse;
-import com.xinrenxinshi.response.AttendanceLeaveOffResponse;
-import com.xinrenxinshi.response.AttendanceLeaveOutResponse;
+import com.xinrenxinshi.response.*;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -274,6 +272,30 @@ public abstract class XrxsApprovalService {
      * 补卡审批发起
      */
     public static OpenapiResponse<String> repairEmpCheckApply(FlowRepairCheckRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取自定义审批设置列表
+     */
+    public static OpenapiResponse<List<FlowSettingListResult>> getCustomFlowSettings(FlowSettingListRequest request) throws ApiException {
+        OpenapiResponse<List<FlowSettingListResult>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取设置表单
+     */
+    public static OpenapiResponse<List<FlowGroupForOpenapiModel>> getSettingForm(FlowSettingFormRequest request) throws ApiException {
+        OpenapiResponse<List<FlowGroupForOpenapiModel>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 发起自定义审批
+     */
+    public static OpenapiResponse<String> flowCustomApply(FlowCustomApplyRequest request) throws ApiException {
         OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
