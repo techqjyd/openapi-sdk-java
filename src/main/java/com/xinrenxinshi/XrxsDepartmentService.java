@@ -7,6 +7,7 @@ import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.response.DepartmentCreateResponse;
+import com.xinrenxinshi.response.DepartmentHeadcountResponse;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
@@ -342,4 +343,11 @@ public abstract class XrxsDepartmentService {
         return RequestTemplate.execute(request);
     }
 
+    /**
+     * 部门创建
+     */
+    public static OpenapiResponse<DepartmentHeadcountResponse> queryDepartmentHeadcount(DepartmentHeadcountRequest request) throws ApiException {
+        OpenapiResponse<DepartmentHeadcountResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }
