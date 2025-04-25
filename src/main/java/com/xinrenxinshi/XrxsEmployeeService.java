@@ -779,4 +779,12 @@ public abstract class XrxsEmployeeService {
         OpenapiResponse<List<EmployeeFieldConfig>> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 待入职发送完善信息提醒 - 邮件短信
+     */
+    public static OpenapiResponse<Boolean> employeeEntryRemind(EmployeeEntryRemindRequest request) throws ApiException {
+        OpenapiResponse<Boolean> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }
