@@ -29,6 +29,10 @@ public class DepartmentHeadcountRequest extends AbstractOpenapiJsonRequest<Depar
         this.departmentId = departmentId;
     }
 
+    public DepartmentHeadcountRequest(String accessToken) {
+        super(accessToken);
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
