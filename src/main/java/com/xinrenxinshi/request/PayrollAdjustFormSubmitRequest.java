@@ -130,6 +130,11 @@ public class PayrollAdjustFormSubmitRequest extends AbstractOpenapiJsonRequest<O
     public void setNoAttendancePay(List<PayrollEmployeeAdjustmentFormResponse.CustomPayrollItemChangeDO> noAttendancePay) {
         this.noAttendancePay = noAttendancePay;
     }
+
+    public PayrollAdjustFormSubmitRequest(String accessToken) {
+        super(accessToken);
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(12);
