@@ -66,6 +66,19 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
 
     private Integer workCity;
 
+    /**
+     * JsonMap,员工信息其余字段,以薪人薪事系统的字段名为key,员工该字段的值为value
+     */
+    private Map<String, String> fields;
+
+    public Map<String, String> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, String> fields) {
+        this.fields = fields;
+    }
+
     public EmpToBeHiredCreateRequest(String accessToken) {
         super(accessToken);
     }
@@ -215,6 +228,7 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         if (sendEmail != null) {
             map.put("sendEmail", sendEmail);
         }
+        map.put("fields", fields);
         return map;
     }
 }
