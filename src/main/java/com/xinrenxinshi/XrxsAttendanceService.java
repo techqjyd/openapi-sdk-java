@@ -346,4 +346,11 @@ public abstract class XrxsAttendanceService {
     public static OpenapiResponse<PageResult<AttendanceDailyReportResult>> getDailyReport(AttendanceDailyReportRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+    /**
+     * 获取考勤日报表
+     */
+    public static OpenapiResponse<AttendanceExceptionNumberResult> getAttendanceExceptionNumber(AttendanceExceptionNumberRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }
