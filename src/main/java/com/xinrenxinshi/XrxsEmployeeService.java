@@ -96,6 +96,15 @@ public abstract class XrxsEmployeeService {
         return execute;
     }
 
+
+    /**
+     * 待入职员工创建(新版)
+     */
+    public static OpenapiResponse<EmpToBeHiredCreateResponse> createPendingEmployee(PendingEmployeeCreateRequest request) throws ApiException {
+        OpenapiResponse<EmpToBeHiredCreateResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
     /**
      * 待入职员工入职操作
      *
