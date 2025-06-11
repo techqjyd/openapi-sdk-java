@@ -299,4 +299,31 @@ public abstract class XrxsApprovalService {
         OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 获取加班时间配置信息
+     */
+    public static OpenapiResponse<OvertimeOffDaySettingModel> getEmployeeOvertimeOffSetting(OvertimeApplySettingRequest request) throws ApiException {
+        OpenapiResponse<OvertimeOffDaySettingModel> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取加班补偿规则 和 校验数据
+     */
+    public static OpenapiResponse<EmployeeOvertimeRuleResult> getOvertimeRule(OvertimeApplyRuleRequest request) throws ApiException {
+        OpenapiResponse<EmployeeOvertimeRuleResult> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 加班审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String> overTimeApply(OverTimeApplyRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
 }
