@@ -7,6 +7,8 @@ import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +19,8 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 14:41
  **/
+@Getter
+@Setter
 public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Object> {
 
     /**
@@ -27,6 +31,10 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Object> 
      * 部门名称
      */
     private String name;
+    /**
+     * 部门英文名
+     */
+    private String enName;
     /**
      * 上级部门ID
      */
@@ -61,96 +69,8 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Object> 
      */
     private Map<String,String> fields;
 
-    public Map<String, String> getFields() {
-        return fields;
-    }
-
-    public void setFields(Map<String, String> fields) {
-        this.fields = fields;
-    }
-
     public DepartmentUpdateRequest(String accessToken) {
         super(accessToken);
-    }
-
-    public String getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getHrbpId() {
-        return hrbpId;
-    }
-
-    public void setHrbpId(String hrbpId) {
-        this.hrbpId = hrbpId;
-    }
-
-    public Integer getIsVirtual() {
-        return isVirtual;
-    }
-
-    public void setIsVirtual(Integer isVirtual) {
-        this.isVirtual = isVirtual;
     }
 
     @Override
@@ -187,6 +107,9 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Object> 
         map.put("departmentId", departmentId);
         if (!XRXSStrUtils.isEmpty(name)) {
             map.put("name", name);
+        }
+        if (!XRXSStrUtils.isEmpty(enName)) {
+            map.put("enName", enName);
         }
         if (!XRXSStrUtils.isEmpty(code)) {
             map.put("code", code);

@@ -8,6 +8,8 @@ import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.DepartmentCreateResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +20,8 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-08 16:34
  **/
+@Getter
+@Setter
 public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<DepartmentCreateResponse> {
 
     /**
@@ -28,6 +32,10 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
      * 上级部门ID
      */
     private String parentId;
+    /**
+     * 部门英文名称
+     */
+    private String enName;
     /**
      * 部门编码
      */
@@ -58,89 +66,10 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
      */
     private Map<String,String> fields;
 
-    public Map<String, String> getFields() {
-        return fields;
-    }
-
-    public void setFields(Map<String, String> fields) {
-        this.fields = fields;
-    }
-
     public DepartmentCreateRequest(String accessToken) {
         super(accessToken);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getHrbpId() {
-        return hrbpId;
-    }
-
-    public void setHrbpId(String hrbpId) {
-        this.hrbpId = hrbpId;
-    }
-
-    public Integer getIsVirtual() {
-        return isVirtual;
-    }
-
-    public void setIsVirtual(Integer isVirtual) {
-        this.isVirtual = isVirtual;
-    }
 
     @Override
     public MethodEnum getMethod() {
@@ -183,6 +112,9 @@ public class DepartmentCreateRequest extends AbstractOpenapiJsonRequest<Departme
         }
         if (!XRXSStrUtils.isEmpty(adminId)) {
             map.put("adminId", adminId);
+        }
+        if (!XRXSStrUtils.isEmpty(enName)) {
+            map.put("enName", enName);
         }
         if (!XRXSStrUtils.isEmpty(city)) {
             map.put("city", city);
