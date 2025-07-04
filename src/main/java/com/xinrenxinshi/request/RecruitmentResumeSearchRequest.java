@@ -5,14 +5,17 @@ import com.xinrenxinshi.common.MethodEnum;
 import com.xinrenxinshi.domain.Page;
 import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
 import com.xinrenxinshi.domain.recruit.RecruitmentResumeInfo;
+import com.xinrenxinshi.domain.recruit.RecruitmentResumeQueryField;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
+import com.xinrenxinshi.util.XRXSListUtils;
 import com.xinrenxinshi.util.XRXSStrUtils;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,7 +35,13 @@ public class RecruitmentResumeSearchRequest extends AbstractOpenapiJsonRequest<P
     /**
      * 搜索关键字
      */
-    private String keyword;;
+    private String keyword;
+
+    /**
+     * 搜索字段
+     */
+    private List<RecruitmentResumeQueryField> queryField;
+
 
     public RecruitmentResumeSearchRequest(String accessToken) {
         super(accessToken);
@@ -56,8 +65,8 @@ public class RecruitmentResumeSearchRequest extends AbstractOpenapiJsonRequest<P
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(keyword)) {
-            throw new ParamNotValidException("搜索关键字为空");
+        if (XRXSStrUtils.isEmpty(keyword) && XRXSListUtils.isEmpty(queryField)) {
+            throw new ParamNotValidException("搜索关键字和过滤字段不能都为空");
         }
         if (pageSize > 100) {
             throw new ParamNotValidException("每页条数在1~100之间");
@@ -78,6 +87,9 @@ public class RecruitmentResumeSearchRequest extends AbstractOpenapiJsonRequest<P
         }
         if (pageSize != null) {
             map.put("pageSize", pageSize);
+        }
+        if (XRXSListUtils.isNotEmpty(queryField)) {
+            map.put("queryField", queryField);
         }
         return map;
     }
