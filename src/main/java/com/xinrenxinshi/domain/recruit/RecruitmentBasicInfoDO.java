@@ -46,7 +46,7 @@ public class RecruitmentBasicInfoDO {
     /**
      * 简历附件
      */
-    private List<RecruitmentAttachmentDO> attachments;
+    private List<RecruitmentFileModelDO> attachments;
     /**
      * 简历标签
      */

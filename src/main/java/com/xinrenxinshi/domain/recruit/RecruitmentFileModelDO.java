@@ -9,13 +9,13 @@ import lombok.Data;
  * @Description
  */
 @Data
-public class RecruitmentAttachmentDO {
+public class RecruitmentFileModelDO {
     /**
-     *  附件的 key
+     *  文件的 key
      */
-    private String fileKey;
+    private String key;
     /**
-     * 附件名称
+     * 文件名称
      */
-    private String fileName;
+    private String name;
 }
