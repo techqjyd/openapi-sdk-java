@@ -40,5 +40,14 @@ public class RecruitmentFormFieldValueDO {
      * 值
      */
     private String fieldValue;
+    /**
+     * 时间格式
+     */
+    private String format;
+
+    /**
+     * 数值单位
+     */
+    private String unit;
 
 }
