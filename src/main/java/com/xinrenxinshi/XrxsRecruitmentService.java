@@ -3,10 +3,12 @@ package com.xinrenxinshi;
 import com.xinrenxinshi.domain.Page;
 import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
 import com.xinrenxinshi.domain.recruit.RecruitmentResumeInfo;
+import com.xinrenxinshi.domain.recruit.RecruitmentStandardInfoDO;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.RecruitmentFullDataRequest;
 import com.xinrenxinshi.request.RecruitmentResumeSearchRequest;
+import com.xinrenxinshi.request.RecruitmentStandardResumeRequest;
 import com.xinrenxinshi.request.RecruitmentSyncResumeRequest;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -60,6 +62,14 @@ public abstract class XrxsRecruitmentService {
     public static OpenapiResponse<Page<RecruitmentResumeInfo>> searchResume(RecruitmentResumeSearchRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+    /**
+     * 简历查询
+     */
+    public static OpenapiResponse<RecruitmentStandardInfoDO> resumeDetail(RecruitmentStandardResumeRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
 
 
 }
