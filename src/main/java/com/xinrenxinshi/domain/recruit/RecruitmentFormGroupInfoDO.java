@@ -28,6 +28,15 @@ public class RecruitmentFormGroupInfoDO {
      * 组类型;0 单分组 1 多段分组
      */
     private Integer groupMultiple;
+    /**
+     * 组备注
+     */
+    private String groupRemark;
+
+    /**
+     * 是否固定分组;0 自定义分组 1固定分组
+     */
+    private Integer isFixed;
 
     /**
      * 字段设置

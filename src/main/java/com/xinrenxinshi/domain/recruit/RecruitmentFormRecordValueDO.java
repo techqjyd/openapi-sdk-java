@@ -14,6 +14,15 @@ import java.util.List;
 public class RecruitmentFormRecordValueDO {
 
     /**
+     * 记录id
+     */
+    private String recordId;
+    /**
+     * 是否主记录 0 否 1 是
+     */
+    private Integer isMain;
+
+    /**
      * 字段设置
      */
     private List<RecruitmentFormFieldValueDO> fieldValues;
