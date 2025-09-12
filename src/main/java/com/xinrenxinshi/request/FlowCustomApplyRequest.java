@@ -112,6 +112,6 @@ public class FlowCustomApplyRequest extends AbstractOpenapiJsonRequest<String> {
 
     @Override
     public String getBizUrl() {
-        return "/v5/workflow/apply/custom/flow";
+        return "/v5/workflow/apply/custom";
     }
 }
