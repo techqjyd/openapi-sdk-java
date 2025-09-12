@@ -62,7 +62,7 @@ public class FlowFieldForOpenapiModel implements Serializable {
     /**
      * 日期天数
      */
-    private Integer longValue;
+    private String longValue;
 
     /**
      * 是否必填
@@ -149,11 +149,11 @@ public class FlowFieldForOpenapiModel implements Serializable {
         this.endValue = endValue;
     }
 
-    public Integer getLongValue() {
+    public String getLongValue() {
         return longValue;
     }
 
-    public void setLongValue(Integer longValue) {
+    public void setLongValue(String longValue) {
         this.longValue = longValue;
     }
 
