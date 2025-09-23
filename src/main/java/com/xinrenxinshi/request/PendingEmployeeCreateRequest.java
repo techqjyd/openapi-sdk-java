@@ -1,10 +1,7 @@
 package com.xinrenxinshi.request;
 
 import com.alibaba.fastjson.TypeReference;
-import com.xinrenxinshi.common.Constants;
-import com.xinrenxinshi.common.LaborTypeEnum;
-import com.xinrenxinshi.common.MethodEnum;
-import com.xinrenxinshi.common.SimpleHireTypeEnum;
+import com.xinrenxinshi.common.*;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
@@ -21,7 +18,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-12 15:04
  **/
-public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToBeHiredCreateResponse> {
+public class PendingEmployeeCreateRequest extends AbstractOpenapiJsonRequest<EmpToBeHiredCreateResponse> {
 
     /**
      * 员工名字
@@ -40,31 +37,14 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
      */
     private String entryDate;
     /**
-     * 雇佣类型 0：正式，1：非正式
+     * 聘用类型，0-正式,10-实习,11-劳务,12-顾问,13-返聘
      */
-    private SimpleHireTypeEnum hireType;
-    /**
-     * 10-实习,11-劳务,12-顾问,13-返聘,当hireType=1的时候必填，当hireType=0的时候，一般默认laborType默认设置为10
-     */
-    private LaborTypeEnum laborType;
-
-    /**
-     * 部门
-     */
-    private String departmentId;
-    /**
-     * 岗位
-     */
-    private String jobId;
+    private HireTypeEnum hireType;
 
     /**
      * 是否给员工发送完善个人信息的邮件 0:不发送，1:发送。默认为0不发送
      */
     private String sendEmail;
-
-    private String regularDate;
-
-    private Integer workCity;
 
     /**
      * JsonMap,员工信息其余字段,以薪人薪事系统的字段名为key,员工该字段的值为value
@@ -79,24 +59,8 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         this.fields = fields;
     }
 
-    public EmpToBeHiredCreateRequest(String accessToken) {
+    public PendingEmployeeCreateRequest(String accessToken) {
         super(accessToken);
-    }
-
-    public String getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
     }
 
     public String getName() {
@@ -131,38 +95,13 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         this.entryDate = entryDate;
     }
 
-    public SimpleHireTypeEnum getHireType() {
+    public HireTypeEnum getHireType() {
         return hireType;
     }
 
-    public void setHireType(SimpleHireTypeEnum hireType) {
+    public void setHireType(HireTypeEnum hireType) {
         this.hireType = hireType;
     }
-
-    public LaborTypeEnum getLaborType() {
-        return laborType;
-    }
-
-    public void setLaborType(LaborTypeEnum laborType) {
-        this.laborType = laborType;
-    }
-
-    public String getRegularDate() {
-        return regularDate;
-    }
-
-    public void setRegularDate(String regularDate) {
-        this.regularDate = regularDate;
-    }
-
-    public Integer getWorkCity() {
-        return workCity;
-    }
-
-    public void setWorkCity(Integer workCity) {
-        this.workCity = workCity;
-    }
-
     public String getSendEmail() {
         return sendEmail;
     }
@@ -192,12 +131,6 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         if (hireType == null) {
             throw new ParamNotValidException("雇佣类型为空");
         }
-//        if (0 != hireType && 1 != hireType) {
-//            throw new ParamNotValidException("雇佣类型必须填入0或者1");
-//        }
-        if (1 == hireType.getHireType() && laborType == null) {
-            throw new ParamNotValidException("当hireType=1的时,聘用类型必填");
-        }
     }
 
     @Override
@@ -218,13 +151,6 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         map.put("email", email);
         map.put("entryDate", entryDate);
         map.put("hireType", hireType.getHireType());
-        if (laborType != null) {
-            map.put("laborType", laborType.getLaborType());
-        }
-        map.put("departmentId", departmentId);
-        map.put("regularDate",regularDate);
-        map.put("workCity",workCity);
-        map.put("jobId", jobId);
         if (sendEmail != null) {
             map.put("sendEmail", sendEmail);
         }

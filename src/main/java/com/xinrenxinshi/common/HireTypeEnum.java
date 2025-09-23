@@ -34,7 +34,32 @@ public enum HireTypeEnum {
     /**
      * 兼职
      */
-    PARTTIME(15,"兼职");
+    PARTTIME(15,"兼职"),
+    /**
+     * 灵活用工
+     */
+    LABOUR_TYPE_FLEXIBLE_STAFFING(16, "灵活用工"),
+    /**
+     * 劳务派遣
+     */
+    LABOUR_TYPE_LABOR_DISPATCH(17, "劳务派遣"),
+    /**
+     * 派遣
+     */
+    LABOUR_TYPE_DISPATCH(18, "派遣"),
+    /**
+     * 见习
+     */
+    LABOUR_TYPE_INTERNSHIP(19, "见习"),
+    /**
+     * 临时工
+     */
+    LABOUR_TYPE_TEMPORARY(20, "临时工"),
+    /**
+     * 小时工
+     */
+    LABOUR_TYPE_HOURLY_WORKER(21, "小时工");
+
 
     /**
      * 聘用类型

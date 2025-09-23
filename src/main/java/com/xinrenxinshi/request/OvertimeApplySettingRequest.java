@@ -2,32 +2,23 @@ package com.xinrenxinshi.request;
 
 import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
+import com.xinrenxinshi.domain.approval.OvertimeOffDaySettingModel;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
-import com.xinrenxinshi.response.EmployeeFileDownloadResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 员工文件下载request
- *
- * @author: liuchenhui
- * @create: 2019-11-13 16:18
- **/
-public class GetEmployeeFileDownloadUrlRequest extends AbstractOpenapiJsonRequest<String> {
+public class OvertimeApplySettingRequest extends AbstractOpenapiJsonRequest<OvertimeOffDaySettingModel> {
+
     /**
-     * 员工ID
+     * 员工id
      */
     private String employeeId;
-    /**
-     * 文件key
-     */
-    private String fileKey;
 
-    public GetEmployeeFileDownloadUrlRequest(String accessToken) {
+    public OvertimeApplySettingRequest(String accessToken) {
         super(accessToken);
     }
 
@@ -39,26 +30,11 @@ public class GetEmployeeFileDownloadUrlRequest extends AbstractOpenapiJsonReques
         this.employeeId = employeeId;
     }
 
-    public String getFileKey() {
-        return fileKey;
-    }
-
-    public void setFileKey(String fileKey) {
-        this.fileKey = fileKey;
-    }
-
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>(10);
+        Map<String, Object> map = new HashMap<>(1);
         map.put("employeeId", employeeId);
-        map.put("fileKey", fileKey);
         return map;
-    }
-
-    @Override
-    public TypeReference<OpenapiResponse<String>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<String>>() {
-        };
     }
 
     @Override
@@ -67,19 +43,24 @@ public class GetEmployeeFileDownloadUrlRequest extends AbstractOpenapiJsonReques
     }
 
     @Override
-    public OpenapiResponse<String> getResponseClass() {
+    public OpenapiResponse<OvertimeOffDaySettingModel> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
+    public TypeReference<OpenapiResponse<OvertimeOffDaySettingModel>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<OvertimeOffDaySettingModel>>() {};
+    }
+
+    @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(fileKey)) {
-            throw new ParamNotValidException("文件key为空");
+        if (XRXSStrUtils.isEmpty(employeeId)) {
+            throw new ParamNotValidException("员工employeeId不能为空");
         }
     }
 
     @Override
     public String getBizUrl() {
-        return "/v5/employee/file/getdownloadurl";
+        return "/v5/workflow/apply/overtime/setting";
     }
 }

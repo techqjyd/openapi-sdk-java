@@ -5,10 +5,7 @@ import com.xinrenxinshi.domain.payroll.PayrollChangeHistoryInfoModel;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
-import com.xinrenxinshi.response.PageResult;
-import com.xinrenxinshi.response.PayrollReportArchivesResponse;
-import com.xinrenxinshi.response.PayrollReportArchiveDetailResponse;
-import com.xinrenxinshi.response.PayrollSettingResponse;
+import com.xinrenxinshi.response.*;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
@@ -167,5 +164,65 @@ public abstract class XrxsPayrollService {
     public static OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> getChangeHistory(PayrollChangeHistoryRequest request) throws ApiException {
         OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> execute = RequestTemplate.execute(request);
         return execute;
+    }
+
+    /**
+     * 获取预定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<PayrollEmployeePreBasePayFormResponse> getPreBaseForm(PayrollPreBaseFormRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 提交预定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Object> submitPreBaseForm(PayrollPreBaseFormSubmitRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<PayrollEmployeeBasePayFormResponse> getBaseForm(PayrollBaseFormRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 提交定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Object> submitBaseForm(PayrollBaseFormSubmitRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取调薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<PayrollEmployeeAdjustmentFormResponse> getAdjustForm(PayrollAdjustFormRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 提交调薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Object> submitAdjustForm(PayrollAdjustFormSubmitRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 }

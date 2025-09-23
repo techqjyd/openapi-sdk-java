@@ -6,11 +6,15 @@ import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Getter
+@Setter
 public class DepartmentJobUpdateRequest extends AbstractOpenapiJsonRequest<Object> {
     public DepartmentJobUpdateRequest(String accessToken) {
         super(accessToken);
@@ -34,6 +38,10 @@ public class DepartmentJobUpdateRequest extends AbstractOpenapiJsonRequest<Objec
      * 岗位名称
      */
     private String name;
+    /**
+     * 岗位英文名
+     */
+    private String enName;
 
     /**
      * 岗位编码
@@ -55,69 +63,6 @@ public class DepartmentJobUpdateRequest extends AbstractOpenapiJsonRequest<Objec
      */
     private List<String> departmentIds;
 
-    public String getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(String jobId) {
-        this.jobId = jobId;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
-
-    public List<String> getDepartmentIds() {
-        return departmentIds;
-    }
-
-    public void setDepartmentIds(List<String> departmentIds) {
-        this.departmentIds = departmentIds;
-    }
 
     @Override
     protected Map<String, Object> getParamMap0() {
@@ -126,6 +71,7 @@ public class DepartmentJobUpdateRequest extends AbstractOpenapiJsonRequest<Objec
         map.put("parentId", parentId);
         map.put("type", type);
         map.put("name", name);
+        map.put("enName", enName);
         map.put("code", code);
         map.put("remark", remark);
         map.put("introduction", introduction);
