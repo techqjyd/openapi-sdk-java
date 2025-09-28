@@ -73,6 +73,8 @@ public class DepartmentModel {
 
     private Integer order;
 
+    private Integer level;
+
     private Map<String,String> fields;
 
 }

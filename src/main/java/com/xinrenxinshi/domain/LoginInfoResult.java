@@ -44,6 +44,32 @@ public class LoginInfoResult {
      */
     private Integer type;
 
+    /**
+     * 当前免登的语言环境
+     */
+    private String language;
+
+    /**
+     * 当前免登的时区
+     */
+    private String timeZone;
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
+
     public String getCompanyId() {
         return companyId;
     }

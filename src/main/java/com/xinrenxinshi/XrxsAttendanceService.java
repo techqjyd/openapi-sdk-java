@@ -353,4 +353,18 @@ public abstract class XrxsAttendanceService {
     public static OpenapiResponse<AttendanceExceptionNumberResult> getAttendanceExceptionNumber(AttendanceExceptionNumberRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+    /**
+     * 获取非调休类假期余额
+     */
+    public static OpenapiResponse<List<AttendanceHolidayBalanceDetailResult>> getHolidayBalance(AttendanceHolidayBalanceRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取调休类假期余额
+     */
+    public static OpenapiResponse<List<AttendanceOffDayBalanceDetailResult>> getOffDayBalance(AttendanceOffDayBalanceRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }

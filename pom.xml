@@ -6,7 +6,7 @@
 
     <groupId>com.xinrenxinshi</groupId>
     <artifactId>openapi-sdk-java</artifactId>
-    <version>1.0.46</version>
+    <version>1.0.47</version>
     <packaging>jar</packaging>
 
     <dependencies>
