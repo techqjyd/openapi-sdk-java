@@ -61,4 +61,30 @@ public class RecruitmentBasicInfoDO {
      * 风险点
      */
     private List<String> risk;
+
+    /**
+     * 简历上传用户的账号id
+     */
+    private String uploadAccId;
+    /**
+     * 简历上传用户的账号名称
+     */
+    private String uploadAccName;
+    /**
+     * 简历上传用户的手机号
+     */
+    private String uploadAccMobile;
+    /**
+     * 简历上传用户的邮箱
+     */
+    private String uploadAccEmail;
+    /**
+     * 简历来源
+     */
+    private Integer sourceType;
+
+    /**
+     * 职位id
+     */
+    private String applyJobId;
 }

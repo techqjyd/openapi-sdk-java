@@ -6,10 +6,7 @@ import com.xinrenxinshi.domain.recruit.RecruitmentResumeInfo;
 import com.xinrenxinshi.domain.recruit.RecruitmentStandardInfoDO;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
-import com.xinrenxinshi.request.RecruitmentFullDataRequest;
-import com.xinrenxinshi.request.RecruitmentResumeSearchRequest;
-import com.xinrenxinshi.request.RecruitmentStandardResumeRequest;
-import com.xinrenxinshi.request.RecruitmentSyncResumeRequest;
+import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.util.RequestTemplate;
 
 /**
@@ -69,6 +66,15 @@ public abstract class XrxsRecruitmentService {
     public static OpenapiResponse<RecruitmentStandardInfoDO> resumeDetail(RecruitmentStandardResumeRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+
+    /**
+     * 添加或更新职位
+     */
+    public static OpenapiResponse<String> addOrUpdateJob(RecruitmentJobAddOrUpdateRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
 
 
 
