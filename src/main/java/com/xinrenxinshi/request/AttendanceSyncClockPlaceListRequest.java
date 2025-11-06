@@ -8,29 +8,30 @@ import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * 同步打卡地点列表request
  */
-public class AttendanceSyncClockPlaceListRequest extends AbstractOpenapiJsonRequest<Void> {
-    private Integer planId;
-    private AttendancePlaceModel attendancePlaceModel;
+public class AttendanceSyncClockPlaceListRequest extends AbstractOpenapiJsonRequest<Boolean> {
+    private Integer clockPlanId;
+    private List<AttendancePlaceModel> attendancePlaceModels;
 
-    public Integer getPlanId() {
-        return planId;
+    public Integer getClockPlanId() {
+        return clockPlanId;
     }
 
-    public void setPlanId(Integer planId) {
-        this.planId = planId;
+    public void setClockPlanId(Integer clockPlanId) {
+        this.clockPlanId = clockPlanId;
     }
 
-    public AttendancePlaceModel getAttendancePlaceModel() {
-        return attendancePlaceModel;
+    public List<AttendancePlaceModel> getAttendancePlaceModels() {
+        return attendancePlaceModels;
     }
 
-    public void setAttendancePlaceModel(AttendancePlaceModel attendancePlaceModel) {
-        this.attendancePlaceModel = attendancePlaceModel;
+    public void setAttendancePlaceModels(List<AttendancePlaceModel> attendancePlaceModels) {
+        this.attendancePlaceModels = attendancePlaceModels;
     }
 
     public AttendanceSyncClockPlaceListRequest(String accessToken) {
@@ -40,8 +41,8 @@ public class AttendanceSyncClockPlaceListRequest extends AbstractOpenapiJsonRequ
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(1);
-        map.put("planId", planId);
-        map.put("attendancePlaceModel", attendancePlaceModel);
+        map.put("clockPlanId", clockPlanId);
+        map.put("attendancePlaceModels", attendancePlaceModels);
         return map;
     }
 
@@ -51,28 +52,28 @@ public class AttendanceSyncClockPlaceListRequest extends AbstractOpenapiJsonRequ
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Boolean> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Boolean>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Boolean>>() {
         };
     }
 
     @Override
     public void check() throws ParamNotValidException {
-        if (planId == null) {
+        if (clockPlanId == null) {
             throw new ParamNotValidException("planId can not be null");
         }
-        if (attendancePlaceModel == null) {
+        if (attendancePlaceModels == null) {
             throw new ParamNotValidException("attendancePlaceModel can not be null");
         }
     }
 
     @Override
     public String getBizUrl() {
-        return "/sync/clock/place/list";
+        return "/v5/attendance/sync/clock/place/list";
     }
 }
