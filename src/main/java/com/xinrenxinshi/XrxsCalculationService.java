@@ -6,9 +6,11 @@ import com.xinrenxinshi.request.CalculationCompanyGroupRequest;
 import com.xinrenxinshi.request.CalculationCompanyGroupV2Request;
 import com.xinrenxinshi.request.CalculationSyncGroupRequest;
 import com.xinrenxinshi.request.CalculationSyncGroupV2Request;
+import com.xinrenxinshi.request.CalculationGroupDataRequest;
 import com.xinrenxinshi.response.CalculationCompanyGroupResponse;
 import com.xinrenxinshi.response.CalculationCompanyGroupV2Response;
 import com.xinrenxinshi.response.CalculationSyncGroupDataResponse;
+import com.xinrenxinshi.response.GroupDataInfo;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.LinkedHashMap;
@@ -68,5 +70,15 @@ public abstract class XrxsCalculationService {
     public static OpenapiResponse<CalculationSyncGroupDataResponse> syncGroupDataV2(CalculationSyncGroupV2Request request) throws ApiException {
         OpenapiResponse<CalculationSyncGroupDataResponse> execute = RequestTemplate.execute(request);
         return execute;
+    }
+
+    /**
+     * 获取分组数据（分页）
+     * @param request 请求入参
+     * @return 分组数据分页结果
+     * @throws ApiException 调用异常
+     */
+    public static OpenapiResponse<GroupDataInfo> getGroupData(CalculationGroupDataRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 }
