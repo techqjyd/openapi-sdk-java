@@ -77,3 +77,4 @@ public class CalculationBaseGroupInfoRequest extends AbstractOpenapiJsonRequest<
         return "/v5/calculation/getBaseGroupInfo";
     }
 }
+

@@ -371,7 +371,14 @@ public abstract class XrxsAttendanceService {
     /**
      * 同步打卡地点列表
      */
-    public static OpenapiResponse<Void> syncClockPlaceList(AttendanceSyncClockPlaceListRequest request) throws ApiException {
+    public static OpenapiResponse<Boolean> syncClockPlaceList(AttendanceSyncClockPlaceListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 同步打卡地点
+     */
+    public static OpenapiResponse<Boolean> addClockPlace(AttendanceClockPlaceAddRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 }

@@ -89,3 +89,4 @@ public class PlatformBaseGroupResult {
         this.companyPlanName = companyPlanName;
     }
 }
+
