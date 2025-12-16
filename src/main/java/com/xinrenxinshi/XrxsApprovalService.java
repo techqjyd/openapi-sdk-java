@@ -326,4 +326,14 @@ public abstract class XrxsApprovalService {
         OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 获取离职交接详情
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<DismissHandoverDetailInfo> handoverDetail(HandoverDetailRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }
