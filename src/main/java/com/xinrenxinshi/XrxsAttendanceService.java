@@ -367,4 +367,11 @@ public abstract class XrxsAttendanceService {
     public static OpenapiResponse<List<AttendanceOffDayBalanceDetailResult>> getOffDayBalance(AttendanceOffDayBalanceRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+    /**
+     * 同步打卡地点列表
+     */
+    public static OpenapiResponse<Boolean> syncClockPlaceList(AttendanceSyncClockPlaceListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
 }
