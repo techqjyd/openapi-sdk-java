@@ -63,6 +63,8 @@ public class OverTimeApplyRequest extends AbstractOpenapiJsonRequest<String> {
      */
     private String multipleRelaxTime;
 
+    private Integer eventDate;
+
     public String getEmployeeId() {
         return employeeId;
     }
@@ -151,6 +153,14 @@ public class OverTimeApplyRequest extends AbstractOpenapiJsonRequest<String> {
         this.multipleRelaxTime = multipleRelaxTime;
     }
 
+    public Integer getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(Integer eventDate) {
+        this.eventDate = eventDate;
+    }
+
     public OverTimeApplyRequest(String accessToken) {
         super(accessToken);
     }
@@ -169,6 +179,7 @@ public class OverTimeApplyRequest extends AbstractOpenapiJsonRequest<String> {
         map.put("overtimeDay", overtimeDay);
         map.put("multipleCustomRelaxTimes", multipleCustomRelaxTimes);
         map.put("multipleRelaxTime", multipleRelaxTime);
+        map.put("eventDate", eventDate);
         return map;
     }
 
