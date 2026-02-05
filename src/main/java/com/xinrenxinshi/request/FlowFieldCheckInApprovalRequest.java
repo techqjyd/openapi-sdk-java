@@ -7,6 +7,8 @@ import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.ApprovalApplyResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +16,8 @@ import java.util.Map;
 /**
  * 外勤打卡审批参数
  */
-
+@Setter
+@Getter
 public class FlowFieldCheckInApprovalRequest extends AbstractOpenapiJsonRequest<ApprovalApplyResponse> {
 
     /** (必传)员工ID */
