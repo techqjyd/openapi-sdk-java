@@ -14,11 +14,21 @@ public class ApprovalApplyResponse {
      */
     private Long sid;
 
+    private String approveId;
+
     public Long getSid() {
         return sid;
     }
 
     public void setSid(Long sid) {
         this.sid = sid;
+    }
+
+    public String getApproveId() {
+        return approveId;
+    }
+
+    public void setApproveId(String approveId) {
+        this.approveId = approveId;
     }
 }

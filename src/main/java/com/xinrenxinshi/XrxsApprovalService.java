@@ -336,4 +336,15 @@ public abstract class XrxsApprovalService {
     public static OpenapiResponse<DismissHandoverDetailInfo> handoverDetail(HandoverDetailRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
+
+    /**
+     *  外勤打卡审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  applyFieldCheckIn(FlowFieldCheckInApprovalRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
 }
