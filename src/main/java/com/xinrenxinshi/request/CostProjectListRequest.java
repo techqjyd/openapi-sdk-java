@@ -22,9 +22,6 @@ public class CostProjectListRequest extends AbstractOpenapiJsonRequest<PageResul
     private Integer status;
     private Integer pageNum = 1;
     private Integer pageSize = 10;
-    private Integer systemType;
-    private String employeeId;
-
     public CostProjectListRequest(String accessToken) {
         super(accessToken);
     }
@@ -61,22 +58,6 @@ public class CostProjectListRequest extends AbstractOpenapiJsonRequest<PageResul
         this.pageSize = pageSize;
     }
 
-    public Integer getSystemType() {
-        return systemType;
-    }
-
-    public void setSystemType(Integer systemType) {
-        this.systemType = systemType;
-    }
-
-    public String getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
-    }
-
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(8);
@@ -84,8 +65,6 @@ public class CostProjectListRequest extends AbstractOpenapiJsonRequest<PageResul
         map.put("status", status);
         map.put("pageNum", pageNum);
         map.put("pageSize", pageSize);
-        map.put("systemType", systemType);
-        map.put("employeeId", employeeId);
         return map;
     }
 

@@ -2,7 +2,7 @@ package com.xinrenxinshi.request;
 
 import com.alibaba.fastjson.TypeReference;
 import com.xinrenxinshi.common.MethodEnum;
-import com.xinrenxinshi.domain.payroll.CostProjectModel;
+import com.xinrenxinshi.domain.payroll.CostProjectSaveParamModel;
 import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
@@ -17,17 +17,17 @@ import java.util.Map;
  */
 public class CostProjectSaveRequest extends AbstractOpenapiJsonRequest<Object> {
 
-    private CostProjectModel model;
+    private CostProjectSaveParamModel model;
 
     public CostProjectSaveRequest(String accessToken) {
         super(accessToken);
     }
 
-    public CostProjectModel getModel() {
+    public CostProjectSaveParamModel getModel() {
         return model;
     }
 
-    public void setModel(CostProjectModel model) {
+    public void setModel(CostProjectSaveParamModel model) {
         this.model = model;
     }
 

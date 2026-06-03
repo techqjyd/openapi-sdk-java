@@ -1,6 +1,7 @@
 package com.xinrenxinshi;
 
 import com.xinrenxinshi.domain.payroll.CostProjectModel;
+import com.xinrenxinshi.domain.payroll.CostProjectSaveParamModel;
 import com.xinrenxinshi.domain.payroll.EmployeePayroll;
 import com.xinrenxinshi.domain.payroll.PayrollChangeHistoryInfoModel;
 import com.xinrenxinshi.exception.ApiException;
@@ -229,9 +230,40 @@ public abstract class XrxsPayrollService {
 
     /**
      * 查询项目列表（分页）
+     *
+     * @param accessToken 授权token
+     * @param name        项目名称（模糊搜索，可选）
+     * @param status      项目状态（可选）
+     * @param pageNum     页码
+     * @param pageSize    每页大小
+     */
+    public static OpenapiResponse<PageResult<CostProjectModel>> getCostProjectList(String accessToken,
+            String name, Integer status, Integer pageNum, Integer pageSize) throws ApiException {
+        CostProjectListRequest request = new CostProjectListRequest(accessToken);
+        request.setName(name);
+        request.setStatus(status);
+        request.setPageNum(pageNum);
+        request.setPageSize(pageSize);
+        return getCostProjectList(request);
+    }
+
+    /**
+     * 查询项目列表（分页）
      */
     public static OpenapiResponse<PageResult<CostProjectModel>> getCostProjectList(CostProjectListRequest request) throws ApiException {
         return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取项目详情
+     *
+     * @param accessToken 授权token
+     * @param id          项目ID
+     */
+    public static OpenapiResponse<CostProjectModel> getCostProjectDetail(String accessToken, Integer id) throws ApiException {
+        CostProjectDetailRequest request = new CostProjectDetailRequest(accessToken);
+        request.setId(id);
+        return getCostProjectDetail(request);
     }
 
     /**
@@ -243,9 +275,33 @@ public abstract class XrxsPayrollService {
 
     /**
      * 保存/修改项目
+     *
+     * @param accessToken 授权token
+     * @param model       项目信息
+     */
+    public static OpenapiResponse<Object> saveCostProject(String accessToken, CostProjectSaveParamModel model) throws ApiException {
+        CostProjectSaveRequest request = new CostProjectSaveRequest(accessToken);
+        request.setModel(model);
+        return saveCostProject(request);
+    }
+
+    /**
+     * 保存/修改项目
      */
     public static OpenapiResponse<Object> saveCostProject(CostProjectSaveRequest request) throws ApiException {
         return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 删除项目
+     *
+     * @param accessToken 授权token
+     * @param id          项目ID
+     */
+    public static OpenapiResponse<Object> delCostProject(String accessToken, Integer id) throws ApiException {
+        CostProjectDelRequest request = new CostProjectDelRequest(accessToken);
+        request.setId(id);
+        return delCostProject(request);
     }
 
     /**
