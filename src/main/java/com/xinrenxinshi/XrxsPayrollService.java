@@ -1,5 +1,6 @@
 package com.xinrenxinshi;
 
+import com.xinrenxinshi.domain.payroll.CostProjectModel;
 import com.xinrenxinshi.domain.payroll.EmployeePayroll;
 import com.xinrenxinshi.domain.payroll.PayrollChangeHistoryInfoModel;
 import com.xinrenxinshi.exception.ApiException;
@@ -223,6 +224,34 @@ public abstract class XrxsPayrollService {
      * @throws ApiException
      */
     public static OpenapiResponse<Object> submitAdjustForm(PayrollAdjustFormSubmitRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 查询项目列表（分页）
+     */
+    public static OpenapiResponse<PageResult<CostProjectModel>> getCostProjectList(CostProjectListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取项目详情
+     */
+    public static OpenapiResponse<CostProjectModel> getCostProjectDetail(CostProjectDetailRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 保存/修改项目
+     */
+    public static OpenapiResponse<Object> saveCostProject(CostProjectSaveRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 删除项目
+     */
+    public static OpenapiResponse<Object> delCostProject(CostProjectDelRequest request) throws ApiException {
         return RequestTemplate.execute(request);
     }
 }
