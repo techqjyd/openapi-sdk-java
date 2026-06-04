@@ -16,12 +16,12 @@ public class CostProjectSaveParamModel implements Serializable {
     private String projectId;
     private String name;
     private Integer icon;
-    private List<Object> projectManagers;
+    private List<ObjectScopes> projectManagers;
     private String fillEmployees;
     private String confirmEmployees;
     private String costCenter;
     private Integer status;
-    private List<Object> objects;
+    private List<SettingFilterObjectDO> objects;
     private List<CostProjectAffairSaveParamModel> projectAffairs;
     private Integer affairsIsRequired;
     private Integer cellColorType;
@@ -58,11 +58,11 @@ public class CostProjectSaveParamModel implements Serializable {
         this.icon = icon;
     }
 
-    public List<Object> getProjectManagers() {
+    public List<ObjectScopes> getProjectManagers() {
         return projectManagers;
     }
 
-    public void setProjectManagers(List<Object> projectManagers) {
+    public void setProjectManagers(List<ObjectScopes> projectManagers) {
         this.projectManagers = projectManagers;
     }
 
@@ -98,11 +98,11 @@ public class CostProjectSaveParamModel implements Serializable {
         this.status = status;
     }
 
-    public List<Object> getObjects() {
+    public List<SettingFilterObjectDO> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Object> objects) {
+    public void setObjects(List<SettingFilterObjectDO> objects) {
         this.objects = objects;
     }
 

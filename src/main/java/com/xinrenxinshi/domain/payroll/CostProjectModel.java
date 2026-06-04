@@ -19,7 +19,7 @@ public class CostProjectModel implements Serializable {
     private Double totalHour;
     private Double totalConfirmHour;
     private Double totalUnConfirmHour;
-    private List<Object> projectManagers;
+    private List<ObjectScopes> projectManagers;
     private String projectManagerStr;
     private String fillEmployees;
     private String confirmEmployees;
@@ -27,7 +27,7 @@ public class CostProjectModel implements Serializable {
     private String confirmEmployeeStr;
     private String costCenter;
     private Integer status;
-    private List<Object> objects;
+    private List<SettingFilterObjectDO> objects;
     private List<CostProjectAffairModel> projectAffairs;
     private Integer affairsIsRequired;
     private Integer employeeNumber;
@@ -90,11 +90,11 @@ public class CostProjectModel implements Serializable {
         this.totalUnConfirmHour = totalUnConfirmHour;
     }
 
-    public List<Object> getProjectManagers() {
+    public List<ObjectScopes> getProjectManagers() {
         return projectManagers;
     }
 
-    public void setProjectManagers(List<Object> projectManagers) {
+    public void setProjectManagers(List<ObjectScopes> projectManagers) {
         this.projectManagers = projectManagers;
     }
 
@@ -154,11 +154,11 @@ public class CostProjectModel implements Serializable {
         this.status = status;
     }
 
-    public List<Object> getObjects() {
+    public List<SettingFilterObjectDO> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Object> objects) {
+    public void setObjects(List<SettingFilterObjectDO> objects) {
         this.objects = objects;
     }
 
