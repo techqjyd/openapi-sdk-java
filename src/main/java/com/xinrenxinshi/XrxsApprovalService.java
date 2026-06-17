@@ -47,6 +47,37 @@ public abstract class XrxsApprovalService {
 
     /**
      * 获取审批列表
+     *
+     * @param access_token  授权token
+     * @param pageNo        列表起始页
+     * @param pageSize      每页条数
+     * @param flowStatus    审批状态list
+     * @param flowTypes     审批类型list
+     * @param departmentIds 部门ids
+     * @param sponsorId     发起人ID
+     * @param approverId    审批人ID
+     */
+    public static OpenapiResponse<PageResult<ProcessBasicInfo>> getFlowList(String access_token,
+                                                                             Integer pageNo,
+                                                                             Integer pageSize,
+                                                                             List<Integer> flowStatus,
+                                                                             List<Integer> flowTypes,
+                                                                             List<String> departmentIds,
+                                                                             String sponsorId,
+                                                                             String approverId) throws ApiException {
+        ApprovalListRequest request = new ApprovalListRequest(access_token);
+        request.setPageNo(pageNo);
+        request.setPageSize(pageSize);
+        request.setFlowStatus(flowStatus);
+        request.setFlowTypes(flowTypes);
+        request.setDepartmentIds(departmentIds);
+        request.setSponsorId(sponsorId);
+        request.setApproverId(approverId);
+        return getFlowList(request);
+    }
+
+    /**
+     * 获取审批列表
      */
     public static OpenapiResponse<PageResult<ProcessBasicInfo>> getFlowList(ApprovalListRequest request) throws ApiException {
         return RequestTemplate.execute(request);

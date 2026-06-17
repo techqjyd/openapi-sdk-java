@@ -10,6 +10,7 @@ import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.response.ApprovalListResponse;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.XRXSListUtils;
+import com.xinrenxinshi.util.XRXSStrUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,6 +43,14 @@ public class ApprovalListRequest extends AbstractOpenapiJsonRequest<PageResult<P
 
     /** 所属人ID 数组 */
     private List<String> ownerIds;
+    /**
+     * 发起人ID
+     */
+    private String sponsorId;
+    /**
+     * 审批人ID
+     */
+    private String approverId;
     /**
      * 部门id，多个逗号分隔
      */
@@ -148,6 +157,22 @@ public class ApprovalListRequest extends AbstractOpenapiJsonRequest<PageResult<P
         this.ownerIds = ownerIds;
     }
 
+    public String getSponsorId() {
+        return sponsorId;
+    }
+
+    public void setSponsorId(String sponsorId) {
+        this.sponsorId = sponsorId;
+    }
+
+    public String getApproverId() {
+        return approverId;
+    }
+
+    public void setApproverId(String approverId) {
+        this.approverId = approverId;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -184,6 +209,12 @@ public class ApprovalListRequest extends AbstractOpenapiJsonRequest<PageResult<P
         }
         if (!XRXSListUtils.isEmpty(ownerIds)) {
             map.put("ownerIds", ownerIds);
+        }
+        if (!XRXSStrUtils.isEmpty(sponsorId)) {
+            map.put("sponsorId", sponsorId);
+        }
+        if (!XRXSStrUtils.isEmpty(approverId)) {
+            map.put("approverId", approverId);
         }
         if (null != addtimeStart) {
             map.put("addtimeStart", addtimeStart);
