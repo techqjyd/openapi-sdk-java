@@ -65,6 +65,16 @@ public class OverTimeApplyRequest extends AbstractOpenapiJsonRequest<String> {
 
     private Integer eventDate;
 
+    /**
+     * 加班原因
+     */
+    private String reason;
+
+    /**
+     * 图片路径
+     */
+    private String imagePath;
+
     public String getEmployeeId() {
         return employeeId;
     }
@@ -161,13 +171,29 @@ public class OverTimeApplyRequest extends AbstractOpenapiJsonRequest<String> {
         this.eventDate = eventDate;
     }
 
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     public OverTimeApplyRequest(String accessToken) {
         super(accessToken);
     }
 
     @Override
     protected Map<String, Object> getParamMap0() {
-        Map<String, Object> map = new HashMap<>(8);
+        Map<String, Object> map = new HashMap<>(16);
         map.put("employeeId", employeeId);
         map.put("timeUnit", timeUnit);
         map.put("startDate", startDate);
@@ -180,6 +206,8 @@ public class OverTimeApplyRequest extends AbstractOpenapiJsonRequest<String> {
         map.put("multipleCustomRelaxTimes", multipleCustomRelaxTimes);
         map.put("multipleRelaxTime", multipleRelaxTime);
         map.put("eventDate", eventDate);
+        map.put("reason", reason);
+        map.put("imagePath", imagePath);
         return map;
     }
 

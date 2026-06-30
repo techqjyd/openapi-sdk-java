@@ -40,6 +40,10 @@ public class FlowRepairCheckRequest extends AbstractOpenapiJsonRequest<String> {
      * 补卡理由
      */
     private String reason;
+    /**
+     * 补卡凭证图片地址
+     */
+    private String imagePath;
 
     public String getEmployeeId() {
         return employeeId;
@@ -97,6 +101,14 @@ public class FlowRepairCheckRequest extends AbstractOpenapiJsonRequest<String> {
         this.reason = reason;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
     public FlowRepairCheckRequest(String accessToken) {
         super(accessToken);
     }
@@ -112,6 +124,7 @@ public class FlowRepairCheckRequest extends AbstractOpenapiJsonRequest<String> {
         map.put("clockType", clockType);
         map.put("clockTime",clockTime);
         map.put("reason",reason);
+        map.put("imagePath", imagePath);
         return map;
     }
 
