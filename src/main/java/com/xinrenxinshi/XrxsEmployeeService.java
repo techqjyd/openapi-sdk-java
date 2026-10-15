@@ -264,6 +264,78 @@ public abstract class XrxsEmployeeService {
     }
 
     /**
+     * 【V2】获取员工基础列表（游标分页，单次最多500条）
+     * <p>
+     * 与 V1 的过滤条件、字段结构完全一致，差异只有分页方式：
+     * 下一页把上一页返回的 nextId 作为 lastId 传入，直到 hasMore == false。
+     *
+     * @param access_token   授权token
+     * @param size           单页数量，1~500
+     * @param lastId         游标，不传（null）= 取第一页
+     * @param fetchChildEnum 是否包含子部门
+     * @param departmentId   部门id，为空时获取公司全部员工
+     * @param empStatusEnum  员工状态
+     */
+    public static OpenapiResponse<CursorPageResult<EmployeeSimple>> getSimpleEmployeeListV2(String access_token,
+                                                                                            Integer size,
+                                                                                            Integer lastId,
+                                                                                            FetchChildEnum fetchChildEnum,
+                                                                                            String departmentId,
+                                                                                            EmpStatusEnum empStatusEnum) throws ApiException {
+        EmployeeBasicInfoListV2Request request = new EmployeeBasicInfoListV2Request(access_token);
+        request.setDepartmentId(departmentId);
+        request.setFetchChild(fetchChildEnum);
+        request.setSize(size);
+        request.setLastId(lastId);
+        request.setStatus(empStatusEnum);
+        return getSimpleEmployeeListV2(request);
+    }
+
+    /**
+     * 【V2】获取员工基础列表（游标分页）
+     */
+    public static OpenapiResponse<CursorPageResult<EmployeeSimple>> getSimpleEmployeeListV2(EmployeeBasicInfoListV2Request request) throws ApiException {
+        OpenapiResponse<CursorPageResult<EmployeeSimple>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 【V2】获取员工详细列表（游标分页，单次最多500条）
+     * <p>
+     * 与 V1 的过滤条件、字段结构完全一致，差异只有分页方式：
+     * 下一页把上一页返回的 nextId 作为 lastId 传入，直到 hasMore == false。
+     *
+     * @param access_token   授权token
+     * @param size           单页数量，1~500
+     * @param lastId         游标，不传（null）= 取第一页
+     * @param fetchChildEnum 是否包含子部门
+     * @param departmentId   部门id，为空时获取公司全部员工
+     * @param empStatusEnum  员工状态
+     */
+    public static OpenapiResponse<CursorPageResult<EmployeeDetail>> getDetailEmployeeListV2(String access_token,
+                                                                                            Integer size,
+                                                                                            Integer lastId,
+                                                                                            FetchChildEnum fetchChildEnum,
+                                                                                            String departmentId,
+                                                                                            EmpStatusEnum empStatusEnum) throws ApiException {
+        EmployeeDetailInfoListV2Request request = new EmployeeDetailInfoListV2Request(access_token);
+        request.setDepartmentId(departmentId);
+        request.setFetchChild(fetchChildEnum);
+        request.setSize(size);
+        request.setLastId(lastId);
+        request.setStatus(empStatusEnum);
+        return getDetailEmployeeListV2(request);
+    }
+
+    /**
+     * 【V2】获取员工详细列表（游标分页）
+     */
+    public static OpenapiResponse<CursorPageResult<EmployeeDetail>> getDetailEmployeeListV2(EmployeeDetailInfoListV2Request request) throws ApiException {
+        OpenapiResponse<CursorPageResult<EmployeeDetail>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
      * 获取所有员工的员工详细列表
      *
      * @param access_token  授权token
