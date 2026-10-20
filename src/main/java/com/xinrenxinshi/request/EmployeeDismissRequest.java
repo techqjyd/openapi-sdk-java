@@ -24,7 +24,7 @@ import static com.xinrenxinshi.util.XRXSDateUtils.DATE_FORMAT_YEARMO;
  * @author: liuchenhui
  * @create: 2019-11-12 10:18
  **/
-public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
+public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Object> {
 
     /**
      * 员工ID
@@ -50,6 +50,15 @@ public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
      * 离职减员月，格式：yyyyMM
      */
     private String payrollSub;
+
+    /**
+     * 离职原因
+     */
+    private String dismissionReason;
+    /**
+     * 离职备注
+     */
+    private String dismissRemark;
 
     public EmployeeDismissRequest(String accessToken) {
         super(accessToken);
@@ -103,19 +112,35 @@ public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
         this.payrollSub = payrollSub;
     }
 
+    public String getDismissionReason() {
+        return dismissionReason;
+    }
+
+    public void setDismissionReason(String dismissionReason) {
+        this.dismissionReason = dismissionReason;
+    }
+
+    public String getDismissRemark() {
+        return dismissRemark;
+    }
+
+    public void setDismissRemark(String dismissRemark) {
+        this.dismissRemark = dismissRemark;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 
@@ -156,6 +181,12 @@ public class EmployeeDismissRequest extends AbstractOpenapiJsonRequest<Void> {
         map.put("houseFundSub", houseFundSub.getHouseFundSub());
         if (!XRXSStrUtils.isEmpty(payrollSub)) {
             map.put("payrollSub", payrollSub);
+        }
+        if (!XRXSStrUtils.isEmpty(dismissionReason)) {
+            map.put("dismissionReason", dismissionReason);
+        }
+        if (!XRXSStrUtils.isEmpty(dismissRemark)) {
+            map.put("dismissRemark", dismissRemark);
         }
         return map;
     }

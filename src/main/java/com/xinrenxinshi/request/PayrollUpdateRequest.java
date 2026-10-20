@@ -20,7 +20,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-14 15:52
  **/
-public class PayrollUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
+public class PayrollUpdateRequest extends AbstractOpenapiJsonRequest<Object> {
     /**
      * 需要更新的员工及工资数据
      */
@@ -51,7 +51,7 @@ public class PayrollUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
@@ -72,8 +72,8 @@ public class PayrollUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

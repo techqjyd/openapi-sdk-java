@@ -69,6 +69,11 @@ public class Constants {
     public static final Integer LIMIT_NUMBER_PAGES = 100;
 
     /**
+     * V2 游标分页接口（/v6/employee/simplelist、/v6/employee/list）单页数量上限
+     */
+    public static final Integer CURSOR_LIMIT_NUMBER_PAGES = 500;
+
+    /**
      * 员工手机端免登url
      */
     public static final String MOBILE_FREE_LOGIN_BIZ_URL = "/v4/login/h5";

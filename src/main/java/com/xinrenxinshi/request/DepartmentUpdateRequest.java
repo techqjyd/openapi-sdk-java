@@ -7,6 +7,8 @@ import com.xinrenxinshi.exception.ParamNotValidException;
 import com.xinrenxinshi.openapi.AbstractOpenapiJsonRequest;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.util.XRXSStrUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +19,9 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 14:41
  **/
-public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
+@Getter
+@Setter
+public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Object> {
 
     /**
      * 部门ID
@@ -27,6 +31,10 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
      * 部门名称
      */
     private String name;
+    /**
+     * 部门英文名
+     */
+    private String enName;
     /**
      * 上级部门ID
      */
@@ -54,93 +62,15 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
      */
     private String remark;
 
+    private Integer isVirtual;
+
     /**
      * 部门自定义字段
      */
     private Map<String,String> fields;
 
-    public Map<String, String> getFields() {
-        return fields;
-    }
-
-    public void setFields(Map<String, String> fields) {
-        this.fields = fields;
-    }
-
     public DepartmentUpdateRequest(String accessToken) {
         super(accessToken);
-    }
-
-    public String getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(String parentId) {
-        this.parentId = parentId;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public String getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(String adminId) {
-        this.adminId = adminId;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public String getHrbpId() {
-        return hrbpId;
-    }
-
-    public void setHrbpId(String hrbpId) {
-        this.hrbpId = hrbpId;
     }
 
     @Override
@@ -149,7 +79,7 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
@@ -166,8 +96,8 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 
@@ -177,6 +107,9 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         map.put("departmentId", departmentId);
         if (!XRXSStrUtils.isEmpty(name)) {
             map.put("name", name);
+        }
+        if (!XRXSStrUtils.isEmpty(enName)) {
+            map.put("enName", enName);
         }
         if (!XRXSStrUtils.isEmpty(code)) {
             map.put("code", code);
@@ -201,6 +134,9 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
         }
         if (fields != null) {
             map.put("fields", fields);
+        }
+        if(isVirtual!=null){
+            map.put("isVirtual", isVirtual);
         }
         return map;
     }

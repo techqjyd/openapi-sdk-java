@@ -73,9 +73,6 @@ public class GetEmployeeFileDownloadUrlRequest extends AbstractOpenapiJsonReques
 
     @Override
     public void check() throws ParamNotValidException {
-        if (XRXSStrUtils.isEmpty(employeeId)) {
-            throw new ParamNotValidException("员工ID为空");
-        }
         if (XRXSStrUtils.isEmpty(fileKey)) {
             throw new ParamNotValidException("文件key为空");
         }

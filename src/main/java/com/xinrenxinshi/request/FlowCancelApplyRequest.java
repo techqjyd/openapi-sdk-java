@@ -12,7 +12,7 @@ import com.xinrenxinshi.util.XRXSStrUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FlowCancelApplyRequest extends AbstractOpenapiJsonRequest<Void> {
+public class FlowCancelApplyRequest extends AbstractOpenapiJsonRequest<Object> {
     /**
      * 员工id
      */
@@ -125,13 +125,13 @@ public class FlowCancelApplyRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

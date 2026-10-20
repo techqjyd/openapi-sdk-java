@@ -5,12 +5,15 @@ import com.xinrenxinshi.domain.recruit.RecruitReportInfo;
 import com.xinrenxinshi.domain.recruit.RecruitmentResumeStandardFieldInfo;
 import com.xinrenxinshi.domain.recruit.RecruitmentResumeUploadParam;
 import com.xinrenxinshi.domain.recruit.TalentBankInfo;
+import com.xinrenxinshi.domain.recruit.RecruitmentResumeInfo;
+import com.xinrenxinshi.domain.recruit.RecruitmentStandardInfoDO;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.RecruitmentFullDataRequest;
 import com.xinrenxinshi.request.RecruitmentResumeSyncToTalentRequest;
 import com.xinrenxinshi.request.RecruitmentSyncResumeRequest;
 import com.xinrenxinshi.request.RecruitmentTalentBankListRequest;
+import com.xinrenxinshi.request.*;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
@@ -58,6 +61,31 @@ public abstract class XrxsRecruitmentService {
     public static OpenapiResponse<String> syncRecruitmentResume(RecruitmentSyncResumeRequest request) throws ApiException{
         return RequestTemplate.execute(request);
     }
+
+    /**
+     * 搜索简历
+     */
+    public static OpenapiResponse<Page<RecruitmentResumeInfo>> searchResume(RecruitmentResumeSearchRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 简历查询
+     */
+    public static OpenapiResponse<RecruitmentStandardInfoDO> resumeDetail(RecruitmentStandardResumeRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+
+    /**
+     * 添加或更新职位
+     */
+    public static OpenapiResponse<String> addOrUpdateJob(RecruitmentJobAddOrUpdateRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+
+
 
     /**
      * 获取人才库列表

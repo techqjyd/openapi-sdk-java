@@ -17,7 +17,7 @@ import java.util.Map;
  * @author: jiazijie
  * @create: 2019-11-14 16:42
  **/
-public class AttendanceClockByMobileRequest extends AbstractOpenapiJsonRequest<Void> {
+public class AttendanceClockByMobileRequest extends AbstractOpenapiJsonRequest<Object> {
     /**
      * 员工手机号
      */
@@ -64,7 +64,7 @@ public class AttendanceClockByMobileRequest extends AbstractOpenapiJsonRequest<V
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
@@ -79,8 +79,8 @@ public class AttendanceClockByMobileRequest extends AbstractOpenapiJsonRequest<V
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

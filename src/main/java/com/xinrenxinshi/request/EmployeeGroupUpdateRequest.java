@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * @author Ke Zhan on 2020/11/19
  */
-public class EmployeeGroupUpdateRequest extends AbstractOpenapiJsonRequest<Void> {
+public class EmployeeGroupUpdateRequest extends AbstractOpenapiJsonRequest<Object> {
     /**
      * 员工ID
      */
@@ -86,13 +86,13 @@ public class EmployeeGroupUpdateRequest extends AbstractOpenapiJsonRequest<Void>
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 

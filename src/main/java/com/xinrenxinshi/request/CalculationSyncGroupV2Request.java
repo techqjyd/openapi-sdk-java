@@ -102,6 +102,6 @@ public class CalculationSyncGroupV2Request extends AbstractOpenapiJsonRequest<Ca
 
     @Override
     public String getBizUrl() {
-        return "/v5/calculation/syncGroupDataV2";
+        return "/v5/calculation/group/syncdata";
     }
 }

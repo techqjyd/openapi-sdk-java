@@ -57,9 +57,27 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
      */
     private String jobId;
 
+    /**
+     * 是否给员工发送完善个人信息的邮件 0:不发送，1:发送。默认为0不发送
+     */
+    private String sendEmail;
+
     private String regularDate;
 
     private Integer workCity;
+
+    /**
+     * JsonMap,员工信息其余字段,以薪人薪事系统的字段名为key,员工该字段的值为value
+     */
+    private Map<String, String> fields;
+
+    public Map<String, String> getFields() {
+        return fields;
+    }
+
+    public void setFields(Map<String, String> fields) {
+        this.fields = fields;
+    }
 
     public EmpToBeHiredCreateRequest(String accessToken) {
         super(accessToken);
@@ -145,6 +163,14 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         this.workCity = workCity;
     }
 
+    public String getSendEmail() {
+        return sendEmail;
+    }
+
+    public void setSendEmail(String sendEmail) {
+        this.sendEmail = sendEmail;
+    }
+
     @Override
     public MethodEnum getMethod() {
         return MethodEnum.METHOD_POST;
@@ -199,6 +225,10 @@ public class EmpToBeHiredCreateRequest extends AbstractOpenapiJsonRequest<EmpToB
         map.put("regularDate",regularDate);
         map.put("workCity",workCity);
         map.put("jobId", jobId);
+        if (sendEmail != null) {
+            map.put("sendEmail", sendEmail);
+        }
+        map.put("fields", fields);
         return map;
     }
 }

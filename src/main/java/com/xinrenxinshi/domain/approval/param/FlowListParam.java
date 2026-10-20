@@ -28,6 +28,14 @@ public class FlowListParam {
      * 部门id，多个逗号分隔
      */
     private List<String> departmentIds;
+    /**
+     * 发起人ID
+     */
+    private String sponsorId;
+    /**
+     * 审批人ID
+     */
+    private String approverId;
 
     /**
      * 以审批添加时间纬度查询的开始时间，时间戳精确到秒
@@ -84,6 +92,22 @@ public class FlowListParam {
 
     public void setDepartmentIds(List<String> departmentIds) {
         this.departmentIds = departmentIds;
+    }
+
+    public String getSponsorId() {
+        return sponsorId;
+    }
+
+    public void setSponsorId(String sponsorId) {
+        this.sponsorId = sponsorId;
+    }
+
+    public String getApproverId() {
+        return approverId;
+    }
+
+    public void setApproverId(String approverId) {
+        this.approverId = approverId;
     }
 
     public Integer getAddtimeStart() {

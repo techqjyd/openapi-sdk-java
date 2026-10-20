@@ -18,6 +18,8 @@ public class JobHeaderModel {
      */
     private String jobName;
 
+    private String enName;
+
     /**
      * 岗位编码
      */
@@ -77,5 +79,13 @@ public class JobHeaderModel {
 
     public void setModtime(Integer modtime) {
         this.modtime = modtime;
+    }
+
+    public String getEnName() {
+        return enName;
+    }
+
+    public void setEnName(String enName) {
+        this.enName = enName;
     }
 }

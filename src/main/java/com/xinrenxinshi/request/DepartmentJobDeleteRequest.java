@@ -10,7 +10,7 @@ import com.xinrenxinshi.util.XRXSStrUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DepartmentJobDeleteRequest extends AbstractOpenapiJsonRequest<Void> {
+public class DepartmentJobDeleteRequest extends AbstractOpenapiJsonRequest<Object> {
     public DepartmentJobDeleteRequest(String accessToken) {
         super(accessToken);
     }
@@ -41,13 +41,13 @@ public class DepartmentJobDeleteRequest extends AbstractOpenapiJsonRequest<Void>
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

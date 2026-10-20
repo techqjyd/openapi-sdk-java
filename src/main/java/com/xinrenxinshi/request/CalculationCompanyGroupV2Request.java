@@ -48,6 +48,6 @@ public class CalculationCompanyGroupV2Request extends AbstractOpenapiJsonRequest
 
     @Override
     public String getBizUrl() {
-        return "/v5/calculation/getAllCompanyGroupV2";
+        return "/v5/calculation/group/list";
     }
 }

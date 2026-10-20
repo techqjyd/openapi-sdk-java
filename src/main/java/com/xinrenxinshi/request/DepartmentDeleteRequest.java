@@ -16,7 +16,7 @@ import java.util.Map;
  * @author: liuchenhui
  * @create: 2019-11-11 11:43
  **/
-public class DepartmentDeleteRequest extends AbstractOpenapiJsonRequest<Void> {
+public class DepartmentDeleteRequest extends AbstractOpenapiJsonRequest<Object> {
     /**
      * 部门id
      */
@@ -40,7 +40,7 @@ public class DepartmentDeleteRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
@@ -57,8 +57,8 @@ public class DepartmentDeleteRequest extends AbstractOpenapiJsonRequest<Void> {
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

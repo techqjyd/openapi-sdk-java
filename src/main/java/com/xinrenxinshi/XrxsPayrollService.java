@@ -1,14 +1,13 @@
 package com.xinrenxinshi;
 
+import com.xinrenxinshi.domain.payroll.CostProjectModel;
+import com.xinrenxinshi.domain.payroll.CostProjectSaveParamModel;
 import com.xinrenxinshi.domain.payroll.EmployeePayroll;
 import com.xinrenxinshi.domain.payroll.PayrollChangeHistoryInfoModel;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
-import com.xinrenxinshi.response.PageResult;
-import com.xinrenxinshi.response.PayrollReportArchivesResponse;
-import com.xinrenxinshi.response.PayrollReportArchiveDetailResponse;
-import com.xinrenxinshi.response.PayrollSettingResponse;
+import com.xinrenxinshi.response.*;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.List;
@@ -60,9 +59,33 @@ public abstract class XrxsPayrollService {
     }
 
     /**
+     * 获取工资报表详情v2
+     *
+     * @param access_token 授权token
+     * @param reportId     查询的报表id
+     * @param subReportId  查询的子报表id
+     */
+    public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetailV2(String access_token,
+                                                                                             String reportId,
+                                                                                             String subReportId) throws ApiException {
+        PayrollReportArchiveDetailV2Request request = new PayrollReportArchiveDetailV2Request(access_token);
+        request.setReportId(reportId);
+        request.setSubReportId(subReportId);
+        return getReportArchiveDetailV2(request);
+    }
+
+    /**
      * 获取工资报表详情
      */
     public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetail(PayrollReportArchiveDetailRequest request) throws ApiException {
+        OpenapiResponse<PayrollReportArchiveDetailResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取工资报表详情v2
+     */
+    public static OpenapiResponse<PayrollReportArchiveDetailResponse> getReportArchiveDetailV2(PayrollReportArchiveDetailV2Request request) throws ApiException {
         OpenapiResponse<PayrollReportArchiveDetailResponse> execute = RequestTemplate.execute(request);
         return execute;
     }
@@ -91,7 +114,7 @@ public abstract class XrxsPayrollService {
      * @param access_token     授权token
      * @param employeePayrolls 批量更新员工的工资设置的参数
      */
-    public static OpenapiResponse<Void> updateEmpPayrollSetting(String access_token,
+    public static OpenapiResponse<Object> updateEmpPayrollSetting(String access_token,
                                                   List<EmployeePayroll> employeePayrolls) throws ApiException {
         PayrollUpdateRequest request = new PayrollUpdateRequest(access_token);
         request.setEmployeePayrolls(employeePayrolls);
@@ -101,8 +124,16 @@ public abstract class XrxsPayrollService {
     /**
      * 更新员工工资项
      */
-    public static OpenapiResponse<Void> updateEmpPayrollSetting(PayrollUpdateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object> updateEmpPayrollSetting(PayrollUpdateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 更新员工工资项(异常不阻塞)
+     */
+    public static OpenapiResponse<Object> updateEmpPayrollSettingIgnoreAbnormal(PayrollUpdateIgnoreAbnormalRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -135,5 +166,148 @@ public abstract class XrxsPayrollService {
     public static OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> getChangeHistory(PayrollChangeHistoryRequest request) throws ApiException {
         OpenapiResponse<PageResult<PayrollChangeHistoryInfoModel>> execute = RequestTemplate.execute(request);
         return execute;
+    }
+
+    /**
+     * 获取预定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<PayrollEmployeePreBasePayFormResponse> getPreBaseForm(PayrollPreBaseFormRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 提交预定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Object> submitPreBaseForm(PayrollPreBaseFormSubmitRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<PayrollEmployeeBasePayFormResponse> getBaseForm(PayrollBaseFormRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 提交定薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Object> submitBaseForm(PayrollBaseFormSubmitRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取调薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<PayrollEmployeeAdjustmentFormResponse> getAdjustForm(PayrollAdjustFormRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 提交调薪表单
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<Object> submitAdjustForm(PayrollAdjustFormSubmitRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 查询项目列表（分页）
+     *
+     * @param accessToken 授权token
+     * @param name        项目名称（模糊搜索，可选）
+     * @param status      项目状态（可选）
+     * @param pageNum     页码
+     * @param pageSize    每页大小
+     */
+    public static OpenapiResponse<PageResult<CostProjectModel>> getCostProjectList(String accessToken,
+            String name, Integer status, Integer pageNum, Integer pageSize) throws ApiException {
+        CostProjectListRequest request = new CostProjectListRequest(accessToken);
+        request.setName(name);
+        request.setStatus(status);
+        request.setPageNum(pageNum);
+        request.setPageSize(pageSize);
+        return getCostProjectList(request);
+    }
+
+    /**
+     * 查询项目列表（分页）
+     */
+    public static OpenapiResponse<PageResult<CostProjectModel>> getCostProjectList(CostProjectListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取项目详情
+     *
+     * @param accessToken 授权token
+     * @param id          项目ID
+     */
+    public static OpenapiResponse<CostProjectModel> getCostProjectDetail(String accessToken, Integer id) throws ApiException {
+        CostProjectDetailRequest request = new CostProjectDetailRequest(accessToken);
+        request.setId(id);
+        return getCostProjectDetail(request);
+    }
+
+    /**
+     * 获取项目详情
+     */
+    public static OpenapiResponse<CostProjectModel> getCostProjectDetail(CostProjectDetailRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 保存/修改项目
+     *
+     * @param accessToken 授权token
+     * @param model       项目信息
+     */
+    public static OpenapiResponse<Object> saveCostProject(String accessToken, CostProjectSaveParamModel model) throws ApiException {
+        CostProjectSaveRequest request = new CostProjectSaveRequest(accessToken);
+        request.setModel(model);
+        return saveCostProject(request);
+    }
+
+    /**
+     * 保存/修改项目
+     */
+    public static OpenapiResponse<Object> saveCostProject(CostProjectSaveRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 删除项目
+     *
+     * @param accessToken 授权token
+     * @param id          项目ID
+     */
+    public static OpenapiResponse<Object> delCostProject(String accessToken, Integer id) throws ApiException {
+        CostProjectDelRequest request = new CostProjectDelRequest(accessToken);
+        request.setId(id);
+        return delCostProject(request);
+    }
+
+    /**
+     * 删除项目
+     */
+    public static OpenapiResponse<Object> delCostProject(CostProjectDelRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 }

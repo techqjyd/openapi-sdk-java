@@ -14,7 +14,7 @@ import java.util.Map;
  * 销外出状态同步
  * @author zhaopengcheng
  */
-public class AttendanceCancelLeaveOutRequest extends AbstractOpenapiJsonRequest<Void> {
+public class AttendanceCancelLeaveOutRequest extends AbstractOpenapiJsonRequest<Object> {
     /**
      * employeeId
      */
@@ -161,13 +161,13 @@ public class AttendanceCancelLeaveOutRequest extends AbstractOpenapiJsonRequest<
     }
 
     @Override
-    public OpenapiResponse<Void> getResponseClass() {
+    public OpenapiResponse<Object> getResponseClass() {
         return new OpenapiResponse<>();
     }
 
     @Override
-    public TypeReference<OpenapiResponse<Void>> getResponseTypeRef() {
-        return new TypeReference<OpenapiResponse<Void>>() {
+    public TypeReference<OpenapiResponse<Object>> getResponseTypeRef() {
+        return new TypeReference<OpenapiResponse<Object>>() {
         };
     }
 

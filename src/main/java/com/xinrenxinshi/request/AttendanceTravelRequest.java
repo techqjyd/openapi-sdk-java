@@ -48,6 +48,8 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
      */
     private String endTime;
 
+    private Integer timeUnit;
+
 
     public AttendanceTravelRequest(String accessToken) {
         super(accessToken);
@@ -102,6 +104,14 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
         this.mobile = mobile;
     }
 
+    public Integer getTimeUnit() {
+        return timeUnit;
+    }
+
+    public void setTimeUnit(Integer timeUnit) {
+        this.timeUnit = timeUnit;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(8);
@@ -111,6 +121,7 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
         map.put("startTime", startTime);
         map.put("endDate", endDate);
         map.put("endTime", endTime);
+        map.put("timeUnit",timeUnit);
         return map;
     }
 
@@ -146,6 +157,9 @@ public class AttendanceTravelRequest extends AbstractOpenapiJsonRequest<String> 
         }
         if (endTime == null) {
             throw new ParamNotValidException("出差结束时间为空");
+        }
+        if (timeUnit == null) {
+            throw new ParamNotValidException("时间单位为空");
         }
     }
 

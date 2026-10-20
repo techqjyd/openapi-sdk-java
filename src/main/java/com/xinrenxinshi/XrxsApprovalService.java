@@ -6,8 +6,7 @@ import com.xinrenxinshi.domain.approval.*;
 import com.xinrenxinshi.exception.ApiException;
 import com.xinrenxinshi.openapi.OpenapiResponse;
 import com.xinrenxinshi.request.*;
-import com.xinrenxinshi.response.ApprovalApplyResponse;
-import com.xinrenxinshi.response.AttendanceLeaveOffResponse;
+import com.xinrenxinshi.response.*;
 import com.xinrenxinshi.response.PageResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
@@ -43,6 +42,37 @@ public abstract class XrxsApprovalService {
         request.setFlowStatus(flowStatus);
         request.setFlowTypes(flowTypes);
         request.setDepartmentIds(departmentIds);
+        return getFlowList(request);
+    }
+
+    /**
+     * 获取审批列表
+     *
+     * @param access_token  授权token
+     * @param pageNo        列表起始页
+     * @param pageSize      每页条数
+     * @param flowStatus    审批状态list
+     * @param flowTypes     审批类型list
+     * @param departmentIds 部门ids
+     * @param sponsorId     发起人ID
+     * @param approverId    审批人ID
+     */
+    public static OpenapiResponse<PageResult<ProcessBasicInfo>> getFlowList(String access_token,
+                                                                             Integer pageNo,
+                                                                             Integer pageSize,
+                                                                             List<Integer> flowStatus,
+                                                                             List<Integer> flowTypes,
+                                                                             List<String> departmentIds,
+                                                                             String sponsorId,
+                                                                             String approverId) throws ApiException {
+        ApprovalListRequest request = new ApprovalListRequest(access_token);
+        request.setPageNo(pageNo);
+        request.setPageSize(pageSize);
+        request.setFlowStatus(flowStatus);
+        request.setFlowTypes(flowTypes);
+        request.setDepartmentIds(departmentIds);
+        request.setSponsorId(sponsorId);
+        request.setApproverId(approverId);
         return getFlowList(request);
     }
 
@@ -123,7 +153,7 @@ public abstract class XrxsApprovalService {
      * @param status     操作类型 1:通过 2:驳回
      * @param remark     备注信息(最长300个字符)
      */
-    public static OpenapiResponse<Void> workflowNodeOperate(String access_token,
+    public static OpenapiResponse<Object> workflowNodeOperate(String access_token,
                                               String stepNodeId,
                                               String operatorId,
                                               Integer status,
@@ -139,8 +169,8 @@ public abstract class XrxsApprovalService {
     /**
      * 审批节点操作
      */
-    public static OpenapiResponse<Void>  workflowNodeOperate(ApprovalNodeOperateRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object>  workflowNodeOperate(ApprovalNodeOperateRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -157,6 +187,14 @@ public abstract class XrxsApprovalService {
      * 审批节点操作
      */
     public static OpenapiResponse<ApprovalApplyResponse>  travelApprovalApply(TravelApprovalApplyRequest request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 审批节点操作
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  travelApprovalApplyV2(TravelApprovalApplyV2Request request) throws ApiException {
         OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
         return execute;
     }
@@ -212,8 +250,8 @@ public abstract class XrxsApprovalService {
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<Void>  cancelLeaveOffApply(FlowCancelApplyRequest request) throws ApiException {
-        OpenapiResponse<Void> execute = RequestTemplate.execute(request);
+    public static OpenapiResponse<Object>  cancelLeaveOffApply(FlowCancelApplyRequest request) throws ApiException {
+        OpenapiResponse<Object> execute = RequestTemplate.execute(request);
         return execute;
     }
 
@@ -227,4 +265,117 @@ public abstract class XrxsApprovalService {
         OpenapiResponse<String> execute = RequestTemplate.execute(request);
         return execute;
     }
+
+    /**
+     * 销出差审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  cancelTravelApply(FlowCancelTravelRequest request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 销出差审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  cancelTravelApplyV2(FlowCancelTravelV2Request request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 销外出审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  cancelLeaveOutApply(FlowCancelLeaveOutRequest request) throws ApiException {
+        OpenapiResponse<ApprovalApplyResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 补卡审批发起
+     */
+    public static OpenapiResponse<String> repairEmpCheckApply(FlowRepairCheckRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取自定义审批设置列表
+     */
+    public static OpenapiResponse<List<FlowSettingListResult>> getCustomFlowSettings(FlowSettingListRequest request) throws ApiException {
+        OpenapiResponse<List<FlowSettingListResult>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取设置表单
+     */
+    public static OpenapiResponse<List<FlowGroupForOpenapiModel>> getSettingForm(FlowSettingFormRequest request) throws ApiException {
+        OpenapiResponse<List<FlowGroupForOpenapiModel>> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 发起自定义审批
+     */
+    public static OpenapiResponse<String> flowCustomApply(FlowCustomApplyRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取加班时间配置信息
+     */
+    public static OpenapiResponse<OvertimeOffDaySettingModel> getEmployeeOvertimeOffSetting(OvertimeApplySettingRequest request) throws ApiException {
+        OpenapiResponse<OvertimeOffDaySettingModel> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取加班补偿规则 和 校验数据
+     */
+    public static OpenapiResponse<EmployeeOvertimeRuleResult> getOvertimeRule(OvertimeApplyRuleRequest request) throws ApiException {
+        OpenapiResponse<EmployeeOvertimeRuleResult> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 加班审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<String> overTimeApply(OverTimeApplyRequest request) throws ApiException {
+        OpenapiResponse<String> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取离职交接详情
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<DismissHandoverDetailInfo> handoverDetail(HandoverDetailRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     *  外勤打卡审批发起
+     * @param request
+     * @return
+     * @throws ApiException
+     */
+    public static OpenapiResponse<ApprovalApplyResponse>  applyFieldCheckIn(FlowFieldCheckInApprovalRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
 }

@@ -6,9 +6,13 @@ import com.xinrenxinshi.request.CalculationCompanyGroupRequest;
 import com.xinrenxinshi.request.CalculationCompanyGroupV2Request;
 import com.xinrenxinshi.request.CalculationSyncGroupRequest;
 import com.xinrenxinshi.request.CalculationSyncGroupV2Request;
+import com.xinrenxinshi.request.CalculationGroupDataRequest;
+import com.xinrenxinshi.request.CalculationBaseGroupInfoRequest;
 import com.xinrenxinshi.response.CalculationCompanyGroupResponse;
 import com.xinrenxinshi.response.CalculationCompanyGroupV2Response;
 import com.xinrenxinshi.response.CalculationSyncGroupDataResponse;
+import com.xinrenxinshi.response.GroupDataInfo;
+import com.xinrenxinshi.domain.calculation.PlatformBaseGroupResult;
 import com.xinrenxinshi.util.RequestTemplate;
 
 import java.util.LinkedHashMap;
@@ -47,21 +51,13 @@ public abstract class XrxsCalculationService {
         return execute;
     }
 
-
-
-
-
-
-
-
     /**
      * 获取公司所有的 字段组 （包含字段） V2
-     * @param access_token
+     * @param request
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<CalculationCompanyGroupV2Response> getAllCompanyGroupV2(String access_token) throws ApiException {
-        CalculationCompanyGroupV2Request request = new CalculationCompanyGroupV2Request(access_token);
+    public static OpenapiResponse<CalculationCompanyGroupV2Response> getAllCompanyGroupV2(CalculationCompanyGroupV2Request request) throws ApiException {
         OpenapiResponse<CalculationCompanyGroupV2Response> execute = RequestTemplate.execute(request);
         return execute;
     }
@@ -69,20 +65,33 @@ public abstract class XrxsCalculationService {
 
     /**
      * 同步字段数据    V2
-     * @param access_token
-     * @param groupId
-     * @param yearmo
-     * @param data
+     * @param request
      * @return
      * @throws ApiException
      */
-    public static OpenapiResponse<CalculationSyncGroupDataResponse> syncGroupDataV2(String access_token, Integer groupId, Integer yearmo, LinkedList<LinkedHashMap<String, String>> data,String syncKey) throws ApiException {
-        CalculationSyncGroupV2Request request = new CalculationSyncGroupV2Request(access_token);
-        request.setGroupId(groupId);
-        request.setYearmo(yearmo);
-        request.setData(data);
-        request.setSyncKey(syncKey);
+    public static OpenapiResponse<CalculationSyncGroupDataResponse> syncGroupDataV2(CalculationSyncGroupV2Request request) throws ApiException {
         OpenapiResponse<CalculationSyncGroupDataResponse> execute = RequestTemplate.execute(request);
+        return execute;
+    }
+
+    /**
+     * 获取分组数据（分页）
+     * @param request 请求入参
+     * @return 分组数据分页结果
+     * @throws ApiException 调用异常
+     */
+    public static OpenapiResponse<GroupDataInfo> getGroupData(CalculationGroupDataRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 获取基础分组信息
+     * @param request 请求入参
+     * @return 基础分组信息列表
+     * @throws ApiException 调用异常
+     */
+    public static OpenapiResponse<List<PlatformBaseGroupResult>> getBaseGroupInfo(CalculationBaseGroupInfoRequest request) throws ApiException {
+        OpenapiResponse<List<PlatformBaseGroupResult>> execute = RequestTemplate.execute(request);
         return execute;
     }
 }
