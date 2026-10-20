@@ -86,6 +86,40 @@ public abstract class XrxsDepartmentService {
     }
 
     /**
+     * 部门自定义字段列表
+     *
+     * @param access_token 授权token
+     */
+    public static OpenapiResponse<List<DepartmentFieldModel>> getDepartmentFieldList(String access_token) throws ApiException {
+        DepartmentFieldListRequest request = new DepartmentFieldListRequest(access_token);
+        return getDepartmentFieldList(request);
+    }
+
+    /**
+     * 部门自定义字段列表
+     */
+    public static OpenapiResponse<List<DepartmentFieldModel>> getDepartmentFieldList(DepartmentFieldListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
+     * 岗位自定义字段列表
+     *
+     * @param access_token 授权token
+     */
+    public static OpenapiResponse<List<JobDictionaryFieldModel>> getJobDictionaryFieldList(String access_token) throws ApiException {
+        DepartmentJobFieldListRequest request = new DepartmentJobFieldListRequest(access_token);
+        return getJobDictionaryFieldList(request);
+    }
+
+    /**
+     * 岗位自定义字段列表
+     */
+    public static OpenapiResponse<List<JobDictionaryFieldModel>> getJobDictionaryFieldList(DepartmentJobFieldListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
+    }
+
+    /**
      * 部门更新
      *
      * @param access_token 授权token
@@ -205,6 +239,23 @@ public abstract class XrxsDepartmentService {
     public static OpenapiResponse<List<CostCenterModel>> costCenterList(CostCenterModelRequest request) throws ApiException {
         OpenapiResponse<List<CostCenterModel>> execute = RequestTemplate.execute(request);
         return execute;
+    }
+
+    /**
+     * 成本中心自定义字段列表
+     *
+     * @param access_token 授权token
+     */
+    public static OpenapiResponse<List<CostCenterFieldModel>> costCenterFieldList(String access_token) throws ApiException {
+        CostCenterFieldListRequest request = new CostCenterFieldListRequest(access_token);
+        return costCenterFieldList(request);
+    }
+
+    /**
+     * 成本中心自定义字段列表
+     */
+    public static OpenapiResponse<List<CostCenterFieldModel>> costCenterFieldList(CostCenterFieldListRequest request) throws ApiException {
+        return RequestTemplate.execute(request);
     }
 
     /**

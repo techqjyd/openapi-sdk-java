@@ -24,6 +24,11 @@ public class CostCenterAddRequest extends AbstractOpenapiJsonRequest<String> {
     private String expenseCode;
     private String costRemark;
     private List<CostBudgetControlYearModel> budgetYearModels;
+    /**
+     * 成本中心自定义字段，key 为字段名称，value 为字段值；
+     * 多选类型（fieldType=8）传 JSON 数组字符串，如 ["A","B"]
+     */
+    private Map<String, Object> customFields;
 
     public String getParentId() {
         return parentId;
@@ -81,6 +86,14 @@ public class CostCenterAddRequest extends AbstractOpenapiJsonRequest<String> {
         this.budgetYearModels = budgetYearModels;
     }
 
+    public Map<String, Object> getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(Map<String, Object> customFields) {
+        this.customFields = customFields;
+    }
+
     @Override
     protected Map<String, Object> getParamMap0() {
         Map<String, Object> map = new HashMap<>(10);
@@ -91,6 +104,9 @@ public class CostCenterAddRequest extends AbstractOpenapiJsonRequest<String> {
         map.put("expenseType", expenseType);
         map.put("expenseCode", expenseCode);
         map.put("budgetYearModels",budgetYearModels);
+        if (customFields != null && !customFields.isEmpty()) {
+            map.put("customFields", customFields);
+        }
         return map;
     }
 

@@ -63,6 +63,12 @@ public class DepartmentJobUpdateRequest extends AbstractOpenapiJsonRequest<Objec
      */
     private List<String> departmentIds;
 
+    /**
+     * 岗位自定义字段，key 为字段名称，value 为字段值；
+     * 多选类型（fieldType=8）传 JSON 数组字符串，如 ["A","B"]；传空串表示清空该字段
+     */
+    private Map<String, String> fields;
+
 
     @Override
     protected Map<String, Object> getParamMap0() {
@@ -76,6 +82,9 @@ public class DepartmentJobUpdateRequest extends AbstractOpenapiJsonRequest<Objec
         map.put("remark", remark);
         map.put("introduction", introduction);
         map.put("departmentIds", departmentIds);
+        if (fields != null && !fields.isEmpty()) {
+            map.put("fields", fields);
+        }
         return map;
     }
 

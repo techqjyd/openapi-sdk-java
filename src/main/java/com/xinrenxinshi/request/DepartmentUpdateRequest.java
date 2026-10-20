@@ -65,7 +65,7 @@ public class DepartmentUpdateRequest extends AbstractOpenapiJsonRequest<Object> 
     private Integer isVirtual;
 
     /**
-     * 部门自定义字段
+     * 部门自定义字段，key 为字段名称；传空串表示清空该字段
      */
     private Map<String,String> fields;
 
