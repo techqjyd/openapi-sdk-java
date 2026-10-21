@@ -29,7 +29,7 @@ public class CostCenterUpdateRequest extends AbstractOpenapiJsonRequest<Object> 
      * 成本中心自定义字段，key 为字段名称，value 为字段值；
      * 多选类型（fieldType=8）传 JSON 数组字符串，如 ["A","B"]；传空串表示清空该字段
      */
-    private Map<String, Object> customFields;
+    private Map<String,String> customFields;
 
     public String getCostId() {
         return costId;
@@ -95,11 +95,11 @@ public class CostCenterUpdateRequest extends AbstractOpenapiJsonRequest<Object> 
         this.budgetYearModels = budgetYearModels;
     }
 
-    public Map<String, Object> getCustomFields() {
+    public Map<String,String> getCustomFields() {
         return customFields;
     }
 
-    public void setCustomFields(Map<String, Object> customFields) {
+    public void setCustomFields(Map<String,String> customFields) {
         this.customFields = customFields;
     }
 
