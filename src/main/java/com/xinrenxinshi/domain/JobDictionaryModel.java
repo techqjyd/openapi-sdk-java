@@ -1,6 +1,7 @@
 package com.xinrenxinshi.domain;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <岗位词典详细信息>.
@@ -54,6 +55,20 @@ public class JobDictionaryModel {
      * 适用部门
      */
     private List<String> departmentIds;
+
+    /**
+     * 岗位自定义字段值，key 为字段名称，value 为字段值；
+     * 多选类型（fieldType=8）为 JSON 数组字符串，如 ["A","B"]
+     */
+    private Map<String, String> customFields;
+
+    public Map<String, String> getCustomFields() {
+        return customFields;
+    }
+
+    public void setCustomFields(Map<String, String> customFields) {
+        this.customFields = customFields;
+    }
 
     public List<String> getDepartmentIds() {
         return departmentIds;
