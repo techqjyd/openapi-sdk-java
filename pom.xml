@@ -6,7 +6,7 @@
 
     <groupId>com.xinrenxinshi</groupId>
     <artifactId>openapi-sdk-java</artifactId>
-    <version>1.0.55</version>
+    <version>1.0.56-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -88,4 +88,17 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>qjyd nexus releases</name>
+            <url>http://repo.devtest.vip:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>qjyd nexus snapshots</name>
+            <url>http://repo.devtest.vip:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>

@@ -11,7 +11,7 @@ public class CostCenterDetailModel {
     private String expenseType;
     private String expenseCode;
     private String costRemark;
-    private Map<String,Object> customFields;
+    private Map<String,String> customFields;
 
     private List<CostBudgetControlYearModel> budgetYearModels;
 
@@ -79,11 +79,11 @@ public class CostCenterDetailModel {
         this.costId = costId;
     }
 
-    public Map<String, Object> getCustomFields() {
+    public Map<String,String> getCustomFields() {
         return customFields;
     }
 
-    public void setCustomFields(Map<String, Object> customFields) {
+    public void setCustomFields(Map<String,String> customFields) {
         this.customFields = customFields;
     }
 }

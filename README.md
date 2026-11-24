@@ -91,6 +91,9 @@ class XXX {
 > 部门管理 XrxsDepartmentService
 - 部门创建 -- createDepartment
 - 部门列表 -- getDepartmentList
+- 部门自定义字段列表 -- getDepartmentFieldList
+- 岗位自定义字段列表 -- getJobDictionaryFieldList
+- 成本中心自定义字段列表 -- costCenterFieldList
 - 部门更新 -- updateDepartment
 - 部门删除 -- deleteDepartment
 - 获取岗位信息 -- getJobList
